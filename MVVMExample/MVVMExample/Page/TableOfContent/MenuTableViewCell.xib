@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableViewCell" id="KGk-i7-Jjw" customClass="MenuTableViewCell" customModule="DTMvvm_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ota-8O-pdG">
+                        <rect key="frame" x="10" y="5" width="300" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="vzu-qP-KXL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gys-a2-Mkv">
+                        <rect key="frame" x="10" y="30" width="300" height="65"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="gys-a2-Mkv" secondAttribute="trailing" constant="10" id="Bug-21-55M"/>
+                    <constraint firstItem="gys-a2-Mkv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="MDA-vW-aGd"/>
+                    <constraint firstAttribute="bottom" secondItem="gys-a2-Mkv" secondAttribute="bottom" constant="5" id="UhQ-2v-qw9"/>
+                    <constraint firstAttribute="trailing" secondItem="Ota-8O-pdG" secondAttribute="trailing" constant="10" id="iyO-mE-7t2"/>
+                    <constraint firstItem="gys-a2-Mkv" firstAttribute="top" secondItem="Ota-8O-pdG" secondAttribute="bottom" id="lCD-DC-zzL"/>
+                    <constraint firstItem="Ota-8O-pdG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="oEj-VA-lrU"/>
+                    <constraint firstItem="Ota-8O-pdG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="tZY-xm-A6y"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="ZaG-0t-Fg3"/>
+            <connections>
+                <outlet property="descLbl" destination="gys-a2-Mkv" id="30U-Nk-hci"/>
+                <outlet property="titleLbl" destination="Ota-8O-pdG" id="ZSx-84-X5X"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </tableViewCell>
+    </objects>
+</document>

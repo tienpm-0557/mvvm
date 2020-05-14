@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EvaluateJavaScriptWebPage" customModule="MVVMExample" customModuleProvider="target">
+            <connections>
+                <outlet property="btnBack" destination="whs-0L-OMv" id="3go-PZ-NgJ"/>
+                <outlet property="btnForward" destination="2pn-9o-jgB" id="w09-6a-jIP"/>
+                <outlet property="lbLoading" destination="apq-Ub-Hek" id="Bhr-mE-siE"/>
+                <outlet property="view" destination="cYp-hN-Mdc" id="TEL-eS-9ES"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="cYp-hN-Mdc">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whs-0L-OMv">
+                    <rect key="frame" x="10" y="54" width="79" height="45"/>
+                    <color key="backgroundColor" white="0.90000000000000002" alpha="0.81999999999999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="Fnp-bK-Wee"/>
+                        <constraint firstAttribute="width" constant="79" id="LRl-EG-vyl"/>
+                    </constraints>
+                    <state key="normal" title="Back "/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pn-9o-jgB">
+                    <rect key="frame" x="325" y="54" width="79" height="45"/>
+                    <color key="backgroundColor" white="0.90000000000000002" alpha="0.81999999999999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="2Ri-9X-eGA"/>
+                        <constraint firstAttribute="width" constant="79" id="zp1-NW-eax"/>
+                    </constraints>
+                    <state key="normal" title="Forward"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apq-Ub-Hek">
+                    <rect key="frame" x="89" y="54" width="236" height="45"/>
+                    <color key="backgroundColor" white="0.90000000000000002" alpha="0.81999999999999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="aak-MR-keF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2pn-9o-jgB" firstAttribute="leading" secondItem="apq-Ub-Hek" secondAttribute="trailing" id="5fs-8j-AB7"/>
+                <constraint firstItem="cbv-lS-PMI" firstAttribute="trailing" secondItem="2pn-9o-jgB" secondAttribute="trailing" constant="10" id="G2c-6m-lfj"/>
+                <constraint firstItem="whs-0L-OMv" firstAttribute="top" secondItem="cbv-lS-PMI" secondAttribute="top" constant="10" id="Gsg-4q-b93"/>
+                <constraint firstItem="apq-Ub-Hek" firstAttribute="top" secondItem="cbv-lS-PMI" secondAttribute="top" constant="10" id="IRW-2k-YjM"/>
+                <constraint firstItem="2pn-9o-jgB" firstAttribute="top" secondItem="cbv-lS-PMI" secondAttribute="top" constant="10" id="WEw-f1-koj"/>
+                <constraint firstItem="whs-0L-OMv" firstAttribute="leading" secondItem="cbv-lS-PMI" secondAttribute="leading" constant="10" id="Za8-QY-e6P"/>
+                <constraint firstItem="apq-Ub-Hek" firstAttribute="leading" secondItem="whs-0L-OMv" secondAttribute="trailing" id="y4Q-qu-101"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="cbv-lS-PMI"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </view>
+    </objects>
+</document>

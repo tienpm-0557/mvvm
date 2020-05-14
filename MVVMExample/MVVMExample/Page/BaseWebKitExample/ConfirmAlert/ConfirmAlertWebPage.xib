@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfirmAlertWebPage" customModule="MVVMExample" customModuleProvider="target">
+            <connections>
+                <outlet property="btnBack" destination="6gh-UV-fdw" id="cbg-WF-How"/>
+                <outlet property="btnForward" destination="KuA-37-n79" id="j9f-Vb-pyn"/>
+                <outlet property="lbLoading" destination="xuH-57-KmB" id="D1R-6c-QcL"/>
+                <outlet property="view" destination="SlI-AC-MLQ" id="3Px-kf-p33"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="SlI-AC-MLQ">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gh-UV-fdw">
+                    <rect key="frame" x="10" y="54" width="79" height="45"/>
+                    <color key="backgroundColor" white="0.90000000000000002" alpha="0.81999999999999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="Eoa-ud-5Py"/>
+                        <constraint firstAttribute="width" constant="79" id="okp-L1-Afc"/>
+                    </constraints>
+                    <state key="normal" title="Back "/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KuA-37-n79">
+                    <rect key="frame" x="325" y="54" width="79" height="45"/>
+                    <color key="backgroundColor" white="0.90000000000000002" alpha="0.81999999999999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="79" id="70e-Dn-LHU"/>
+                        <constraint firstAttribute="height" constant="45" id="TNH-p6-wFf"/>
+                    </constraints>
+                    <state key="normal" title="Forward"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuH-57-KmB">
+                    <rect key="frame" x="89" y="54" width="236" height="45"/>
+                    <color key="backgroundColor" white="0.90000000000000002" alpha="0.81999999999999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="Pyt-G9-8KA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="xuH-57-KmB" firstAttribute="top" secondItem="9a0-0n-igh" secondAttribute="top" constant="10" id="3j4-Ji-bZ6"/>
+                <constraint firstItem="KuA-37-n79" firstAttribute="top" secondItem="9a0-0n-igh" secondAttribute="top" constant="10" id="A0i-1g-kK1"/>
+                <constraint firstItem="9a0-0n-igh" firstAttribute="trailing" secondItem="KuA-37-n79" secondAttribute="trailing" constant="10" id="Ozn-g7-OBL"/>
+                <constraint firstItem="KuA-37-n79" firstAttribute="leading" secondItem="xuH-57-KmB" secondAttribute="trailing" id="Wy2-Hh-rhH"/>
+                <constraint firstItem="xuH-57-KmB" firstAttribute="leading" secondItem="6gh-UV-fdw" secondAttribute="trailing" id="dyk-cT-jMz"/>
+                <constraint firstItem="6gh-UV-fdw" firstAttribute="top" secondItem="9a0-0n-igh" secondAttribute="top" constant="10" id="sl2-07-25V"/>
+                <constraint firstItem="6gh-UV-fdw" firstAttribute="leading" secondItem="9a0-0n-igh" secondAttribute="leading" constant="10" id="uAw-Lw-hta"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="9a0-0n-igh"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </view>
+    </objects>
+</document>

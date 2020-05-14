@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertWebPage" customModule="MVVMExample" customModuleProvider="target">
+            <connections>
+                <outlet property="btnBack" destination="zGd-Su-liD" id="DVu-vo-mQ5"/>
+                <outlet property="btnForward" destination="E21-Iv-nwF" id="Rnv-Kd-ZbR"/>
+                <outlet property="lbLoading" destination="t0q-an-QAN" id="AUI-qe-xdP"/>
+                <outlet property="view" destination="0mW-Sg-DQb" id="9Ef-8S-hmN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="0mW-Sg-DQb">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGd-Su-liD">
+                    <rect key="frame" x="10" y="54" width="79" height="45"/>
+                    <color key="backgroundColor" white="0.90000000000000002" alpha="0.81999999999999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="79" id="PMU-H5-LOu"/>
+                        <constraint firstAttribute="height" constant="45" id="afJ-Xb-7g5"/>
+                    </constraints>
+                    <state key="normal" title="Back "/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E21-Iv-nwF">
+                    <rect key="frame" x="325" y="54" width="79" height="45"/>
+                    <color key="backgroundColor" white="0.90000000000000002" alpha="0.81999999999999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="JSn-jQ-qfQ"/>
+                        <constraint firstAttribute="width" constant="79" id="Mmy-hD-KF5"/>
+                    </constraints>
+                    <state key="normal" title="Forward"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0q-an-QAN">
+                    <rect key="frame" x="89" y="54" width="236" height="45"/>
+                    <color key="backgroundColor" white="0.90000000000000002" alpha="0.81999999999999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="YJz-aH-cSm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="E21-Iv-nwF" firstAttribute="leading" secondItem="t0q-an-QAN" secondAttribute="trailing" id="3tg-a1-laI"/>
+                <constraint firstItem="E21-Iv-nwF" firstAttribute="top" secondItem="FBh-Q3-MQD" secondAttribute="top" constant="10" id="Auf-GD-jha"/>
+                <constraint firstItem="t0q-an-QAN" firstAttribute="leading" secondItem="zGd-Su-liD" secondAttribute="trailing" id="Ubc-Ka-9Oa"/>
+                <constraint firstItem="zGd-Su-liD" firstAttribute="leading" secondItem="FBh-Q3-MQD" secondAttribute="leading" constant="10" id="Vkz-9E-5c2"/>
+                <constraint firstItem="FBh-Q3-MQD" firstAttribute="trailing" secondItem="E21-Iv-nwF" secondAttribute="trailing" constant="10" id="cSc-aP-n1N"/>
+                <constraint firstItem="t0q-an-QAN" firstAttribute="top" secondItem="FBh-Q3-MQD" secondAttribute="top" constant="10" id="e4d-VE-NDY"/>
+                <constraint firstItem="zGd-Su-liD" firstAttribute="top" secondItem="FBh-Q3-MQD" secondAttribute="top" constant="10" id="hQR-u8-2Lf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="FBh-Q3-MQD"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </view>
+    </objects>
+</document>
