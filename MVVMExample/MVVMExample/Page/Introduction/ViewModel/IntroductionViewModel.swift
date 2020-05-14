@@ -20,7 +20,7 @@ class IntroductionPageViewModel: BaseWebViewModel {
     override func react() {
         super.react()
         let title = (self.model as? IntroductionModel)?.title ?? "Table Of Contents"
-        let url = URL(string: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md")!
+        let url = URL(string: "https://tienpm-0557.github.io/mvvm/")!
 
         rxPageTitle.accept(title)
         rxURL.accept(url)

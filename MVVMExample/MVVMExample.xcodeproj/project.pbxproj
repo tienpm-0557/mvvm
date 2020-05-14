@@ -39,6 +39,23 @@
 		9C74EBEE246D246F00A3CF1D /* EvaluateJavaScriptWebPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EBEC246D246F00A3CF1D /* EvaluateJavaScriptWebPage.swift */; };
 		9C74EBEF246D246F00A3CF1D /* EvaluateJavaScriptWebPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EBED246D246F00A3CF1D /* EvaluateJavaScriptWebPage.xib */; };
 		9C74EBF2246D24E600A3CF1D /* EvaluateJavaScriptWebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EBF1246D24E600A3CF1D /* EvaluateJavaScriptWebViewModel.swift */; };
+		9C74EBF7246D435400A3CF1D /* ListPageExamplePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EBF5246D435300A3CF1D /* ListPageExamplePage.swift */; };
+		9C74EBF8246D435400A3CF1D /* ListPageExamplePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EBF6246D435300A3CF1D /* ListPageExamplePage.xib */; };
+		9C74EBFC246D4E7C00A3CF1D /* MVVMExamplePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EBFA246D4E7C00A3CF1D /* MVVMExamplePage.swift */; };
+		9C74EBFD246D4E7C00A3CF1D /* MVVMExamplePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EBFB246D4E7C00A3CF1D /* MVVMExamplePage.xib */; };
+		9C74EC00246D4EE500A3CF1D /* MvvmExamplesPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EBFF246D4EE500A3CF1D /* MvvmExamplesPageViewModel.swift */; };
+		9C74EC04246D8A3A00A3CF1D /* DataBindingExamplesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC02246D8A3A00A3CF1D /* DataBindingExamplesPage.swift */; };
+		9C74EC05246D8A3A00A3CF1D /* DataBindingExamplesPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EC03246D8A3A00A3CF1D /* DataBindingExamplesPage.xib */; };
+		9C74EC08246D8AAC00A3CF1D /* DataBindingExamplesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC07246D8AAC00A3CF1D /* DataBindingExamplesViewModel.swift */; };
+		9C74EC0C246D8BB900A3CF1D /* ServiceExamplesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC0A246D8BB900A3CF1D /* ServiceExamplesPage.swift */; };
+		9C74EC0D246D8BB900A3CF1D /* ServiceExamplesPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EC0B246D8BB900A3CF1D /* ServiceExamplesPage.xib */; };
+		9C74EC10246D8C2B00A3CF1D /* ServiceExamplesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC0F246D8C2B00A3CF1D /* ServiceExamplesViewModel.swift */; };
+		9C74EC15246D8F8000A3CF1D /* TransitionExamplesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC13246D8F8000A3CF1D /* TransitionExamplesPage.swift */; };
+		9C74EC16246D8F8000A3CF1D /* TransitionExamplesPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EC14246D8F8000A3CF1D /* TransitionExamplesPage.xib */; };
+		9C74EC1D246D8FFF00A3CF1D /* TransitionExamplesPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC1C246D8FFF00A3CF1D /* TransitionExamplesPageViewModel.swift */; };
+		9C74EC22246D905F00A3CF1D /* WebKitExamplesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC20246D905F00A3CF1D /* WebKitExamplesPage.swift */; };
+		9C74EC23246D905F00A3CF1D /* WebKitExamplesPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EC21246D905F00A3CF1D /* WebKitExamplesPage.xib */; };
+		9C74EC25246D906F00A3CF1D /* WebKitPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC24246D906F00A3CF1D /* WebKitPageViewModel.swift */; };
 		B7531BAD1440CDB7FEB81CB1 /* Pods_MVVMExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19F092A966536800C9BC1E0 /* Pods_MVVMExample.framework */; };
 		F7104C2A66D5544C5610BC8B /* Pods_MVVMExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5537DB3BDF2C6194E24C822 /* Pods_MVVMExampleTests.framework */; };
 /* End PBXBuildFile section */
@@ -104,6 +121,23 @@
 		9C74EBEC246D246F00A3CF1D /* EvaluateJavaScriptWebPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateJavaScriptWebPage.swift; sourceTree = "<group>"; };
 		9C74EBED246D246F00A3CF1D /* EvaluateJavaScriptWebPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EvaluateJavaScriptWebPage.xib; sourceTree = "<group>"; };
 		9C74EBF1246D24E600A3CF1D /* EvaluateJavaScriptWebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateJavaScriptWebViewModel.swift; sourceTree = "<group>"; };
+		9C74EBF5246D435300A3CF1D /* ListPageExamplePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPageExamplePage.swift; sourceTree = "<group>"; };
+		9C74EBF6246D435300A3CF1D /* ListPageExamplePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListPageExamplePage.xib; sourceTree = "<group>"; };
+		9C74EBFA246D4E7C00A3CF1D /* MVVMExamplePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMExamplePage.swift; sourceTree = "<group>"; };
+		9C74EBFB246D4E7C00A3CF1D /* MVVMExamplePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVVMExamplePage.xib; sourceTree = "<group>"; };
+		9C74EBFF246D4EE500A3CF1D /* MvvmExamplesPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvvmExamplesPageViewModel.swift; sourceTree = "<group>"; };
+		9C74EC02246D8A3A00A3CF1D /* DataBindingExamplesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBindingExamplesPage.swift; sourceTree = "<group>"; };
+		9C74EC03246D8A3A00A3CF1D /* DataBindingExamplesPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataBindingExamplesPage.xib; sourceTree = "<group>"; };
+		9C74EC07246D8AAC00A3CF1D /* DataBindingExamplesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBindingExamplesViewModel.swift; sourceTree = "<group>"; };
+		9C74EC0A246D8BB900A3CF1D /* ServiceExamplesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceExamplesPage.swift; sourceTree = "<group>"; };
+		9C74EC0B246D8BB900A3CF1D /* ServiceExamplesPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceExamplesPage.xib; sourceTree = "<group>"; };
+		9C74EC0F246D8C2B00A3CF1D /* ServiceExamplesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceExamplesViewModel.swift; sourceTree = "<group>"; };
+		9C74EC13246D8F8000A3CF1D /* TransitionExamplesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionExamplesPage.swift; sourceTree = "<group>"; };
+		9C74EC14246D8F8000A3CF1D /* TransitionExamplesPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitionExamplesPage.xib; sourceTree = "<group>"; };
+		9C74EC1C246D8FFF00A3CF1D /* TransitionExamplesPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionExamplesPageViewModel.swift; sourceTree = "<group>"; };
+		9C74EC20246D905F00A3CF1D /* WebKitExamplesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitExamplesPage.swift; sourceTree = "<group>"; };
+		9C74EC21246D905F00A3CF1D /* WebKitExamplesPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebKitExamplesPage.xib; sourceTree = "<group>"; };
+		9C74EC24246D906F00A3CF1D /* WebKitPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitPageViewModel.swift; sourceTree = "<group>"; };
 		B19F092A966536800C9BC1E0 /* Pods_MVVMExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5537DB3BDF2C6194E24C822 /* Pods_MVVMExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F775FFCE0F57A8F5D67ED7F5 /* Pods_MVVMExample_MVVMExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMExample_MVVMExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +240,10 @@
 		9C74EBAF246D1A0B00A3CF1D /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				9C74EC12246D8F6600A3CF1D /* TransitionExamplesPage */,
+				9C74EC09246D8B8B00A3CF1D /* ServiceExamples */,
+				9C74EC01246D8A0900A3CF1D /* DataBindingExamples */,
+				9C74EBF3246D326C00A3CF1D /* MVVMExamples */,
 				9C74EBC6246D1F1400A3CF1D /* BaseWebKitExample */,
 				9C74EBB1246D1A9B00A3CF1D /* Introduction */,
 				9C74EBB0246D1A5F00A3CF1D /* TableOfContent */,
@@ -253,11 +291,14 @@
 		9C74EBC6246D1F1400A3CF1D /* BaseWebKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				9C74EC1F246D904100A3CF1D /* ViewModel */,
 				9C74EBEB246D246200A3CF1D /* EvaluateJavaScript */,
 				9C74EBE3246D23D500A3CF1D /* FailNavigation */,
 				9C74EBDB246D21CE00A3CF1D /* Authentication */,
 				9C74EBD3246D203A00A3CF1D /* Alert */,
 				9C74EBC7246D1F2000A3CF1D /* ConfirmAlert */,
+				9C74EC20246D905F00A3CF1D /* WebKitExamplesPage.swift */,
+				9C74EC21246D905F00A3CF1D /* WebKitExamplesPage.xib */,
 			);
 			path = BaseWebKitExample;
 			sourceTree = "<group>";
@@ -348,6 +389,104 @@
 			isa = PBXGroup;
 			children = (
 				9C74EBF1246D24E600A3CF1D /* EvaluateJavaScriptWebViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C74EBF3246D326C00A3CF1D /* MVVMExamples */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EBF4246D328C00A3CF1D /* ListPageExample */,
+				9C74EBFE246D4EC000A3CF1D /* ViewModel */,
+				9C74EBFA246D4E7C00A3CF1D /* MVVMExamplePage.swift */,
+				9C74EBFB246D4E7C00A3CF1D /* MVVMExamplePage.xib */,
+			);
+			path = MVVMExamples;
+			sourceTree = "<group>";
+		};
+		9C74EBF4246D328C00A3CF1D /* ListPageExample */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EBF9246D4D0E00A3CF1D /* ViewModel */,
+				9C74EBF5246D435300A3CF1D /* ListPageExamplePage.swift */,
+				9C74EBF6246D435300A3CF1D /* ListPageExamplePage.xib */,
+			);
+			path = ListPageExample;
+			sourceTree = "<group>";
+		};
+		9C74EBF9246D4D0E00A3CF1D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C74EBFE246D4EC000A3CF1D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EBFF246D4EE500A3CF1D /* MvvmExamplesPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C74EC01246D8A0900A3CF1D /* DataBindingExamples */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EC06246D8A5800A3CF1D /* ViewModel */,
+				9C74EC02246D8A3A00A3CF1D /* DataBindingExamplesPage.swift */,
+				9C74EC03246D8A3A00A3CF1D /* DataBindingExamplesPage.xib */,
+			);
+			path = DataBindingExamples;
+			sourceTree = "<group>";
+		};
+		9C74EC06246D8A5800A3CF1D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EC07246D8AAC00A3CF1D /* DataBindingExamplesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C74EC09246D8B8B00A3CF1D /* ServiceExamples */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EC0E246D8C1100A3CF1D /* ViewModel */,
+				9C74EC0A246D8BB900A3CF1D /* ServiceExamplesPage.swift */,
+				9C74EC0B246D8BB900A3CF1D /* ServiceExamplesPage.xib */,
+			);
+			path = ServiceExamples;
+			sourceTree = "<group>";
+		};
+		9C74EC0E246D8C1100A3CF1D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EC0F246D8C2B00A3CF1D /* ServiceExamplesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C74EC12246D8F6600A3CF1D /* TransitionExamplesPage */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EC17246D8F9C00A3CF1D /* ViewModel */,
+				9C74EC13246D8F8000A3CF1D /* TransitionExamplesPage.swift */,
+				9C74EC14246D8F8000A3CF1D /* TransitionExamplesPage.xib */,
+			);
+			path = TransitionExamplesPage;
+			sourceTree = "<group>";
+		};
+		9C74EC17246D8F9C00A3CF1D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EC1C246D8FFF00A3CF1D /* TransitionExamplesPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C74EC1F246D904100A3CF1D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EC24246D906F00A3CF1D /* WebKitPageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -475,6 +614,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C74EBB5246D1ABA00A3CF1D /* IntroductionPage.xib in Resources */,
+				9C74EC05246D8A3A00A3CF1D /* DataBindingExamplesPage.xib in Resources */,
+				9C74EC23246D905F00A3CF1D /* WebKitExamplesPage.xib in Resources */,
+				9C74EC16246D8F8000A3CF1D /* TransitionExamplesPage.xib in Resources */,
 				9C74EBE7246D23F000A3CF1D /* FailNavigationWebPage.xib in Resources */,
 				9C74EBEF246D246F00A3CF1D /* EvaluateJavaScriptWebPage.xib in Resources */,
 				9C74EB8C246D19BC00A3CF1D /* LaunchScreen.storyboard in Resources */,
@@ -483,7 +625,10 @@
 				9C74EB89246D19BC00A3CF1D /* Assets.xcassets in Resources */,
 				9C74EBD7246D206100A3CF1D /* AlertWebPage.xib in Resources */,
 				9C74EBCF246D1F9500A3CF1D /* ConfirmAlertWebPage.xib in Resources */,
+				9C74EC0D246D8BB900A3CF1D /* ServiceExamplesPage.xib in Resources */,
 				9C74EBBB246D1AF000A3CF1D /* MenuTableViewCell.xib in Resources */,
+				9C74EBF8246D435400A3CF1D /* ListPageExamplePage.xib in Resources */,
+				9C74EBFD246D4E7C00A3CF1D /* MVVMExamplePage.xib in Resources */,
 				9C74EB84246D19B900A3CF1D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,23 +758,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C74EBDE246D22CD00A3CF1D /* AuthenticationWebPage.swift in Sources */,
+				9C74EC1D246D8FFF00A3CF1D /* TransitionExamplesPageViewModel.swift in Sources */,
 				9C74EBB4246D1ABA00A3CF1D /* IntroductionPage.swift in Sources */,
 				9C74EBEA246D243300A3CF1D /* FailNavigationWebViewModel.swift in Sources */,
 				9C74EBEE246D246F00A3CF1D /* EvaluateJavaScriptWebPage.swift in Sources */,
+				9C74EC00246D4EE500A3CF1D /* MvvmExamplesPageViewModel.swift in Sources */,
 				9C74EB81246D19B900A3CF1D /* ViewController.swift in Sources */,
 				9C74EBF2246D24E600A3CF1D /* EvaluateJavaScriptWebViewModel.swift in Sources */,
 				9C74EBBC246D1AF000A3CF1D /* TableOfContentsPage.swift in Sources */,
 				9C74EBC0246D1B6300A3CF1D /* MenuModel.swift in Sources */,
+				9C74EBF7246D435400A3CF1D /* ListPageExamplePage.swift in Sources */,
+				9C74EC25246D906F00A3CF1D /* WebKitPageViewModel.swift in Sources */,
 				9C74EBE6246D23F000A3CF1D /* FailNavigationWebPage.swift in Sources */,
 				9C74EBC5246D1E2500A3CF1D /* IntroductionViewModel.swift in Sources */,
 				9C74EBDA246D20D800A3CF1D /* AlertWebPageViewModel.swift in Sources */,
 				9C74EBD2246D1FE400A3CF1D /* ConfirmAlertWebViewModel.swift in Sources */,
+				9C74EC15246D8F8000A3CF1D /* TransitionExamplesPage.swift in Sources */,
 				9C74EBE2246D233D00A3CF1D /* AuthenticationWebViewModel.swift in Sources */,
+				9C74EC08246D8AAC00A3CF1D /* DataBindingExamplesViewModel.swift in Sources */,
 				9C74EBCE246D1F9500A3CF1D /* ConfirmAlertWebPage.swift in Sources */,
+				9C74EC0C246D8BB900A3CF1D /* ServiceExamplesPage.swift in Sources */,
 				9C74EB7D246D19B900A3CF1D /* AppDelegate.swift in Sources */,
 				9C74EB87246D19B900A3CF1D /* MVVMExample.xcdatamodeld in Sources */,
+				9C74EC10246D8C2B00A3CF1D /* ServiceExamplesViewModel.swift in Sources */,
 				9C74EBBA246D1AF000A3CF1D /* MenuTableViewCell.swift in Sources */,
 				9C74EBD6246D206100A3CF1D /* AlertWebPage.swift in Sources */,
+				9C74EC22246D905F00A3CF1D /* WebKitExamplesPage.swift in Sources */,
+				9C74EBFC246D4E7C00A3CF1D /* MVVMExamplePage.swift in Sources */,
+				9C74EC04246D8A3A00A3CF1D /* DataBindingExamplesPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,11 +962,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 747LG25T2M;
 				INFOPLIST_FILE = MVVMExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mtlab.test.MVVMExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mtlab.mvvm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -825,11 +982,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 747LG25T2M;
 				INFOPLIST_FILE = MVVMExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mtlab.test.MVVMExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mtlab.mvvm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -25,6 +25,7 @@ class MenuTableViewCell: BaseTableCell {
     override func initialize() {
         guard let viewModel = viewModel as? MenuTableCellViewModel else { return }
         accessoryType = .disclosureIndicator
+        selectionStyle = .none
     }
     
     override func bindViewAndViewModel() {

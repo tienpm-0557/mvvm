@@ -21,6 +21,7 @@ class IntroductionPage: BaseWebView {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        enableBackButton = (navigationController?.viewControllers.count ?? 0) > 0
     }
     
     override func bindViewAndViewModel() {

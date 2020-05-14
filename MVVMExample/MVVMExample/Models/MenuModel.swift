@@ -22,7 +22,6 @@ class MenuModel: Model {
     }
 }
 
-
 class IntroductionModel: Model {
     
     var title = ""
