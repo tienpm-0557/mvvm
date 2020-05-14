@@ -57,8 +57,7 @@ class TableOfContentsPage: BaseListPage {
 class TableOfContentViewModel: BaseListViewModel {
     
     let rxPageTitle = BehaviorRelay(value: "")
-    
-    
+
     override func react() {
         super.react()
         fetchData()

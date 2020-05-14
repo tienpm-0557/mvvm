@@ -17,24 +17,37 @@ class ListPageExamplePage: BaseListPage {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        enableBackButton = true
         // Do any additional setup after loading the view.
     }
 
     override func setupTableView(_ tableView: UITableView) {
         super.setupTableView(tableView)
+        /// separatorStyle disabled in BaseListPage
+        tableView.separatorStyle = .singleLine
         tableView.estimatedRowHeight = 200
-//        tableView.register(cellType: <#T##T.Type#>)
+        tableView.register(cellType: SimpleTableCell.self)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func bindViewAndViewModel() {
+        super.bindViewAndViewModel()
+        
+        guard let viewModel = viewModel as? ListPageExampleViewModel else { return }
+        viewModel.rxPageTitle ~> rx.title => disposeBag
+        addButton.rx.bind(to: viewModel.addAction, input: ())
     }
-    */
 
+    override func cellIdentifier(_ cellViewModel: Any) -> String {
+        return SimpleTableCell.identifier
+    }
+    
+    override func getItemSource() -> RxCollection? {
+        guard let viewModel = viewModel as? ListPageExampleViewModel else { return nil }
+        return viewModel.itemsSource
+    }
+    
+    override func destroy() {
+        super.destroy()
+        viewModel?.destroy()
+    }
 }

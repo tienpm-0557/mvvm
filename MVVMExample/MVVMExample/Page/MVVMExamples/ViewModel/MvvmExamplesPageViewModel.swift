@@ -27,7 +27,9 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
         var page: UIViewController?
         switch indexPath.row {
         case 0:
-            break
+            let vm = ListPageExampleViewModel(model: cellViewModel.model)
+            let vc = ListPageExamplePage(model: vm)
+            page = vc
         case 1:
             break
         case 2:

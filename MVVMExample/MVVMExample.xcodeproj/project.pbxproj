@@ -56,6 +56,10 @@
 		9C74EC22246D905F00A3CF1D /* WebKitExamplesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC20246D905F00A3CF1D /* WebKitExamplesPage.swift */; };
 		9C74EC23246D905F00A3CF1D /* WebKitExamplesPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EC21246D905F00A3CF1D /* WebKitExamplesPage.xib */; };
 		9C74EC25246D906F00A3CF1D /* WebKitPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC24246D906F00A3CF1D /* WebKitPageViewModel.swift */; };
+		9C74EC29246D97BF00A3CF1D /* SimpleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC27246D97BF00A3CF1D /* SimpleTableCell.swift */; };
+		9C74EC2A246D97BF00A3CF1D /* SimpleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EC28246D97BF00A3CF1D /* SimpleTableCell.xib */; };
+		9C74EC2D246D984100A3CF1D /* ListPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC2C246D984100A3CF1D /* ListPageModel.swift */; };
+		9C74EC2F246D9A8700A3CF1D /* ListPageExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC2E246D9A8700A3CF1D /* ListPageExampleViewModel.swift */; };
 		B7531BAD1440CDB7FEB81CB1 /* Pods_MVVMExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19F092A966536800C9BC1E0 /* Pods_MVVMExample.framework */; };
 		F7104C2A66D5544C5610BC8B /* Pods_MVVMExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5537DB3BDF2C6194E24C822 /* Pods_MVVMExampleTests.framework */; };
 /* End PBXBuildFile section */
@@ -138,6 +142,10 @@
 		9C74EC20246D905F00A3CF1D /* WebKitExamplesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitExamplesPage.swift; sourceTree = "<group>"; };
 		9C74EC21246D905F00A3CF1D /* WebKitExamplesPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebKitExamplesPage.xib; sourceTree = "<group>"; };
 		9C74EC24246D906F00A3CF1D /* WebKitPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitPageViewModel.swift; sourceTree = "<group>"; };
+		9C74EC27246D97BF00A3CF1D /* SimpleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableCell.swift; sourceTree = "<group>"; };
+		9C74EC28246D97BF00A3CF1D /* SimpleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleTableCell.xib; sourceTree = "<group>"; };
+		9C74EC2C246D984100A3CF1D /* ListPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPageModel.swift; sourceTree = "<group>"; };
+		9C74EC2E246D9A8700A3CF1D /* ListPageExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPageExampleViewModel.swift; sourceTree = "<group>"; };
 		B19F092A966536800C9BC1E0 /* Pods_MVVMExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5537DB3BDF2C6194E24C822 /* Pods_MVVMExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F775FFCE0F57A8F5D67ED7F5 /* Pods_MVVMExample_MVVMExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMExample_MVVMExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				9C74EBBF246D1B6300A3CF1D /* MenuModel.swift */,
+				9C74EC2C246D984100A3CF1D /* ListPageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -407,6 +416,7 @@
 		9C74EBF4246D328C00A3CF1D /* ListPageExample */ = {
 			isa = PBXGroup;
 			children = (
+				9C74EC26246D935700A3CF1D /* Cell */,
 				9C74EBF9246D4D0E00A3CF1D /* ViewModel */,
 				9C74EBF5246D435300A3CF1D /* ListPageExamplePage.swift */,
 				9C74EBF6246D435300A3CF1D /* ListPageExamplePage.xib */,
@@ -417,6 +427,7 @@
 		9C74EBF9246D4D0E00A3CF1D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9C74EC2E246D9A8700A3CF1D /* ListPageExampleViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -489,6 +500,15 @@
 				9C74EC24246D906F00A3CF1D /* WebKitPageViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C74EC26246D935700A3CF1D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EC27246D97BF00A3CF1D /* SimpleTableCell.swift */,
+				9C74EC28246D97BF00A3CF1D /* SimpleTableCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		CAC143D797302DACA72C73A9 /* Pods */ = {
@@ -623,6 +643,7 @@
 				9C74EBDF246D22CD00A3CF1D /* AuthenticationWebPage.xib in Resources */,
 				9C74EBBD246D1AF000A3CF1D /* TableOfContentsPage.xib in Resources */,
 				9C74EB89246D19BC00A3CF1D /* Assets.xcassets in Resources */,
+				9C74EC2A246D97BF00A3CF1D /* SimpleTableCell.xib in Resources */,
 				9C74EBD7246D206100A3CF1D /* AlertWebPage.xib in Resources */,
 				9C74EBCF246D1F9500A3CF1D /* ConfirmAlertWebPage.xib in Resources */,
 				9C74EC0D246D8BB900A3CF1D /* ServiceExamplesPage.xib in Resources */,
@@ -767,12 +788,15 @@
 				9C74EBF2246D24E600A3CF1D /* EvaluateJavaScriptWebViewModel.swift in Sources */,
 				9C74EBBC246D1AF000A3CF1D /* TableOfContentsPage.swift in Sources */,
 				9C74EBC0246D1B6300A3CF1D /* MenuModel.swift in Sources */,
+				9C74EC2F246D9A8700A3CF1D /* ListPageExampleViewModel.swift in Sources */,
+				9C74EC2D246D984100A3CF1D /* ListPageModel.swift in Sources */,
 				9C74EBF7246D435400A3CF1D /* ListPageExamplePage.swift in Sources */,
 				9C74EC25246D906F00A3CF1D /* WebKitPageViewModel.swift in Sources */,
 				9C74EBE6246D23F000A3CF1D /* FailNavigationWebPage.swift in Sources */,
 				9C74EBC5246D1E2500A3CF1D /* IntroductionViewModel.swift in Sources */,
 				9C74EBDA246D20D800A3CF1D /* AlertWebPageViewModel.swift in Sources */,
 				9C74EBD2246D1FE400A3CF1D /* ConfirmAlertWebViewModel.swift in Sources */,
+				9C74EC29246D97BF00A3CF1D /* SimpleTableCell.swift in Sources */,
 				9C74EC15246D8F8000A3CF1D /* TransitionExamplesPage.swift in Sources */,
 				9C74EBE2246D233D00A3CF1D /* AuthenticationWebViewModel.swift in Sources */,
 				9C74EC08246D8AAC00A3CF1D /* DataBindingExamplesViewModel.swift in Sources */,
