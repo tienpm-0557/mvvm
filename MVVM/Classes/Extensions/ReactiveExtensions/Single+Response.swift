@@ -2,8 +2,6 @@
 //  Single+Response.swift
 //  Action
 //
-//  Created by ToanDK on 8/28/19.
-//
 
 import Foundation
 import RxSwift

@@ -15,10 +15,11 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
     
     override func fetchData() {
         let listPage = MenuTableCellViewModel(model: MenuModel(withTitle: "ListPage Examples", desc: "Demostration on how to use ListPage"))
+        let listCollectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Section ListPage Examples", desc: "Demostration on how to use Section List Page"))
         let collectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "CollectionPage Examples", desc: "Demostration on how to use CollectionPage"))
         let advanced = MenuTableCellViewModel(model: MenuModel(withTitle: "Advanced Example 1", desc: "When using MVVM, we should forget about Delegate as it is against to MVVM rule.\nThis example is to demostrate how to get result from other page without using Delegate"))
         let searchBar = MenuTableCellViewModel(model: MenuModel(withTitle: "Advanced Example 2", desc: "An advanced example on using Search Bar to search images on Flickr."))
-        itemsSource.reset([[listPage, collectionPage, advanced, searchBar]])
+        itemsSource.reset([[listPage, listCollectionPage, collectionPage, advanced, searchBar]])
     }
     
     override func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
@@ -31,6 +32,9 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
             let vc = ListPageExamplePage(model: vm)
             page = vc
         case 1:
+            let vm = SectionListPageViewModel(model: cellViewModel.model)
+            let vc = SectionListPage(model: vm)
+            page = vc
             break
         case 2:
             break

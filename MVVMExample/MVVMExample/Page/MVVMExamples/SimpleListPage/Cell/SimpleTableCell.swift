@@ -31,16 +31,3 @@ class SimpleTableCell: BaseTableCell {
         viewModel.rxTitle ~> titleLbl.rx.text => disposeBag
     }
 }
-
-class SimpleListPageCellViewModel: BaseCellViewModel {
-    
-    let rxTitle = BehaviorRelay<String?>(value: nil)
-    
-    override func react() {
-        guard let viewModel = model as? SimpleModel else {
-            return
-        }
-        rxTitle.accept(viewModel.title)
-    }
-}
-

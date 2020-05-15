@@ -2,8 +2,6 @@
 //  BasePage.swift
 //  MVVM
 //
-//  Created by ToanDK on 8/13/19.
-//
 
 import Foundation
 import RxSwift

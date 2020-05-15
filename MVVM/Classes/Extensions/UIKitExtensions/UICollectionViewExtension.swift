@@ -27,12 +27,12 @@ extension UITableView {
     open func register<T>(cellType: T.Type) where T: BaseTableCell {
         register(T.nib, forCellReuseIdentifier: T.identifier)
     }
-    
-//    func register<T>(headerType: T.Type) where T: BaseHeaderTableView {
-//        register(T.nib(), forHeaderFooterViewReuseIdentifier: T.nibName(returnClassName: false))
-//    }
-//
-//    func register<T>(footerType: T.Type) where T: BaseHeaderTableView {
-//        register(T.nib(), forHeaderFooterViewReuseIdentifier: T.nibName(returnClassName: false))
-//    }
+
+    open func register<T>(headerType: T.Type) where T: BaseHeaderTableView {
+        register(T.nib, forHeaderFooterViewReuseIdentifier: T.identifier)
+    }
+
+    open func register<T>(footerType: T.Type) where T: BaseHeaderTableView {
+        register(T.nib, forHeaderFooterViewReuseIdentifier: T.identifier)
+    }
 }

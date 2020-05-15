@@ -258,6 +258,10 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         appendSection(SectionList<T>(key, initialElements: elements), animated: animated)
     }
     
+    public func appendSectionViewModel(_ vm: BaseViewModel , animated: Bool? = nil) {
+        appendSection(SectionList<T>(vm))
+    }
+    
     public func appendSection(_ sectionList: SectionList<T>, animated: Bool? = nil) {
         let section = innerSources.count == 0 ? 0 : innerSources.count
         

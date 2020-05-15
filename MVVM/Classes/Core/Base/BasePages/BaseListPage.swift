@@ -2,8 +2,6 @@
 //  BaseListPage.swift
 //  Action
 //
-//  Created by ToanDK on 8/14/19.
-//
 
 import Foundation
 import RxSwift
@@ -28,6 +26,7 @@ public extension ReactiveCollection {
 open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet public weak var tableView: UITableView!
+    open var autoEstimateRowHeight = true
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -144,10 +143,19 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     /**
      Subclasses have to override this method to return correct cell identifier based `CVM` type.
      */
-    open func cellIdentifier(_ cellViewModel: Any) -> String {
+    open func cellIdentifier(_ cellViewModel: Any,_ returnClassName: Bool = false) -> String {
         fatalError("Subclasses have to implement this method.")
     }
     
+    open func headerIdentifier(_ headerViewModel: Any, _ returnClassName: Bool = false) -> String? {
+        assert(true, "Subclasses have to implement this method.")
+        return nil
+    }
+    
+    open func footerIdentifier(_ footerViewModel: Any, _ returnClassName: Bool = false) -> String? {
+        assert(true, "Subclasses have to implement this method.")
+        return nil
+    }
     /**
      Subclasses override this method to handle cell pressed action.
      */
@@ -168,9 +176,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let itemsSource = getItemSource(),
-            let cellViewModel = itemsSource.element(atIndexPath: indexPath)
-            else {
+        guard let itemsSource = getItemSource(), let cellViewModel = itemsSource.element(atIndexPath: indexPath) else {
             return UITableViewCell(style: .default, reuseIdentifier: "Cell")
         }
         
@@ -195,17 +201,72 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     }
     
     // MARK: - Table view delegates
-    
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        return dequeueReusableHeaderFooterView(section: section)
     }
     
     open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        return heightForFooterInSection(section: section)
+    }
+    
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return dequeueReusableHeaderFooterView(isFooter: true, section: section)
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return heightForFooterInSection(isFooter: true, section: section)
+    }
+    
+    private func dequeueReusableHeaderFooterView(isFooter:Bool = false, section: Int ) -> UIView? {
+        guard let viewModel = viewModel as? BaseListViewModel, let cellViewModel = viewModel.itemsSource[section].key as? BaseViewModel else { return nil }
+        
+        var identifier = headerIdentifier(cellViewModel)
+        if isFooter {
+            identifier = footerIdentifier(cellViewModel)
+        }
+        
+        guard let _identifier = identifier else { return nil }
+        
+        if let headerFooterView = tableView.dequeueReusableHeaderFooterView(withIdentifier: _identifier) as? BaseHeaderTableView {
+            headerFooterView.viewModel = cellViewModel
+            return headerFooterView
+        }
+        
+        return nil
+    }
+    
+    private func heightForFooterInSection(isFooter:Bool = false, section: Int ) -> CGFloat {
+        guard let viewModel = viewModel as? BaseListViewModel, let headerViewModel = viewModel.itemsSource[section].key as? BaseViewModel else { return 0.0 }
+        
+        var headerFooterClassName = headerIdentifier(headerViewModel, true)
+        if isFooter {
+            headerFooterClassName = footerIdentifier(headerViewModel, true)
+        }
+        
+        guard let _headerFooterClassName = headerFooterClassName else { return 0.0 }
+        
+        if let headerFooterClass = NSClassFromString(_headerFooterClassName) as? BaseHeaderTableView.Type {
+            return headerFooterClass.height(withItem: headerViewModel)
+        }
+        
+        return 0.0
     }
     
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        /// In case auto estimate cell height.
+        if self.autoEstimateRowHeight {
+            return UITableView.automaticDimension
+        }
+        /// Get cell view model
+        guard let itemsSource = getItemSource(), let cellViewModel = itemsSource.element(atIndexPath: indexPath) as? BaseViewModel else {
+            return UITableView.automaticDimension
+        }
+        /// get cell class with identifier
+        guard let cell =  NSClassFromString(self.cellIdentifier(cellViewModel, true)) as? BaseTableCell.Type else {
+            return UITableView.automaticDimension
+        }
+        /// return cell height
+        return cell.height(withItem: cellViewModel)
     }
     
     open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

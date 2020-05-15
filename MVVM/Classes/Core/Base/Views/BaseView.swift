@@ -72,6 +72,78 @@ open class BaseView: UIView, IView {
     open func bindViewAndViewModel() {}
 }
 
+//MARK: Based Header TableView for list page
+open class BaseHeaderTableView: UITableViewHeaderFooterView {
+    
+    open class var identifier: String {
+        return String(describing: self)
+    }
+    
+    open class var nib: UINib {
+        return UINib(nibName:String(describing: self), bundle: Bundle.main)
+    }
+    
+    open class var className: String {
+        return NSStringFromClass(self.self)
+    }
+    
+    open class func identifier(_ returnClassName: Bool = false) -> String {
+        return (returnClassName ? NSStringFromClass(self.self) : String(describing: self))
+    }
+    
+    public var disposeBag: DisposeBag? = DisposeBag()
+
+    private var _viewModel: BaseViewModel?
+    public var viewModel: BaseViewModel? {
+        get { return _viewModel }
+        set {
+            if newValue != _viewModel {
+                disposeBag = DisposeBag()
+
+                _viewModel = newValue
+                viewModelChanged()
+            }
+        }
+    }
+
+    open class func height(withItem _item: BaseViewModel) -> CGFloat{
+        return 30.0
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    deinit { destroy() }
+
+    private func setup() {
+        self.backgroundView = UIView()
+        initialize()
+    }
+
+    private func viewModelChanged() {
+        bindViewAndViewModel()
+        _viewModel?.reactIfNeeded()
+    }
+
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        _viewModel = nil
+    }
+
+    open func destroy() {
+        disposeBag = DisposeBag()
+        viewModel?.destroy()
+    }
+
+    open func initialize() {}
+    open func bindViewAndViewModel() {}
+
+    open class func getSize(withItem data: Any?) -> CGSize? {
+        return nil
+    }
+}
 
 //MARK: Based collection view cell for BaseCollectionPage
 open class BaseCollectionCell: UICollectionViewCell, IView {
@@ -155,6 +227,18 @@ open class BaseTableCell: UITableViewCell, IView {
         return UINib(nibName:String(describing: self), bundle: Bundle.main)
     }
     
+    open class var className: String {
+        return NSStringFromClass(self.self)
+    }
+    
+    open class func identifier(_ returnClass: Bool = false) -> String {
+        return (returnClass ? NSStringFromClass(self.self) : String(describing: self))
+    }
+    
+    open class func height(withItem _item: BaseViewModel) -> CGFloat{
+        return 30.0
+    }
+    
     public var disposeBag: DisposeBag? = DisposeBag()
     
     private var _viewModel: BaseCellViewModel?
@@ -188,7 +272,8 @@ open class BaseTableCell: UITableViewCell, IView {
     deinit { destroy() }
     
     private func setup() {
-        backgroundColor = .clear
+        backgroundColor = .white
+        self.backgroundView = UIView()
         separatorInset = .zero
         layoutMargins = .zero
         preservesSuperviewLayoutMargins = false

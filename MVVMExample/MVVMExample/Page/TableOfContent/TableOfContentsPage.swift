@@ -39,8 +39,8 @@ class TableOfContentsPage: BaseListPage {
         viewModel?.destroy()
     }
     
-    override func cellIdentifier(_ cellViewModel: Any) -> String {
-        return MenuTableViewCell.identifier
+    override func cellIdentifier(_ cellViewModel: Any, _ returnClassName: Bool = false) -> String {
+        return MenuTableViewCell.identifier(returnClassName)
     }
     
     override func getItemSource() -> RxCollection? {

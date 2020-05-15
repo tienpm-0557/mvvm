@@ -20,27 +20,40 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okq-MH-asM">
-                    <rect key="frame" x="326" y="44" width="68" height="47"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="47" id="AQq-34-Q6l"/>
-                        <constraint firstAttribute="width" constant="68" id="eUZ-4V-pgt"/>
-                    </constraints>
-                    <state key="normal" title="+ Add"/>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R5a-zp-mHg">
-                    <rect key="frame" x="0.0" y="99" width="414" height="763"/>
+                    <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qr2-ZT-eMt">
+                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxO-IU-Iqx">
+                            <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okq-MH-asM">
+                            <rect key="frame" x="354" y="0.0" width="60" height="50"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="ip6-pd-wcX"/>
+                            </constraints>
+                            <state key="normal" title="+ Add"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Ysx-5C-epp"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Okq-MH-asM" secondAttribute="trailing" constant="20" id="5wd-Gx-d1e"/>
-                <constraint firstItem="Okq-MH-asM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5ym-O1-UUb"/>
                 <constraint firstItem="R5a-zp-mHg" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="DDi-BA-42d"/>
-                <constraint firstItem="R5a-zp-mHg" firstAttribute="top" secondItem="Okq-MH-asM" secondAttribute="bottom" constant="8" symbolic="YES" id="JVN-yE-lRN"/>
                 <constraint firstItem="R5a-zp-mHg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OOZ-lT-mrY"/>
+                <constraint firstItem="qr2-ZT-eMt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QIn-0V-E2o"/>
                 <constraint firstItem="R5a-zp-mHg" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="g9f-Xq-IY9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qr2-ZT-eMt" secondAttribute="trailing" id="h9J-AX-yyF"/>
+                <constraint firstItem="qr2-ZT-eMt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uPJ-Xl-3bk"/>
+                <constraint firstItem="R5a-zp-mHg" firstAttribute="top" secondItem="qr2-ZT-eMt" secondAttribute="bottom" id="vyR-hN-aYY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>

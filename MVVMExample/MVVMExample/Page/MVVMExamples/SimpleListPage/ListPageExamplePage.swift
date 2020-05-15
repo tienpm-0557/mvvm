@@ -37,8 +37,8 @@ class ListPageExamplePage: BaseListPage {
         addButton.rx.bind(to: viewModel.addAction, input: ())
     }
 
-    override func cellIdentifier(_ cellViewModel: Any) -> String {
-        return SimpleTableCell.identifier
+    override func cellIdentifier(_ cellViewModel: Any, _ returnClassName: Bool = false) -> String {
+        return returnClassName ? SimpleTableCell.className : SimpleTableCell.identifier
     }
     
     override func getItemSource() -> RxCollection? {
