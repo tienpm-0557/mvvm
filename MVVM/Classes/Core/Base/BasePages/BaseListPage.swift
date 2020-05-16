@@ -7,6 +7,14 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+public enum ListState: Int {
+    case normal = 0
+    case loadingData = 1
+    case loadingMore = 2
+    case noLoadMore = 3
+    case isEditting = 4
+}
+
 public extension ReactiveCollection {
     func toBaseViewModelCollection() -> ReactiveCollection<BaseViewModel>? {
         let newItems = ReactiveCollection<BaseViewModel>()
@@ -23,10 +31,22 @@ public extension ReactiveCollection {
     }
 }
 
+public extension Reactive where Base: BaseListPage {
+    var state: Binder<ListState> {
+        return Binder(base) { view, newState in
+            view.state = newState
+        }
+    }
+}
+
 open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet public weak var tableView: UITableView!
     open var autoEstimateRowHeight = true
+    open var allowLoadmoreData: Bool = false
+    open var state: ListState = .normal
+    
+    open var pageSize: Int = 10
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -187,6 +207,18 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         if let cell = cell as? IAnyView {
             cell.anyViewModel = cellViewModel
+        }
+        
+        /// Load more data if need
+        if allowLoadmoreData,
+            indexPath.row >= pageSize - 1,
+            indexPath.row > tableView.numberOfRows(inSection: indexPath.section)  - 2
+        {
+            if state == .normal {
+                if let viewModel = self.viewModel as? BaseListViewModel {
+                    viewModel.loadMoreContent()
+                }
+            }
         }
         
         return cell

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="VAs-Kt-aBn" customClass="SectionFooterListView" customModule="MVVMExample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nm4-Gp-rz7">
+                    <rect key="frame" x="10" y="0.0" width="394" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="IMf-4c-MkF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9t-h1-1Se">
+                    <rect key="frame" x="10" y="25" width="394" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="M9t-h1-1Se" firstAttribute="top" secondItem="nm4-Gp-rz7" secondAttribute="bottom" id="6cx-Os-8zV"/>
+                <constraint firstAttribute="trailing" secondItem="nm4-Gp-rz7" secondAttribute="trailing" constant="10" id="Tf4-Qy-LOx"/>
+                <constraint firstItem="nm4-Gp-rz7" firstAttribute="leading" secondItem="VAs-Kt-aBn" secondAttribute="leading" constant="10" id="dNW-mg-41z"/>
+                <constraint firstAttribute="trailing" secondItem="M9t-h1-1Se" secondAttribute="trailing" constant="10" id="gdj-dh-FvB"/>
+                <constraint firstItem="nm4-Gp-rz7" firstAttribute="top" secondItem="VAs-Kt-aBn" secondAttribute="top" id="lcF-dD-Gvh"/>
+                <constraint firstItem="0JL-dv-8u8" firstAttribute="bottom" secondItem="M9t-h1-1Se" secondAttribute="bottom" constant="2" id="n5c-Bn-4a1"/>
+                <constraint firstItem="M9t-h1-1Se" firstAttribute="leading" secondItem="VAs-Kt-aBn" secondAttribute="leading" constant="10" id="xqq-6M-jwJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="0JL-dv-8u8"/>
+            <connections>
+                <outlet property="descLbl" destination="M9t-h1-1Se" id="3QA-vf-pFy"/>
+                <outlet property="titleLbl" destination="nm4-Gp-rz7" id="sdi-uQ-DFB"/>
+            </connections>
+            <point key="canvasLocation" x="-96" y="-188"/>
+        </view>
+    </objects>
+</document>

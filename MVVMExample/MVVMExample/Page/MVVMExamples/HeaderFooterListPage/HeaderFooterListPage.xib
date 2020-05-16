@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderFooterListPage" customModule="MVVMExample" customModuleProvider="target">
+            <connections>
+                <outlet property="addBtn" destination="x27-LC-x6f" id="G2V-A8-bEh"/>
+                <outlet property="sortBtn" destination="Laq-as-YjP" id="YFa-IZ-rvh"/>
+                <outlet property="tableView" destination="WJH-GV-iWg" id="VIC-J8-Ttl"/>
+                <outlet property="view" destination="Xfc-09-eSn" id="D8b-ba-v8X"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Xfc-09-eSn">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WJH-GV-iWg">
+                    <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGA-zj-icJ">
+                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weU-Eg-Umy">
+                            <rect key="frame" x="0.0" y="0.0" width="294" height="50"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x27-LC-x6f">
+                            <rect key="frame" x="294" y="0.0" width="60" height="50"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="lr1-s4-sIs"/>
+                            </constraints>
+                            <state key="normal" title="+ Add"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Laq-as-YjP">
+                            <rect key="frame" x="354" y="0.0" width="60" height="50"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="Dhv-mF-TjO"/>
+                            </constraints>
+                            <state key="normal" title="+ Sort"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="nka-c4-LOl"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="VGA-zj-icJ" firstAttribute="top" secondItem="IgQ-5l-iAr" secondAttribute="top" id="5ei-q9-Q7X"/>
+                <constraint firstItem="WJH-GV-iWg" firstAttribute="trailing" secondItem="IgQ-5l-iAr" secondAttribute="trailing" id="5wq-tD-AKe"/>
+                <constraint firstItem="WJH-GV-iWg" firstAttribute="leading" secondItem="IgQ-5l-iAr" secondAttribute="leading" id="XUW-Gq-Ife"/>
+                <constraint firstItem="WJH-GV-iWg" firstAttribute="top" secondItem="VGA-zj-icJ" secondAttribute="bottom" id="owa-sH-zFN"/>
+                <constraint firstItem="WJH-GV-iWg" firstAttribute="bottom" secondItem="IgQ-5l-iAr" secondAttribute="bottom" id="qn9-Tv-BB4"/>
+                <constraint firstItem="IgQ-5l-iAr" firstAttribute="trailing" secondItem="VGA-zj-icJ" secondAttribute="trailing" id="v9P-6X-z1P"/>
+                <constraint firstItem="VGA-zj-icJ" firstAttribute="leading" secondItem="IgQ-5l-iAr" secondAttribute="leading" id="w6j-zJ-aQA"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="IgQ-5l-iAr"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </view>
+    </objects>
+</document>

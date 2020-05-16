@@ -55,3 +55,20 @@ class SectionImageModel: NumberModel {
         imageUrl <- (map["url"], URLTransform())
     }
 }
+
+class HeaderFooterModel: Model {
+    
+    var title = ""
+    var footer = ""
+    var desc = ""
+    
+    convenience init(withTitle title: String, desc: String, footer: String) {
+        self.init(JSON: ["title": title, "desc": desc, "footer": footer])!
+    }
+    
+    override func mapping(map: Map) {
+        title <- map["title"]
+        desc <- map["desc"]
+        footer <- map["footer"]
+    }
+}

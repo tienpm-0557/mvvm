@@ -70,7 +70,7 @@ class SectionListPageViewModel: BaseListViewModel {
     
     // add section
     private func addSection() {
-        let vm = SectionHeaderViewViewModel(model: SimpleModel(withTitle: "Section title #\(itemsSource.count + 1)"))
+        let vm = SectionHeaderViewViewModel(model: HeaderFooterModel(withTitle: "Section title #\(itemsSource.count + 1)", desc: "List page examples", footer: "Footer #\(itemsSource.count + 1)"))
         itemsSource.appendSectionViewModel(vm)
     }
     

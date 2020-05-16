@@ -75,6 +75,7 @@ open class BaseListViewModel: BaseViewModel, IListViewModel {
     public let itemsSource = ReactiveCollection<BaseCellViewModel>()
     public let rxSelectedItem = BehaviorRelay<BaseCellViewModel?>(value: nil)
     public let rxSelectedIndex = BehaviorRelay<IndexPath?>(value: nil)
+    public let rxState = BehaviorRelay<ListState>(value: .normal)
     
     required public init(model: Model? = nil) {
         super.init(model: model)
@@ -91,6 +92,7 @@ open class BaseListViewModel: BaseViewModel, IListViewModel {
     }
     
     open func selectedItemDidChange(_ cellViewModel: BaseCellViewModel) { }
+    open func loadMoreContent() {}
 }
 
 /**
