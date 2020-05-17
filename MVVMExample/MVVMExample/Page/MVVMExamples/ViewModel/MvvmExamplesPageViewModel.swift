@@ -18,11 +18,12 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
         let listCollectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "UITableView Sections Page", desc: "Demostration on how to use Section List Page"))
         let listCollectionHeaderFooterPage = MenuTableCellViewModel(model: MenuModel(withTitle: "UITableView with Header & Footer Page", desc: "Demostration on how to use Section List Page"))
         let dynamicListPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Dynamic List Page", desc: "UITableView support load more data."))
-        
         let collectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "UICollection Page", desc: "Demostration on how to use CollectionPage"))
+        let dynamicCollectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Dynamic UICollection Page", desc: "Demostration on how to use CollectionPage support load more data."))
+        
         let advanced = MenuTableCellViewModel(model: MenuModel(withTitle: "Advanced Example 1", desc: "When using MVVM, we should forget about Delegate as it is against to MVVM rule.\nThis example is to demostrate how to get result from other page without using Delegate"))
         let searchBar = MenuTableCellViewModel(model: MenuModel(withTitle: "Advanced Example 2", desc: "An advanced example on using Search Bar to search images on Flickr."))
-        itemsSource.reset([[listPage, listCollectionPage, listCollectionHeaderFooterPage, dynamicListPage, collectionPage, advanced, searchBar]])
+        itemsSource.reset([[listPage, listCollectionPage, listCollectionHeaderFooterPage, dynamicListPage, collectionPage, dynamicCollectionPage, advanced, searchBar]])
     }
     
     override func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
@@ -50,8 +51,16 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
             let vm = DynamicListPageViewModel(model: cellViewModel.model)
             let vc = DynamicListPage(model: vm)
             page = vc
-            break
-            
+        case 4:
+            /// Simple UICollectionView
+            let vm = CollectionPageViewModel(model: cellViewModel.model)
+            let vc = SimpleCollectionPage(model: vm)
+            page = vc
+        case 5:
+            /// UICollection View support loadmore data.
+            let vm = DynamicCollectionPageViewModel(model: cellViewModel.model)
+            let vc = DynamicCollectionPage(model: vm)
+            page = vc
         default: ()
         }
         

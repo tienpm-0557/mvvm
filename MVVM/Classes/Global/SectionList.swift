@@ -259,7 +259,7 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
     }
     
     public func appendSectionViewModel(_ vm: BaseViewModel , animated: Bool? = nil) {
-        appendSection(SectionList<T>(vm))
+        appendSection(SectionList<T>(vm), animated: animated)
     }
     
     public func appendSection(_ sectionList: SectionList<T>, animated: Bool? = nil) {

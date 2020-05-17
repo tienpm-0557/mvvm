@@ -14,13 +14,13 @@ extension UICollectionView {
         register(T.nib, forCellWithReuseIdentifier: T.identifier)
     }
     
-//    func register<T>(headerType: T.Type) where T: BaseHeaderCollectionView {
-//        register(T.nib(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: T.nibName())
-//    }
-//    
-//    func register<T>(footerType: T.Type) where T: BaseHeaderCollectionView {
-//        register(T.nib(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: T.nibName())
-//    }
+    open func register<T>(headerType: T.Type) where T: BaseHeaderCollectionView {
+        register(T.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: T.identifier)
+    }
+
+    open func register<T>(footerType: T.Type) where T: BaseHeaderCollectionView {
+        register(T.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: T.identifier)
+    }
 }
 
 extension UITableView {

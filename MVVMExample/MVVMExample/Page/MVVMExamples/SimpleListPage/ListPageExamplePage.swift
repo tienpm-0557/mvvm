@@ -13,12 +13,13 @@ import RxSwift
 import Action
 
 class ListPageExamplePage: BaseListPage {
-    @IBOutlet weak var addButton: UIButton!
+    let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         enableBackButton = true
         // Do any additional setup after loading the view.
+        navigationItem.rightBarButtonItem = addBtn
     }
 
     override func setupTableView(_ tableView: UITableView) {
@@ -34,7 +35,7 @@ class ListPageExamplePage: BaseListPage {
         
         guard let viewModel = viewModel as? ListPageExampleViewModel else { return }
         viewModel.rxPageTitle ~> rx.title => disposeBag
-        addButton.rx.bind(to: viewModel.addAction, input: ())
+        addBtn.rx.bind(to: viewModel.addAction, input: ())
     }
 
     override func cellIdentifier(_ cellViewModel: Any, _ returnClassName: Bool = false) -> String {

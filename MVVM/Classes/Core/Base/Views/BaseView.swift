@@ -145,6 +145,79 @@ open class BaseHeaderTableView: UITableViewHeaderFooterView {
     }
 }
 
+
+//MARK: Based Header TableView for list page
+open class BaseHeaderCollectionView: UICollectionReusableView {
+    
+    open class var identifier: String {
+        return String(describing: self)
+    }
+    
+    open class var nib: UINib {
+        return UINib(nibName:String(describing: self), bundle: Bundle.main)
+    }
+    
+    open class var className: String {
+        return NSStringFromClass(self.self)
+    }
+    
+    open class func identifier(_ returnClassName: Bool = false) -> String {
+        return (returnClassName ? NSStringFromClass(self.self) : String(describing: self))
+    }
+    
+    public var disposeBag: DisposeBag? = DisposeBag()
+
+    private var _viewModel: BaseViewModel?
+    public var viewModel: BaseViewModel? {
+        get { return _viewModel }
+        set {
+            if newValue != _viewModel {
+                disposeBag = DisposeBag()
+
+                _viewModel = newValue
+                viewModelChanged()
+            }
+        }
+    }
+
+    open class func headerSize(withItem _item: BaseViewModel) -> CGSize{
+        return CGSize(width: 30.0, height: 30.0)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    deinit { destroy() }
+
+    private func setup() {
+        initialize()
+    }
+
+    private func viewModelChanged() {
+        bindViewAndViewModel()
+        _viewModel?.reactIfNeeded()
+    }
+
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        _viewModel = nil
+    }
+
+    open func destroy() {
+        disposeBag = DisposeBag()
+        viewModel?.destroy()
+    }
+
+    open func initialize() {}
+    open func bindViewAndViewModel() {}
+
+    open class func getSize(withItem data: Any?) -> CGSize? {
+        return nil
+    }
+}
+
 //MARK: Based collection view cell for BaseCollectionPage
 open class BaseCollectionCell: UICollectionViewCell, IView {
     
@@ -154,6 +227,10 @@ open class BaseCollectionCell: UICollectionViewCell, IView {
     
     open class var nib: UINib {
         return UINib(nibName:String(describing: self), bundle: Bundle.main)
+    }
+    
+    open class var className: String {
+        return NSStringFromClass(self.self)
     }
     
     public var disposeBag: DisposeBag? = DisposeBag()

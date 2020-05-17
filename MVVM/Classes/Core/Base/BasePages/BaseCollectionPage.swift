@@ -9,8 +9,22 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+public extension Reactive where Base: BaseCollectionPage {
+    var state: Binder<ListState> {
+        return Binder(base) { view, newState in
+            view.state = newState
+        }
+    }
+}
+
 open class BaseCollectionPage: BasePage {
+    
     @IBOutlet public weak var collectionView: UICollectionView!
+    
+    open var allowLoadmoreData: Bool = false
+    open var state: ListState = .normal
+    open var pageSize: Int = 10
+    
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +40,7 @@ open class BaseCollectionPage: BasePage {
         fatalError("Subclasses have to implement this method.")
     }
     
-    private func setupCollectionView()  {
+    open func setupCollectionView()  {
         if collectionView == nil {
             assert(false, "BaseCollectionPage: You must set outlet for collectionView")
         }
@@ -47,7 +61,15 @@ open class BaseCollectionPage: BasePage {
         fatalError("This is an abstract method and should be overridden.")
     }
     
-    func getHeaderSection(item: AnyObject?,_isClassName: Bool,withSection section:Int) -> String? { return nil }
+    open func headerIdentifier(_ headerViewModel: Any, _ returnClassName: Bool = false) -> String? {
+        assert(true, "Subclasses have to implement this method.")
+        return nil
+    }
+    
+    open func footerIdentifier(_ footerViewModel: Any, _ returnClassName: Bool = false) -> String? {
+        assert(true, "Subclasses have to implement this method.")
+        return nil
+    }
     
     /**
     Subclasses override this method to handle cell pressed action.
@@ -132,6 +154,11 @@ open class BaseCollectionPage: BasePage {
         guard let itemsSource = getItemSource() else { return }
         if let cellViewModel = itemsSource.element(atIndexPath: indexPath) {
             selectedItemDidChange(cellViewModel)
+            
+            if let viewModel = self.viewModel as? BaseListViewModel,
+                let cvm = cellViewModel as? BaseCellViewModel {
+                viewModel.selectedItemDidChange(cvm)
+            }
         }
     }
 }
@@ -165,21 +192,25 @@ extension BaseCollectionPage: UICollectionViewDataSource {
         if let cell = cell as? IAnyView {
             cell.anyViewModel = cellViewModel
         }
+        
+        
+        /// Load more data if need
+        if allowLoadmoreData,
+            indexPath.row >= pageSize - 1,
+            indexPath.row > collectionView.numberOfItems(inSection: indexPath.section) - 2 {
+            if state == .normal {
+                if let viewModel = self.viewModel as? BaseListViewModel {
+                    viewModel.loadMoreContent()
+                }
+            }
+        }
+        
         return cell
     }
-//
-//    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        if (kind == UICollectionView.elementKindSectionHeader) {
-//            let headerclass = self.getHeaderClassAtIndex(indexPath.section)
-//            let collectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: (headerclass?.nibName())!, for: indexPath)
-//            return getBaseHeaderView(at: indexPath, withUICollectionReusableView: collectionHeader)
-//        } else if (kind == UICollectionView.elementKindSectionFooter) {
-//            let headerclass = self.getFooterClassAtIndex(indexPath.section)
-//            let collectionFooter = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: (headerclass?.nibName())!, for: indexPath)
-//            return getBaseHeaderView(at: indexPath, withUICollectionReusableView: collectionFooter)
-//        }
-//        return BaseHeaderCollectionView()
-//    }
+
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return dequeueReusableHeaderFooterView(kind: kind, indexPath: indexPath) ?? UICollectionReusableView()
+    }
 }
 
 extension BaseCollectionPage: UICollectionViewDelegate {
@@ -203,29 +234,49 @@ extension BaseCollectionPage: UICollectionViewDelegateFlowLayout {
         return CGSize.zero
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        if self.getListItem(sectionIndex: section).count > 0 {
-//            if let header = self.getHeaderClassAtIndex(section) {
-//                if header.getSize(withItem: nil) != nil {
-//                    var item:AnyObject!
-//                    if sections.count > section {
-//                        item = sections[section]
-//                    }
-//                    return header.getSize(withItem: item) ?? header.getSize() ?? CGSize.zero
-//                }
-//                return header.getSize() ?? CGSize.zero
-//            }
-//        }
-//        return CGSize.zero
-//    }
+    public func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return heightForFooterInSection(isFooter: false, section: section)
+    }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-//        if let header = self.getFooterClassAtIndex(section) {
-//            if collectionView.numberOfItems(inSection: 0) == 0 {
-//                return CGSize.zero
-//            }
-//            return header.getSize() ?? CGSize.zero
-//        }
-//        return CGSize.zero
-//    }
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return heightForFooterInSection(isFooter: true, section: section)
+    }
+    
+    private func dequeueReusableHeaderFooterView(kind:String,  isFooter:Bool = false, indexPath: IndexPath ) -> UICollectionReusableView? {
+        guard let viewModel = viewModel as? BaseListViewModel, let cellViewModel = viewModel.itemsSource[indexPath.section].key as? BaseViewModel else { return nil }
+
+        var identifier = headerIdentifier(cellViewModel)
+        if isFooter {
+            identifier = footerIdentifier(cellViewModel)
+        }
+
+        guard let _identifier = identifier else { return nil }
+
+        
+        if let headerFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: _identifier, for: indexPath) as? BaseHeaderCollectionView {
+            headerFooterView.viewModel = cellViewModel
+            return headerFooterView
+        }
+
+        return nil
+    }
+    
+    private func heightForFooterInSection(isFooter:Bool = false, section: Int ) -> CGSize {
+        guard let viewModel = viewModel as? BaseListViewModel, let headerViewModel = viewModel.itemsSource[section].key as? BaseViewModel else { return CGSize.zero }
+        
+        var headerFooterClassName = headerIdentifier(headerViewModel, true)
+        if isFooter {
+            headerFooterClassName = footerIdentifier(headerViewModel, true)
+        }
+        
+        guard let _headerFooterClassName = headerFooterClassName else { return CGSize.zero }
+        
+        if let headerFooterClass = NSClassFromString(_headerFooterClassName) as? BaseHeaderCollectionView.Type {
+            return headerFooterClass.headerSize(withItem: viewModel)
+        }
+        
+        return CGSize.zero
+    }
 }

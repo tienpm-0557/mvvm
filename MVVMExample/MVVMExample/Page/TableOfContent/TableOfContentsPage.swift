@@ -22,7 +22,7 @@ class TableOfContentsPage: BaseListPage {
 
     override func setupTableView(_ tableView: UITableView) {
         super.setupTableView(tableView)
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 200
         tableView.separatorStyle = .singleLine
         tableView.register(cellType:MenuTableViewCell.self)
     }

@@ -45,7 +45,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="fFn-Mf-2Lz"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
