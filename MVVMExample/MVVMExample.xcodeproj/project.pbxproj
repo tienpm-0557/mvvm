@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5E2DF30773EEF1F642A6074E /* Pods_MVVMExample_MVVMExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775FFCE0F57A8F5D67ED7F5 /* Pods_MVVMExample_MVVMExampleUITests.framework */; };
+		9C423CC6247819AD00D9B950 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */; };
+		9C423CC7247819AD00D9B950 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */; };
+		9C423CCA24781D2300D9B950 /* ContactCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */; };
+		9C74B1772477BA5F0061F2BF /* ContactListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B1752477BA5F0061F2BF /* ContactListPage.swift */; };
+		9C74B1782477BA5F0061F2BF /* ContactListPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74B1762477BA5F0061F2BF /* ContactListPage.xib */; };
+		9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */; };
+		9C74B17F2477C1220061F2BF /* ContactEditPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B17D2477C1220061F2BF /* ContactEditPage.swift */; };
+		9C74B1802477C1220061F2BF /* ContactEditPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74B17E2477C1220061F2BF /* ContactEditPage.xib */; };
+		9C74B1832477C47B0061F2BF /* ContactEditPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B1822477C47B0061F2BF /* ContactEditPageViewModel.swift */; };
 		9C74EB7D246D19B900A3CF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EB7C246D19B900A3CF1D /* AppDelegate.swift */; };
 		9C74EB81246D19B900A3CF1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EB80246D19B900A3CF1D /* ViewController.swift */; };
 		9C74EB84246D19B900A3CF1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EB82246D19B900A3CF1D /* Main.storyboard */; };
@@ -123,6 +132,15 @@
 		5DBF7CC53451C8FE51F1B7C5 /* Pods-MVVMExample-MVVMExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExample-MVVMExampleUITests.release.xcconfig"; path = "Target Support Files/Pods-MVVMExample-MVVMExampleUITests/Pods-MVVMExample-MVVMExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		897F41295EF4B8B6362B2E86 /* Pods-MVVMExample-MVVMExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExample-MVVMExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-MVVMExample-MVVMExampleUITests/Pods-MVVMExample-MVVMExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9ABF18DB489E0848CC55D75A /* Pods-MVVMExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExample.release.xcconfig"; path = "Target Support Files/Pods-MVVMExample/Pods-MVVMExample.release.xcconfig"; sourceTree = "<group>"; };
+		9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
+		9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCellViewModel.swift; sourceTree = "<group>"; };
+		9C74B1752477BA5F0061F2BF /* ContactListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPage.swift; sourceTree = "<group>"; };
+		9C74B1762477BA5F0061F2BF /* ContactListPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListPage.xib; sourceTree = "<group>"; };
+		9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPageViewModel.swift; sourceTree = "<group>"; };
+		9C74B17D2477C1220061F2BF /* ContactEditPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditPage.swift; sourceTree = "<group>"; };
+		9C74B17E2477C1220061F2BF /* ContactEditPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactEditPage.xib; sourceTree = "<group>"; };
+		9C74B1822477C47B0061F2BF /* ContactEditPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditPageViewModel.swift; sourceTree = "<group>"; };
 		9C74EB79246D19B900A3CF1D /* MVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C74EB7C246D19B900A3CF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C74EB80246D19B900A3CF1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +288,62 @@
 				9C79EE092470E0C500FEF5EC /* SimpleCollectionPage.xib */,
 			);
 			path = CollectionPage;
+			sourceTree = "<group>";
+		};
+		9C423CC32478199300D9B950 /* ContactCell */ = {
+			isa = PBXGroup;
+			children = (
+				9C423CC824781CFA00D9B950 /* CellViewModel */,
+				9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */,
+				9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */,
+			);
+			path = ContactCell;
+			sourceTree = "<group>";
+		};
+		9C423CC824781CFA00D9B950 /* CellViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */,
+			);
+			path = CellViewModel;
+			sourceTree = "<group>";
+		};
+		9C531A2B2472C6A400C843BA /* AdvancedExample01 */ = {
+			isa = PBXGroup;
+			children = (
+				9C423CC32478199300D9B950 /* ContactCell */,
+				9C74B17C2477C10B0061F2BF /* EditContactPage */,
+				9C74B1792477BAC50061F2BF /* ViewModel */,
+				9C74B1752477BA5F0061F2BF /* ContactListPage.swift */,
+				9C74B1762477BA5F0061F2BF /* ContactListPage.xib */,
+			);
+			path = AdvancedExample01;
+			sourceTree = "<group>";
+		};
+		9C74B1792477BAC50061F2BF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C74B17C2477C10B0061F2BF /* EditContactPage */ = {
+			isa = PBXGroup;
+			children = (
+				9C74B1812477C4570061F2BF /* ViewModel */,
+				9C74B17D2477C1220061F2BF /* ContactEditPage.swift */,
+				9C74B17E2477C1220061F2BF /* ContactEditPage.xib */,
+			);
+			path = EditContactPage;
+			sourceTree = "<group>";
+		};
+		9C74B1812477C4570061F2BF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C74B1822477C47B0061F2BF /* ContactEditPageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9C74EB70246D19B900A3CF1D = {
@@ -488,6 +562,7 @@
 		9C74EBF3246D326C00A3CF1D /* MVVMExamples */ = {
 			isa = PBXGroup;
 			children = (
+				9C531A2B2472C6A400C843BA /* AdvancedExample01 */,
 				9C79EE0C247121C100FEF5EC /* DynamicCollectionPage */,
 				9C3D0C4E2470DBE700DA3444 /* CollectionPage */,
 				9C74EC5F2470098D00A3CF1D /* DynamicListPage */,
@@ -950,7 +1025,9 @@
 				9C74EBB5246D1ABA00A3CF1D /* IntroductionPage.xib in Resources */,
 				9C74EC05246D8A3A00A3CF1D /* DataBindingExamplesPage.xib in Resources */,
 				9C74EC34246E468B00A3CF1D /* SectionListPage.xib in Resources */,
+				9C74B1782477BA5F0061F2BF /* ContactListPage.xib in Resources */,
 				9C79EE10247124FB00FEF5EC /* DynamicCollectionPage.xib in Resources */,
+				9C423CC7247819AD00D9B950 /* ContactTableViewCell.xib in Resources */,
 				9C79EE0B2470E0C500FEF5EC /* SimpleCollectionPage.xib in Resources */,
 				9C74EC50246E51CF00A3CF1D /* SectionHeaderListView.xib in Resources */,
 				9C74EC23246D905F00A3CF1D /* WebKitExamplesPage.xib in Resources */,
@@ -964,6 +1041,7 @@
 				9C74EC5E2470069500A3CF1D /* HeaderFooterListPage.xib in Resources */,
 				9C74EB8C246D19BC00A3CF1D /* LaunchScreen.storyboard in Resources */,
 				9C74EBDF246D22CD00A3CF1D /* AuthenticationWebPage.xib in Resources */,
+				9C74B1802477C1220061F2BF /* ContactEditPage.xib in Resources */,
 				9C74EBBD246D1AF000A3CF1D /* TableOfContentsPage.xib in Resources */,
 				9C74EB89246D19BC00A3CF1D /* Assets.xcassets in Resources */,
 				9C74EC2A246D97BF00A3CF1D /* SimpleTableCell.xib in Resources */,
@@ -1105,9 +1183,12 @@
 			files = (
 				9C74EBDE246D22CD00A3CF1D /* AuthenticationWebPage.swift in Sources */,
 				9C74EC1D246D8FFF00A3CF1D /* TransitionExamplesPageViewModel.swift in Sources */,
+				9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */,
+				9C74B17F2477C1220061F2BF /* ContactEditPage.swift in Sources */,
 				9C74EBB4246D1ABA00A3CF1D /* IntroductionPage.swift in Sources */,
 				9C74EC4E246E51BA00A3CF1D /* SectionHeaderListView.swift in Sources */,
 				9C74EBEA246D243300A3CF1D /* FailNavigationWebViewModel.swift in Sources */,
+				9C74B1772477BA5F0061F2BF /* ContactListPage.swift in Sources */,
 				9C74EBEE246D246F00A3CF1D /* EvaluateJavaScriptWebPage.swift in Sources */,
 				9C74EC6224700A2200A3CF1D /* DynamicListPage.swift in Sources */,
 				9C74EC00246D4EE500A3CF1D /* MvvmExamplesPageViewModel.swift in Sources */,
@@ -1136,6 +1217,7 @@
 				9C74EC53246E9CDA00A3CF1D /* SectionHeaderViewViewModel.swift in Sources */,
 				9C74EBD2246D1FE400A3CF1D /* ConfirmAlertWebViewModel.swift in Sources */,
 				9C74EC5D2470069500A3CF1D /* HeaderFooterListPage.swift in Sources */,
+				9C423CC6247819AD00D9B950 /* ContactTableViewCell.swift in Sources */,
 				9C79EE022470DCE100FEF5EC /* CollectionPageViewModel.swift in Sources */,
 				9C79EE0A2470E0C500FEF5EC /* SimpleCollectionPage.swift in Sources */,
 				9C74EC33246E468B00A3CF1D /* SectionListPage.swift in Sources */,
@@ -1155,6 +1237,8 @@
 				9C79EE062470DE0200FEF5EC /* SimpleCollectionViewCell.swift in Sources */,
 				9C74EBD6246D206100A3CF1D /* AlertWebPage.swift in Sources */,
 				9CF158D924712A55006A1CFB /* DynamicCollectionViewCell.swift in Sources */,
+				9C423CCA24781D2300D9B950 /* ContactCellViewModel.swift in Sources */,
+				9C74B1832477C47B0061F2BF /* ContactEditPageViewModel.swift in Sources */,
 				9C74EC22246D905F00A3CF1D /* WebKitExamplesPage.swift in Sources */,
 				9C74EBFC246D4E7C00A3CF1D /* MVVMExamplePage.swift in Sources */,
 				9C74EC04246D8A3A00A3CF1D /* DataBindingExamplesPage.swift in Sources */,

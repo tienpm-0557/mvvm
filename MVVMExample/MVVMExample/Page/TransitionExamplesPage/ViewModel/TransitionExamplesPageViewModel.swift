@@ -11,25 +11,16 @@ import RxCocoa
 import WebKit
 
 //MARK: ViewModel For Transition Examples
-class TransitionExamplesPageViewModel: TableOfContentViewModel {
-    override func fetchData() {
-        let alert = MenuTableCellViewModel(model: MenuModel(withTitle: "Alert Service",
-                                                desc: "How to create alert service and register it"))
-        
-        itemsSource.reset([[alert]])
+class TransitionExamplesPageViewModel: BaseViewModel {
+    
+    let rxPageTitle = BehaviorRelay<String>(value: "")
+    
+    override func react() {
+        super.react()
+        let title = (self.model as? IntroductionModel)?.title ?? "Transition Examples"
+        rxPageTitle.accept(title)
     }
     
-    override func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
-        guard let indexPath = rxSelectedIndex.value else { return nil }
-        var page: UIViewController?
-        switch indexPath.row {
-        case 0:
-            break
-        case 1:
-            break
-        default: ()
-        }
-        
-        return page
-    }
+    
+    
 }

@@ -22,8 +22,10 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
         let dynamicCollectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Dynamic UICollection Page", desc: "Demostration on how to use CollectionPage support load more data."))
         
         let advanced = MenuTableCellViewModel(model: MenuModel(withTitle: "Advanced Example 1", desc: "When using MVVM, we should forget about Delegate as it is against to MVVM rule.\nThis example is to demostrate how to get result from other page without using Delegate"))
+        
         let searchBar = MenuTableCellViewModel(model: MenuModel(withTitle: "Advanced Example 2", desc: "An advanced example on using Search Bar to search images on Flickr."))
-        itemsSource.reset([[listPage, listCollectionPage, listCollectionHeaderFooterPage, dynamicListPage, collectionPage, dynamicCollectionPage, advanced, searchBar]])
+        let webKit = MenuTableCellViewModel(model: MenuModel(withTitle: "WebKit", desc: "Examples about how to create a  Webkit and apply it."))
+        itemsSource.reset([[listPage, listCollectionPage, listCollectionHeaderFooterPage, dynamicListPage, collectionPage, dynamicCollectionPage, advanced, searchBar, webKit]])
     }
     
     override func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
@@ -60,6 +62,19 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
             /// UICollection View support loadmore data.
             let vm = DynamicCollectionPageViewModel(model: cellViewModel.model)
             let vc = DynamicCollectionPage(model: vm)
+            page = vc
+        case 6:
+            /// Advanced Example 1
+            let vm = ContactListPageViewModel(model: cellViewModel.model)
+            let vc = ContactListPage(model: vm)
+            page = vc
+        case 7:
+            /// Advanced Example 2
+            ()
+        case 8:
+            /// UIWebkit Examples
+            let vm = WebViewExamplesPageViewModel(model: cellViewModel.model)
+            let vc = WebKitExamplesPage(model: vm)
             page = vc
         default: ()
         }

@@ -75,8 +75,8 @@ class TableOfContentViewModel: BaseListViewModel {
         let service = MenuTableCellViewModel(model: MenuModel(withTitle: "Service Examples", desc: "Examples about how to create a service and register it; how to inject to our ViewModel."))
         let transition = MenuTableCellViewModel(model: MenuModel(withTitle: "Transition Examples",
                                                                  desc: "Examples about how to create a custom transitioning animation and apply it."))
-        let webKit = MenuTableCellViewModel(model: MenuModel(withTitle: "WebKit", desc: "Examples about how to create a  Webkit and apply it."))
-        itemsSource.reset([[intro, mvvm, dataBinding, service, transition, webKit]])
+
+        itemsSource.reset([[intro, mvvm, dataBinding, service, transition]])
     }
     
     func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
@@ -94,8 +94,6 @@ class TableOfContentViewModel: BaseListViewModel {
             page = ServiceExamplesPage(model: ServiceExamplesPageViewModel(model: cellViewModel.model))
         case 4:
             page = TransitionExamplesPage(model: TransitionExamplesPageViewModel(model: cellViewModel.model))
-        case 5:
-            page = WebKitExamplesPage(model: WebViewExamplesPageViewModel(model: cellViewModel.model))
         default: ()
         }
         return page

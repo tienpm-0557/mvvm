@@ -9,7 +9,7 @@
 import UIKit
 import MVVM
 
-class TransitionExamplesPage: TableOfContentsPage {
+class TransitionExamplesPage: BasePage {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +17,13 @@ class TransitionExamplesPage: TableOfContentsPage {
         // Do any additional setup after loading the view.
     }
 
-
+    override func bindViewAndViewModel() {
+        super.bindViewAndViewModel()
+        guard let viewModel = viewModel as? TransitionExamplesPageViewModel else {
+            return
+        }
+        viewModel.rxPageTitle ~> self.rx.title => disposeBag
+    }
     /*
     // MARK: - Navigation
 
