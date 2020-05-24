@@ -90,7 +90,7 @@ class ContactListPageViewModel: BaseListViewModel {
     
     private func handleContactModification(_ model: ContactModel? = nil) {
         let vm = ContactEditPageViewModel(model: model)
-        let page = ContactEditPage(model: vm)
+        let page = ContactEditPage(viewModel: vm)
         
         // as you are controlling the ViewModel of edit page,
         // so we can get the result out without using any Delegates

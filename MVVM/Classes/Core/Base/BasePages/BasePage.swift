@@ -44,7 +44,7 @@ open class BasePage: UIViewController, ITransitionView {
     
     public private(set) var viewModel: BaseViewModel?
     
-    public convenience init(model vm: BaseViewModel) {
+    public convenience init(viewModel vm: BaseViewModel) {
         self.init()
         self.viewModel = vm
     }

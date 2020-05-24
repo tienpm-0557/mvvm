@@ -21,38 +21,3 @@ class MenuModel: Model {
         desc <- map["desc"]
     }
 }
-
-class IntroductionModel: Model {
-    
-    var title = ""
-    var desc = ""
-    var url = ""
-    
-    convenience init(withTitle title: String, desc: String, url: String) {
-        self.init(JSON: ["title": title, "desc": desc, "url": url])!
-    }
-    
-    override func mapping(map: Map) {
-        title <- map["title"]
-        desc <- map["desc"]
-        url <- map["url"]
-    }
-}
-
-class ContactModel: Model {
-    
-    var name = ""
-    var phone = ""
-    
-    convenience init() {
-        self.init(JSON: [String: Any]())!
-    }
-    
-    override func mapping(map: Map) {
-        name <- map["name"]
-        phone <- map["phone"]
-    }
-}
-
-
-

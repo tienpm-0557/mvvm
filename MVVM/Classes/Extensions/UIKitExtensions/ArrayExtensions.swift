@@ -21,4 +21,8 @@ public extension Array where Element: Model {
     func toCellViewModels<T: IGenericViewModel>() -> [T] where T.ModelElement == Element {
         return compactMap { T(model: $0) }
     }
+    
+    func toBaseCellViewModels<T: BaseCellViewModel>() -> [T]  {
+        return compactMap { T(model: $0)}
+    }
 }

@@ -12,6 +12,7 @@ import WebKit
 
 //MARK: ViewModel For Service Examples
 class ServiceExamplesPageViewModel: TableOfContentViewModel {
+    
     override func fetchData() {
         let alert = MenuTableCellViewModel(model: MenuModel(withTitle: "Alert Service",
                                                 desc: "How to create alert service and register it"))

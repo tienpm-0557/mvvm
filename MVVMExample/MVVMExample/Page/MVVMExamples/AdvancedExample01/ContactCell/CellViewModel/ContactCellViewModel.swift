@@ -17,6 +17,7 @@ class ContactCellViewModel: BaseCellViewModel {
     let rxPhone = BehaviorRelay<String?>(value: nil)
     
     override func react() {
+        super.react()
         modelChanged()
     }
     

@@ -85,15 +85,15 @@ class TableOfContentViewModel: BaseListViewModel {
         var page: UIViewController?
         switch indexPath.row {
         case 0:
-            page = IntroductionPage(model: IntroductionPageViewModel(model: cellViewModel.model))
+            page = IntroductionPage(viewModel: IntroductionPageViewModel(model: cellViewModel.model))
         case 1:
-            page = MVVMExamplePage(model: MvvmExamplesPageViewModel(model: cellViewModel.model))
+            page = MVVMExamplePage(viewModel: MvvmExamplesPageViewModel(model: cellViewModel.model))
         case 2:
-            page = DataBindingExamplesPage(model: DatabindingExamplesPageViewModel(model: cellViewModel.model))
+            page = DataBindingExamplesPage(viewModel: DatabindingExamplesPageViewModel(model: cellViewModel.model))
         case 3:
-            page = ServiceExamplesPage(model: ServiceExamplesPageViewModel(model: cellViewModel.model))
+            page = ServiceExamplesPage(viewModel: ServiceExamplesPageViewModel(model: cellViewModel.model))
         case 4:
-            page = TransitionExamplesPage(model: TransitionExamplesPageViewModel(model: cellViewModel.model))
+            page = TransitionExamplesPage(viewModel: TransitionExamplesPageViewModel(model: cellViewModel.model))
         default: ()
         }
         return page

@@ -38,19 +38,19 @@ class WebViewExamplesPageViewModel: TableOfContentViewModel {
         var page: UIViewController?
         switch indexPath.row {
         case 0:
-            page = AlertWebPage(model: AlertWebPageViewModel(model: cellViewModel.model))
+            page = AlertWebPage(viewModel: AlertWebPageViewModel(model: cellViewModel.model))
             break
         case 1:
-            page = ConfirmAlertWebPage(model: ConfirmAlertWebViewModel(model: cellViewModel.model))
+            page = ConfirmAlertWebPage(viewModel: ConfirmAlertWebViewModel(model: cellViewModel.model))
             break
         case 2:
-            page = AuthenticationWebPage(model: AuthenticationWebViewModel(model: cellViewModel.model))
+            page = AuthenticationWebPage(viewModel: AuthenticationWebViewModel(model: cellViewModel.model))
             break
         case 3:
-            page = FailNavigationWebPage(model: FailNavigationWebViewModel(model: cellViewModel.model))
+            page = FailNavigationWebPage(viewModel: FailNavigationWebViewModel(model: cellViewModel.model))
             break
         case 4:
-            page = EvaluateJavaScriptWebPage(model: EvaluateJavaScriptWebViewModel(model: cellViewModel.model))
+            page = EvaluateJavaScriptWebPage(viewModel: EvaluateJavaScriptWebViewModel(model: cellViewModel.model))
             break
         default: ()
         }

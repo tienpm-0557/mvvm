@@ -36,45 +36,47 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
         case 0:
             /// Simple UITableview
             let vm = ListPageExampleViewModel(model: cellViewModel.model)
-            let vc = ListPageExamplePage(model: vm)
+            let vc = ListPageExamplePage(viewModel: vm)
             page = vc
         case 1:
             /// UITableview with Header
             let vm = SectionListPageViewModel(model: cellViewModel.model)
-            let vc = SectionListPage(model: vm)
+            let vc = SectionListPage(viewModel: vm)
             page = vc
         case 2:
             /// UITableview with header & footer
             let vm = SectionListPageViewModel(model: cellViewModel.model)
-            let vc = HeaderFooterListPage(model: vm)
+            let vc = HeaderFooterListPage(viewModel: vm)
             page = vc
         case 3:
             /// UITableview support load more data
             let vm = DynamicListPageViewModel(model: cellViewModel.model)
-            let vc = DynamicListPage(model: vm)
+            let vc = DynamicListPage(viewModel: vm)
             page = vc
         case 4:
             /// Simple UICollectionView
             let vm = CollectionPageViewModel(model: cellViewModel.model)
-            let vc = SimpleCollectionPage(model: vm)
+            let vc = SimpleCollectionPage(viewModel: vm)
             page = vc
         case 5:
             /// UICollection View support loadmore data.
             let vm = DynamicCollectionPageViewModel(model: cellViewModel.model)
-            let vc = DynamicCollectionPage(model: vm)
+            let vc = DynamicCollectionPage(viewModel: vm)
             page = vc
         case 6:
             /// Advanced Example 1
             let vm = ContactListPageViewModel(model: cellViewModel.model)
-            let vc = ContactListPage(model: vm)
+            let vc = ContactListPage(viewModel: vm)
             page = vc
         case 7:
             /// Advanced Example 2
-            ()
+            let vm = FlickrImageSearchPageViewModel(model: cellViewModel.model)
+            let vc = FlickrImageSearchPage(viewModel: vm)
+            page = vc
         case 8:
             /// UIWebkit Examples
             let vm = WebViewExamplesPageViewModel(model: cellViewModel.model)
-            let vc = WebKitExamplesPage(model: vm)
+            let vc = WebKitExamplesPage(viewModel: vm)
             page = vc
         default: ()
         }
