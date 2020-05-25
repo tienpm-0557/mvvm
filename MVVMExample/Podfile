@@ -7,6 +7,7 @@ target 'MVVMExample' do
 
   # Pods for MVVMExample
   pod 'MVVM', :path => '../'
+  pod 'SwiftyJSON', '4.1.0'
 
   target 'MVVMExampleTests' do
     inherit! :search_paths

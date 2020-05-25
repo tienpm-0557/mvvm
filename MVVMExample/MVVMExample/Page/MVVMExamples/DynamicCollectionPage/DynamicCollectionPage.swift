@@ -13,11 +13,14 @@ import RxCocoa
 import Action
 
 class DynamicCollectionPage: BaseCollectionPage {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+    }
+    
+    override func initialize() {
+        super.initialize()
         allowLoadmoreData = true
     }
 

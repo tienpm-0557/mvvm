@@ -8,17 +8,24 @@
 
 import Foundation
 import Alamofire
+import MVVM
+import SwiftyJSON
+
+/*
+https://api.flickr.com/services/rest?method=flickr.photos.search&api_key=dc4c20e9d107a9adfa54917799e44650&format=json&nojsoncallback=1&page=0&per_page=10&text=oke
+ */
 
 enum APIUrl {
     #if DEBUG
-    static let rootURL                      = "https://dev-rooturl.com"
+    static let rootURL                      = "https://api.flickr.com"
     #elseif STAGING
-    static let rootURL                      = "https://stg-rooturl.com"
+    static let rootURL                      = "https://api.flickr.com"
     #else
-    static let rootURL                      = "https://rooturl.com"
+    static let rootURL                      = "https://api.flickr.com"
     #endif
     /// Authorization
-    static let apiLogin                    = "/api/v1/users/login"
+    static let login                        = "/login"
+    static let apiFlickrSearch              = "/services/rest"
 }
 
 
@@ -43,12 +50,12 @@ struct HeaderValue {
 }
 
 public enum APIService: URLRequestConvertible {
-    
     case login(parameters: Parameters?)
+    case searchFlickr(parameters: Parameters?)
     
     var name: String {
         switch self {
-        case .login:
+        case .searchFlickr:
             return "login"
         default:
             return ""
@@ -57,7 +64,7 @@ public enum APIService: URLRequestConvertible {
     
     var usingCache: Bool {
         switch self {
-        case .login:
+        case .searchFlickr:
             return false
         default:
             return false
@@ -66,7 +73,7 @@ public enum APIService: URLRequestConvertible {
     
     var parameters: Parameters? {
         switch self {
-        case .login(let parameter):
+        case .searchFlickr(let parameter):
             return parameter
         default:
             return nil
@@ -75,8 +82,8 @@ public enum APIService: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .login:
-            return .post
+        case .searchFlickr:
+            return .get
         default:
             return .get
         }
@@ -85,16 +92,13 @@ public enum APIService: URLRequestConvertible {
     var path: String {
         switch self {
         case .login:
-            return APIUrl.apiLogin
+            return APIUrl.login
+        case .searchFlickr:
+            return APIUrl.apiFlickrSearch
         }
-        
     }
     
     var header: HTTPHeaders? {
-//        let locale = Preferences.shared.currentLocale()
-//        if locale == langEN {
-//            language = HeaderValue.LanguageEng
-//        }
         switch self {
         case .login:
             return [HeaderKey.ContentType: HeaderValue.ApplicationJson,
@@ -111,7 +115,7 @@ public enum APIService: URLRequestConvertible {
         switch self {
         case .login:
             return JSONEncoding.default
-        default: // Default with HTTPMethod GET
+        case .searchFlickr:
             return URLEncoding.default
         }
     }
@@ -125,14 +129,16 @@ public enum APIService: URLRequestConvertible {
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.timeoutInterval = TimeInterval(30)
         
-        
         switch self {
-        case .login(let parameters):
-            ()
         default:
             break
         }
         urlRequest.httpMethod = method.rawValue
         return urlRequest
     }
+    
+    func prepareSources(response: APIResponse) -> JSON {
+        return JSON(response.result)
+    }
+
 }

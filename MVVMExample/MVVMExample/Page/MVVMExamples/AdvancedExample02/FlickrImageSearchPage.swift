@@ -24,6 +24,12 @@ class FlickrImageSearchPage: BaseCollectionPage {
 
     override func initialize() {
         super.initialize()
+        
+        DependencyManager.shared.registerService(Factory<NetworkService> {
+            NetworkService()
+        })
+        
+        
         DependencyManager.shared.registerService(Factory<FlickrService> {
             FlickrService()
         })

@@ -33,10 +33,13 @@ class DynamicCollectionPageViewModel: BaseListViewModel {
     
     override func loadMoreContent() {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.rxState.accept(.loadingMore)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.add()
-                self.rxState.accept(.normal)
+            if self.rxState.value == .normal {
+                self.rxState.accept(.loadingMore)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    print("DEBUG: start load more content")
+                    self.add()
+                    self.rxState.accept(.normal)
+                }
             }
         }
     }

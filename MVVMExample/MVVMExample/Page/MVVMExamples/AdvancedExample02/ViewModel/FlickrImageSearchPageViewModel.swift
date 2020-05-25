@@ -13,6 +13,7 @@ import RxCocoa
 import Alamofire
 import Action
 import Moya
+import ObjectMapper
 
 
 class FlickrService {
@@ -88,7 +89,8 @@ extension FlickrAPI: TargetType {
 class FlickrImageSearchPageViewModel: BaseListViewModel {
 
     let alertService: IAlertService = DependencyManager.shared.getService()
-    var flickrService: FlickrService?
+//    var flickrService: FlickrService?
+    var networkService: NetworkService?
 
     let rxSearchText = BehaviorRelay<String?>(value: nil)
     
@@ -103,7 +105,8 @@ class FlickrImageSearchPageViewModel: BaseListViewModel {
     
     override func react() {
         super.react()
-        flickrService = DependencyManager.shared.getService()
+//        flickrService = DependencyManager.shared.getService()
+        networkService = DependencyManager.shared.getService()
         
         rxSearchText
         .do(onNext: { text in
@@ -127,6 +130,7 @@ class FlickrImageSearchPageViewModel: BaseListViewModel {
     
     private func doSearch(keyword: String, isLoadMore: Bool = false) {
         let bag = isLoadMore ? tmpBag : disposeBag
+        /*
         flickrService?.search(keyword: keyword, page: self.page)
             .map(prepareSources)
             .subscribe(onSuccess: { [weak self] cvms in
@@ -139,6 +143,22 @@ class FlickrImageSearchPageViewModel: BaseListViewModel {
             }, onError: { [weak self] error in
                 self?.rxState.accept(.normal)
             }) => bag
+         */
+        /* Alamofire Network service
+         */
+        self.networkService?.search(withKeyword: keyword, page: page)
+            .map(prepareSources)
+            .subscribe(onSuccess: { [weak self](results) in
+            if isLoadMore {
+                self?.itemsSource.append(results, animated: false)
+            } else {
+                self?.itemsSource.reset([results])
+            }
+            self?.rxState.accept(.normal)
+        }, onError: { (error) in
+            
+        }) => bag
+        
     }
     
     
@@ -153,7 +173,10 @@ class FlickrImageSearchPageViewModel: BaseListViewModel {
         doSearch(keyword: rxSearchText.value!, isLoadMore: true)
     }
     
-    private func prepareSources(_ response: FlickrSearchResponse) -> [FlickrCellViewModel] {
+    private func prepareSources(_ response: FlickrSearchResponse?) -> [FlickrCellViewModel] {
+        guard let response = response else {
+            return []
+        }
         if response.stat == .fail {
             alertService.presentOkayAlert(title: "Error", message: "\(response.message)\nPlease be sure to provide your own API key from Flickr.")
         }

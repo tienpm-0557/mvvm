@@ -28,7 +28,6 @@ open class BaseCollectionPage: BasePage {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
        
     open override func initialize() {
@@ -87,6 +86,17 @@ open class BaseCollectionPage: BasePage {
     open override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
         collectionView.rx.itemSelected.asObservable().subscribe(onNext: onItemSelected) => disposeBag
+        
+        if allowLoadmoreData {
+            collectionView.rx.endReach(30).subscribe(onNext: {
+                if self.state == .normal {
+                    if let viewModel = self.viewModel as? BaseListViewModel {
+                        viewModel.loadMoreContent()
+                    }
+                }
+            }) => disposeBag
+        }
+
         getItemSource()?.collectionChanged
             .observeOn(Scheduler.shared.mainScheduler)
             .subscribe(onNext: onDataSourceChanged) => disposeBag
@@ -191,18 +201,6 @@ extension BaseCollectionPage: UICollectionViewDataSource {
         
         if let cell = cell as? IAnyView {
             cell.anyViewModel = cellViewModel
-        }
-        
-        
-        /// Load more data if need
-        if allowLoadmoreData,
-            indexPath.row >= pageSize - 1,
-            indexPath.row > collectionView.numberOfItems(inSection: indexPath.section) - 2 {
-            if state == .normal {
-                if let viewModel = self.viewModel as? BaseListViewModel {
-                    viewModel.loadMoreContent()
-                }
-            }
         }
         
         return cell
