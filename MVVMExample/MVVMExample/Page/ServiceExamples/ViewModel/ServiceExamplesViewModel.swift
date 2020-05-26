@@ -31,9 +31,11 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
         var page: UIViewController?
         switch indexPath.row {
         case 0:
-            break
+            ()
         case 1:
-            break
+            let vm = NetworkServicePageViewModel(model: cellViewModel.model)
+            let vc = NetworkServicePage(viewModel: vm)
+            page = vc
         default: ()
         }
         
