@@ -28,6 +28,9 @@ class DatabindingExamplesPageViewModel: TableOfContentViewModel {
         var page: UIViewController?
         switch indexPath.row {
         case 0:
+            let vm = ValidatePageViewModel(model: cellViewModel.model)
+            let vc = ValidatePage(viewModel: vm)
+            page = vc
             break
         case 1:
             break

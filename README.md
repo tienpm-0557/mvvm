@@ -1,6 +1,4 @@
-# MVVM
-
-This project is inherited from [https://github.com/duyduong/DTMvvm](https://github.com/duyduong/DTMvvm) 
+# MVVM 
 
 [![CI Status](https://img.shields.io/travis/toandk/DTMvvm.svg?style=flat)](https://travis-ci.org/toandk/DTMvvm)
 [![Version](https://img.shields.io/cocoapods/v/DTMvvm.svg?style=flat)](https://cocoapods.org/pods/DTMvvm)

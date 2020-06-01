@@ -17,8 +17,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="330" height="123"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="82" translatesAutoresizingMaskIntoConstraints="NO" id="5hE-NB-I0V" customClass="StackLayout" customModule="MVVM">
-                        <rect key="frame" x="0.0" y="0.0" width="42" height="123"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5hE-NB-I0V" customClass="StackLayout" customModule="MVVM">
+                        <rect key="frame" x="0.0" y="0.0" width="42" height="51"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og9-wa-RR2">
                                 <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcV-jD-b9A">
-                                <rect key="frame" x="0.0" y="102.5" width="42" height="20.5"/>
+                                <rect key="frame" x="0.0" y="30.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
             <connections>
                 <outlet property="descLbl" destination="jcV-jD-b9A" id="Uvu-3K-Fc9"/>
                 <outlet property="layout" destination="5hE-NB-I0V" id="Mu8-OF-Heh"/>
-                <outlet property="titleLbl" destination="jcV-jD-b9A" id="Bae-t9-6b6"/>
+                <outlet property="titleLbl" destination="Og9-wa-RR2" id="Hw0-JG-GUT"/>
             </connections>
             <point key="canvasLocation" x="73.913043478260875" y="110.82589285714285"/>
         </tableViewCell>

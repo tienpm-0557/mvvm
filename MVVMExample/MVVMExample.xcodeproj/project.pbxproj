@@ -11,6 +11,9 @@
 		9C423CC6247819AD00D9B950 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */; };
 		9C423CC7247819AD00D9B950 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */; };
 		9C423CCA24781D2300D9B950 /* ContactCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */; };
+		9C5D01912485428600AF87F9 /* ValidatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D018F2485428600AF87F9 /* ValidatePage.swift */; };
+		9C5D01922485428600AF87F9 /* ValidatePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5D01902485428600AF87F9 /* ValidatePage.xib */; };
+		9C5D0195248542BA00AF87F9 /* ValidatePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */; };
 		9C74B1772477BA5F0061F2BF /* ContactListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B1752477BA5F0061F2BF /* ContactListPage.swift */; };
 		9C74B1782477BA5F0061F2BF /* ContactListPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74B1762477BA5F0061F2BF /* ContactListPage.xib */; };
 		9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */; };
@@ -151,6 +154,9 @@
 		9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCellViewModel.swift; sourceTree = "<group>"; };
+		9C5D018F2485428600AF87F9 /* ValidatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePage.swift; sourceTree = "<group>"; };
+		9C5D01902485428600AF87F9 /* ValidatePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ValidatePage.xib; sourceTree = "<group>"; };
+		9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePageViewModel.swift; sourceTree = "<group>"; };
 		9C74B1752477BA5F0061F2BF /* ContactListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPage.swift; sourceTree = "<group>"; };
 		9C74B1762477BA5F0061F2BF /* ContactListPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListPage.xib; sourceTree = "<group>"; };
 		9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPageViewModel.swift; sourceTree = "<group>"; };
@@ -350,6 +356,24 @@
 				9C74B1762477BA5F0061F2BF /* ContactListPage.xib */,
 			);
 			path = AdvancedExample01;
+			sourceTree = "<group>";
+		};
+		9C5D018E2485425900AF87F9 /* ValidatePage */ = {
+			isa = PBXGroup;
+			children = (
+				9C5D01932485428A00AF87F9 /* ViewModel */,
+				9C5D018F2485428600AF87F9 /* ValidatePage.swift */,
+				9C5D01902485428600AF87F9 /* ValidatePage.xib */,
+			);
+			path = ValidatePage;
+			sourceTree = "<group>";
+		};
+		9C5D01932485428A00AF87F9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9C74B1792477BAC50061F2BF /* ViewModel */ = {
@@ -644,6 +668,7 @@
 		9C74EC01246D8A0900A3CF1D /* DataBindingExamples */ = {
 			isa = PBXGroup;
 			children = (
+				9C5D018E2485425900AF87F9 /* ValidatePage */,
 				9C74EC06246D8A5800A3CF1D /* ViewModel */,
 				9C74EC02246D8A3A00A3CF1D /* DataBindingExamplesPage.swift */,
 				9C74EC03246D8A3A00A3CF1D /* DataBindingExamplesPage.xib */,
@@ -1160,6 +1185,7 @@
 				9C74EC2A246D97BF00A3CF1D /* SimpleTableCell.xib in Resources */,
 				9C74EBD7246D206100A3CF1D /* AlertWebPage.xib in Resources */,
 				9C74EBCF246D1F9500A3CF1D /* ConfirmAlertWebPage.xib in Resources */,
+				9C5D01922485428600AF87F9 /* ValidatePage.xib in Resources */,
 				9C74EC0D246D8BB900A3CF1D /* ServiceExamplesPage.xib in Resources */,
 				9C74EBBB246D1AF000A3CF1D /* MenuTableViewCell.xib in Resources */,
 				9C74EBF8246D435400A3CF1D /* ListPageExamplePage.xib in Resources */,
@@ -1321,6 +1347,7 @@
 				9C74EC3D246E49A400A3CF1D /* SimpleListPageCellViewModel.swift in Sources */,
 				9CAEA27D2478C21C00061B49 /* FlickrImageSearchPage.swift in Sources */,
 				9C74EC2D246D984100A3CF1D /* ListPageModel.swift in Sources */,
+				9C5D01912485428600AF87F9 /* ValidatePage.swift in Sources */,
 				9C74EC39246E477900A3CF1D /* SectionTextCell.swift in Sources */,
 				9C74EC572470037200A3CF1D /* SectionFooterListView.swift in Sources */,
 				9CF158E6247144B1006A1CFB /* HeaderCollectionViewModel.swift in Sources */,
@@ -1352,6 +1379,7 @@
 				9C74EC08246D8AAC00A3CF1D /* DataBindingExamplesViewModel.swift in Sources */,
 				9C74EC42246E4A3B00A3CF1D /* SectionListPageViewModel.swift in Sources */,
 				9CAEA2852478C90F00061B49 /* FlickrImageCell.swift in Sources */,
+				9C5D0195248542BA00AF87F9 /* ValidatePageViewModel.swift in Sources */,
 				9CF158DD24712D31006A1CFB /* DynamicCollectionCellModel.swift in Sources */,
 				9C74EBCE246D1F9500A3CF1D /* ConfirmAlertWebPage.swift in Sources */,
 				9C74EC6624700C4600A3CF1D /* DynamicListPageViewModel.swift in Sources */,
