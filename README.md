@@ -77,6 +77,7 @@ I prefer **Page** over **ViewController** in term of MVVM
 ```swift
 open class Page<VM: IViewModel>: UIViewController, IView, ITransionView 
 ```
+
 ```swift
 ///None generic type
 open class BasePage: UIViewController, ITransitionView
@@ -85,6 +86,7 @@ open class BasePage: UIViewController, ITransitionView
 ```swift
 open class ListPage<VM: IListViewModel>: Page<VM>
 ```
+
 ```swift
 ///None generic type
 open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate
@@ -93,6 +95,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate
 ```swift
 open class CollectionPage<VM: IListViewModel>: Page<VM>
 ```
+
 ```swift
 ///None generic type
 open class BaseCollectionPage: BasePage
@@ -105,24 +108,27 @@ Same as **Page**, View is all also a generic UIView, while **TableCell** and **C
 ```swift
 open class View<VM: IGenericViewModel>: UIView, IView
 ```
-None generic type
+
 ```swift
+///None generic type
 open class BaseView: UIView, IView
 ```
 
 ```swift
 open class CollectionCell<VM: IGenericViewModel>: UICollectionViewCell, IView
 ```
-None generic type
+
 ```swift
+///None generic type
 open class BaseCollectionCell: UICollectionViewCell, IView
 ```
 
 ```swift
 open class TableCell<VM: IGenericViewModel>: UITableViewCell, IView
 ```
-None generic type
+
 ```swift
+///None generic type
 open class BaseTableCell: UITableViewCell, IView
 ```
 
