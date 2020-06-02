@@ -52,6 +52,7 @@ use_frameworks!
 
 target '<Your Target Name>' do
     pod 'MVVM'
+    pod 'SwiftyJSON', '4.1.0'
 end
 ```
 
@@ -79,7 +80,7 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransionView
 ```
 
 ```swift
-///None generic type
+///Non-generic type
 open class BasePage: UIViewController, ITransitionView
 ```
 * UITableView
@@ -88,7 +89,7 @@ open class ListPage<VM: IListViewModel>: Page<VM>
 ```
 
 ```swift
-///None generic type
+///Non-generic type
 open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate
 ```
 * UICollectionView
@@ -97,7 +98,7 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>
 ```
 
 ```swift
-///None generic type
+///Non-generic type
 open class BaseCollectionPage: BasePage
 ```
 
@@ -110,7 +111,7 @@ open class View<VM: IGenericViewModel>: UIView, IView
 ```
 
 ```swift
-///None generic type
+///Non-generic type
 open class BaseView: UIView, IView
 ```
 
@@ -119,7 +120,7 @@ open class CollectionCell<VM: IGenericViewModel>: UICollectionViewCell, IView
 ```
 
 ```swift
-///None generic type
+///Non-generic type
 open class BaseCollectionCell: UICollectionViewCell, IView
 ```
 
@@ -128,7 +129,7 @@ open class TableCell<VM: IGenericViewModel>: UITableViewCell, IView
 ```
 
 ```swift
-///None generic type
+///Non-generic type
 open class BaseTableCell: UITableViewCell, IView
 ```
 
