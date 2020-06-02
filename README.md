@@ -73,7 +73,7 @@ The library is mainly written using Generic, so please familiar yourself with Sw
 ### Libray Components
 ##### Page, ListPage and CollectionPage
 I prefer **Page** over **ViewController** in term of MVVM
-UIViewController
+* UIViewController
 ```swift
 open class Page<VM: IViewModel>: UIViewController, IView, ITransionView 
 ```
@@ -81,7 +81,7 @@ None generic type
 ```swift
 open class BasePage: UIViewController, ITransitionView
 ```
-UITableView
+* UITableView
 ```swift
 open class ListPage<VM: IListViewModel>: Page<VM>
 ```
@@ -89,7 +89,7 @@ None generic type
 ```swift
 open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate
 ```
-UICollectionView
+* UICollectionView
 ```swift
 open class CollectionPage<VM: IListViewModel>: Page<VM>
 ```
