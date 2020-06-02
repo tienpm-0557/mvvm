@@ -77,24 +77,24 @@ I prefer **Page** over **ViewController** in term of MVVM
 ```swift
 open class Page<VM: IViewModel>: UIViewController, IView, ITransionView 
 ```
-None generic type
 ```swift
+///None generic type
 open class BasePage: UIViewController, ITransitionView
 ```
 * UITableView
 ```swift
 open class ListPage<VM: IListViewModel>: Page<VM>
 ```
-None generic type
 ```swift
+///None generic type
 open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate
 ```
 * UICollectionView
 ```swift
 open class CollectionPage<VM: IListViewModel>: Page<VM>
 ```
-None generic type
 ```swift
+///None generic type
 open class BaseCollectionPage: BasePage
 ```
 
