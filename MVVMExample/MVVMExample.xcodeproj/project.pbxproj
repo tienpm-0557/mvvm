@@ -14,6 +14,8 @@
 		9C5D01912485428600AF87F9 /* ValidatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D018F2485428600AF87F9 /* ValidatePage.swift */; };
 		9C5D01922485428600AF87F9 /* ValidatePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5D01902485428600AF87F9 /* ValidatePage.xib */; };
 		9C5D0195248542BA00AF87F9 /* ValidatePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */; };
+		9C5D019A248550D600AF87F9 /* AuthenticationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0198248550D600AF87F9 /* AuthenticationPage.swift */; };
+		9C5D019B248550D600AF87F9 /* AuthenticationPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */; };
 		9C74B1772477BA5F0061F2BF /* ContactListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B1752477BA5F0061F2BF /* ContactListPage.swift */; };
 		9C74B1782477BA5F0061F2BF /* ContactListPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74B1762477BA5F0061F2BF /* ContactListPage.xib */; };
 		9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */; };
@@ -92,6 +94,10 @@
 		9C74EC6224700A2200A3CF1D /* DynamicListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC6024700A2200A3CF1D /* DynamicListPage.swift */; };
 		9C74EC6324700A2200A3CF1D /* DynamicListPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EC6124700A2200A3CF1D /* DynamicListPage.xib */; };
 		9C74EC6624700C4600A3CF1D /* DynamicListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EC6524700C4600A3CF1D /* DynamicListPageViewModel.swift */; };
+		9C76D7D324867E5400DEABA1 /* CustomControlPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76D7D124867E5400DEABA1 /* CustomControlPage.swift */; };
+		9C76D7D424867E5400DEABA1 /* CustomControlPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C76D7D224867E5400DEABA1 /* CustomControlPage.xib */; };
+		9C76D7D724867E7400DEABA1 /* CustomControlViewPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76D7D624867E7400DEABA1 /* CustomControlViewPageModel.swift */; };
+		9C76D7DA24867ED300DEABA1 /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76D7D924867ED300DEABA1 /* SegmentedView.swift */; };
 		9C79EE022470DCE100FEF5EC /* CollectionPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C79EE012470DCE100FEF5EC /* CollectionPageViewModel.swift */; };
 		9C79EE062470DE0200FEF5EC /* SimpleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C79EE042470DE0100FEF5EC /* SimpleCollectionViewCell.swift */; };
 		9C79EE072470DE0200FEF5EC /* SimpleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C79EE052470DE0100FEF5EC /* SimpleCollectionViewCell.xib */; };
@@ -157,6 +163,8 @@
 		9C5D018F2485428600AF87F9 /* ValidatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePage.swift; sourceTree = "<group>"; };
 		9C5D01902485428600AF87F9 /* ValidatePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ValidatePage.xib; sourceTree = "<group>"; };
 		9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePageViewModel.swift; sourceTree = "<group>"; };
+		9C5D0198248550D600AF87F9 /* AuthenticationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPage.swift; sourceTree = "<group>"; };
+		9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationPage.xib; sourceTree = "<group>"; };
 		9C74B1752477BA5F0061F2BF /* ContactListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPage.swift; sourceTree = "<group>"; };
 		9C74B1762477BA5F0061F2BF /* ContactListPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListPage.xib; sourceTree = "<group>"; };
 		9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPageViewModel.swift; sourceTree = "<group>"; };
@@ -241,6 +249,10 @@
 		9C74EC6024700A2200A3CF1D /* DynamicListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicListPage.swift; sourceTree = "<group>"; };
 		9C74EC6124700A2200A3CF1D /* DynamicListPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DynamicListPage.xib; sourceTree = "<group>"; };
 		9C74EC6524700C4600A3CF1D /* DynamicListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicListPageViewModel.swift; sourceTree = "<group>"; };
+		9C76D7D124867E5400DEABA1 /* CustomControlPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControlPage.swift; sourceTree = "<group>"; };
+		9C76D7D224867E5400DEABA1 /* CustomControlPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomControlPage.xib; sourceTree = "<group>"; };
+		9C76D7D624867E7400DEABA1 /* CustomControlViewPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControlViewPageModel.swift; sourceTree = "<group>"; };
+		9C76D7D924867ED300DEABA1 /* SegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedView.swift; sourceTree = "<group>"; };
 		9C79EE012470DCE100FEF5EC /* CollectionPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPageViewModel.swift; sourceTree = "<group>"; };
 		9C79EE042470DE0100FEF5EC /* SimpleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C79EE052470DE0100FEF5EC /* SimpleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -346,6 +358,17 @@
 			path = CellViewModel;
 			sourceTree = "<group>";
 		};
+		9C5116E1248655BD00DEAE1D /* CustomControl */ = {
+			isa = PBXGroup;
+			children = (
+				9C76D7D824867EC100DEABA1 /* SegmentView */,
+				9C76D7D524867E5B00DEABA1 /* ViewModel */,
+				9C76D7D124867E5400DEABA1 /* CustomControlPage.swift */,
+				9C76D7D224867E5400DEABA1 /* CustomControlPage.xib */,
+			);
+			path = CustomControl;
+			sourceTree = "<group>";
+		};
 		9C531A2B2472C6A400C843BA /* AdvancedExample01 */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +397,15 @@
 				9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C5D0197248550B800AF87F9 /* AuthenticationView */ = {
+			isa = PBXGroup;
+			children = (
+				9C5D0198248550D600AF87F9 /* AuthenticationPage.swift */,
+				9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */,
+			);
+			path = AuthenticationView;
 			sourceTree = "<group>";
 		};
 		9C74B1792477BAC50061F2BF /* ViewModel */ = {
@@ -668,6 +700,8 @@
 		9C74EC01246D8A0900A3CF1D /* DataBindingExamples */ = {
 			isa = PBXGroup;
 			children = (
+				9C5116E1248655BD00DEAE1D /* CustomControl */,
+				9C5D0197248550B800AF87F9 /* AuthenticationView */,
 				9C5D018E2485425900AF87F9 /* ValidatePage */,
 				9C74EC06246D8A5800A3CF1D /* ViewModel */,
 				9C74EC02246D8A3A00A3CF1D /* DataBindingExamplesPage.swift */,
@@ -873,6 +907,22 @@
 				9C74EC6524700C4600A3CF1D /* DynamicListPageViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C76D7D524867E5B00DEABA1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C76D7D624867E7400DEABA1 /* CustomControlViewPageModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C76D7D824867EC100DEABA1 /* SegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				9C76D7D924867ED300DEABA1 /* SegmentedView.swift */,
+			);
+			path = SegmentView;
 			sourceTree = "<group>";
 		};
 		9C79EE002470DCB100FEF5EC /* ViewModel */ = {
@@ -1180,10 +1230,12 @@
 				9C74EB8C246D19BC00A3CF1D /* LaunchScreen.storyboard in Resources */,
 				9C74EBDF246D22CD00A3CF1D /* AuthenticationWebPage.xib in Resources */,
 				9C74B1802477C1220061F2BF /* ContactEditPage.xib in Resources */,
+				9C5D019B248550D600AF87F9 /* AuthenticationPage.xib in Resources */,
 				9C74EBBD246D1AF000A3CF1D /* TableOfContentsPage.xib in Resources */,
 				9C74EB89246D19BC00A3CF1D /* Assets.xcassets in Resources */,
 				9C74EC2A246D97BF00A3CF1D /* SimpleTableCell.xib in Resources */,
 				9C74EBD7246D206100A3CF1D /* AlertWebPage.xib in Resources */,
+				9C76D7D424867E5400DEABA1 /* CustomControlPage.xib in Resources */,
 				9C74EBCF246D1F9500A3CF1D /* ConfirmAlertWebPage.xib in Resources */,
 				9C5D01922485428600AF87F9 /* ValidatePage.xib in Resources */,
 				9C74EC0D246D8BB900A3CF1D /* ServiceExamplesPage.xib in Resources */,
@@ -1327,6 +1379,7 @@
 				9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */,
 				9C74B17F2477C1220061F2BF /* ContactEditPage.swift in Sources */,
 				9C74EBB4246D1ABA00A3CF1D /* IntroductionPage.swift in Sources */,
+				9C5D019A248550D600AF87F9 /* AuthenticationPage.swift in Sources */,
 				9C74EC4E246E51BA00A3CF1D /* SectionHeaderListView.swift in Sources */,
 				9C92957F247CB7FD00AC7E8E /* NetworkServicePageViewModel.swift in Sources */,
 				9C74EBEA246D243300A3CF1D /* FailNavigationWebViewModel.swift in Sources */,
@@ -1340,7 +1393,9 @@
 				9C74EBF2246D24E600A3CF1D /* EvaluateJavaScriptWebViewModel.swift in Sources */,
 				9C929577247BD2D700AC7E8E /* NetworkService+Flickr.swift in Sources */,
 				9C74EBBC246D1AF000A3CF1D /* TableOfContentsPage.swift in Sources */,
+				9C76D7D324867E5400DEABA1 /* CustomControlPage.swift in Sources */,
 				9C74EBC0246D1B6300A3CF1D /* MenuModel.swift in Sources */,
+				9C76D7DA24867ED300DEABA1 /* SegmentedView.swift in Sources */,
 				9C74EC2F246D9A8700A3CF1D /* ListPageExampleViewModel.swift in Sources */,
 				9C74EC4B246E4BC400A3CF1D /* SectionImageCellViewModel.swift in Sources */,
 				9C74EC47246E4B0500A3CF1D /* SectionImageCell.swift in Sources */,
@@ -1351,6 +1406,7 @@
 				9C74EC39246E477900A3CF1D /* SectionTextCell.swift in Sources */,
 				9C74EC572470037200A3CF1D /* SectionFooterListView.swift in Sources */,
 				9CF158E6247144B1006A1CFB /* HeaderCollectionViewModel.swift in Sources */,
+				9C76D7D724867E7400DEABA1 /* CustomControlViewPageModel.swift in Sources */,
 				9C74EBF7246D435400A3CF1D /* ListPageExamplePage.swift in Sources */,
 				9CCBA665247AC29C00D73A7B /* NetworkServices.swift in Sources */,
 				9C79EE0F247124FB00FEF5EC /* DynamicCollectionPage.swift in Sources */,

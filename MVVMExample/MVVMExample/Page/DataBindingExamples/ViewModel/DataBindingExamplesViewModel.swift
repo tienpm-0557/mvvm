@@ -31,9 +31,10 @@ class DatabindingExamplesPageViewModel: TableOfContentViewModel {
             let vm = ValidatePageViewModel(model: cellViewModel.model)
             let vc = ValidatePage(viewModel: vm)
             page = vc
-            break
         case 1:
-            break
+            let vm = CustomControlViewPageModel(model: cellViewModel.model)
+            let vc = CustomControlPage(viewModel: vm)
+            page = vc
         default: ()
         }
         
