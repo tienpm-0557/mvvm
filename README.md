@@ -47,7 +47,7 @@ To integrate MVVM into your Xcode project using CocoaPods, specify it in your `P
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
@@ -89,12 +89,27 @@ Same as **Page**, View is all also a generic UIView, while **TableCell** and **C
 ```swift
 open class View<VM: IGenericViewModel>: UIView, IView
 ```
+None generic type
+```swift
+open class BaseView: UIView, IView
+```
+
 ```swift
 open class CollectionCell<VM: IGenericViewModel>: UICollectionViewCell, IView
 ```
+None generic type
+```swift
+open class BaseCollectionCell: UICollectionViewCell, IView
+```
+
 ```swift
 open class TableCell<VM: IGenericViewModel>: UITableViewCell, IView
 ```
+None generic type
+```swift
+open class BaseTableCell: UITableViewCell, IView
+```
+
 They all have generic type **VM** to determine its own ViewModel
 
 By inheriting **View** or **Page**, and implementing 2 main methods:
@@ -132,6 +147,8 @@ Or you can create your own navigation service and override the default injection
 
 ##### Page Transitions
 The library also supports for page transitions, including pages inside a navigation page and pages that presents modally. See examples for how to implement page transitions
+
+
 
 ## License
 
