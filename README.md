@@ -73,15 +73,31 @@ The library is mainly written using Generic, so please familiar yourself with Sw
 ### Libray Components
 ##### Page, ListPage and CollectionPage
 I prefer **Page** over **ViewController** in term of MVVM
+UIViewController
 ```swift
 open class Page<VM: IViewModel>: UIViewController, IView, ITransionView 
 ```
+None generic type
+```swift
+open class BasePage: UIViewController, ITransitionView
+```
+UITableView
 ```swift
 open class ListPage<VM: IListViewModel>: Page<VM>
 ```
+None generic type
+```swift
+open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate
+```
+UICollectionView
 ```swift
 open class CollectionPage<VM: IListViewModel>: Page<VM>
 ```
+None generic type
+```swift
+open class BaseCollectionPage: BasePage
+```
+
 The idea is that each **Page** will contain a **ViewModel** property with type to be determined by generic **VM**
 
 ##### View, TableCell and CollectionCell
