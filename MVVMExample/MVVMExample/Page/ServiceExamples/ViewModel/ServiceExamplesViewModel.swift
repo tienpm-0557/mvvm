@@ -16,7 +16,7 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
     override func fetchData() {
         let alert = MenuTableCellViewModel(model: MenuModel(withTitle: "Alert Service (coming soon)",
                                                 desc: "How to create alert service and register it"))
-        let networkService = MenuTableCellViewModel(model: MenuModel(withTitle: "Alamofire Network Services (coming soon)",
+        let networkService = MenuTableCellViewModel(model: MenuModel(withTitle: "Alamofire Network Services.",
                                                                      desc: "Examples about how to use Alamofire Network Services."))
         let moyaNetworkService = MenuTableCellViewModel(model: MenuModel(withTitle: "Moya Network Services (coming soon)",
                                                                      desc: "Examples about how to use Moya Network Services."))
@@ -39,7 +39,9 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
             let vc = NetworkServicePage(viewModel: vm)
             page = vc
         case 2: // Moya network service.
-            ()
+            let vm = MoyaProviderServicePageViewModel(model: cellViewModel.model)
+            let vc = MoyaProviderServicePage(viewModel: vm)
+            page = vc
         case 3: // Reachability service.
             ()
         default: ()

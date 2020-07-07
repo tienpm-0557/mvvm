@@ -11,9 +11,11 @@ import MVVM
 import RxSwift
 import ObjectMapper
 import SwiftyJSON
+import RxCocoa
 
 class NetworkService {
     var tmpBag: DisposeBag?
+    let curlString = BehaviorRelay<String?>(value: "")
     
     func getDefaultParams() -> [String:Any] {
         var params:[String:Any] = [String:Any]()
@@ -42,7 +44,7 @@ class NetworkService {
     
     open func request(withService service: APIService,
                       withHash hash:Bool,
-                      usingCache cache:Bool) -> Single<JSON> {
+                      usingCache cache:Bool) -> Single<APIResponse> {
 
         var _params = self.getDefaultParams()
         if let subParams = service.parameters {

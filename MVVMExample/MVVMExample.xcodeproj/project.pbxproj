@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5E2DF30773EEF1F642A6074E /* Pods_MVVMExample_MVVMExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775FFCE0F57A8F5D67ED7F5 /* Pods_MVVMExample_MVVMExampleUITests.framework */; };
+		9C109030249A1617009C3166 /* MoyaProviderServicePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C10902E249A1617009C3166 /* MoyaProviderServicePage.swift */; };
+		9C109031249A1617009C3166 /* MoyaProviderServicePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C10902F249A1617009C3166 /* MoyaProviderServicePage.xib */; };
+		9C109034249A164B009C3166 /* MoyaProviderServicePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C109033249A164B009C3166 /* MoyaProviderServicePageViewModel.swift */; };
+		9C109036249A173B009C3166 /* MoyaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C109035249A173B009C3166 /* MoyaNetworkService.swift */; };
 		9C423CC6247819AD00D9B950 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */; };
 		9C423CC7247819AD00D9B950 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */; };
 		9C423CCA24781D2300D9B950 /* ContactCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */; };
@@ -157,6 +161,10 @@
 		5DBF7CC53451C8FE51F1B7C5 /* Pods-MVVMExample-MVVMExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExample-MVVMExampleUITests.release.xcconfig"; path = "Target Support Files/Pods-MVVMExample-MVVMExampleUITests/Pods-MVVMExample-MVVMExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		897F41295EF4B8B6362B2E86 /* Pods-MVVMExample-MVVMExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExample-MVVMExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-MVVMExample-MVVMExampleUITests/Pods-MVVMExample-MVVMExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9ABF18DB489E0848CC55D75A /* Pods-MVVMExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExample.release.xcconfig"; path = "Target Support Files/Pods-MVVMExample/Pods-MVVMExample.release.xcconfig"; sourceTree = "<group>"; };
+		9C10902E249A1617009C3166 /* MoyaProviderServicePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderServicePage.swift; sourceTree = "<group>"; };
+		9C10902F249A1617009C3166 /* MoyaProviderServicePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoyaProviderServicePage.xib; sourceTree = "<group>"; };
+		9C109033249A164B009C3166 /* MoyaProviderServicePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderServicePageViewModel.swift; sourceTree = "<group>"; };
+		9C109035249A173B009C3166 /* MoyaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNetworkService.swift; sourceTree = "<group>"; };
 		9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCellViewModel.swift; sourceTree = "<group>"; };
@@ -325,6 +333,24 @@
 				C5537DB3BDF2C6194E24C822 /* Pods_MVVMExampleTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C10902D249A15BD009C3166 /* MoyaProvider */ = {
+			isa = PBXGroup;
+			children = (
+				9C109032249A161C009C3166 /* ViewModel */,
+				9C10902E249A1617009C3166 /* MoyaProviderServicePage.swift */,
+				9C10902F249A1617009C3166 /* MoyaProviderServicePage.xib */,
+			);
+			path = MoyaProvider;
+			sourceTree = "<group>";
+		};
+		9C109032249A161C009C3166 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C109033249A164B009C3166 /* MoyaProviderServicePageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9C3D0C4E2470DBE700DA3444 /* CollectionPage */ = {
@@ -721,6 +747,7 @@
 		9C74EC09246D8B8B00A3CF1D /* ServiceExamples */ = {
 			isa = PBXGroup;
 			children = (
+				9C10902D249A15BD009C3166 /* MoyaProvider */,
 				9C929578247CB5E700AC7E8E /* NetworkServiceExample */,
 				9C74EC0E246D8C1100A3CF1D /* ViewModel */,
 				9C74EC0A246D8BB900A3CF1D /* ServiceExamplesPage.swift */,
@@ -1032,6 +1059,7 @@
 			children = (
 				9CCBA662247AC21E00D73A7B /* APIService.swift */,
 				9CCBA664247AC29C00D73A7B /* NetworkServices.swift */,
+				9C109035249A173B009C3166 /* MoyaNetworkService.swift */,
 				9C929576247BD2D700AC7E8E /* NetworkService+Flickr.swift */,
 			);
 			path = NetworkService;
@@ -1235,6 +1263,7 @@
 				9C74EB89246D19BC00A3CF1D /* Assets.xcassets in Resources */,
 				9C74EC2A246D97BF00A3CF1D /* SimpleTableCell.xib in Resources */,
 				9C74EBD7246D206100A3CF1D /* AlertWebPage.xib in Resources */,
+				9C109031249A1617009C3166 /* MoyaProviderServicePage.xib in Resources */,
 				9C76D7D424867E5400DEABA1 /* CustomControlPage.xib in Resources */,
 				9C74EBCF246D1F9500A3CF1D /* ConfirmAlertWebPage.xib in Resources */,
 				9C5D01922485428600AF87F9 /* ValidatePage.xib in Resources */,
@@ -1379,6 +1408,7 @@
 				9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */,
 				9C74B17F2477C1220061F2BF /* ContactEditPage.swift in Sources */,
 				9C74EBB4246D1ABA00A3CF1D /* IntroductionPage.swift in Sources */,
+				9C109030249A1617009C3166 /* MoyaProviderServicePage.swift in Sources */,
 				9C5D019A248550D600AF87F9 /* AuthenticationPage.swift in Sources */,
 				9C74EC4E246E51BA00A3CF1D /* SectionHeaderListView.swift in Sources */,
 				9C92957F247CB7FD00AC7E8E /* NetworkServicePageViewModel.swift in Sources */,
@@ -1415,8 +1445,10 @@
 				9C74EC25246D906F00A3CF1D /* WebKitPageViewModel.swift in Sources */,
 				9C74EBE6246D23F000A3CF1D /* FailNavigationWebPage.swift in Sources */,
 				9C74EBC5246D1E2500A3CF1D /* IntroductionViewModel.swift in Sources */,
+				9C109034249A164B009C3166 /* MoyaProviderServicePageViewModel.swift in Sources */,
 				9C74EBDA246D20D800A3CF1D /* AlertWebPageViewModel.swift in Sources */,
 				9C79EE152471293B00FEF5EC /* DynamicCollectionPageViewModel.swift in Sources */,
+				9C109036249A173B009C3166 /* MoyaNetworkService.swift in Sources */,
 				9CF158E224713B1F006A1CFB /* HeaderCollectionView.swift in Sources */,
 				9CCBA663247AC21E00D73A7B /* APIService.swift in Sources */,
 				9C74EC3F246E49C800A3CF1D /* SectionTextCellViewModel.swift in Sources */,

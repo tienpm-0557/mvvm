@@ -14,8 +14,8 @@ class SimpleModel: Model {
     
     var title = ""
     
-    convenience init(withTitle title: String) {
-        self.init(JSON: ["title": title])!
+    convenience init?(withTitle title: String) {
+        self.init(JSON:["title":title])
     }
     
     override func mapping(map: Map) {
@@ -47,8 +47,8 @@ class SectionImageModel: NumberModel {
     
     var imageUrl: URL?
     
-    convenience init(withUrl url: String) {
-        self.init(JSON: ["url": url])!
+    convenience init?(withUrl url: String) {
+        self.init(JSON: ["url": url])
     }
     
     override func mapping(map: Map) {

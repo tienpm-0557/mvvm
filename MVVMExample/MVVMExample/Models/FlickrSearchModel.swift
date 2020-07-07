@@ -9,9 +9,11 @@
 import Foundation
 import ObjectMapper
 import MVVM
+import SwiftyJSON
 
 enum FlickrStatus: String {
-    case ok = "ok", fail = "fail"
+    case ok = "success"
+    case fail = "failed"
 }
 
 class FlickrSearchResponse: Model {
@@ -21,6 +23,7 @@ class FlickrSearchResponse: Model {
     var pages = 1
     var photos = [FlickrPhotoModel]()
     var message = ""
+    var response_description: JSON?
     
     convenience init() {
         self.init(JSON: [String: Any]())!

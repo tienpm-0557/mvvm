@@ -18,8 +18,6 @@ class FlickrImageSearchPage: BaseCollectionPage {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        
     }
 
     override func initialize() {
@@ -27,11 +25,6 @@ class FlickrImageSearchPage: BaseCollectionPage {
         
         DependencyManager.shared.registerService(Factory<NetworkService> {
             NetworkService()
-        })
-        
-        
-        DependencyManager.shared.registerService(Factory<FlickrService> {
-            FlickrService()
         })
         
         enableBackButton = true
@@ -86,15 +79,5 @@ class FlickrImageSearchPage: BaseCollectionPage {
     override func cellIdentifier(_ cellViewModel: Any, _ isClass: Bool = false) -> String {
         return isClass ? FlickrImageCell.className : FlickrImageCell.identifier
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
