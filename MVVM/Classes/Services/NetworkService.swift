@@ -86,7 +86,7 @@ open class BaseNetworkService: SessionDelegate {
             result.errorBlock { (error) in
                 single(.error(error))
             }
-            debugPrint(result.request)
+            
             return Disposables.create { result.request.cancel() }
         }
     }
@@ -146,9 +146,9 @@ typealias ErrorBlock = (_ error: Error) -> Void
 open class APIResponse {
     var rq: DataRequest?
     public var result: AnyObject?
-    var statusCode: HttpStatusCode?
-    var _usingCache: Bool = false
-    var params: [String:Any]?
+    public var statusCode: HttpStatusCode?
+    public var _usingCache: Bool = false
+    public var params: [String:Any]?
     
     
     var _onComplete: CompletionBlock?
@@ -182,6 +182,13 @@ open class APIResponse {
             }
             rq = newVal
         }
+    }
+    
+    public func cURLString() -> String {
+        if let request = self.rq {
+            return request.cURLDescription()
+        }
+        return ""
     }
     
     func cacheAPI(_ object: AnyObject) {

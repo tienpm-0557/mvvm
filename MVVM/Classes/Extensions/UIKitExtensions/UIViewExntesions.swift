@@ -65,7 +65,7 @@ public extension UIView {
 
 extension UIView {
     
-    @objc open var cornerRadius: CGFloat {
+    @IBInspectable @objc open var cornerRadius: CGFloat {
         get { return layer.cornerRadius }
         set {
             layer.cornerRadius = newValue
@@ -74,12 +74,12 @@ extension UIView {
         }
     }
     
-    @objc open var borderWidth: CGFloat {
+    @IBInspectable @objc open var borderWidth: CGFloat {
         get { return layer.borderWidth }
         set { layer.borderWidth = newValue }
     }
     
-    @objc open var borderColor: CGColor? {
+    @IBInspectable @objc open var borderColor: CGColor? {
         get { return layer.borderColor }
         set { layer.borderColor = newValue }
     }
@@ -94,6 +94,7 @@ extension UIView {
         layer.shadowRadius = blur
         layer.shadowPath = shadowPath.cgPath
     }
+    
 }
 
 

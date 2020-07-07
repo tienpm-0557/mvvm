@@ -1,10 +1,5 @@
 # MVVM 
 
-[![CI Status](https://img.shields.io/travis/toandk/DTMvvm.svg?style=flat)](https://travis-ci.org/toandk/DTMvvm)
-[![Version](https://img.shields.io/cocoapods/v/DTMvvm.svg?style=flat)](https://cocoapods.org/pods/DTMvvm)
-[![License](https://img.shields.io/cocoapods/l/DTMvvm.svg?style=flat)](https://cocoapods.org/pods/DTMvvm)
-[![Platform](https://img.shields.io/cocoapods/p/DTMvvm.svg?style=flat)](https://cocoapods.org/pods/DTMvvm)
-
 MVVM is a library for who wants to start writing iOS application using MVVM (Model-View-ViewModel), written in Swift.
 
 - [Features](#features)

@@ -137,8 +137,8 @@ public enum APIService: URLRequestConvertible {
         return urlRequest
     }
     
-    func prepareSources(response: APIResponse) -> JSON {
-        return JSON(response.result)
+    func prepareSources(response: APIResponse) -> APIResponse {
+        return response
     }
 
 }

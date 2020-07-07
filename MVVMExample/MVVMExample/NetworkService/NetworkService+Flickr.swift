@@ -9,6 +9,7 @@
 import Foundation
 import MVVM
 import RxSwift
+import SwiftyJSON
 
 extension NetworkService {
     
@@ -26,8 +27,13 @@ extension NetworkService {
         return Single.create { single in
             self.request(withService: APIService.searchFlickr(parameters: parameters), withHash: true, usingCache: true)
                 .map({ (jsonData) -> FlickrSearchResponse? in
-                    if let dictionary = jsonData.dictionaryObject,
+                    /// Implement logic maping if need.
+                    /// Maping API Response to FlickrSearchResponse object.
+                    if let result = jsonData.result,
+                        let dictionary = JSON(result).dictionaryObject,
                         let flickrSearchResponse = FlickrSearchResponse(JSON: dictionary) {
+                        flickrSearchResponse.response_description = JSON(result)
+                        self.curlString.accept(jsonData.cURLString())
                         return flickrSearchResponse
                     }
                     return nil
