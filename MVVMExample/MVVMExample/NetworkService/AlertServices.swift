@@ -12,7 +12,7 @@ import RxSwift
 
 extension AlertService {
     
-    public func presentPMConfirmAlert(title: String?, message: String?, yesText: String = "Yes", noText: String = "No") -> Single<Bool> {
+    @discardableResult public func presentPMConfirmAlert(title: String?, message: String?, yesText: String = "Yes", noText: String = "No") -> Single<Bool> {
         return Single.create { single in
             let alertPage = AlertPage(title: title, message: message, preferredStyle: .alert)
             
