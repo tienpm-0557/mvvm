@@ -23,6 +23,7 @@ class AlertServicePage: BasePage {
         super.initialize()
         guard let viewModel = self.viewModel as? AlertServiceViewModel else { return }
         
+        DependencyManager.shared.registerService(Factory<AlertService> { AlertService() })
     }
     
     override func bindViewAndViewModel() {
@@ -30,6 +31,9 @@ class AlertServicePage: BasePage {
         guard let viewModel = self.viewModel as? AlertServiceViewModel else { return }
         
         submitBtn.rx.bind(to: viewModel.submitAction, input: ())
+        viewModel.rxConfirmAction.subscribe(onNext: { (confirm) in
+            print("DEBUG: confirmed \(confirm)")
+        }) => disposeBag
     }
     
     

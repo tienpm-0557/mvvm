@@ -13,13 +13,21 @@ import RxSwift
 import RxCocoa
 
 class AlertServiceViewModel: BaseViewModel {
-    var alertService: IAlertService?
+    var alertService: AlertService?
     let rxSubmitButtonEnabled = BehaviorRelay(value: true)
+    let rxConfirmAction = BehaviorRelay(value: true)
     
     lazy var submitAction: Action<Void, Void> = {
         return Action(enabledIf: self.rxSubmitButtonEnabled.asObservable()) {
-            self.alertService?.presentOkayAlert(title: "Submit Button Clicked!",
-                                               message: "You have just clicked on submit button.")
+            self.alertService?.presentPMConfirmAlert(title: "Submit Button Clicked!",
+                                                               message: "You have just clicked on submit button.? Do you want submit?",
+                                                               yesText: "OK",
+                                                               noText: "Cancel").subscribe(onSuccess: { (confirm) in
+                                                                self.rxConfirmAction.accept(confirm)
+                                                               }, onError: { (error) in
+                                                                
+                                                               })
+            
             return .just(())
         }
     }()

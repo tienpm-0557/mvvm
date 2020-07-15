@@ -6,11 +6,11 @@
 import UIKit
 import RxSwift
 
-class AlertPage: UIAlertController {
+public class AlertPage: UIAlertController {
     
     private var alertWindow: UIWindow? = nil
     
-    fileprivate func show() {
+    public func show() {
         let blankViewController = UIViewController()
         blankViewController.view.backgroundColor = .clear
         
@@ -24,12 +24,12 @@ class AlertPage: UIAlertController {
         blankViewController.present(self, animated: true)
     }
     
-    fileprivate func hide() {
+    public func hide() {
         alertWindow?.isHidden = true
         alertWindow = nil
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override public func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         hide()
@@ -46,6 +46,7 @@ public protocol IAlertService {
 }
 
 public class AlertService: IAlertService {
+    public init() {}
     
     public func presentOkayAlert(title: String? = "OK", message: String? = nil) {
         let alertPage = AlertPage(title: title, message: message, preferredStyle: .alert)
