@@ -50,9 +50,7 @@ public struct DDConfigurations {
      then override this block to make navigation service can find the correct top page
      */
     public static var topPageFindingBlock: Factory<UIViewController?> = Factory {
-        let myWindow = UIApplication.shared.windows
-            .filter { !($0.rootViewController is UIAlertController) }
-            .first
+        let myWindow = UIApplication.shared.keyWindow
         
         guard let rootPage = myWindow?.rootViewController else {
             return nil
