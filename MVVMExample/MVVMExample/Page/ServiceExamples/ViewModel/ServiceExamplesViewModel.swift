@@ -14,7 +14,7 @@ import WebKit
 class ServiceExamplesPageViewModel: TableOfContentViewModel {
     
     override func fetchData() {
-        let alert = MenuTableCellViewModel(model: MenuModel(withTitle: "Alert Service (coming soon)",
+        let alert = MenuTableCellViewModel(model: MenuModel(withTitle: "Alert Service",
                                                 desc: "How to create alert service and register it"))
         let networkService = MenuTableCellViewModel(model: MenuModel(withTitle: "Alamofire Network Services.",
                                                                      desc: "Examples about how to use Alamofire Network Services."))
@@ -33,7 +33,9 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
         var page: UIViewController?
         switch indexPath.row {
         case 0: // Alert service.
-            ()
+            let vm = AlertServiceViewModel(model: cellViewModel.model)
+            let vc = AlertServicePage(viewModel: vm)
+            page = vc
         case 1: // Alamofire network service.
             let vm = NetworkServicePageViewModel(model: cellViewModel.model)
             let vc = NetworkServicePage(viewModel: vm)

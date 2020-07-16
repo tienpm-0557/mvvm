@@ -110,6 +110,10 @@
 		9C79EE0F247124FB00FEF5EC /* DynamicCollectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C79EE0D247124FB00FEF5EC /* DynamicCollectionPage.swift */; };
 		9C79EE10247124FB00FEF5EC /* DynamicCollectionPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C79EE0E247124FB00FEF5EC /* DynamicCollectionPage.xib */; };
 		9C79EE152471293B00FEF5EC /* DynamicCollectionPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C79EE142471293B00FEF5EC /* DynamicCollectionPageViewModel.swift */; };
+		9C8268EE24BEE343008497A6 /* AlertServicePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8268EC24BEE343008497A6 /* AlertServicePage.swift */; };
+		9C8268EF24BEE343008497A6 /* AlertServicePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8268ED24BEE343008497A6 /* AlertServicePage.xib */; };
+		9C8268F224BEE377008497A6 /* AlertServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8268F124BEE377008497A6 /* AlertServiceViewModel.swift */; };
+		9C8268F524BEEB9C008497A6 /* AlertServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8268F424BEEB9C008497A6 /* AlertServices.swift */; };
 		9C929577247BD2D700AC7E8E /* NetworkService+Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C929576247BD2D700AC7E8E /* NetworkService+Flickr.swift */; };
 		9C92957B247CB63400AC7E8E /* NetworkServicePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C929579247CB63400AC7E8E /* NetworkServicePage.swift */; };
 		9C92957C247CB63400AC7E8E /* NetworkServicePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C92957A247CB63400AC7E8E /* NetworkServicePage.xib */; };
@@ -269,6 +273,10 @@
 		9C79EE0D247124FB00FEF5EC /* DynamicCollectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionPage.swift; sourceTree = "<group>"; };
 		9C79EE0E247124FB00FEF5EC /* DynamicCollectionPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DynamicCollectionPage.xib; sourceTree = "<group>"; };
 		9C79EE142471293B00FEF5EC /* DynamicCollectionPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionPageViewModel.swift; sourceTree = "<group>"; };
+		9C8268EC24BEE343008497A6 /* AlertServicePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServicePage.swift; sourceTree = "<group>"; };
+		9C8268ED24BEE343008497A6 /* AlertServicePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertServicePage.xib; sourceTree = "<group>"; };
+		9C8268F124BEE377008497A6 /* AlertServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServiceViewModel.swift; sourceTree = "<group>"; };
+		9C8268F424BEEB9C008497A6 /* AlertServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServices.swift; sourceTree = "<group>"; };
 		9C929576247BD2D700AC7E8E /* NetworkService+Flickr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Flickr.swift"; sourceTree = "<group>"; };
 		9C929579247CB63400AC7E8E /* NetworkServicePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServicePage.swift; sourceTree = "<group>"; };
 		9C92957A247CB63400AC7E8E /* NetworkServicePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkServicePage.xib; sourceTree = "<group>"; };
@@ -747,6 +755,7 @@
 		9C74EC09246D8B8B00A3CF1D /* ServiceExamples */ = {
 			isa = PBXGroup;
 			children = (
+				9C8268EB24BEE317008497A6 /* AlertService */,
 				9C10902D249A15BD009C3166 /* MoyaProvider */,
 				9C929578247CB5E700AC7E8E /* NetworkServiceExample */,
 				9C74EC0E246D8C1100A3CF1D /* ViewModel */,
@@ -999,6 +1008,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		9C8268EB24BEE317008497A6 /* AlertService */ = {
+			isa = PBXGroup;
+			children = (
+				9C8268F024BEE34A008497A6 /* ViewModal */,
+				9C8268EC24BEE343008497A6 /* AlertServicePage.swift */,
+				9C8268ED24BEE343008497A6 /* AlertServicePage.xib */,
+			);
+			path = AlertService;
+			sourceTree = "<group>";
+		};
+		9C8268F024BEE34A008497A6 /* ViewModal */ = {
+			isa = PBXGroup;
+			children = (
+				9C8268F124BEE377008497A6 /* AlertServiceViewModel.swift */,
+			);
+			path = ViewModal;
+			sourceTree = "<group>";
+		};
 		9C929578247CB5E700AC7E8E /* NetworkServiceExample */ = {
 			isa = PBXGroup;
 			children = (
@@ -1061,6 +1088,7 @@
 				9CCBA664247AC29C00D73A7B /* NetworkServices.swift */,
 				9C109035249A173B009C3166 /* MoyaNetworkService.swift */,
 				9C929576247BD2D700AC7E8E /* NetworkService+Flickr.swift */,
+				9C8268F424BEEB9C008497A6 /* AlertServices.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1255,6 +1283,7 @@
 				9CF158E324713B1F006A1CFB /* HeaderCollectionView.xib in Resources */,
 				9CF158DA24712A55006A1CFB /* DynamicCollectionViewCell.xib in Resources */,
 				9C74EC5E2470069500A3CF1D /* HeaderFooterListPage.xib in Resources */,
+				9C8268EF24BEE343008497A6 /* AlertServicePage.xib in Resources */,
 				9C74EB8C246D19BC00A3CF1D /* LaunchScreen.storyboard in Resources */,
 				9C74EBDF246D22CD00A3CF1D /* AuthenticationWebPage.xib in Resources */,
 				9C74B1802477C1220061F2BF /* ContactEditPage.xib in Resources */,
@@ -1406,6 +1435,7 @@
 				9C74EBDE246D22CD00A3CF1D /* AuthenticationWebPage.swift in Sources */,
 				9C74EC1D246D8FFF00A3CF1D /* TransitionExamplesPageViewModel.swift in Sources */,
 				9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */,
+				9C8268EE24BEE343008497A6 /* AlertServicePage.swift in Sources */,
 				9C74B17F2477C1220061F2BF /* ContactEditPage.swift in Sources */,
 				9C74EBB4246D1ABA00A3CF1D /* IntroductionPage.swift in Sources */,
 				9C109030249A1617009C3166 /* MoyaProviderServicePage.swift in Sources */,
@@ -1468,11 +1498,13 @@
 				9C74EC42246E4A3B00A3CF1D /* SectionListPageViewModel.swift in Sources */,
 				9CAEA2852478C90F00061B49 /* FlickrImageCell.swift in Sources */,
 				9C5D0195248542BA00AF87F9 /* ValidatePageViewModel.swift in Sources */,
+				9C8268F524BEEB9C008497A6 /* AlertServices.swift in Sources */,
 				9CF158DD24712D31006A1CFB /* DynamicCollectionCellModel.swift in Sources */,
 				9C74EBCE246D1F9500A3CF1D /* ConfirmAlertWebPage.swift in Sources */,
 				9C74EC6624700C4600A3CF1D /* DynamicListPageViewModel.swift in Sources */,
 				9C74EC0C246D8BB900A3CF1D /* ServiceExamplesPage.swift in Sources */,
 				9C74EB7D246D19B900A3CF1D /* AppDelegate.swift in Sources */,
+				9C8268F224BEE377008497A6 /* AlertServiceViewModel.swift in Sources */,
 				9C74EB87246D19B900A3CF1D /* MVVMExample.xcdatamodeld in Sources */,
 				9C74EC10246D8C2B00A3CF1D /* ServiceExamplesViewModel.swift in Sources */,
 				9C74EBBA246D1AF000A3CF1D /* MenuTableViewCell.swift in Sources */,
