@@ -11,17 +11,11 @@ public class AlertPage: UIAlertController {
     private var alertWindow: UIWindow? = nil
     
     public func show() {
-        let blankViewController = UIViewController()
-        blankViewController.view.backgroundColor = .clear
-        
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = blankViewController
-        window.backgroundColor = .clear
-        window.windowLevel = UIWindow.Level.alert + 1
-        window.makeKeyAndVisible()
-        alertWindow = window
-        
-        blankViewController.present(self, animated: true)
+        let window = UIApplication.shared.keyWindow
+        guard let rootViewContorller = window?.rootViewController else {
+            return
+        }
+        rootViewContorller.present(self, animated: true)
     }
     
     public func hide() {
