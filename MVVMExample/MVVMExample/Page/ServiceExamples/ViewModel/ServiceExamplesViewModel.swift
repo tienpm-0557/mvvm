@@ -20,7 +20,7 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
                                                                      desc: "Examples about how to use Alamofire Network Services."))
         let moyaNetworkService = MenuTableCellViewModel(model: MenuModel(withTitle: "Moya Network Services (coming soon)",
                                                                      desc: "Examples about how to use Moya Network Services."))
-        let reachability = MenuTableCellViewModel(model: MenuModel(withTitle: "Reachability service (coming soon)",
+        let reachability = MenuTableCellViewModel(model: MenuModel(withTitle: "Reachability service",
                                                                      desc: "Examples about how to use Reachability Network Services."))
         
         
@@ -45,7 +45,9 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
             let vc = MoyaProviderServicePage(viewModel: vm)
             page = vc
         case 3: // Reachability service.
-            ()
+            let vm = ReachabilityPageViewModel(model: cellViewModel.model)
+            let vc = ReachabilityPage(viewModel: vm)
+            page = vc
         default: ()
         }
         
