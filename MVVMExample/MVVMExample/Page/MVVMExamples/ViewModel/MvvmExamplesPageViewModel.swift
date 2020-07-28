@@ -26,9 +26,9 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
         let searchBar = MenuTableCellViewModel(model: MenuModel(withTitle: "Advanced Example 2", desc: "An advanced example on using Search Bar to search images on Flickr."))
         let webKit = MenuTableCellViewModel(model: MenuModel(withTitle: "WebKit", desc: "Examples about how to create a  Webkit and apply it."))
         
-        let imagepicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Image Picker", desc: "Examples about how to create a  UIImagePickerController and apply it."))
+        let imagepicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Image Picker(coming soon)", desc: "Examples about how to create a  UIImagePickerController and apply it."))
         
-        let mediaPicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Media Picker", desc: "Examples about how to create a  Webkit and apply it."))
+        let mediaPicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Media Picker(coming soon)", desc: "Examples about how to create a  Webkit and apply it."))
         
         itemsSource.reset([[listPage, listCollectionPage, listCollectionHeaderFooterPage, dynamicListPage, collectionPage, dynamicCollectionPage, advanced, searchBar, webKit, imagepicker, mediaPicker]])
     }
