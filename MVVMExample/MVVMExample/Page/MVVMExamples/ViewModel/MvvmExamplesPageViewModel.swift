@@ -25,10 +25,8 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
         
         let searchBar = MenuTableCellViewModel(model: MenuModel(withTitle: "Advanced Example 2", desc: "An advanced example on using Search Bar to search images on Flickr."))
         let webKit = MenuTableCellViewModel(model: MenuModel(withTitle: "WebKit", desc: "Examples about how to create a  Webkit and apply it."))
-        let uiPageViewController = MenuTableCellViewModel(model: MenuModel(withTitle: "UIPageViewController (coming soon)", desc: "Examples about how to create a  UIPageViewController"))
-        let tabbarController = MenuTableCellViewModel(model: MenuModel(withTitle: "TabbarController (coming soon)", desc: "Examples about how to create a TabbarController"))
         
-        itemsSource.reset([[listPage, listCollectionPage, listCollectionHeaderFooterPage, dynamicListPage, collectionPage, dynamicCollectionPage, advanced, searchBar, webKit, uiPageViewController, tabbarController]])
+        itemsSource.reset([[listPage, listCollectionPage, listCollectionHeaderFooterPage, dynamicListPage, collectionPage, dynamicCollectionPage, advanced, searchBar, webKit]])
     }
     
     override func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
@@ -81,12 +79,6 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
             let vm = WebViewExamplesPageViewModel(model: cellViewModel.model)
             let vc = WebKitExamplesPage(viewModel: vm)
             page = vc
-        case 9:
-            ///UIPageViewController
-            ()
-        case 10:
-            /// TabbarController
-            ()
         default: ()
         }
         

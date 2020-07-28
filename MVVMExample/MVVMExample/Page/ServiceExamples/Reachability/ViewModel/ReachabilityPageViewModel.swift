@@ -50,7 +50,6 @@ class ReachabilityPageViewModel: BaseViewModel {
         reachibilityService = DependencyManager.shared.getService()
         reachibilityService?.startReachability()
         reachibilityService?.connectState.subscribe(onNext: { (state) in
-            print("State: \(state)")
             guard let state = state else { return }
             switch state.description {
             case Reachability.Connection.wifi.description:

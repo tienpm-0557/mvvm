@@ -23,7 +23,7 @@ class AlertServicePage: BasePage {
     
     override func initialize() {
         super.initialize()
-        guard let viewModel = self.viewModel as? AlertServiceViewModel else { return }
+        //guard let viewModel = self.viewModel as? AlertServiceViewModel else { return }
         
         DependencyManager.shared.registerService(Factory<AlertService> { AlertService() })
     }
