@@ -75,8 +75,10 @@ class TableOfContentViewModel: BaseListViewModel {
         let service = MenuTableCellViewModel(model: MenuModel(withTitle: "Service Examples", desc: "Examples about how to create a service and register it; how to inject to our ViewModel."))
         let transition = MenuTableCellViewModel(model: MenuModel(withTitle: "Transition Examples",
                                                                  desc: "Examples about how to create a custom transitioning animation and apply it."))
+        let storeKit = MenuTableCellViewModel(model: MenuModel(withTitle: "StoreKit Examples (coming soon)",
+        desc: "Examples about how to use StoreKit in your application."))
 
-        itemsSource.reset([[intro, mvvm, dataBinding, service, transition]])
+        itemsSource.reset([[intro, mvvm, dataBinding, service, transition, storeKit]])
     }
     
     func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {

@@ -20,12 +20,13 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
                                                                      desc: "Examples about how to use Alamofire Network Services."))
         let moyaNetworkService = MenuTableCellViewModel(model: MenuModel(withTitle: "Moya Network Services (coming soon)",
                                                                      desc: "Examples about how to use Moya Network Services."))
-        let reachability = MenuTableCellViewModel(model: MenuModel(withTitle: "Reachability service",
+        let reachabilityService = MenuTableCellViewModel(model: MenuModel(withTitle: "Reachability service",
                                                                      desc: "Examples about how to use Reachability Network Services."))
+        let mailService = MenuTableCellViewModel(model: MenuModel(withTitle: "Mail service (coming soon)", desc: "Examples about how to use Mail service Services."))
         
+        let shareService = MenuTableCellViewModel(model: MenuModel(withTitle: "Share service (coming soon)", desc: "Examples about how to use share service Services."))
         
-        
-        itemsSource.reset([[alert, networkService, moyaNetworkService, reachability]])
+        itemsSource.reset([[alert, networkService, moyaNetworkService, reachabilityService, mailService, shareService]])
     }
     
     override func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
