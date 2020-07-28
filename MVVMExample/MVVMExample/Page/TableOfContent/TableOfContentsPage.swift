@@ -76,7 +76,7 @@ class TableOfContentViewModel: BaseListViewModel {
         let transition = MenuTableCellViewModel(model: MenuModel(withTitle: "Transition Examples",
                                                                  desc: "Examples about how to create a custom transitioning animation and apply it."))
         let storeKit = MenuTableCellViewModel(model: MenuModel(withTitle: "StoreKit Examples (coming soon)",
-        desc: "Examples about how to use StoreKit in your application."))
+        desc: "Examples about how to use StoreKit in your application. (rate app, in-app  purchases...etc)"))
 
         itemsSource.reset([[intro, mvvm, dataBinding, service, transition, storeKit]])
     }
