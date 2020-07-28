@@ -36,6 +36,8 @@ class ListPageExamplePage: BaseListPage {
         guard let viewModel = viewModel as? ListPageExampleViewModel else { return }
         viewModel.rxPageTitle ~> rx.title => disposeBag
         addBtn.rx.bind(to: viewModel.addAction, input: ())
+        
+        
     }
 
     override func cellIdentifier(_ cellViewModel: Any, _ returnClassName: Bool = false) -> String {

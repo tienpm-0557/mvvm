@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09BC282524C19BB500D874CE /* MVVM.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 09BC282424C19BB400D874CE /* MVVM.podspec */; };
+		09DC47A024C146A100906F6F /* ReachabilityPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC479E24C146A100906F6F /* ReachabilityPage.swift */; };
+		09DC47A124C146A100906F6F /* ReachabilityPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DC479F24C146A100906F6F /* ReachabilityPage.xib */; };
+		09DC47A324C146BF00906F6F /* ReachabilityPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC47A224C146BF00906F6F /* ReachabilityPageViewModel.swift */; };
 		5E2DF30773EEF1F642A6074E /* Pods_MVVMExample_MVVMExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775FFCE0F57A8F5D67ED7F5 /* Pods_MVVMExample_MVVMExampleUITests.framework */; };
 		9C109030249A1617009C3166 /* MoyaProviderServicePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C10902E249A1617009C3166 /* MoyaProviderServicePage.swift */; };
 		9C109031249A1617009C3166 /* MoyaProviderServicePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C10902F249A1617009C3166 /* MoyaProviderServicePage.xib */; };
@@ -159,6 +163,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09BC282424C19BB400D874CE /* MVVM.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MVVM.podspec; path = ../../MVVM.podspec; sourceTree = "<group>"; };
+		09DC479E24C146A100906F6F /* ReachabilityPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityPage.swift; sourceTree = "<group>"; };
+		09DC479F24C146A100906F6F /* ReachabilityPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReachabilityPage.xib; sourceTree = "<group>"; };
+		09DC47A224C146BF00906F6F /* ReachabilityPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityPageViewModel.swift; sourceTree = "<group>"; };
 		1D366A151424D44CEE56203B /* Pods-MVVMExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-MVVMExampleTests/Pods-MVVMExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1D416BBC35676C31222D8D30 /* Pods-MVVMExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExampleTests.release.xcconfig"; path = "Target Support Files/Pods-MVVMExampleTests/Pods-MVVMExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C0C4091F625405B63DF19FA /* Pods-MVVMExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExample.debug.xcconfig"; path = "Target Support Files/Pods-MVVMExample/Pods-MVVMExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -333,6 +341,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09DC479C24C1462C00906F6F /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				09DC479D24C1465300906F6F /* ViewModel */,
+				09DC479E24C146A100906F6F /* ReachabilityPage.swift */,
+				09DC479F24C146A100906F6F /* ReachabilityPage.xib */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		09DC479D24C1465300906F6F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				09DC47A224C146BF00906F6F /* ReachabilityPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2E8556F45D63B88A1B0DA4A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +519,7 @@
 		9C74EB7B246D19B900A3CF1D /* MVVMExample */ = {
 			isa = PBXGroup;
 			children = (
+				09BC282424C19BB400D874CE /* MVVM.podspec */,
 				9CCBA65D247AB1EB00D73A7B /* SystemConfiguration */,
 				9CCBA656247A79F300D73A7B /* NetworkService */,
 				9C74EBBE246D1B5A00A3CF1D /* Models */,
@@ -755,6 +782,7 @@
 		9C74EC09246D8B8B00A3CF1D /* ServiceExamples */ = {
 			isa = PBXGroup;
 			children = (
+				09DC479C24C1462C00906F6F /* Reachability */,
 				9C8268EB24BEE317008497A6 /* AlertService */,
 				9C10902D249A15BD009C3166 /* MoyaProvider */,
 				9C929578247CB5E700AC7E8E /* NetworkServiceExample */,
@@ -1269,6 +1297,7 @@
 				9C74EC05246D8A3A00A3CF1D /* DataBindingExamplesPage.xib in Resources */,
 				9C74EC34246E468B00A3CF1D /* SectionListPage.xib in Resources */,
 				9C74B1782477BA5F0061F2BF /* ContactListPage.xib in Resources */,
+				09BC282524C19BB500D874CE /* MVVM.podspec in Resources */,
 				9C79EE10247124FB00FEF5EC /* DynamicCollectionPage.xib in Resources */,
 				9C423CC7247819AD00D9B950 /* ContactTableViewCell.xib in Resources */,
 				9CAEA27E2478C21C00061B49 /* FlickrImageSearchPage.xib in Resources */,
@@ -1289,6 +1318,7 @@
 				9C74B1802477C1220061F2BF /* ContactEditPage.xib in Resources */,
 				9C5D019B248550D600AF87F9 /* AuthenticationPage.xib in Resources */,
 				9C74EBBD246D1AF000A3CF1D /* TableOfContentsPage.xib in Resources */,
+				09DC47A124C146A100906F6F /* ReachabilityPage.xib in Resources */,
 				9C74EB89246D19BC00A3CF1D /* Assets.xcassets in Resources */,
 				9C74EC2A246D97BF00A3CF1D /* SimpleTableCell.xib in Resources */,
 				9C74EBD7246D206100A3CF1D /* AlertWebPage.xib in Resources */,
@@ -1451,6 +1481,7 @@
 				9C74EC00246D4EE500A3CF1D /* MvvmExamplesPageViewModel.swift in Sources */,
 				9C74EB81246D19B900A3CF1D /* ViewController.swift in Sources */,
 				9C74EBF2246D24E600A3CF1D /* EvaluateJavaScriptWebViewModel.swift in Sources */,
+				09DC47A324C146BF00906F6F /* ReachabilityPageViewModel.swift in Sources */,
 				9C929577247BD2D700AC7E8E /* NetworkService+Flickr.swift in Sources */,
 				9C74EBBC246D1AF000A3CF1D /* TableOfContentsPage.swift in Sources */,
 				9C76D7D324867E5400DEABA1 /* CustomControlPage.swift in Sources */,
@@ -1476,6 +1507,7 @@
 				9C74EBE6246D23F000A3CF1D /* FailNavigationWebPage.swift in Sources */,
 				9C74EBC5246D1E2500A3CF1D /* IntroductionViewModel.swift in Sources */,
 				9C109034249A164B009C3166 /* MoyaProviderServicePageViewModel.swift in Sources */,
+				09DC47A024C146A100906F6F /* ReachabilityPage.swift in Sources */,
 				9C74EBDA246D20D800A3CF1D /* AlertWebPageViewModel.swift in Sources */,
 				9C79EE152471293B00FEF5EC /* DynamicCollectionPageViewModel.swift in Sources */,
 				9C109036249A173B009C3166 /* MoyaNetworkService.swift in Sources */,
@@ -1691,8 +1723,9 @@
 			baseConfigurationReference = 5C0C4091F625405B63DF19FA /* Pods-MVVMExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 747LG25T2M;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MVVMExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1701,6 +1734,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mtlab.mvvm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1711,8 +1745,9 @@
 			baseConfigurationReference = 9ABF18DB489E0848CC55D75A /* Pods-MVVMExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 747LG25T2M;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MVVMExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1721,6 +1756,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mtlab.mvvm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
