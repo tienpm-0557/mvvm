@@ -49,7 +49,6 @@ extension NetworkService {
             
             return Disposables.create { self.tmpBag = DisposeBag() }
         }
-        
     }
     
 }

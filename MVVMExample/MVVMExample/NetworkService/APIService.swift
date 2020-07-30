@@ -124,6 +124,7 @@ public enum APIService: URLRequestConvertible {
     public func asURLRequest() throws -> URLRequest {
         let url = try APIUrl.rootURL.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+        
         ///Common configuration
         urlRequest.httpMethod = method.rawValue
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
@@ -133,6 +134,7 @@ public enum APIService: URLRequestConvertible {
         default:
             break
         }
+        
         urlRequest.httpMethod = method.rawValue
         return urlRequest
     }

@@ -10,14 +10,42 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransitionExamplesPage" customModule="MVVMExample" customModuleProvider="target">
             <connections>
+                <outlet property="flipBtn" destination="pKl-i0-p7n" id="EEw-rf-Pc6"/>
                 <outlet property="view" destination="uR3-3K-os2" id="eCc-Tz-Jkp"/>
+                <outlet property="zoomBtn" destination="JOC-H9-67T" id="qz8-h9-duy"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="uR3-3K-os2">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKl-i0-p7n">
+                    <rect key="frame" x="20" y="94" width="374" height="45"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="KFe-0Q-No8"/>
+                    </constraints>
+                    <state key="normal" title="Push Flip"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOC-H9-67T">
+                    <rect key="frame" x="20" y="159" width="374" height="45"/>
+                    <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="CR6-ga-uaE"/>
+                    </constraints>
+                    <state key="normal" title="Zoom and Switch"/>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="23K-e7-VCH" firstAttribute="trailing" secondItem="JOC-H9-67T" secondAttribute="trailing" constant="20" id="2Ot-uB-CWV"/>
+                <constraint firstItem="pKl-i0-p7n" firstAttribute="leading" secondItem="23K-e7-VCH" secondAttribute="leading" constant="20" id="BH3-FU-PQR"/>
+                <constraint firstItem="pKl-i0-p7n" firstAttribute="top" secondItem="23K-e7-VCH" secondAttribute="top" constant="50" id="dQO-9Y-QFf"/>
+                <constraint firstItem="23K-e7-VCH" firstAttribute="trailing" secondItem="pKl-i0-p7n" secondAttribute="trailing" constant="20" id="ipS-pM-Pqp"/>
+                <constraint firstItem="JOC-H9-67T" firstAttribute="top" secondItem="pKl-i0-p7n" secondAttribute="bottom" constant="20" id="vW7-fE-Vde"/>
+                <constraint firstItem="JOC-H9-67T" firstAttribute="leading" secondItem="23K-e7-VCH" secondAttribute="leading" constant="20" id="yMj-pl-xhX"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="23K-e7-VCH"/>
             <point key="canvasLocation" x="139" y="153"/>
         </view>

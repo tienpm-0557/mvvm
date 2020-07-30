@@ -9,11 +9,19 @@
 import MVVM
 import RxCocoa
 import WebKit
-
+import Action
 //MARK: ViewModel For Transition Examples
 class TransitionExamplesPageViewModel: BaseViewModel {
     
     let rxPageTitle = BehaviorRelay<String>(value: "")
+    
+    lazy var flipAction: Action<Void, Void> = {
+        return Action() { .just(self.pushAndFlip()) }
+    }()
+    
+    lazy var zoomAction: Action<Void, Void> = {
+        return Action() { .just(self.pushAndZoom()) }
+    }()
     
     override func react() {
         super.react()
@@ -21,6 +29,33 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         rxPageTitle.accept(title)
     }
     
+    
+    private func pushAndFlip() {
+        /*
+        let page = FlipPage(viewModel: ViewModel<Model>())
+        let animator = FlipAnimator()
+        if usingModal {
+            let navPage = NavigationPage(rootViewController: page)
+            navigationService.push(to: navPage, options: .modal(animator: animator))
+        } else {
+            navigationService.push(to: page, options: .push(with: animator))
+        }
+         */
+    }
+    
+    private func pushAndZoom() {
+        /*
+        let page = ZoomPage(viewModel: ViewModel<Model>())
+        let animator = ZoomAnimator()
+        if usingModal {
+            let navPage = NavigationPage(rootViewController: page)
+            navigationService.push(to: navPage, options: .modal(animator: animator))
+        } else {
+            navigationService.push(to: page, options: .push(with: animator))
+        }
+        */
+    }
+     
     
     
 }

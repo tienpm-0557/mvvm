@@ -11,6 +11,9 @@ import MVVM
 
 class TransitionExamplesPage: BasePage {
 
+    @IBOutlet private weak var flipBtn: UIButton!
+    @IBOutlet private weak var zoomBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +26,10 @@ class TransitionExamplesPage: BasePage {
             return
         }
         viewModel.rxPageTitle ~> self.rx.title => disposeBag
+        flipBtn.rx.bind(to: viewModel.flipAction, input: ())
+        zoomBtn.rx.bind(to: viewModel.zoomAction, input: ())
     }
+    
     /*
     // MARK: - Navigation
 
