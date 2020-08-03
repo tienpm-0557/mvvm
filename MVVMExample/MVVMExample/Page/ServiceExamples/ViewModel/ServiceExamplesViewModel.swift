@@ -94,10 +94,8 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
                 if result.completed {
                      self?.alertService?.presentOkayAlert(title: "", message: "Share success!")
                 } else {
-                    if result.message == "url_invalid" {
-                        self?.alertService?.presentOkayAlert(title: "", message: "URL Invalid!")
-                    } else {
-                        self?.alertService?.presentOkayAlert(title: "", message: "Share failed!")
+                    if let err = result.error {
+                        self?.alertService?.presentOkayAlert(title: "", message: err.localizedDescription)
                     }
                 }
             }) => disposeBag

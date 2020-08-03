@@ -15,7 +15,7 @@ public class ShareService {
         
     }
     
-    public var rxShareServiceState = BehaviorRelay<(completed:Bool, items:[Any]?, message:String)?>(value: nil)
+    public var rxShareServiceState = BehaviorRelay<(completed:Bool, items:[Any]?, error: Error?)?>(value: nil)
     
     public func openShare(title: String, url: String) {
         if let myWebSite = URL(string: url) {
@@ -23,7 +23,7 @@ public class ShareService {
             let activityVC = UIActivityViewController(activityItems: objectToShare, applicationActivities: nil)
             
             activityVC.completionWithItemsHandler =  {[weak self] (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-                self?.rxShareServiceState.accept((completed, returnedItems, ""))
+                self?.rxShareServiceState.accept((completed, returnedItems, error))
             }
             
             /// Present activity View Controller
@@ -34,7 +34,8 @@ public class ShareService {
             
             rootViewContorller.present(activityVC, animated: true)
         } else {
-            rxShareServiceState.accept((false, nil, "url_invalid"))
+            let err = NSError(domain: "", code: 404, userInfo: ["message": "URL Invalid"])
+            rxShareServiceState.accept((false, nil, err))
         }
     }
 }
