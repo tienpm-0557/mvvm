@@ -13,7 +13,8 @@ import RxCocoa
 public class MailService: NSObject, MFMailComposeViewControllerDelegate {
     
     static var shared = MailService()
-    public var mailComposeState = BehaviorRelay<String>(value: "")
+    public var rxMailComposeState = BehaviorRelay<MFMailComposeResult?>(value: nil)
+    public var rxMailSettingValidate = BehaviorRelay<String>(value: "")
     
     public func canSendEmailAndAlert() -> Bool {
         if MFMailComposeViewController.canSendMail() {
@@ -40,24 +41,13 @@ public class MailService: NSObject, MFMailComposeViewControllerDelegate {
             }
             rootViewContorller.present(mailer, animated: true)
         } else {
-            mailComposeState.accept("Please set up mail account in order to send email")
+            rxMailSettingValidate.accept("Please set up mail account in order to send email")
         }
     }
     
     public func mailComposeController(_ controller: MFMailComposeViewController,
                                       didFinishWith result: MFMailComposeResult, error: Error?) {
-        switch result {
-        case .cancelled:
-            mailComposeState.accept("Mail cancelled: you cancelled the operation and no email message was queued.")
-        case .saved:
-            mailComposeState.accept("Mail saved: you saved the email message in the drafts folder.")
-        case .sent:
-            mailComposeState.accept("Mail send: the email message is queued in the outbox. It is ready to send.")
-        case .failed:
-            mailComposeState.accept("Mail failed: the email message was not saved or queued, possibly due to an error.")
-        default:
-            mailComposeState.accept("None")
-        }
+        rxMailComposeState.accept(result)
         controller.dismiss(animated: true, completion: nil)
     }
 }

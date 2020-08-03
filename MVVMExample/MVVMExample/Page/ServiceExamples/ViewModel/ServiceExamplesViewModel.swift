@@ -17,11 +17,13 @@ import RxCocoa
 class ServiceExamplesPageViewModel: TableOfContentViewModel {
     var mailService: MailService?
     var alertService: AlertService?
+    var shareService: ShareService?
     
     override func react() {
         super.react()
         mailService = DependencyManager.shared.getService()
         alertService = DependencyManager.shared.getService()
+        shareService = DependencyManager.shared.getService()
     }
     
     override func fetchData() {
@@ -35,7 +37,7 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
                                                                      desc: "Examples about how to use Reachability Network Services."))
         let mailService = MenuTableCellViewModel(model: MenuModel(withTitle: "Mail service", desc: "Examples about how to create and use Mail service."))
         
-        let shareService = MenuTableCellViewModel(model: MenuModel(withTitle: "Share service (coming soon)", desc: "Examples about how to use share service Services."))
+        let shareService = MenuTableCellViewModel(model: MenuModel(withTitle: "Share service", desc: "Examples about how to use share service Services."))
         
         itemsSource.reset([[alert, networkService, moyaNetworkService, reachabilityService, mailService, shareService]])
     }
@@ -61,11 +63,44 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
             let vc = ReachabilityPage(viewModel: vm)
             page = vc
         case 4:
+            ///Provide your emails, subjects, and message for mail detail.
             mailService?.sendMailTo(listEmail: ["phamminhtien305@gmail.com","dinh.tung@sun-asterisk.com"], withSubject: "[Enter your subject]", withMessage: "[Enter your message]")
-            mailService?.mailComposeState.subscribe(onNext: { (state) in
-                self.alertService?.presentOkayAlert(title: "MVVM Example", message: state)
+            mailService?.rxMailComposeState.subscribe(onNext: { [weak self](result) in
+                var message: String? = nil
+                switch result {
+                case .cancelled:
+                    message = "Mail cancelled: you cancelled the operation and no email message was queued."
+                case .saved:
+                    message = "Mail saved: you saved the email message in the drafts folder."
+                case .sent:
+                    message = "Mail send: the email message is queued in the outbox. It is ready to send."
+                case .failed:
+                    message = "Mail failed: the email message was not saved or queued, possibly due to an error."
+                default:
+                    message = nil
+                }
+                if let message = message {
+                    self?.alertService?.presentOkayAlert(title: "MVVM Examples", message: message)
+                }
             }) => disposeBag
             
+            mailService?.rxMailSettingValidate.subscribe(onNext: {[weak self] (validateMessage) in
+                self?.alertService?.presentOkayAlert(title: "MVVM Examples", message: validateMessage)
+            }) => disposeBag
+        case 5:
+            shareService?.openShare(title: "[Your share Title]", url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md")
+            shareService?.rxShareServiceState.subscribe(onNext: {[weak self] (result) in
+                guard let result = result else { return }
+                if result.completed {
+                     self?.alertService?.presentOkayAlert(title: "", message: "Share success!")
+                } else {
+                    if result.message == "url_invalid" {
+                        self?.alertService?.presentOkayAlert(title: "", message: "URL Invalid!")
+                    } else {
+                        self?.alertService?.presentOkayAlert(title: "", message: "Share failed!")
+                    }
+                }
+            }) => disposeBag
         default: ()
         }
         
