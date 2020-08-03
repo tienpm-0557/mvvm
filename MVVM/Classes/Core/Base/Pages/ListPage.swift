@@ -48,10 +48,19 @@ open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITabl
     
     /// Every time the viewModel changed, this method will be called again, so make sure to call super for ListPage to work
     open override func bindViewAndViewModel() {
-        tableView.rx.itemSelected.asObservable().subscribe(onNext: onItemSelected) => disposeBag
+        super.bindViewAndViewModel()
+        
+        tableView.rx.itemSelected
+            .asObservable()
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.onItemSelected(indexPath)
+            }) => disposeBag
+        
         viewModel?.itemsSource.collectionChanged
             .observeOn(Scheduler.shared.mainScheduler)
-            .subscribe(onNext: onDataSourceChanged) => disposeBag
+            .subscribe(onNext: {[weak self] indexPath in
+                self?.onDataSourceChanged(indexPath)
+            }) => disposeBag
     }
     
     open override func localHudToggled(_ value: Bool) {
