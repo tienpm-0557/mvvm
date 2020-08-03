@@ -134,6 +134,10 @@
 		9CCBA65F247AB20000D73A7B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCBA65E247AB20000D73A7B /* Constants.swift */; };
 		9CCBA663247AC21E00D73A7B /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCBA662247AC21E00D73A7B /* APIService.swift */; };
 		9CCBA665247AC29C00D73A7B /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCBA664247AC29C00D73A7B /* NetworkServices.swift */; };
+		9CD35C0E24D7B72F0087B8CF /* AnimatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD35C0D24D7B72F0087B8CF /* AnimatorType.swift */; };
+		9CD35C1B24D7C6320087B8CF /* TransitionContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD35C1924D7C6320087B8CF /* TransitionContentPage.swift */; };
+		9CD35C1C24D7C6320087B8CF /* TransitionContentPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD35C1A24D7C6320087B8CF /* TransitionContentPage.xib */; };
+		9CD35C1E24D7C7E40087B8CF /* TransitionContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD35C1D24D7C7E40087B8CF /* TransitionContentModel.swift */; };
 		9CF158D924712A55006A1CFB /* DynamicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF158D724712A55006A1CFB /* DynamicCollectionViewCell.swift */; };
 		9CF158DA24712A55006A1CFB /* DynamicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CF158D824712A55006A1CFB /* DynamicCollectionViewCell.xib */; };
 		9CF158DD24712D31006A1CFB /* DynamicCollectionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF158DC24712D31006A1CFB /* DynamicCollectionCellModel.swift */; };
@@ -301,6 +305,10 @@
 		9CCBA65E247AB20000D73A7B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9CCBA662247AC21E00D73A7B /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		9CCBA664247AC29C00D73A7B /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
+		9CD35C0D24D7B72F0087B8CF /* AnimatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorType.swift; sourceTree = "<group>"; };
+		9CD35C1924D7C6320087B8CF /* TransitionContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionContentPage.swift; sourceTree = "<group>"; };
+		9CD35C1A24D7C6320087B8CF /* TransitionContentPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitionContentPage.xib; sourceTree = "<group>"; };
+		9CD35C1D24D7C7E40087B8CF /* TransitionContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionContentModel.swift; sourceTree = "<group>"; };
 		9CF158D724712A55006A1CFB /* DynamicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CF158D824712A55006A1CFB /* DynamicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DynamicCollectionViewCell.xib; sourceTree = "<group>"; };
 		9CF158DC24712D31006A1CFB /* DynamicCollectionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionCellModel.swift; sourceTree = "<group>"; };
@@ -596,6 +604,7 @@
 				9CCBA657247A7C2100D73A7B /* IntroductionModel.swift */,
 				9CCBA659247A7C4C00D73A7B /* ContactModel.swift */,
 				9CCBA65B247A7C7900D73A7B /* FlickrSearchModel.swift */,
+				9CD35C1D24D7C7E40087B8CF /* TransitionContentModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -804,6 +813,7 @@
 		9C74EC12246D8F6600A3CF1D /* TransitionExamplesPage */ = {
 			isa = PBXGroup;
 			children = (
+				9CD35C1424D7BF690087B8CF /* TransitionPage */,
 				9C74EC17246D8F9C00A3CF1D /* ViewModel */,
 				9C74EC13246D8F8000A3CF1D /* TransitionExamplesPage.swift */,
 				9C74EC14246D8F8000A3CF1D /* TransitionExamplesPage.xib */,
@@ -814,6 +824,7 @@
 		9C74EC17246D8F9C00A3CF1D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9CD35C0D24D7B72F0087B8CF /* AnimatorType.swift */,
 				9C74EC1C246D8FFF00A3CF1D /* TransitionExamplesPageViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1129,6 +1140,15 @@
 			path = SystemConfiguration;
 			sourceTree = "<group>";
 		};
+		9CD35C1424D7BF690087B8CF /* TransitionPage */ = {
+			isa = PBXGroup;
+			children = (
+				9CD35C1924D7C6320087B8CF /* TransitionContentPage.swift */,
+				9CD35C1A24D7C6320087B8CF /* TransitionContentPage.xib */,
+			);
+			path = TransitionPage;
+			sourceTree = "<group>";
+		};
 		9CF158DB24712CFC006A1CFB /* CellViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1318,6 +1338,7 @@
 				9C74B1802477C1220061F2BF /* ContactEditPage.xib in Resources */,
 				9C5D019B248550D600AF87F9 /* AuthenticationPage.xib in Resources */,
 				9C74EBBD246D1AF000A3CF1D /* TableOfContentsPage.xib in Resources */,
+				9CD35C1C24D7C6320087B8CF /* TransitionContentPage.xib in Resources */,
 				09DC47A124C146A100906F6F /* ReachabilityPage.xib in Resources */,
 				9C74EB89246D19BC00A3CF1D /* Assets.xcassets in Resources */,
 				9C74EC2A246D97BF00A3CF1D /* SimpleTableCell.xib in Resources */,
@@ -1462,10 +1483,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD35C0E24D7B72F0087B8CF /* AnimatorType.swift in Sources */,
 				9C74EBDE246D22CD00A3CF1D /* AuthenticationWebPage.swift in Sources */,
 				9C74EC1D246D8FFF00A3CF1D /* TransitionExamplesPageViewModel.swift in Sources */,
 				9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */,
 				9C8268EE24BEE343008497A6 /* AlertServicePage.swift in Sources */,
+				9CD35C1B24D7C6320087B8CF /* TransitionContentPage.swift in Sources */,
 				9C74B17F2477C1220061F2BF /* ContactEditPage.swift in Sources */,
 				9C74EBB4246D1ABA00A3CF1D /* IntroductionPage.swift in Sources */,
 				9C109030249A1617009C3166 /* MoyaProviderServicePage.swift in Sources */,
@@ -1498,6 +1521,7 @@
 				9C74EC572470037200A3CF1D /* SectionFooterListView.swift in Sources */,
 				9CF158E6247144B1006A1CFB /* HeaderCollectionViewModel.swift in Sources */,
 				9C76D7D724867E7400DEABA1 /* CustomControlViewPageModel.swift in Sources */,
+				9CD35C1E24D7C7E40087B8CF /* TransitionContentModel.swift in Sources */,
 				9C74EBF7246D435400A3CF1D /* ListPageExamplePage.swift in Sources */,
 				9CCBA665247AC29C00D73A7B /* NetworkServices.swift in Sources */,
 				9C79EE0F247124FB00FEF5EC /* DynamicCollectionPage.swift in Sources */,

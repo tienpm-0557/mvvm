@@ -95,7 +95,7 @@ class TableOfContentViewModel: BaseListViewModel {
         case 3:
             page = ServiceExamplesPage(viewModel: ServiceExamplesPageViewModel(model: cellViewModel.model))
         case 4:
-            page = TransitionExamplesPage(viewModel: TransitionExamplesPageViewModel(model: cellViewModel.model))
+            page = TransitionExamplesPage(viewModel: TransitionExamplesPageViewModel(model: cellViewModel.model, usingShowModal: true))
         default: ()
         }
         return page

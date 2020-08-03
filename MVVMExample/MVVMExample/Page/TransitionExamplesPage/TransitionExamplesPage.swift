@@ -13,11 +13,19 @@ class TransitionExamplesPage: BasePage {
 
     @IBOutlet private weak var flipBtn: UIButton!
     @IBOutlet private weak var zoomBtn: UIButton!
+    @IBOutlet private weak var clockBtn: UIButton!
+    
+    @IBOutlet private weak var topPadding: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
     }
 
     override func bindViewAndViewModel() {
@@ -28,6 +36,7 @@ class TransitionExamplesPage: BasePage {
         viewModel.rxPageTitle ~> self.rx.title => disposeBag
         flipBtn.rx.bind(to: viewModel.flipAction, input: ())
         zoomBtn.rx.bind(to: viewModel.zoomAction, input: ())
+        clockBtn.rx.bind(to: viewModel.clockAction, input: ())
     }
     
     /*
