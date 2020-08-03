@@ -136,7 +136,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Cross And Fade",
                                                                 desc: "Example transition page with Cross And Fade animation",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
-        let animator = CrossFadeAnimator(withDuration: TimeInterval(0.25), isPresenting: self.usingShowModal)
+        let animator = CrossFadeAnimator(withDuration: TimeInterval(0.75), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
     

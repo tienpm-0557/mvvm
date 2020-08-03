@@ -34,11 +34,6 @@ class TransitionExamplesPage: BasePage {
 
         // Do any additional setup after loading the view.
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
 
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()

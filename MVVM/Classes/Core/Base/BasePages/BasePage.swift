@@ -51,9 +51,6 @@ open class BasePage: UIViewController, ITransitionView {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        
         initialize()
         updateAfterViewModelChanged()
     }

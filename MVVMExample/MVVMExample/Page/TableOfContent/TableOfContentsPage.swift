@@ -78,7 +78,10 @@ class TableOfContentViewModel: BaseListViewModel {
         let storeKit = MenuTableCellViewModel(model: MenuModel(withTitle: "StoreKit Examples (coming soon)",
         desc: "Examples about how to use StoreKit in your application. (rate app, in-app  purchases...etc)"))
 
-        itemsSource.reset([[intro, mvvm, dataBinding, service, transition, storeKit]])
+        let localization = MenuTableCellViewModel(model: MenuModel(withTitle: "Localizing Examples (coming soon)",
+        desc: "Examples about how to setting localize in your application."))
+
+        itemsSource.reset([[intro, mvvm, dataBinding, service, transition, storeKit, localization]])
     }
     
     func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
