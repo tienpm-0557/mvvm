@@ -13,6 +13,7 @@ import RxSwift
 import Action
 
 class TransitionContentPage: BasePage {
+    @IBOutlet private weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class TransitionContentPage: BasePage {
             return
         }
         self.rx.title.onNext(model.title)
+        self.view.backgroundColor = UIColor(hexString: model.background)
     }
     
     override func initialize() {
@@ -36,11 +38,8 @@ class TransitionContentPage: BasePage {
             return
         }
         
-        let label = UILabel()
         label.text = model.desc
-//        "Did you see the page zoom and switch?"
-        view.addSubview(label)
-        label.autoCenterInSuperview()
+        //label.autoCenterInSuperview()
     }
     
     override func onBack() {
