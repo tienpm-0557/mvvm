@@ -6,12 +6,23 @@
 //  Copyright © 2020 Sun*. All rights reserved.
 //
 
-import MVVM
 import RxCocoa
 import WebKit
+import MVVM
+import Action
+import RxSwift
+import RxCocoa
 
 //MARK: ViewModel For Service Examples
 class ServiceExamplesPageViewModel: TableOfContentViewModel {
+    var mailService: MailService?
+    var alertService: AlertService?
+    
+    override func react() {
+        super.react()
+        mailService = DependencyManager.shared.getService()
+        alertService = DependencyManager.shared.getService()
+    }
     
     override func fetchData() {
         let alert = MenuTableCellViewModel(model: MenuModel(withTitle: "Alert Service",
@@ -22,7 +33,7 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
                                                                      desc: "Examples about how to use Moya Network Services."))
         let reachabilityService = MenuTableCellViewModel(model: MenuModel(withTitle: "Reachability service",
                                                                      desc: "Examples about how to use Reachability Network Services."))
-        let mailService = MenuTableCellViewModel(model: MenuModel(withTitle: "Mail service (coming soon)", desc: "Examples about how to use Mail service Services."))
+        let mailService = MenuTableCellViewModel(model: MenuModel(withTitle: "Mail service", desc: "Examples about how to create and use Mail service."))
         
         let shareService = MenuTableCellViewModel(model: MenuModel(withTitle: "Share service (coming soon)", desc: "Examples about how to use share service Services."))
         
@@ -49,6 +60,12 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
             let vm = ReachabilityPageViewModel(model: cellViewModel.model)
             let vc = ReachabilityPage(viewModel: vm)
             page = vc
+        case 4:
+            mailService?.sendMailTo(listEmail: ["phamminhtien305@gmail.com","dinh.tung@sun-asterisk.com"], withSubject: "[Enter your subject]", withMessage: "[Enter your message]")
+            mailService?.mailComposeState.subscribe(onNext: { (state) in
+                self.alertService?.presentOkayAlert(title: "MVVM Example", message: state)
+            }) => disposeBag
+            
         default: ()
         }
         

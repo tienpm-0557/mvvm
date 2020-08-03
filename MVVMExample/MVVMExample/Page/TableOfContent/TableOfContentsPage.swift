@@ -81,7 +81,7 @@ class TableOfContentViewModel: BaseListViewModel {
         let localization = MenuTableCellViewModel(model: MenuModel(withTitle: "Localizing Examples (coming soon)",
         desc: "Examples about how to setting localize in your application."))
 
-        itemsSource.reset([[intro, mvvm, dataBinding, service, transition, storeKit, localization]])
+        itemsSource.reset([[intro, mvvm, service, transition, dataBinding, storeKit, localization]])
     }
     
     func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
@@ -94,11 +94,11 @@ class TableOfContentViewModel: BaseListViewModel {
         case 1:
             page = MVVMExamplePage(viewModel: MvvmExamplesPageViewModel(model: cellViewModel.model))
         case 2:
-            page = DataBindingExamplesPage(viewModel: DatabindingExamplesPageViewModel(model: cellViewModel.model))
-        case 3:
             page = ServiceExamplesPage(viewModel: ServiceExamplesPageViewModel(model: cellViewModel.model))
-        case 4:
+        case 3:
             page = TransitionExamplesPage(viewModel: TransitionExamplesPageViewModel(model: cellViewModel.model, usingShowModal: true))
+        case 4:
+            page = DataBindingExamplesPage(viewModel: DatabindingExamplesPageViewModel(model: cellViewModel.model))
         default: ()
         }
         return page

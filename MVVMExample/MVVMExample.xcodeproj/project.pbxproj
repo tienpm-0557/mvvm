@@ -138,6 +138,7 @@
 		9CD35C1B24D7C6320087B8CF /* TransitionContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD35C1924D7C6320087B8CF /* TransitionContentPage.swift */; };
 		9CD35C1C24D7C6320087B8CF /* TransitionContentPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD35C1A24D7C6320087B8CF /* TransitionContentPage.xib */; };
 		9CD35C1E24D7C7E40087B8CF /* TransitionContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD35C1D24D7C7E40087B8CF /* TransitionContentModel.swift */; };
+		9CD35C2324D837070087B8CF /* MailServiceExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD35C2224D837070087B8CF /* MailServiceExt.swift */; };
 		9CF158D924712A55006A1CFB /* DynamicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF158D724712A55006A1CFB /* DynamicCollectionViewCell.swift */; };
 		9CF158DA24712A55006A1CFB /* DynamicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CF158D824712A55006A1CFB /* DynamicCollectionViewCell.xib */; };
 		9CF158DD24712D31006A1CFB /* DynamicCollectionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF158DC24712D31006A1CFB /* DynamicCollectionCellModel.swift */; };
@@ -309,6 +310,7 @@
 		9CD35C1924D7C6320087B8CF /* TransitionContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionContentPage.swift; sourceTree = "<group>"; };
 		9CD35C1A24D7C6320087B8CF /* TransitionContentPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitionContentPage.xib; sourceTree = "<group>"; };
 		9CD35C1D24D7C7E40087B8CF /* TransitionContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionContentModel.swift; sourceTree = "<group>"; };
+		9CD35C2224D837070087B8CF /* MailServiceExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailServiceExt.swift; sourceTree = "<group>"; };
 		9CF158D724712A55006A1CFB /* DynamicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CF158D824712A55006A1CFB /* DynamicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DynamicCollectionViewCell.xib; sourceTree = "<group>"; };
 		9CF158DC24712D31006A1CFB /* DynamicCollectionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionCellModel.swift; sourceTree = "<group>"; };
@@ -529,7 +531,7 @@
 			children = (
 				09BC282424C19BB400D874CE /* MVVM.podspec */,
 				9CCBA65D247AB1EB00D73A7B /* SystemConfiguration */,
-				9CCBA656247A79F300D73A7B /* NetworkService */,
+				9CCBA656247A79F300D73A7B /* Services */,
 				9C74EBBE246D1B5A00A3CF1D /* Models */,
 				9C74EBAF246D1A0B00A3CF1D /* Page */,
 				9C74EB7C246D19B900A3CF1D /* AppDelegate.swift */,
@@ -1120,16 +1122,14 @@
 			path = CellViewModel;
 			sourceTree = "<group>";
 		};
-		9CCBA656247A79F300D73A7B /* NetworkService */ = {
+		9CCBA656247A79F300D73A7B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9CCBA662247AC21E00D73A7B /* APIService.swift */,
-				9CCBA664247AC29C00D73A7B /* NetworkServices.swift */,
-				9C109035249A173B009C3166 /* MoyaNetworkService.swift */,
-				9C929576247BD2D700AC7E8E /* NetworkService+Flickr.swift */,
-				9C8268F424BEEB9C008497A6 /* AlertServices.swift */,
+				9CD35C2124D836F70087B8CF /* MailService */,
+				9CD35C2024D836ED0087B8CF /* AlertService */,
+				9CD35C1F24D836D80087B8CF /* NetworkServices */,
 			);
-			path = NetworkService;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		9CCBA65D247AB1EB00D73A7B /* SystemConfiguration */ = {
@@ -1147,6 +1147,33 @@
 				9CD35C1A24D7C6320087B8CF /* TransitionContentPage.xib */,
 			);
 			path = TransitionPage;
+			sourceTree = "<group>";
+		};
+		9CD35C1F24D836D80087B8CF /* NetworkServices */ = {
+			isa = PBXGroup;
+			children = (
+				9CCBA662247AC21E00D73A7B /* APIService.swift */,
+				9CCBA664247AC29C00D73A7B /* NetworkServices.swift */,
+				9C109035249A173B009C3166 /* MoyaNetworkService.swift */,
+				9C929576247BD2D700AC7E8E /* NetworkService+Flickr.swift */,
+			);
+			path = NetworkServices;
+			sourceTree = "<group>";
+		};
+		9CD35C2024D836ED0087B8CF /* AlertService */ = {
+			isa = PBXGroup;
+			children = (
+				9C8268F424BEEB9C008497A6 /* AlertServices.swift */,
+			);
+			path = AlertService;
+			sourceTree = "<group>";
+		};
+		9CD35C2124D836F70087B8CF /* MailService */ = {
+			isa = PBXGroup;
+			children = (
+				9CD35C2224D837070087B8CF /* MailServiceExt.swift */,
+			);
+			path = MailService;
 			sourceTree = "<group>";
 		};
 		9CF158DB24712CFC006A1CFB /* CellViewModel */ = {
@@ -1567,6 +1594,7 @@
 				9C79EE062470DE0200FEF5EC /* SimpleCollectionViewCell.swift in Sources */,
 				9C74EBD6246D206100A3CF1D /* AlertWebPage.swift in Sources */,
 				9CCBA65C247A7C7900D73A7B /* FlickrSearchModel.swift in Sources */,
+				9CD35C2324D837070087B8CF /* MailServiceExt.swift in Sources */,
 				9CAEA2812478C65300061B49 /* FlickrImageSearchPageViewModel.swift in Sources */,
 				9CF158D924712A55006A1CFB /* DynamicCollectionViewCell.swift in Sources */,
 				9C423CCA24781D2300D9B950 /* ContactCellViewModel.swift in Sources */,
@@ -1749,7 +1777,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 747LG25T2M;
 				INFOPLIST_FILE = MVVMExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1771,7 +1799,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 747LG25T2M;
 				INFOPLIST_FILE = MVVMExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
