@@ -10,7 +10,8 @@ import Foundation
 
 struct LocalizedStringConfigs {
     //MARK:
-    static let strLocalizePageTitle                     = "strLocalizePageTitle"
+    static let strLocalizePageTitle                 = "strLocalizePageTitle"
+    static let strTableOfContents                   = "strTableOfContents"
     
 }
 

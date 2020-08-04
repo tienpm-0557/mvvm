@@ -6,5 +6,8 @@
   Copyright © 2020 Sun*. All rights reserved.
 */
 
+//MARK: Table Of Contents
+strTableOfContents                      = "目次";
+
 strLocalizePageTitle                    = "ローカリゼーション";
 strTestMessage                          = "[メッセージを入力してください]";

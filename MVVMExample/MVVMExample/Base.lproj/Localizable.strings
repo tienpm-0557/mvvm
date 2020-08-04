@@ -6,5 +6,8 @@
   Copyright © 2020 Sun*. All rights reserved.
 */
 
+//MARK: Table Of Contents
+strTableOfContents                      = "Table Of Contents";
+
 strLocalizePageTitle                    = "Localization";
 strTestMessage                          = "[Enter your message]";

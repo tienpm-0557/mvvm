@@ -61,7 +61,13 @@ class TableOfContentViewModel: BaseListViewModel {
     override func react() {
         super.react()
         fetchData()
-        let title = (self.model as? MenuModel)?.title ?? "Table Of Contents"
+        let title = (self.model as? MenuModel)?.title ?? LocalizedStringConfigs.strTableOfContents.localized
+        rxPageTitle.accept(title)
+    }
+    
+    override func onUpdateLocalize() {
+        super.onUpdateLocalize()
+        let title = (self.model as? MenuModel)?.title ?? LocalizedStringConfigs.strTableOfContents.localized
         rxPageTitle.accept(title)
     }
     
