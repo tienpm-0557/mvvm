@@ -42,9 +42,5 @@ class LocalizationPage: BasePage {
         print("DEBUG: Page onUpdateLocalize")
         localizeLb.text = LocalizedStringConfigs.strLocalizePageTitle.localized
     }
-//    override func onUpdateLocalize() {
-//        super.onUpdateLocalize()
-//        localizeLb.text = LocalizedStringConfigs.strLocalizePageTitle.localized
-//    }
 
 }
