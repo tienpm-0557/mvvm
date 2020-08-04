@@ -31,7 +31,7 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
                                                 desc: "How to create alert service and register it"))
         let networkService = MenuTableCellViewModel(model: MenuModel(withTitle: "Alamofire Network Services.",
                                                                      desc: "Examples about how to use Alamofire Network Services."))
-        let moyaNetworkService = MenuTableCellViewModel(model: MenuModel(withTitle: "Moya Network Services (coming soon)",
+        let moyaNetworkService = MenuTableCellViewModel(model: MenuModel(withTitle: "Moya Network Services",
                                                                      desc: "Examples about how to use Moya Network Services."))
         let reachabilityService = MenuTableCellViewModel(model: MenuModel(withTitle: "Reachability service",
                                                                      desc: "Examples about how to use Reachability Network Services."))

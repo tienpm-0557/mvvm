@@ -1,40 +1,27 @@
 //
-//  MoyaNetworkService.swift
+//  MoyaAPIService.swift
 //  MVVMExample
 //
-//  Created by pham.minh.tien on 6/17/20.
+//  Created by pham.minh.tien on 8/4/20.
 //  Copyright © 2020 Sun*. All rights reserved.
 //
 
 import Foundation
+import MVVM
 import Moya
 import RxSwift
-
-class FlickrService {
-//    static let shared = FlickrService()
-    
-    private let flickrProvider = MoyaProvider<FlickrAPI>()
-    
-    // Use this line to enable logging
-//    private let flickrProvider = MoyaProvider<FlickrAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
-    
-    func search(keyword: String, page: Int) -> Single<FlickrSearchResponse> {
-        return flickrProvider.rx
-            .request(.search(keyword: keyword, page: page))
-            .filterSuccessfulStatusAndRedirectCodes()
-            .mapObject(FlickrSearchResponse.self)
-    }
-}
-
+import RxCocoa
+import ObjectMapper
+import SwiftyJSON
 
 // 1:
-enum FlickrAPI {
-    
-    // MARK: - Cameras
-    case search(keyword: String, page: Int)
+enum MoyaAPIService {
+    // MARK: - API Flickr Search
+    case flickrSearch(keyword: String, page: Int)
+    // MARK: - API
 }
 
-extension FlickrAPI: TargetType {
+extension MoyaAPIService: TargetType {
     var headers: [String : String]? {
         return nil
     }
@@ -43,14 +30,14 @@ extension FlickrAPI: TargetType {
     
     var path: String {
         switch self {
-        case .search:
+        case .flickrSearch:
             return ""
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .search:
+        case .flickrSearch:
             return .get
         }
     }
@@ -65,7 +52,7 @@ extension FlickrAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .search(let keyword, let page):
+        case .flickrSearch(let keyword, let page):
             let parameters: [String: Any] = [
                 "method": "flickr.photos.search",
                 "api_key": "dc4c20e9d107a9adfa54917799e44650", // please provide your API key

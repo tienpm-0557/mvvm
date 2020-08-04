@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NetworkServicePage" customModule="MVVMExample" customModuleProvider="target">
             <connections>
-                <outlet property="cURLTxt" destination="YiZ-qN-b4r" id="Gyp-7e-ZX6"/>
+                <outlet property="cURLLb" destination="mdn-2t-Fio" id="t6b-4k-vFc"/>
                 <outlet property="responseTxt" destination="6y8-em-JvG" id="Zo0-5l-ygg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,51 +23,34 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pt9-Zo-fHW">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YiZ-qN-b4r">
-                            <rect key="frame" x="0.0" y="20" width="414" height="150"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="150" id="wx6-5Y-F4Q"/>
-                            </constraints>
-                            <string key="text">I have two textfields and I’ll have to get the value from changed field (with old value != current) and update textfield that is unchanged (with old value == current)
-
-And If I don’t want to cause forever loop I’ll have to check that the current values of the fields are equal, to stop propagating evens (filterRxSwift operator)</string>
-                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                    <real key="value" value="0.5"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                    <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </textView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6y8-em-JvG">
-                            <rect key="frame" x="0.0" y="170" width="414" height="648"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <string key="text">I have two textfields and I’ll have to get the value from changed field (with old value != current) and update textfield that is unchanged (with old value == current)
-
-And If I don’t want to cause forever loop I’ll have to check that the current values of the fields are equal, to stop propagating evens (filterRxSwift operator)</string>
+                            <rect key="frame" x="0.0" y="15" width="414" height="803"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdn-2t-Fio">
+                            <rect key="frame" x="10" y="5" width="394" height="0.0"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="6y8-em-JvG" secondAttribute="bottom" id="6rg-Ck-SgP"/>
-                        <constraint firstItem="6y8-em-JvG" firstAttribute="top" secondItem="YiZ-qN-b4r" secondAttribute="bottom" id="7Xt-SI-SXr"/>
                         <constraint firstItem="6y8-em-JvG" firstAttribute="leading" secondItem="Pt9-Zo-fHW" secondAttribute="leading" id="HaT-PU-06o"/>
+                        <constraint firstItem="mdn-2t-Fio" firstAttribute="top" secondItem="Pt9-Zo-fHW" secondAttribute="top" constant="5" id="KF1-mq-P3p"/>
                         <constraint firstAttribute="trailing" secondItem="6y8-em-JvG" secondAttribute="trailing" id="LYe-ej-jlr"/>
-                        <constraint firstItem="YiZ-qN-b4r" firstAttribute="leading" secondItem="Pt9-Zo-fHW" secondAttribute="leading" id="N8N-4a-tMf"/>
-                        <constraint firstItem="YiZ-qN-b4r" firstAttribute="top" secondItem="Pt9-Zo-fHW" secondAttribute="top" constant="20" symbolic="YES" id="TJj-tb-fw3"/>
-                        <constraint firstAttribute="trailing" secondItem="YiZ-qN-b4r" secondAttribute="trailing" id="Xkr-ff-G8N"/>
+                        <constraint firstItem="6y8-em-JvG" firstAttribute="top" secondItem="mdn-2t-Fio" secondAttribute="bottom" constant="10" id="SbC-f4-OYE"/>
+                        <constraint firstAttribute="trailing" secondItem="mdn-2t-Fio" secondAttribute="trailing" constant="10" id="d1e-VH-caG"/>
+                        <constraint firstItem="mdn-2t-Fio" firstAttribute="leading" secondItem="Pt9-Zo-fHW" secondAttribute="leading" constant="10" id="e4q-zv-9tw"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Pt9-Zo-fHW" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="2Qn-uj-Ja6"/>
                 <constraint firstItem="Pt9-Zo-fHW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="eDc-XT-iM3"/>

@@ -19,6 +19,8 @@ class NetworkServicePageViewModel: BaseViewModel {
     let rxCurlText = BehaviorRelay<String?>(value: "")
     let rxResponseText = BehaviorRelay<String?>(value: "")
     
+    let rxIsSearching = BehaviorRelay<Bool>(value: false)
+
     var page: Int = 0
     var finishedSearching: Bool = false
 
@@ -39,6 +41,9 @@ class NetworkServicePageViewModel: BaseViewModel {
             } else {
                 self?.rxCurlText.accept("")
             }
+            if !text.isNilOrEmpty {
+                self?.rxIsSearching.accept(true)
+            }
         }).debounce(.microseconds(500), scheduler: Scheduler.shared.mainScheduler).subscribe(onNext: {[weak self] (text) in
             if !text.isNilOrEmpty {
                 self?.search(withText: text!, withPage: 0)
@@ -50,9 +55,11 @@ class NetworkServicePageViewModel: BaseViewModel {
         _ = networkService?.search(withKeyword: keyword, page: page).map(prepareSources).subscribe(onSuccess: { [weak self] (results) in
             if let flickSearch = results, let desc = flickSearch.response_description {
                 self?.rxResponseText.accept("Responsed: \n\(desc)")
+                self?.rxIsSearching.accept(false)
             }
         }, onError: { (error) in
-            
+            self.rxResponseText.accept("Responsed: \n\(error)")
+            self.rxIsSearching.accept(false)
         })
     }
     

@@ -122,6 +122,7 @@
 		9C92957B247CB63400AC7E8E /* NetworkServicePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C929579247CB63400AC7E8E /* NetworkServicePage.swift */; };
 		9C92957C247CB63400AC7E8E /* NetworkServicePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C92957A247CB63400AC7E8E /* NetworkServicePage.xib */; };
 		9C92957F247CB7FD00AC7E8E /* NetworkServicePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92957E247CB7FD00AC7E8E /* NetworkServicePageViewModel.swift */; };
+		9CA044C324D9040900F4673A /* MoyaAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA044C224D9040900F4673A /* MoyaAPIService.swift */; };
 		9CAEA27D2478C21C00061B49 /* FlickrImageSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAEA27B2478C21C00061B49 /* FlickrImageSearchPage.swift */; };
 		9CAEA27E2478C21C00061B49 /* FlickrImageSearchPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAEA27C2478C21C00061B49 /* FlickrImageSearchPage.xib */; };
 		9CAEA2812478C65300061B49 /* FlickrImageSearchPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAEA2802478C65300061B49 /* FlickrImageSearchPageViewModel.swift */; };
@@ -294,6 +295,7 @@
 		9C929579247CB63400AC7E8E /* NetworkServicePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServicePage.swift; sourceTree = "<group>"; };
 		9C92957A247CB63400AC7E8E /* NetworkServicePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkServicePage.xib; sourceTree = "<group>"; };
 		9C92957E247CB7FD00AC7E8E /* NetworkServicePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServicePageViewModel.swift; sourceTree = "<group>"; };
+		9CA044C224D9040900F4673A /* MoyaAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaAPIService.swift; sourceTree = "<group>"; };
 		9CAEA27B2478C21C00061B49 /* FlickrImageSearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageSearchPage.swift; sourceTree = "<group>"; };
 		9CAEA27C2478C21C00061B49 /* FlickrImageSearchPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlickrImageSearchPage.xib; sourceTree = "<group>"; };
 		9CAEA2802478C65300061B49 /* FlickrImageSearchPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageSearchPageViewModel.swift; sourceTree = "<group>"; };
@@ -1085,6 +1087,25 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9CA044C424D9040F00F4673A /* AlamofireService */ = {
+			isa = PBXGroup;
+			children = (
+				9CCBA662247AC21E00D73A7B /* APIService.swift */,
+				9CCBA664247AC29C00D73A7B /* NetworkServices.swift */,
+				9C929576247BD2D700AC7E8E /* NetworkService+Flickr.swift */,
+			);
+			path = AlamofireService;
+			sourceTree = "<group>";
+		};
+		9CA044C524D9042900F4673A /* MoyaService */ = {
+			isa = PBXGroup;
+			children = (
+				9C109035249A173B009C3166 /* MoyaNetworkService.swift */,
+				9CA044C224D9040900F4673A /* MoyaAPIService.swift */,
+			);
+			path = MoyaService;
+			sourceTree = "<group>";
+		};
 		9CAEA2762478C16700061B49 /* AdvancedExample02 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1152,10 +1173,8 @@
 		9CD35C1F24D836D80087B8CF /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
-				9CCBA662247AC21E00D73A7B /* APIService.swift */,
-				9CCBA664247AC29C00D73A7B /* NetworkServices.swift */,
-				9C109035249A173B009C3166 /* MoyaNetworkService.swift */,
-				9C929576247BD2D700AC7E8E /* NetworkService+Flickr.swift */,
+				9CA044C524D9042900F4673A /* MoyaService */,
+				9CA044C424D9040F00F4673A /* AlamofireService */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -1575,6 +1594,7 @@
 				9C74EC33246E468B00A3CF1D /* SectionListPage.swift in Sources */,
 				9C74EC29246D97BF00A3CF1D /* SimpleTableCell.swift in Sources */,
 				9C74EC15246D8F8000A3CF1D /* TransitionExamplesPage.swift in Sources */,
+				9CA044C324D9040900F4673A /* MoyaAPIService.swift in Sources */,
 				9C74EBE2246D233D00A3CF1D /* AuthenticationWebViewModel.swift in Sources */,
 				9C92957B247CB63400AC7E8E /* NetworkServicePage.swift in Sources */,
 				9C74EC08246D8AAC00A3CF1D /* DataBindingExamplesViewModel.swift in Sources */,

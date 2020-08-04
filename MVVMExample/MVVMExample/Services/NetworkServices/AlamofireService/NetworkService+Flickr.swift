@@ -25,7 +25,9 @@ extension NetworkService {
                ]
         
         return Single.create { single in
-            self.request(withService: APIService.searchFlickr(parameters: parameters), withHash: true, usingCache: true)
+            self.request(withService: APIService.flickrSearch(parameters: parameters),
+                         withHash: true,
+                         usingCache: true)
                 .map({ (jsonData) -> FlickrSearchResponse? in
                     /// Implement logic maping if need.
                     /// Maping API Response to FlickrSearchResponse object.

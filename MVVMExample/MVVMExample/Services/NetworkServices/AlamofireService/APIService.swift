@@ -51,12 +51,12 @@ struct HeaderValue {
 
 public enum APIService: URLRequestConvertible {
     case login(parameters: Parameters?)
-    case searchFlickr(parameters: Parameters?)
+    case flickrSearch(parameters: Parameters?)
     
     var name: String {
         switch self {
-        case .searchFlickr:
-            return "login"
+        case .flickrSearch:
+            return "Flickr Search"
         default:
             return ""
         }
@@ -64,7 +64,7 @@ public enum APIService: URLRequestConvertible {
     
     var usingCache: Bool {
         switch self {
-        case .searchFlickr:
+        case .flickrSearch:
             return false
         default:
             return false
@@ -73,7 +73,7 @@ public enum APIService: URLRequestConvertible {
     
     var parameters: Parameters? {
         switch self {
-        case .searchFlickr(let parameter):
+        case .flickrSearch(let parameter):
             return parameter
         default:
             return nil
@@ -82,7 +82,7 @@ public enum APIService: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .searchFlickr:
+        case .flickrSearch:
             return .get
         default:
             return .get
@@ -93,7 +93,7 @@ public enum APIService: URLRequestConvertible {
         switch self {
         case .login:
             return APIUrl.login
-        case .searchFlickr:
+        case .flickrSearch:
             return APIUrl.apiFlickrSearch
         }
     }
@@ -115,7 +115,7 @@ public enum APIService: URLRequestConvertible {
         switch self {
         case .login:
             return JSONEncoding.default
-        case .searchFlickr:
+        case .flickrSearch:
             return URLEncoding.default
         }
     }
