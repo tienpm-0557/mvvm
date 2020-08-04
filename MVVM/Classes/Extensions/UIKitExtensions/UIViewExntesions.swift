@@ -95,6 +95,12 @@ extension UIView {
         layer.shadowPath = shadowPath.cgPath
     }
     
+    @objc open func onUpdateLocalize() {
+        for subView: UIView in self.subviews {
+            subView.onUpdateLocalize()
+        }
+    }
+    
 }
 
 

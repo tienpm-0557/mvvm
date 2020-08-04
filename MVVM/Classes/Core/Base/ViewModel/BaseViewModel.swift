@@ -58,12 +58,15 @@ open class BaseViewModel: NSObject, IViewModel, IReactable {
      */
     open func react() {}
     
+    open func onUpdateLocalize() {}
+    
     func reactIfNeeded() {
         guard !isReacted else { return }
         isReacted = true
         
         react()
     }
+    
 }
 
 open class BaseListViewModel: BaseViewModel, IListViewModel {

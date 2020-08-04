@@ -5,6 +5,12 @@
 
 import UIKit
 
+extension UIViewController {
+    @objc open func onUpdateLocalize() {
+        self.view.onUpdateLocalize()
+    }
+}
+
 public extension UINavigationController {
     
     func popViewController(animated: Bool, completions: ((UIViewController?) -> Void)?) {

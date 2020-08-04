@@ -6,7 +6,6 @@
 //  Copyright © 2020 Sun*. All rights reserved.
 //
 
-import RxCocoa
 import WebKit
 import MVVM
 import Action
@@ -15,9 +14,9 @@ import RxCocoa
 
 //MARK: ViewModel For Service Examples
 class ServiceExamplesPageViewModel: TableOfContentViewModel {
-    var mailService: MailService?
-    var alertService: AlertService?
-    var shareService: ShareService?
+    private var mailService: MailService?
+    private var alertService: AlertService?
+    private var shareService: ShareService?
     
     override func react() {
         super.react()

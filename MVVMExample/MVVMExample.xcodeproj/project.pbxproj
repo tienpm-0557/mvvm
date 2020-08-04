@@ -19,6 +19,11 @@
 		9C423CC6247819AD00D9B950 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */; };
 		9C423CC7247819AD00D9B950 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */; };
 		9C423CCA24781D2300D9B950 /* ContactCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */; };
+		9C59386924D9345900AB6F1E /* LocalizeStringConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59386824D9345900AB6F1E /* LocalizeStringConfigs.swift */; };
+		9C59386C24D9355100AB6F1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C59386A24D9355100AB6F1E /* Localizable.strings */; };
+		9C59387C24D945EA00AB6F1E /* LocalizationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59387A24D945EA00AB6F1E /* LocalizationPage.swift */; };
+		9C59387D24D945EA00AB6F1E /* LocalizationPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C59387B24D945EA00AB6F1E /* LocalizationPage.xib */; };
+		9C59388024D9461B00AB6F1E /* LocalizationPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59387F24D9461B00AB6F1E /* LocalizationPageViewModel.swift */; };
 		9C5D01912485428600AF87F9 /* ValidatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D018F2485428600AF87F9 /* ValidatePage.swift */; };
 		9C5D01922485428600AF87F9 /* ValidatePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5D01902485428600AF87F9 /* ValidatePage.xib */; };
 		9C5D0195248542BA00AF87F9 /* ValidatePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */; };
@@ -186,6 +191,15 @@
 		9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCellViewModel.swift; sourceTree = "<group>"; };
+		9C59386824D9345900AB6F1E /* LocalizeStringConfigs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeStringConfigs.swift; sourceTree = "<group>"; };
+		9C59386B24D9355100AB6F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = MVVMExample/Base.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		9C59386D24D9357600AB6F1E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C59387624D9440200AB6F1E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		9C59387724D9440200AB6F1E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9C59387824D9440200AB6F1E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ../ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C59387A24D945EA00AB6F1E /* LocalizationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationPage.swift; sourceTree = "<group>"; };
+		9C59387B24D945EA00AB6F1E /* LocalizationPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocalizationPage.xib; sourceTree = "<group>"; };
+		9C59387F24D9461B00AB6F1E /* LocalizationPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationPageViewModel.swift; sourceTree = "<group>"; };
 		9C5D018F2485428600AF87F9 /* ValidatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePage.swift; sourceTree = "<group>"; };
 		9C5D01902485428600AF87F9 /* ValidatePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ValidatePage.xib; sourceTree = "<group>"; };
 		9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePageViewModel.swift; sourceTree = "<group>"; };
@@ -453,6 +467,33 @@
 			path = AdvancedExample01;
 			sourceTree = "<group>";
 		};
+		9C59386724D9341000AB6F1E /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				9C59386824D9345900AB6F1E /* LocalizeStringConfigs.swift */,
+				9C59386A24D9355100AB6F1E /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		9C59387924D945BE00AB6F1E /* LocalizationExample */ = {
+			isa = PBXGroup;
+			children = (
+				9C59387E24D9460200AB6F1E /* ViewModel */,
+				9C59387A24D945EA00AB6F1E /* LocalizationPage.swift */,
+				9C59387B24D945EA00AB6F1E /* LocalizationPage.xib */,
+			);
+			path = LocalizationExample;
+			sourceTree = "<group>";
+		};
+		9C59387E24D9460200AB6F1E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C59387F24D9461B00AB6F1E /* LocalizationPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9C5D018E2485425900AF87F9 /* ValidatePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +577,7 @@
 				9CCBA656247A79F300D73A7B /* Services */,
 				9C74EBBE246D1B5A00A3CF1D /* Models */,
 				9C74EBAF246D1A0B00A3CF1D /* Page */,
+				9C59386724D9341000AB6F1E /* Localization */,
 				9C74EB7C246D19B900A3CF1D /* AppDelegate.swift */,
 				9C74EB80246D19B900A3CF1D /* ViewController.swift */,
 				9C74EB82246D19B900A3CF1D /* Main.storyboard */,
@@ -568,6 +610,7 @@
 		9C74EBAF246D1A0B00A3CF1D /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				9C59387924D945BE00AB6F1E /* LocalizationExample */,
 				9C74EC12246D8F6600A3CF1D /* TransitionExamplesPage */,
 				9C74EC09246D8B8B00A3CF1D /* ServiceExamples */,
 				9C74EC01246D8A0900A3CF1D /* DataBindingExamples */,
@@ -1340,6 +1383,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 9C74EB70246D19B900A3CF1D;
 			productRefGroup = 9C74EB7A246D19B900A3CF1D /* Products */;
@@ -1397,7 +1441,9 @@
 				9C74EBBB246D1AF000A3CF1D /* MenuTableViewCell.xib in Resources */,
 				9C74EBF8246D435400A3CF1D /* ListPageExamplePage.xib in Resources */,
 				9C74EBFD246D4E7C00A3CF1D /* MVVMExamplePage.xib in Resources */,
+				9C59387D24D945EA00AB6F1E /* LocalizationPage.xib in Resources */,
 				9C74EC48246E4B0500A3CF1D /* SectionImageCell.xib in Resources */,
+				9C59386C24D9355100AB6F1E /* Localizable.strings in Resources */,
 				9C74EB84246D19B900A3CF1D /* Main.storyboard in Resources */,
 				9CAEA2862478C90F00061B49 /* FlickrImageCell.xib in Resources */,
 				9C79EE072470DE0200FEF5EC /* SimpleCollectionViewCell.xib in Resources */,
@@ -1541,6 +1587,7 @@
 				9C5D019A248550D600AF87F9 /* AuthenticationPage.swift in Sources */,
 				9C74EC4E246E51BA00A3CF1D /* SectionHeaderListView.swift in Sources */,
 				9C92957F247CB7FD00AC7E8E /* NetworkServicePageViewModel.swift in Sources */,
+				9C59388024D9461B00AB6F1E /* LocalizationPageViewModel.swift in Sources */,
 				9C74EBEA246D243300A3CF1D /* FailNavigationWebViewModel.swift in Sources */,
 				9CAEA2892478CA8600061B49 /* FlickrCellViewModel.swift in Sources */,
 				9C74B1772477BA5F0061F2BF /* ContactListPage.swift in Sources */,
@@ -1560,6 +1607,7 @@
 				9C74EC4B246E4BC400A3CF1D /* SectionImageCellViewModel.swift in Sources */,
 				9C74EC47246E4B0500A3CF1D /* SectionImageCell.swift in Sources */,
 				9C74EC3D246E49A400A3CF1D /* SimpleListPageCellViewModel.swift in Sources */,
+				9C59386924D9345900AB6F1E /* LocalizeStringConfigs.swift in Sources */,
 				9CAEA27D2478C21C00061B49 /* FlickrImageSearchPage.swift in Sources */,
 				9C74EC2D246D984100A3CF1D /* ListPageModel.swift in Sources */,
 				9C5D01912485428600AF87F9 /* ValidatePage.swift in Sources */,
@@ -1589,6 +1637,7 @@
 				9C74EC5D2470069500A3CF1D /* HeaderFooterListPage.swift in Sources */,
 				9C423CC6247819AD00D9B950 /* ContactTableViewCell.swift in Sources */,
 				9CCBA65A247A7C4C00D73A7B /* ContactModel.swift in Sources */,
+				9C59387C24D945EA00AB6F1E /* LocalizationPage.swift in Sources */,
 				9C79EE022470DCE100FEF5EC /* CollectionPageViewModel.swift in Sources */,
 				9C79EE0A2470E0C500FEF5EC /* SimpleCollectionPage.swift in Sources */,
 				9C74EC33246E468B00A3CF1D /* SectionListPage.swift in Sources */,
@@ -1657,10 +1706,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9C59386A24D9355100AB6F1E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C59386B24D9355100AB6F1E /* Base */,
+				9C59386D24D9357600AB6F1E /* en */,
+				9C59387824D9440200AB6F1E /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		9C74EB82246D19B900A3CF1D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9C74EB83246D19B900A3CF1D /* Base */,
+				9C59387624D9440200AB6F1E /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1669,6 +1729,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C74EB8B246D19BC00A3CF1D /* Base */,
+				9C59387724D9440200AB6F1E /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1680,6 +1741,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1740,6 +1802,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

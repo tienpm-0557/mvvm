@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  MVVMExample
+
+  Created by pham.minh.tien on 8/4/20.
+  Copyright © 2020 Sun*. All rights reserved.
+*/
+
+strLocalizePageTitle                    = "Localization";
+strTestMessage                          = "[Enter your message]";

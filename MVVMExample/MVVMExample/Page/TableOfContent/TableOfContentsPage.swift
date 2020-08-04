@@ -78,7 +78,7 @@ class TableOfContentViewModel: BaseListViewModel {
         let storeKit = MenuTableCellViewModel(model: MenuModel(withTitle: "StoreKit Examples (coming soon)",
         desc: "Examples about how to use StoreKit in your application. (rate app, in-app  purchases...etc)"))
 
-        let localization = MenuTableCellViewModel(model: MenuModel(withTitle: "Localizing Examples (coming soon)",
+        let localization = MenuTableCellViewModel(model: MenuModel(withTitle: "Localization Examples",
         desc: "Examples about how to setting localize in your application."))
 
         itemsSource.reset([[intro, mvvm, service, transition, dataBinding, storeKit, localization]])
@@ -99,6 +99,10 @@ class TableOfContentViewModel: BaseListViewModel {
             page = TransitionExamplesPage(viewModel: TransitionExamplesPageViewModel(model: cellViewModel.model, usingShowModal: true))
         case 4:
             page = DataBindingExamplesPage(viewModel: DatabindingExamplesPageViewModel(model: cellViewModel.model))
+        case 5:
+            ()
+        case 6:
+            page = LocalizationPage(viewModel: LocalizationPageViewModel(model: cellViewModel.model))
         default: ()
         }
         return page

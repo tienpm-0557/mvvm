@@ -38,6 +38,8 @@ open class BasePage: UIViewController, ITransitionView {
     public let navigationService: INavigationService = DependencyManager.shared.getService()
     public let storageService: IStorageService = DependencyManager.shared.getService()
     public let alertService: IAlertService = DependencyManager.shared.getService()
+    public let localeService: LocalizeService = DependencyManager.shared.getService()
+    
     deinit {
         destroy()
     }
@@ -133,6 +135,11 @@ open class BasePage: UIViewController, ITransitionView {
     
     func updateAfterViewModelChanged() {
         bindViewAndViewModel()
+        
+        localeService.rxLocaleState.subscribe(onNext: {[weak self] (newLocale) in
+            self?.onUpdateLocalize()
+            self?.viewModel?.onUpdateLocalize()
+        })
         
         viewModelChanged()
     }

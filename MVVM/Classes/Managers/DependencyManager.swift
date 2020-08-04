@@ -72,6 +72,7 @@ public class DependencyManager {
         registerService(Factory<INavigationService> { NavigationService() })
         registerService(Factory<IStorageService> { StorageService() })
         registerService(Factory<IAlertService> { AlertService() })
+        registerService(Factory<LocalizeService> { LocalizeService.shared })
     }
     
     public func getService<T>() -> T {
