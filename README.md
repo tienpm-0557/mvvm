@@ -64,7 +64,7 @@ $ pod install
 ### At the glance
 - The library is mainly written using Generic, so please familiar yourself with Swift Generic, and very important point, we can’t use Generic UIViewController to associate with UIViewController on InterfaceBuilder or Storyboard. So programmatically is prefer, but we can still use XIBs to instantiate our view (check example for more details). (Note: In this project  **Base classes** supports both generic and non-generic types)
 
-- The idea is that each **Page** will contain a **ViewModel** property with type to be determined by generic **VM**
+- The idea is that each **Page** will contain a **ViewModel** property with type to be determined by generic **VM** or **BaseViewModel**
 
 ### Libray Components
 ##### Page (BasePage), ListPage (BaseListpage), CollectionPage (BaseCollectionPage), BaseWebView.
@@ -148,17 +148,39 @@ open func bindViewAndViewModel() {}
 Then we have a full set of a view that can bind with ViewModel
 
 ##### ViewModel, ListViewModel and CellViewModel
-Base classes for our ViewModel
+Base classes for our ViewModel binding with: Page, BasePage
 ```swift
 open class ViewModel<M: Model>: NSObject, IViewModel
 ```
+* Non-Generic type
+```swift
+open class BaseViewModel: NSObject, IViewModel, IReactable
+```
+Base classes for our ListViewModel binding with: ListPage, BaseListPage, CollectionPage, BaseCollectionPage
 ```swift
 open class ListViewModel<M: Model, CVM: IGenericViewModel>: ViewModel<M>, IListViewModel
 ```
+Non-Generic type
+```swift
+open class BaseListViewModel: BaseViewModel, IListViewModel {
+```
+Base classes for our CellViewModel binding with: TableCell, BaseTableCell, CollectionCell, BaseCollectionCell
 ```swift
 open class CellViewModel<M: Model>: NSObject, IGenericViewModel
 ```
+Non-Generic type
+```swift
+open class BaseCellViewModel: NSObject, IGenericViewModel, IIndexable, IReactable {
+```
+
+Base classes for our ViewModel only use for instance of BaseWebView.
+```swift
+open class BaseWebViewModel: BaseViewModel
+```
+
+- Note: With Generic Type
 As we can see, **ViewModel** and **CellViewModel** use one generic type **M** (which is based type is Model). This generic type is for us to determine the model type for each ViewModel. The difference between **ViewModel** and **CellViewModel** is **ViewModel** contains navigation service that can help use to navigate between our pages in apllication, while **CellViewModel** does not.
+
 **ListViewModel** is a bit different. It uses one more generic type **CVM**, which represented for ViewModel type of a cell in side a page. In the other hand, it contains an items source array that can be bind with a list page or collection page
 
 Please check examples for details usages of these base classes.
@@ -168,7 +190,7 @@ Please check examples for details usages of these base classes.
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 ```bash
 $ open MVVMExample.xcworkspace
-```
+``` 
 
 ##### Services
 The library also supports services injection (for Unit Test) and some built-in services, especially navigation service, that helps us to navigate between our pages. Navigation service, by default, is injected to Page and ViewModel
