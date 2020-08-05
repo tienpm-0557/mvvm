@@ -106,7 +106,7 @@ class TableOfContentViewModel: BaseListViewModel {
         case 4:
             page = DataBindingExamplesPage(viewModel: DatabindingExamplesPageViewModel(model: cellViewModel.model))
         case 5:
-            ()
+            page = StoreKitPage(viewModel: StoreKitPageViewModel(model: cellViewModel.model))
         case 6:
             page = LocalizationPage(viewModel: LocalizationPageViewModel(model: cellViewModel.model))
         default: ()

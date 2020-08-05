@@ -11,9 +11,10 @@ MVVM is a library for who wants to start writing iOS application using MVVM (Mod
 
 ## Features
 
-- [x] Base classes for UIViewController, UIView, UITableViewCell and UICollectionCell
+- [x] Base classes for UIViewController,  UIView, UITableView, UICollectionView, UITableViewCell and UICollectionCell.
 - [x] Base classes for ViewModel, ListViewModel and CellViewModel
-- [x] Services injection
+- [x] Base classes for UIWekit. Support handle navigation, evaluateJavaScript, handle java script function...
+- [x] Services injection: Network service base on Alamofire, Moya library. Localize service, Alert Service, Reachability service, Mail and Share service...
 - [x] Custom transitioning for UINavigationController and UIViewController
 
 ## Requirements
@@ -60,20 +61,26 @@ $ pod install
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+```bash
+$ open MVVMExample.xcworkspace
+```
 
 ## Usage
 
 ### At the glance
-The library is mainly written using Generic, so please familiar yourself with Swift Generic, and very important point, we can’t use Generic UIViewController to associate with UIViewController on InterfaceBuilder or Storyboard. So programmatically is prefer, but we can still use XIBs to instantiate our view (check example for more details)
+- The library is mainly written using Generic, so please familiar yourself with Swift Generic, and very important point, we can’t use Generic UIViewController to associate with UIViewController on InterfaceBuilder or Storyboard. So programmatically is prefer, but we can still use XIBs to instantiate our view (check example for more details). (Note: In this project  **Base classes** supports both generic and non-generic types)
+
+The idea is that each **Page** will contain a **ViewModel** property with type to be determined by generic **VM**
 
 ### Libray Components
-##### Page, ListPage and CollectionPage
+##### Page (BasePage), ListPage (BaseListpage), CollectionPage (BaseCollectionPage), BaseWebView.
 I prefer **Page** over **ViewController** in term of MVVM
 * UIViewController
 ```swift
 open class Page<VM: IViewModel>: UIViewController, IView, ITransionView 
 ```
 
+In case you do not want to use the Generic type create instance of BasePage class.
 ```swift
 ///Non-generic type
 open class BasePage: UIViewController, ITransitionView
@@ -83,6 +90,7 @@ open class BasePage: UIViewController, ITransitionView
 open class ListPage<VM: IListViewModel>: Page<VM>
 ```
 
+In case you do not want to use the Generic type create instance of BaseListPage class.
 ```swift
 ///Non-generic type
 open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate
@@ -91,13 +99,17 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate
 ```swift
 open class CollectionPage<VM: IListViewModel>: Page<VM>
 ```
-
+In case you do not want to use the Generic type create instance of BaseCollectionPage class.
 ```swift
 ///Non-generic type
 open class BaseCollectionPage: BasePage
 ```
 
-The idea is that each **Page** will contain a **ViewModel** property with type to be determined by generic **VM**
+* UIWebkit
+```swift
+///Non-generic type
+open class BaseWebView: BasePage
+```
 
 ##### View, TableCell and CollectionCell
 Same as **Page**, View is all also a generic UIView, while **TableCell** and **CollectionCell** are generic cell that can be used in **ListPage** and **CollectionPage**
