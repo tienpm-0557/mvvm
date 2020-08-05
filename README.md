@@ -69,7 +69,8 @@ $ pod install
 ### Libray Components
 ##### Page (BasePage), ListPage (BaseListpage), CollectionPage (BaseCollectionPage), BaseWebView.
 I prefer **Page** or **BasePage** over **ViewController** in term of MVVM. For create new a UIViewController please instance of **Page<[VM]>** class or **BasePage** class.
-* UIViewController
+
+**UIViewController**
 ```swift
 open class Page<VM: IViewModel>: UIViewController, IView, ITransionView 
 ```
@@ -79,7 +80,7 @@ In case you do not want to use the Generic type create instance of BasePage clas
 ///Non-generic type
 open class BasePage: UIViewController, ITransitionView
 ```
-* UITableView
+**UITableView**
 ```swift
 open class ListPage<VM: IListViewModel>: Page<VM>
 ```
@@ -89,7 +90,7 @@ In case you do not want to use the Generic type create instance of BaseListPage 
 ///Non-generic type
 open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate
 ```
-* UICollectionView
+**UICollectionView**
 ```swift
 open class CollectionPage<VM: IListViewModel>: Page<VM>
 ```
@@ -99,7 +100,7 @@ In case you do not want to use the Generic type create instance of BaseCollectio
 open class BaseCollectionPage: BasePage
 ```
 
-* UIWebkit
+**UIWebkit**
 ```swift
 ///Non-generic type
 open class BaseWebView: BasePage
@@ -152,7 +153,7 @@ Base classes for our ViewModel binding with: Page, BasePage
 ```swift
 open class ViewModel<M: Model>: NSObject, IViewModel
 ```
-* Non-Generic type
+Non-Generic type
 ```swift
 open class BaseViewModel: NSObject, IViewModel, IReactable
 ```
