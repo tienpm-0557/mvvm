@@ -6,8 +6,9 @@ MVVM is a library for who wants to start writing iOS application using MVVM (Mod
 - [Requirements](#requirements)
 - [Dependencies](#dependencies)
 - [Installation](#installation)
-- [Example](#example)
 - [Usage](#usage)
+- [Example](#example)
+
 
 ## Features
 
@@ -48,7 +49,7 @@ use_frameworks!
 
 target '<Your Target Name>' do
     pod 'MVVM'
-    pod 'SwiftyJSON', '4.1.0'
+    pod 'SwiftyJSON'
 end
 ```
 
@@ -58,23 +59,16 @@ Then, run the following command:
 $ pod install
 ```
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-```bash
-$ open MVVMExample.xcworkspace
-```
-
 ## Usage
 
 ### At the glance
 - The library is mainly written using Generic, so please familiar yourself with Swift Generic, and very important point, we can’t use Generic UIViewController to associate with UIViewController on InterfaceBuilder or Storyboard. So programmatically is prefer, but we can still use XIBs to instantiate our view (check example for more details). (Note: In this project  **Base classes** supports both generic and non-generic types)
 
-The idea is that each **Page** will contain a **ViewModel** property with type to be determined by generic **VM**
+- The idea is that each **Page** will contain a **ViewModel** property with type to be determined by generic **VM**
 
 ### Libray Components
 ##### Page (BasePage), ListPage (BaseListpage), CollectionPage (BaseCollectionPage), BaseWebView.
-I prefer **Page** over **ViewController** in term of MVVM
+I prefer **Page** or **BasePage** over **ViewController** in term of MVVM. For create new a UIViewController please instance of **Page<[VM]>** class or **BasePage** class.
 * UIViewController
 ```swift
 open class Page<VM: IViewModel>: UIViewController, IView, ITransionView 
@@ -112,7 +106,9 @@ open class BaseWebView: BasePage
 ```
 
 ##### View, TableCell and CollectionCell
-Same as **Page**, View is all also a generic UIView, while **TableCell** and **CollectionCell** are generic cell that can be used in **ListPage** and **CollectionPage**
+Same as **Page**, View is also a generic UIView, while **TableCell** and **CollectionCell** are generic cell that can be used in **ListPage** and **CollectionPage**
+In case you don't want to use generic type you can also use non generic type by create an instance of **BaseABC** class 
+Ex: **BaseView**, **BaseCollectionCell**, **BaseTableCell**.
 ```swift
 open class View<VM: IGenericViewModel>: UIView, IView
 ```
@@ -140,14 +136,15 @@ open class TableCell<VM: IGenericViewModel>: UITableViewCell, IView
 open class BaseTableCell: UITableViewCell, IView
 ```
 
-They all have generic type **VM** to determine its own ViewModel
+* With Generic Type: You must provide **VM**. They all have generic type **VM** to determine its own ViewModel
+* By inheriting **View** or **Page**, and implementing 2 main methods:
 
-By inheriting **View** or **Page**, and implementing 2 main methods:
 ```swift
 open func initialize() {}
 
 open func bindViewAndViewModel() {}
 ```
+
 Then we have a full set of a view that can bind with ViewModel
 
 ##### ViewModel, ListViewModel and CellViewModel
@@ -165,6 +162,13 @@ As we can see, **ViewModel** and **CellViewModel** use one generic type **M** (w
 **ListViewModel** is a bit different. It uses one more generic type **CVM**, which represented for ViewModel type of a cell in side a page. In the other hand, it contains an items source array that can be bind with a list page or collection page
 
 Please check examples for details usages of these base classes.
+
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+```bash
+$ open MVVMExample.xcworkspace
+```
 
 ##### Services
 The library also supports services injection (for Unit Test) and some built-in services, especially navigation service, that helps us to navigate between our pages. Navigation service, by default, is injected to Page and ViewModel
