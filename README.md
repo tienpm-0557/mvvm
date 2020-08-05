@@ -180,11 +180,11 @@ open class BaseWebViewModel: BaseViewModel
 ```
 
 - Note: With Generic Type
+```
+As we can see, **ViewModel** and **CellViewModel** use one generic type **M** (which is based type is Model). This generic type is for us to determine the model type for each ViewModel. The difference between **ViewModel** and **CellViewModel** is **ViewModel** contains navigation service that can help use to navigate between our pages in apllication, while **CellViewModel** does not.
 
-*As we can see, **ViewModel** and **CellViewModel** use one generic type **M** (which is based type is Model). This generic type is for us to determine the model type for each ViewModel. The difference between **ViewModel** and **CellViewModel** is **ViewModel** contains navigation service that can help use to navigate between our pages in apllication, while **CellViewModel** does not.*
-
-***ListViewModel** is a bit different. It uses one more generic type **CVM**, which represented for ViewModel type of a cell in side a page. In the other hand, it contains an items source array that can be bind with a list page or collection page*
-
+**ListViewModel** is a bit different. It uses one more generic type **CVM**, which represented for ViewModel type of a cell in side a page. In the other hand, it contains an items source array that can be bind with a list page or collection page
+```
 Please check examples for details usages of these base classes.
 
 ## Example
