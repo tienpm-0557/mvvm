@@ -55,7 +55,7 @@ extension MoyaAPIService: TargetType {
         case .flickrSearch(let keyword, let page):
             let parameters: [String: Any] = [
                 "method": "flickr.photos.search",
-                "api_key": "dc4c20e9d107a9adfa54917799e44650", // please provide your API key
+                "api_key": "3cd9dc83d39977c383fd1bf7039e455b", // please provide your API key
                 "format": "json",
                 "nojsoncallback": 1,
                 "page": page,

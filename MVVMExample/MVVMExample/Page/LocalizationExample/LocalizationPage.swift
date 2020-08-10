@@ -25,7 +25,8 @@ class LocalizationPage: BasePage {
     
     override func initialize() {
         super.initialize()
-        localizeLb.text = LocalizedStringConfigs.strLocalizePageTitle.localized
+        localizeLb.text = LocalizedStringMessage.strTestMessage.localized
+       
     }
     
     override func bindViewAndViewModel() {
@@ -40,7 +41,8 @@ class LocalizationPage: BasePage {
     override func onUpdateLocalize() {
         super.onUpdateLocalize()
         print("DEBUG: Page onUpdateLocalize")
-        localizeLb.text = LocalizedStringConfigs.strLocalizePageTitle.localized
+        localizeLb.text = LocalizedStringMessage.strTestMessage.localized
+         self.navigationItem.backBarButtonItem?.title = ""
     }
 
 }

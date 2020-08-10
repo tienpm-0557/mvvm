@@ -9,4 +9,5 @@
 strTableOfContents                      = "Table Of Contents";
 
 strLocalizePageTitle                    = "Localization";
-strTestMessage                          = "[Enter your message]";
+
+strTestMessage                          = "I find television very educating. Every time somebody turns on the set, I go into the other room and read a book.";

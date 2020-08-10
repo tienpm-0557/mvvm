@@ -83,6 +83,11 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
             let vm = WebViewExamplesPageViewModel(model: cellViewModel.model)
             let vc = WebKitExamplesPage(viewModel: vm)
             page = vc
+        case 9:
+            /// Image Picker
+            let vm = ImagePickerViewModel(model: cellViewModel.model)
+            let vc = ImagePickerPage(viewModel: vm)
+            page = vc
         default: ()
         }
         

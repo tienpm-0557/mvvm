@@ -17,5 +17,5 @@ struct LocalizedStringConfigs {
 
 struct LocalizedStringMessage {
     //MARK:
-    static let strTestMessage                     = "strTabbarTop"
+    static let strTestMessage                     = "strTestMessage"
 }

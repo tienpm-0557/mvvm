@@ -63,9 +63,9 @@ public extension UIView {
     }
 }
 
-extension UIView {
+public extension UIView {
     
-    @IBInspectable @objc open var cornerRadius: CGFloat {
+    @IBInspectable @objc var cornerRadius: CGFloat {
         get { return layer.cornerRadius }
         set {
             layer.cornerRadius = newValue
@@ -74,18 +74,28 @@ extension UIView {
         }
     }
     
-    @IBInspectable @objc open var borderWidth: CGFloat {
+    @IBInspectable @objc var borderWidth: CGFloat {
         get { return layer.borderWidth }
         set { layer.borderWidth = newValue }
     }
     
-    @IBInspectable @objc open var borderColor: CGColor? {
-        get { return layer.borderColor }
-        set { layer.borderColor = newValue }
+//    @IBInspectable @objc var borderColor: CGColor? {
+//        get { return layer.borderColor }
+//        set { layer.borderColor = newValue }
+//    }
+//
+    @IBInspectable @objc var borderColor: UIColor {
+        get {
+            let color = UIColor.init(cgColor: layer.borderColor!)
+            return color
+        }
+        set {
+            layer.borderColor = newValue.cgColor
+        }
     }
     
     /// Set box shadow
-    @objc open func setShadow(offset: CGSize, color: UIColor, opacity: Float, blur: CGFloat) {
+    @objc func setShadow(offset: CGSize, color: UIColor, opacity: Float, blur: CGFloat) {
         let shadowPath = UIBezierPath(roundedRect: layer.bounds, cornerRadius: layer.cornerRadius)
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor
@@ -95,7 +105,7 @@ extension UIView {
         layer.shadowPath = shadowPath.cgPath
     }
     
-    @objc open func onUpdateLocalize() {
+    @objc func onUpdateLocalize() {
         for subView: UIView in self.subviews {
             subView.onUpdateLocalize()
         }
