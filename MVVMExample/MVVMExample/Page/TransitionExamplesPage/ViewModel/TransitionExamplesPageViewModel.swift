@@ -128,7 +128,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
                                                                 desc: "Example transition page with Circle animation.",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md",
                                                                 withBGColor: "#F2F2F7"))
-        let animator = CircleAnimator(withDuration: TimeInterval(0.25), isPresenting: self.usingShowModal)
+        let animator = CircleAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
     
@@ -144,7 +144,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Rectangular Animation",
                                                                 desc: "Example transition page with Rectangular animation",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
-        let animator = RectanglerAnimator(withDuration: TimeInterval(0.25), isPresenting: self.usingShowModal)
+        let animator = RectanglerAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
     
@@ -152,7 +152,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Multi Circle",
                                                                 desc: "Example transition page with Multi Circle animation",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
-        let animator = MultiCircleAnimator(withDuration: TimeInterval(0.25), isPresenting: self.usingShowModal)
+        let animator = MultiCircleAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
     
@@ -177,7 +177,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Multi Flip Animation",
                                                                 desc: "Example transition page with Multi Flip animation",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
-        let animator = MultiFlipRetroAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
+        let animator = MultiFlipRetroAnimator(withDuration: TimeInterval(0.75), isPresenting: self.usingShowModal)
         
         self.pushWithAnimator(animator, model: model)
     }
