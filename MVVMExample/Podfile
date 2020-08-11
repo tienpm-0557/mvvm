@@ -12,10 +12,12 @@ target 'MVVMExample' do
   target 'MVVMExampleTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RxBlocking', '~> 5'
+    pod 'RxTest', '~> 5'
   end
-
+  
   target 'MVVMExampleUITests' do
     # Pods for testing
   end
-
+  
 end

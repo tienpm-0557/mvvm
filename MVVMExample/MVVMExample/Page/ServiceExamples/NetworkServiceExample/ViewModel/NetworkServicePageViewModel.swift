@@ -14,16 +14,15 @@ import RxCocoa
 class NetworkServicePageViewModel: BaseViewModel {
     var networkService: NetworkService?
     
-    let rxPageTitle = BehaviorRelay(value: "")
+    let rxPageTitle = BehaviorRelay<String>(value: "")
     let rxSearchText = BehaviorRelay<String?>(value: nil)
     let rxCurlText = BehaviorRelay<String?>(value: "")
     let rxResponseText = BehaviorRelay<String?>(value: "")
     
-    let rxIsSearching = BehaviorRelay<Bool>(value: false)
-
+    let rxSearchState = BehaviorRelay<NetworkServiceState>(value: .none)
+    let rxDidSearchState = PublishRelay<NetworkServiceState>()
+    
     var page: Int = 0
-    var finishedSearching: Bool = false
-
     
     override func react() {
         super.react()
@@ -35,14 +34,13 @@ class NetworkServicePageViewModel: BaseViewModel {
         
         rxSearchText.do(onNext: {[weak self] text in
             self?.page = 1
-            self?.finishedSearching = false
             if let keyword = text {
                 self?.rxCurlText.accept("Start Request \(keyword)... ")
             } else {
                 self?.rxCurlText.accept("")
             }
             if !text.isNilOrEmpty {
-                self?.rxIsSearching.accept(true)
+                self?.rxSearchState.accept(.none)
             }
         }).debounce(.microseconds(500), scheduler: Scheduler.shared.mainScheduler).subscribe(onNext: {[weak self] (text) in
             if !text.isNilOrEmpty {
@@ -55,11 +53,13 @@ class NetworkServicePageViewModel: BaseViewModel {
         _ = networkService?.search(withKeyword: keyword, page: page).map(prepareSources).subscribe(onSuccess: { [weak self] (results) in
             if let flickSearch = results, let desc = flickSearch.response_description {
                 self?.rxResponseText.accept("Responsed: \n\(desc)")
-                self?.rxIsSearching.accept(false)
+                self?.rxSearchState.accept(.success)
             }
+            self?.rxDidSearchState.accept(.success)
         }, onError: { (error) in
             self.rxResponseText.accept("Responsed: \n\(error)")
-            self.rxIsSearching.accept(false)
+            self.rxSearchState.accept(.error)
+            self.rxDidSearchState.accept(.error)
         })
     }
     

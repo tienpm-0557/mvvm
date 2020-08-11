@@ -35,6 +35,11 @@ class TransitionExamplesPage: BasePage {
         // Do any additional setup after loading the view.
     }
 
+    override func initialize() {
+        super.initialize()
+        self.enableBackButton = true
+    }
+    
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
         guard let viewModel = viewModel as? TransitionExamplesPageViewModel else {

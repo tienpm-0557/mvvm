@@ -53,7 +53,6 @@ class NetworkServicePage: BasePage {
         navigationItem.titleView = searchBar
 
         indicatorView.hidesWhenStopped = true
-        
     }
     
     override func bindViewAndViewModel() {
@@ -67,10 +66,11 @@ class NetworkServicePage: BasePage {
         viewModel.rxCurlText ~> self.cURLLb.rx.text => disposeBag
         viewModel.rxResponseText ~> self.responseTxt.rx.text => disposeBag
         
-        viewModel.rxIsSearching.subscribe(onNext: {[weak self] (searching) in
-            if searching {
+        viewModel.rxSearchState.subscribe(onNext: { [weak self](state) in
+            switch state {
+            case .requesting:
                 self?.indicatorView.startAnimating()
-            } else {
+            default:
                 self?.indicatorView.stopAnimating()
             }
         }) => disposeBag

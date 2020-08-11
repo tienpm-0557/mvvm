@@ -27,7 +27,7 @@ class MoyaService {
         }
     }, logOptions: .formatRequestAscURL))])
     
-    func search(keyword: String, page: Int) -> Single<FlickrSearchResponse?> {
+    func search(keyword: String, page: Int) -> Single<FlickrSearchResponse> {
         return Single.create { single in
             self.moyaProvider.rx.request(.flickrSearch(keyword: keyword, page: page)).filterSuccessfulStatusCodes().map({ (response) -> FlickrSearchResponse? in
                 /// Implement logic maping if need. Maping API Response to FlickrSearchResponse object.
@@ -41,7 +41,8 @@ class MoyaService {
                 if let response = flickrSearchResponse {
                     single(.success(response))
                 } else {
-                    single(.success(nil))
+                    let err = NSError(domain: "", code: 404, userInfo: ["message": "Data not fount"])
+                    single(.error(err))
                 }
             }) { (error) in
                 single(.error(error))

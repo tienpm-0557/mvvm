@@ -18,7 +18,7 @@ enum FlickrStatus: String {
 
 class FlickrSearchResponse: Model {
     
-    var stat: FlickrStatus = .ok
+    var stat: FlickrStatus = .fail
     var page = 1
     var pages = 1
     var photos = [FlickrPhotoModel]()
@@ -27,6 +27,7 @@ class FlickrSearchResponse: Model {
     
     convenience init() {
         self.init(JSON: [String: Any]())!
+        self.stat = .ok
     }
     
     override func mapping(map: Map) {
@@ -35,6 +36,7 @@ class FlickrSearchResponse: Model {
         pages <- map["photos.pages"]
         photos <- map["photos.photo"]
         message <- map["message"]
+        stat = .ok
     }
 }
 

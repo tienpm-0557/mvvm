@@ -25,6 +25,7 @@ class LocalizationPage: BasePage {
     
     override func initialize() {
         super.initialize()
+        self.enableBackButton = true
         localizeLb.text = LocalizedStringMessage.strTestMessage.localized
        
     }

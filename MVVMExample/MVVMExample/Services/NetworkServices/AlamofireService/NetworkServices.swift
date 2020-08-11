@@ -13,9 +13,18 @@ import ObjectMapper
 import SwiftyJSON
 import RxCocoa
 
+enum NetworkServiceState {
+    case none
+    case requesting
+    case requestTimeout
+    case success
+    case error
+}
+
 class NetworkService {
     var tmpBag: DisposeBag?
     let curlString = BehaviorRelay<String?>(value: "")
+    let state = PublishRelay<NetworkServiceState>()
     
     /// Define default parameter
     func getDefaultParams() -> [String:Any] {
@@ -68,21 +77,25 @@ class NetworkService {
         
         guard let urlString = service.urlRequest?.url?.absoluteString else { return Single.create { _ in Disposables.create { } } }
         
-        print("Network: start request \(urlString)")
+        debugPrint("Network: start request \(urlString)")
         return Single.create { [weak self] single in
+            self?.state.accept(.requesting)
             BaseNetworkService.shared.request(urlString: urlString,
                                          method: service.method,
                                          params: service.parameters,
                                          parameterEncoding: service.encoding,
                                          additionalHeaders: service.header)
                 .map(service.prepareSources)
-                .subscribe(onSuccess: { (json) in
+                .subscribe(onSuccess: { [weak self](json) in
+                    self?.state.accept(.success)
                     single(.success(json))
                 }) { (error) in
+                    self?.state.accept(.error)
                     single(.error(error))
                 } => self?.tmpBag
-            
-            return Disposables.create { }
+            return Disposables.create {
+                self?.tmpBag = DisposeBag()
+            }
         }
     }
     

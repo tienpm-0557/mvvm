@@ -13,7 +13,7 @@ import SwiftyJSON
 
 extension NetworkService {
     
-    func search(withKeyword keyword: String, page: Int) -> Single<FlickrSearchResponse?>{
+    func search(withKeyword keyword: String, page: Int) -> Single<FlickrSearchResponse>{
         let parameters: [String: Any] = [
                    "method": "flickr.photos.search",
                    "api_key": "3cd9dc83d39977c383fd1bf7039e455b", // please provide your API key
@@ -25,7 +25,7 @@ extension NetworkService {
                ]
         
         return Single.create { single in
-            self.request(withService: APIService.flickrSearch(parameters: parameters),
+            let result = self.request(withService: APIService.flickrSearch(parameters: parameters),
                          withHash: true,
                          usingCache: true)
                 .map({ (jsonData) -> FlickrSearchResponse? in
@@ -43,13 +43,14 @@ extension NetworkService {
                     if let response = flickrSearchResponse {
                         single(.success(response))
                     } else {
-                        single(.success(nil))
+                        let err = NSError(domain: "", code: 404, userInfo: ["message": "Data not fount"])
+                        single(.error(err))
                     }
                 }) { (error) in
                     single(.error(error))
-            } => self.tmpBag
+            }
             
-            return Disposables.create { self.tmpBag = DisposeBag() }
+            return result
         }
     }
     
