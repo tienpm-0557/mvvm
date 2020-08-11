@@ -139,7 +139,7 @@ open class BasePage: UIViewController, ITransitionView {
         localeService.rxLocaleState.subscribe(onNext: {[weak self] (newLocale) in
             self?.onUpdateLocalize()
             self?.viewModel?.onUpdateLocalize()
-        })
+        }) => disposeBag
         
         viewModelChanged()
     }

@@ -36,8 +36,15 @@ open class BaseViewModel: NSObject, IViewModel, IReactable {
     
     var isReacted = false
     
-    required public init(model: Model? = nil) {
+    public var scheduler: SchedulerType?
+    
+    public required init(model: Model?) {
         _model = model
+    }
+    
+    required public init(model: Model? = nil, timerScheduler: SchedulerType? = Scheduler.shared.mainScheduler) {
+        _model = model
+        scheduler = timerScheduler
     }
     
     open func destroy() {
@@ -80,7 +87,11 @@ open class BaseListViewModel: BaseViewModel, IListViewModel {
     public let rxSelectedIndex = BehaviorRelay<IndexPath?>(value: nil)
     public let rxState = BehaviorRelay<ListState>(value: .normal)
     
-    required public init(model: Model? = nil) {
+    required public init(model: Model? = nil, timerScheduler: SchedulerType? = Scheduler.shared.mainScheduler) {
+        super.init(model: model, timerScheduler: timerScheduler)
+    }
+    
+    public required init(model: Model?) {
         super.init(model: model)
     }
     

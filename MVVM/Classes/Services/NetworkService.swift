@@ -87,7 +87,9 @@ open class BaseNetworkService: SessionDelegate {
                 single(.error(error))
             }
             
-            return Disposables.create { result.request.cancel() }
+            return Disposables.create {
+                                
+            }
         }
     }
     
