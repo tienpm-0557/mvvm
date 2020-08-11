@@ -14,6 +14,8 @@
 		3579A4D15E28F22B20BF9FD7 /* Pods_MVVMExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D7E9E7E062208592A06C56 /* Pods_MVVMExample.framework */; };
 		4D6A5B2A394A722435A693DC /* Pods_MVVMExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09415DDFBD3132436ED59D9 /* Pods_MVVMExampleTests.framework */; };
 		5671E3ABD4CD31A9F77A2149 /* Pods_MVVMExample_MVVMExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9358D747A0B5C8E5411F9A1 /* Pods_MVVMExample_MVVMExampleUITests.framework */; };
+		9C0C751C24E281F600FE58DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0C751B24E281F600FE58DA /* NetworkServiceTests.swift */; };
+		9C0C751F24E2836A00FE58DA /* ContactPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0C751E24E2836A00FE58DA /* ContactPageTests.swift */; };
 		9C109030249A1617009C3166 /* MoyaProviderServicePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C10902E249A1617009C3166 /* MoyaProviderServicePage.swift */; };
 		9C109031249A1617009C3166 /* MoyaProviderServicePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C10902F249A1617009C3166 /* MoyaProviderServicePage.xib */; };
 		9C109034249A164B009C3166 /* MoyaProviderServicePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C109033249A164B009C3166 /* MoyaProviderServicePageViewModel.swift */; };
@@ -191,6 +193,8 @@
 		761894C7965A87309B09B45A /* Pods-MVVMExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExampleTests.release.xcconfig"; path = "Target Support Files/Pods-MVVMExampleTests/Pods-MVVMExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		894012541B79417142E9AD66 /* Pods-MVVMExample-MVVMExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExample-MVVMExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-MVVMExample-MVVMExampleUITests/Pods-MVVMExample-MVVMExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		97C3B9A82D5320B68365A108 /* Pods-MVVMExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExample.release.xcconfig"; path = "Target Support Files/Pods-MVVMExample/Pods-MVVMExample.release.xcconfig"; sourceTree = "<group>"; };
+		9C0C751B24E281F600FE58DA /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		9C0C751E24E2836A00FE58DA /* ContactPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPageTests.swift; sourceTree = "<group>"; };
 		9C10902E249A1617009C3166 /* MoyaProviderServicePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderServicePage.swift; sourceTree = "<group>"; };
 		9C10902F249A1617009C3166 /* MoyaProviderServicePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoyaProviderServicePage.xib; sourceTree = "<group>"; };
 		9C109033249A164B009C3166 /* MoyaProviderServicePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderServicePageViewModel.swift; sourceTree = "<group>"; };
@@ -409,6 +413,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9C0C751824E2819800FE58DA /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				9C0C751B24E281F600FE58DA /* NetworkServiceTests.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		9C0C751D24E282DE00FE58DA /* ContactPage */ = {
+			isa = PBXGroup;
+			children = (
+				9C0C751E24E2836A00FE58DA /* ContactPageTests.swift */,
+			);
+			path = ContactPage;
+			sourceTree = "<group>";
+		};
 		9C10902D249A15BD009C3166 /* MoyaProvider */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,6 +645,8 @@
 		9C74EB95246D19BD00A3CF1D /* MVVMExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				9C0C751D24E282DE00FE58DA /* ContactPage */,
+				9C0C751824E2819800FE58DA /* NetworkService */,
 				9C74EB96246D19BD00A3CF1D /* MVVMExampleTests.swift */,
 				9C74EB98246D19BD00A3CF1D /* Info.plist */,
 			);
@@ -1756,7 +1778,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C0C751C24E281F600FE58DA /* NetworkServiceTests.swift in Sources */,
 				9C74EB97246D19BD00A3CF1D /* MVVMExampleTests.swift in Sources */,
+				9C0C751F24E2836A00FE58DA /* ContactPageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

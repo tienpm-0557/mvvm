@@ -28,6 +28,13 @@ class ContactEditPageViewModel: BaseViewModel {
     let rxPhone = BehaviorRelay<String?>(value: nil)
     let rxSaveEnabled = BehaviorRelay(value: false)
     
+    var isFirstEnabled: Observable<Bool> {
+           return Observable.combineLatest(rxName, rxPhone) { name, phone -> Bool in
+               return !name.isNilOrEmpty && !phone.isNilOrEmpty
+           }
+       }
+       
+    
     override func react() {
         super.react()
         
@@ -41,7 +48,7 @@ class ContactEditPageViewModel: BaseViewModel {
         rxPhone.accept(model.phone)
     }
     
-    private func save() -> Observable<ContactModel> {
+    func save() -> Observable<ContactModel> {
         let contact = ContactModel()
         contact.name = rxName.value ?? ""
         contact.phone = rxPhone.value ?? ""
