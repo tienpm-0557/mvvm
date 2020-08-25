@@ -48,7 +48,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'MVVM'
+pod 'MVVM', :path => '[Provide your path to MVVM.podspec file]'
     pod 'SwiftyJSON'
 end
 ```
