@@ -63,14 +63,19 @@ class SectionListPageViewModel: BaseListViewModel {
                 
                 itemsSource.append(SectionImageCellViewModel(model: model), to: sectionIndex)
             } else {
-                itemsSource.append(SectionTextCellViewModel(model: SectionTextModel(withTitle: "Just a text cell title", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")), to: sectionIndex)
+                itemsSource.append(SectionTextCellViewModel(model: SectionTextModel(withTitle: "Just a text cell title",
+                                                                                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")), to: sectionIndex)
             }
         }
     }
     
     // add section
     private func addSection() {
-        let vm = SectionHeaderViewViewModel(model: HeaderFooterModel(withTitle: "Section title #\(itemsSource.count + 1)", desc: "List page examples", footer: "Footer #\(itemsSource.count + 1)"))
+        let headerVM = HeaderFooterModel(withTitle: "Section title #\(itemsSource.count + 1)",
+            desc: "List page examples",
+            footer: "Footer #\(itemsSource.count + 1)")
+        
+        let vm = SectionHeaderViewViewModel(model: headerVM)
         itemsSource.appendSectionViewModel(vm)
     }
     

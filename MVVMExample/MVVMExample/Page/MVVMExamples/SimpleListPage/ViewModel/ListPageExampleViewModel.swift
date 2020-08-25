@@ -22,8 +22,7 @@ class ListPageExampleViewModel: BaseListViewModel {
 
     override func react() {
         super.react()
-//        let title = (self.model as? MenuModel)?.title ?? "Simple UITableView"
-        let title = "Simple UITableView"
+        let title = (self.model as? MenuModel)?.title ?? "Simple UITableView"
         rxPageTitle.accept(title)
     }
     

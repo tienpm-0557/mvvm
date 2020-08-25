@@ -20,7 +20,6 @@ class ServiceExamplesPage: TableOfContentsPage {
         // Do any additional setup after loading the view.
     }
 
-
     override func initialize() {
         super.initialize()
         DependencyManager.shared.registerService(Factory<MailService> { MailService() })
@@ -28,15 +27,4 @@ class ServiceExamplesPage: TableOfContentsPage {
         DependencyManager.shared.registerService(Factory<ShareService> { ShareService() })
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -24,7 +24,7 @@ class SectionImageCell: BaseTableCell {
     }
     
     override func initialize() {
-        
+        super.initialize()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

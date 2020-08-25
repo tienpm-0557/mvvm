@@ -33,7 +33,7 @@ class SectionTextCell: BaseTableCell {
     }
     
     override func initialize() {
-        
+        super.initialize()
     }
     
     override func bindViewAndViewModel() {

@@ -28,12 +28,10 @@ class ContactTableViewCell: BaseTableCell {
         
         phoneLbl.numberOfLines = 0
         phoneLbl.font = Font.system.normal(withSize: 15)
-        
     }
     
     override func initialize() {
-//        super.initialize()
-        
+        super.initialize()
     }
     
     open override class func height(withItem _item: BaseViewModel) -> CGFloat{

@@ -11,19 +11,18 @@ import MVVM
 
 class CustomControlPage: BasePage {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
     let segmentedView = SegmentedView(withTitles: ["Tab 1", "Tab 2", "Tab 3"])
-    
     let label = UILabel()
     
-    override func initialize() {
-        enableBackButton = true
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+    }
+    
+    override func initialize() {
+        super.initialize()
+        
+        enableBackButton = true
         view.addSubview(segmentedView)
         segmentedView.autoPinEdge(toSuperviewSafeArea: .top)
         segmentedView.autoPinEdge(toSuperviewEdge: .leading)

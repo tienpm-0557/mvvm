@@ -26,18 +26,21 @@ class CollectionPageViewModel: BaseListViewModel {
         let title = (self.model as? MenuModel)?.title ?? "Simple UICollectionView"
         rxPageTitle.accept(title)
         
-        let vm = SectionHeaderViewViewModel(model: HeaderFooterModel(withTitle: "Section title #\(itemsSource.count + 1)", desc: "List page examples", footer: "Footer #\(itemsSource.count + 1)"))
-        itemsSource.appendSectionViewModel(vm, animated: false)
-
+        let headerVM =  HeaderFooterModel(withTitle: "Section title #\(itemsSource.count + 1)",
+            desc: "List page examples",
+            footer: "Footer #\(itemsSource.count + 1)")
         
+        let vm = SectionHeaderViewViewModel(model: headerVM)
+        itemsSource.appendSectionViewModel(vm, animated: false)
     }
     
+    /// Add collection Cell
     func add() {
-        
+        /// Dummy cell model
         let number = Int.random(in: 1000...10000)
         let title = "This is your random number: \(number)"
-        
-        let cvm = SimpleCollectionViewDellModel(model: SectionTextModel(withTitle: title, desc:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."))
+        let model = SectionTextModel(withTitle: title, desc:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
+        let cvm = SimpleCollectionViewDellModel(model: model)
         itemsSource.append(cvm)
     }
 

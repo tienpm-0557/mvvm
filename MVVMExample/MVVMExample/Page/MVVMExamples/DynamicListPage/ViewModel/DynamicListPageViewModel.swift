@@ -10,8 +10,6 @@ import UIKit
 import MVVM
 import RxCocoa
 import RxSwift
-import Action
-
 
 class DynamicListPageViewModel: BaseListViewModel {
     

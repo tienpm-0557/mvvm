@@ -15,7 +15,9 @@ import RxCocoa
 class ContactEditPageViewModel: BaseViewModel {
     
     lazy var cancelAction: Action<Void, Void> = {
-        return Action() { .just(self.navigationService.pop(with: PopOptions(popType: .dismissPopup))) }
+        return Action() {
+            .just(self.navigationService.pop(with: PopOptions(popType: .dismissPopup)))
+        }
     }()
     
     lazy var saveAction: Action<Void, ContactModel> = {
@@ -29,11 +31,10 @@ class ContactEditPageViewModel: BaseViewModel {
     let rxSaveEnabled = BehaviorRelay(value: false)
     
     var isFirstEnabled: Observable<Bool> {
-           return Observable.combineLatest(rxName, rxPhone) { name, phone -> Bool in
-               return !name.isNilOrEmpty && !phone.isNilOrEmpty
-           }
-       }
-       
+        return Observable.combineLatest(rxName, rxPhone) { name, phone -> Bool in
+            return !name.isNilOrEmpty && !phone.isNilOrEmpty
+        }
+    }
     
     override func react() {
         super.react()
@@ -49,10 +50,10 @@ class ContactEditPageViewModel: BaseViewModel {
     }
     
     func save() -> Observable<ContactModel> {
+        
         let contact = ContactModel()
         contact.name = rxName.value ?? ""
         contact.phone = rxPhone.value ?? ""
-        
         navigationService.pop(with: PopOptions(popType: .dismissPopup))
         
         return .just(contact)

@@ -14,21 +14,37 @@ import WebKit
 class MvvmExamplesPageViewModel: TableOfContentViewModel {
     
     override func fetchData() {
-        let listPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Simple UITableView Page", desc: "Demostration on how to use ListPage"))
-        let listCollectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "UITableView Sections Page", desc: "Demostration on how to use Section List Page"))
-        let listCollectionHeaderFooterPage = MenuTableCellViewModel(model: MenuModel(withTitle: "UITableView with Header & Footer Page", desc: "Demostration on how to use Section List Page"))
-        let dynamicListPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Dynamic List Page", desc: "UITableView support load more data."))
-        let collectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "UICollection Page", desc: "Demostration on how to use CollectionPage"))
-        let dynamicCollectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Dynamic UICollection Page", desc: "Demostration on how to use CollectionPage support load more data."))
+        let listPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Simple UITableView Page",
+                                                               desc: "Demostration on how to use ListPage"))
         
-        let advanced = MenuTableCellViewModel(model: MenuModel(withTitle: "Contact Page", desc: "When using MVVM, we should forget about Delegate as it is against to MVVM rule.\nThis example is to demostrate how to get result from other page without using Delegate"))
+        let listCollectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "UITableView Sections Page",
+                                                                         desc: "Demostration on how to use Section List Page"))
         
-        let searchBar = MenuTableCellViewModel(model: MenuModel(withTitle: "Flickr Search Page", desc: "An advanced example on using Search Bar to search images on Flickr."))
-        let webKit = MenuTableCellViewModel(model: MenuModel(withTitle: "WebKit", desc: "Examples about how to create a  Webkit and apply it."))
+        let listCollectionHeaderFooterPage = MenuTableCellViewModel(model: MenuModel(withTitle: "UITableView with Header & Footer Page",
+                                                                                     desc: "Demostration on how to use Section List Page"))
+        let dynamicListPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Dynamic List Page",
+                                                                      desc: "UITableView support load more data."))
         
-        let imagepicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Image Picker(coming soon)", desc: "Examples about how to create a  UIImagePickerController and apply it."))
+        let collectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "UICollection Page",
+                                                                     desc: "Demostration on how to use CollectionPage"))
         
-        let mediaPicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Media Picker(coming soon)", desc: "Examples about how to create a  Webkit and apply it."))
+        let dynamicCollectionPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Dynamic UICollection Page",
+                                                                            desc: "Demostration on how to use CollectionPage support load more data."))
+        
+        let advanced = MenuTableCellViewModel(model: MenuModel(withTitle: "Contact Page",
+                                                               desc: "When using MVVM, we should forget about Delegate as it is against to MVVM rule.\nThis example is to demostrate how to get result from other page without using Delegate"))
+        
+        let searchBar = MenuTableCellViewModel(model: MenuModel(withTitle: "Flickr Search Page",
+                                                                desc: "An advanced example on using Search Bar to search images on Flickr."))
+        
+        let webKit = MenuTableCellViewModel(model: MenuModel(withTitle: "WebKit",
+                                                             desc: "Examples about how to create a  Webkit and apply it."))
+        
+        let imagepicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Image Picker(coming soon)",
+                                                                  desc: "Examples about how to create a  UIImagePickerController and apply it."))
+        
+        let mediaPicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Media Picker(coming soon)",
+                                                                  desc: "Examples about how to create a  Webkit and apply it."))
         
         itemsSource.reset([[listPage, listCollectionPage, listCollectionHeaderFooterPage, dynamicListPage, collectionPage, dynamicCollectionPage, advanced, searchBar, webKit, imagepicker, mediaPicker]])
     }

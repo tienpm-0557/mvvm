@@ -47,5 +47,4 @@ class SimpleCollectionPage: BaseCollectionPage {
         return returnClassName ? HeaderCollectionView.className : HeaderCollectionView.identifier
     }
     
-    
 }

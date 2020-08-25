@@ -25,10 +25,6 @@ class DynamicCollectionViewCell: BaseCollectionCell {
         let screenSize = UIScreen.main.bounds
         return CGSize(width: screenSize.width - 20, height: 100)
     }
-
-    override func initialize() {
-        
-    }
     
     override func bindViewAndViewModel() {
         guard let viewModel = viewModel as? DynamicCollectionCellModel else { return }

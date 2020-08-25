@@ -18,9 +18,12 @@ class DatabindingExamplesPageViewModel: TableOfContentViewModel {
         
         let customControl = MenuTableCellViewModel(model: MenuModel(withTitle: "Custom Control with Data Binding",
                                                                  desc: "How to create a control with two-way binding property."))
-        let page = MenuTableCellViewModel(model: MenuModel(withTitle: "UIPageViewController (coming soon)", desc: "Examples about how to create a  UIPageViewController"))
         
-        let tabbar = MenuTableCellViewModel(model: MenuModel(withTitle: "TabbarController (coming soon)", desc: "Examples about how to create a TabbarController"))
+        let page = MenuTableCellViewModel(model: MenuModel(withTitle: "UIPageViewController (coming soon)",
+                                                           desc: "Examples about how to create a  UIPageViewController"))
+        
+        let tabbar = MenuTableCellViewModel(model: MenuModel(withTitle: "TabbarController (coming soon)",
+                                                             desc: "Examples about how to create a TabbarController"))
         
         itemsSource.reset([[segmentBar, customControl, page, tabbar]])
     }

@@ -50,12 +50,15 @@ class NetworkServicePageViewModel: BaseViewModel {
     }
     
     func search(withText keyword: String, withPage page: Int) {
-        _ = networkService?.search(withKeyword: keyword, page: page).map(prepareSources).subscribe(onSuccess: { [weak self] (results) in
+        _ = networkService?.search(withKeyword: keyword, page: page)
+            .map(prepareSources).subscribe(onSuccess: { [weak self] (results) in
+                
             if let flickSearch = results, let desc = flickSearch.response_description {
                 self?.rxResponseText.accept("Responsed: \n\(desc)")
                 self?.rxSearchState.accept(.success)
             }
             self?.rxDidSearchState.accept(.success)
+                
         }, onError: { (error) in
             self.rxResponseText.accept("Responsed: \n\(error)")
             self.rxSearchState.accept(.error)

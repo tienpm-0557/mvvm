@@ -22,13 +22,14 @@ class FlickrImageSearchPage: BaseCollectionPage {
 
     override func initialize() {
         super.initialize()
+        enableBackButton = true
         
+        /// Before use. You must register your service
         DependencyManager.shared.registerService(Factory<NetworkService> {
             NetworkService()
         })
         
-        enableBackButton = true
-        // setup search bar
+        /// setup search bar
         searchBar.placeholder = "Search for Flickr images"
         navigationItem.titleView = searchBar
         
