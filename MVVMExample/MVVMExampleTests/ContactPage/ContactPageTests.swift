@@ -77,6 +77,30 @@ class ContactPageTests: XCTestCase {
         XCTAssertEqual([try btnSaveState.toBlocking().first()], [expect], message)
     }
     
+    func testInputPhoneNumber() {
+        /// Tạo một TestableObserver để ghi lại các event trong bối cảnh test.
+        let numerator = scheduler.createObserver(String?.self)
+        /// Lấy viewmodel ra để tiến hành test
+        guard let viewModel = self.contactViewModdel else { return }
+        /// Binding TestableObserver với rxPhone là một BehaviorRelay trên viewmodel.
+        viewModel.rxPhone
+            .asDriver()
+            .drive(numerator) => disposeBag
+        /// Tạo một kịch bản test tại thời điểm nextTime 10, 15 emit value "3", "1"
+        scheduler.createColdObservable([.next(10, "3"),
+                                        .next(15, "1")])
+               .bind(to: viewModel.rxPhone) => disposeBag
+
+        scheduler.start()
+        /// Với BehaviorRelay events nhận thêm một latest event nữa.
+        /// Tiến hành so sánh kết quả nhận được với giá trị mong đợi
+        XCTAssertEqual(numerator.events, [
+            .next(0, ""),
+            .next(10, "3"),
+            .next(15, "1")
+        ])
+    }
+    
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
