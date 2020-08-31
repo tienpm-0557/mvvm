@@ -40,6 +40,10 @@ class DatabindingExamplesPageViewModel: TableOfContentViewModel {
             let vm = CustomControlViewPageModel(model: cellViewModel.model)
             let vc = CustomControlPage(viewModel: vm)
             page = vc
+        case 3:
+            let vm = TabbarControllerViewModel(model: cellViewModel.model)
+            let vc = TabbarViewController(viewModel: vm)
+            page = vc
         default: ()
         }
         

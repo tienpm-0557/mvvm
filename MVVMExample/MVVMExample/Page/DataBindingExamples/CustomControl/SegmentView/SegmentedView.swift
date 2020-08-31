@@ -16,6 +16,7 @@ import Action
 extension Reactive where Base: SegmentedView {
     
     var selectedIndex: ControlProperty<Int> {
+        
         return UIControl.toProperty(control: self.base, getter: { (segmentedView) in
             segmentedView.selectedIndex
         }, setter: { (segmentedView, value) in

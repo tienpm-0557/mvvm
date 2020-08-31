@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TabbarView" customModule="MVVMExample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8w-z4-sfi">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0W-iM-Gx1">
+                            <rect key="frame" x="0.0" y="0.0" width="83" height="60"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXD-IL-o5p">
+                                    <rect key="frame" x="0.0" y="0.0" width="83" height="60"/>
+                                    <state key="normal" title="Tab 01"/>
+                                    <connections>
+                                        <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="WDg-9e-UWB"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="JXD-IL-o5p" secondAttribute="bottom" id="1Jb-0q-tdS"/>
+                                <constraint firstAttribute="trailing" secondItem="JXD-IL-o5p" secondAttribute="trailing" id="Eb5-dW-CUl"/>
+                                <constraint firstItem="JXD-IL-o5p" firstAttribute="leading" secondItem="M0W-iM-Gx1" secondAttribute="leading" id="QfD-8a-93a"/>
+                                <constraint firstItem="JXD-IL-o5p" firstAttribute="top" secondItem="M0W-iM-Gx1" secondAttribute="top" id="dNy-UU-gXY"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elQ-41-qQB">
+                            <rect key="frame" x="83" y="0.0" width="82.5" height="60"/>
+                            <subviews>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86h-Wm-crE">
+                                    <rect key="frame" x="0.0" y="0.0" width="82.5" height="60"/>
+                                    <state key="normal" title="Tab 02"/>
+                                    <connections>
+                                        <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="yK6-ka-F6D"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="86h-Wm-crE" firstAttribute="top" secondItem="elQ-41-qQB" secondAttribute="top" id="ASQ-oK-txH"/>
+                                <constraint firstAttribute="bottom" secondItem="86h-Wm-crE" secondAttribute="bottom" id="Yy7-Zj-wiH"/>
+                                <constraint firstAttribute="trailing" secondItem="86h-Wm-crE" secondAttribute="trailing" id="dZJ-p6-OZM"/>
+                                <constraint firstItem="86h-Wm-crE" firstAttribute="leading" secondItem="elQ-41-qQB" secondAttribute="leading" id="vgn-cr-lUf"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1A-PU-VdG">
+                            <rect key="frame" x="165.5" y="0.0" width="83" height="60"/>
+                            <subviews>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdw-cd-bd1">
+                                    <rect key="frame" x="0.0" y="0.0" width="83" height="60"/>
+                                    <state key="normal" title="Tab 03"/>
+                                    <connections>
+                                        <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="Sak-9C-GzU"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="pdw-cd-bd1" firstAttribute="top" secondItem="R1A-PU-VdG" secondAttribute="top" id="3X8-xH-i6y"/>
+                                <constraint firstItem="pdw-cd-bd1" firstAttribute="leading" secondItem="R1A-PU-VdG" secondAttribute="leading" id="cm8-ZY-2Ws"/>
+                                <constraint firstAttribute="bottom" secondItem="pdw-cd-bd1" secondAttribute="bottom" id="sIv-Tr-0JC"/>
+                                <constraint firstAttribute="trailing" secondItem="pdw-cd-bd1" secondAttribute="trailing" id="tuN-hY-Zsy"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xF4-rv-o7y">
+                            <rect key="frame" x="248.5" y="0.0" width="82.5" height="60"/>
+                            <subviews>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3p-3C-OXG">
+                                    <rect key="frame" x="0.0" y="0.0" width="82.5" height="60"/>
+                                    <state key="normal" title="Tab 04"/>
+                                    <connections>
+                                        <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="sh7-Qo-aPK"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="A3p-3C-OXG" firstAttribute="leading" secondItem="xF4-rv-o7y" secondAttribute="leading" id="Ezu-sr-LWl"/>
+                                <constraint firstItem="A3p-3C-OXG" firstAttribute="top" secondItem="xF4-rv-o7y" secondAttribute="top" id="JSe-Sj-VMp"/>
+                                <constraint firstAttribute="trailing" secondItem="A3p-3C-OXG" secondAttribute="trailing" id="l5s-4L-9Ab"/>
+                                <constraint firstAttribute="bottom" secondItem="A3p-3C-OXG" secondAttribute="bottom" id="ylV-Dd-wEP"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRY-PS-xeZ">
+                            <rect key="frame" x="331" y="0.0" width="83" height="60"/>
+                            <subviews>
+                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1b6-AY-1dg">
+                                    <rect key="frame" x="0.0" y="0.0" width="83" height="60"/>
+                                    <state key="normal" title="Tab 05"/>
+                                    <connections>
+                                        <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="zgq-kh-dF0"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="1b6-AY-1dg" secondAttribute="bottom" id="4sV-jc-7df"/>
+                                <constraint firstItem="1b6-AY-1dg" firstAttribute="top" secondItem="qRY-PS-xeZ" secondAttribute="top" id="Ltm-L7-JAR"/>
+                                <constraint firstAttribute="trailing" secondItem="1b6-AY-1dg" secondAttribute="trailing" id="OfR-AP-ZFK"/>
+                                <constraint firstItem="1b6-AY-1dg" firstAttribute="leading" secondItem="qRY-PS-xeZ" secondAttribute="leading" id="vuv-b6-EfW"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="elQ-41-qQB" firstAttribute="width" secondItem="R1A-PU-VdG" secondAttribute="width" id="5nt-eB-lIS"/>
+                        <constraint firstItem="M0W-iM-Gx1" firstAttribute="width" secondItem="elQ-41-qQB" secondAttribute="width" id="G89-vW-h5R"/>
+                        <constraint firstItem="xF4-rv-o7y" firstAttribute="width" secondItem="qRY-PS-xeZ" secondAttribute="width" multiplier="1:1" id="TT4-fE-nkv"/>
+                        <constraint firstItem="R1A-PU-VdG" firstAttribute="width" secondItem="xF4-rv-o7y" secondAttribute="width" id="hXO-hv-wII"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="S8w-z4-sfi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HCe-xW-Tbq"/>
+                <constraint firstAttribute="bottom" secondItem="S8w-z4-sfi" secondAttribute="bottom" id="M6F-VF-iDZ"/>
+                <constraint firstItem="S8w-z4-sfi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eYx-1F-Fo5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="S8w-z4-sfi" secondAttribute="trailing" id="rLp-45-Hmo"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outletCollection property="buttons" destination="JXD-IL-o5p" collectionClass="NSMutableArray" id="JBr-xo-UC3"/>
+                <outletCollection property="buttons" destination="86h-Wm-crE" collectionClass="NSMutableArray" id="ner-FA-ge0"/>
+                <outletCollection property="buttons" destination="pdw-cd-bd1" collectionClass="NSMutableArray" id="sq3-Tc-uyb"/>
+                <outletCollection property="buttons" destination="A3p-3C-OXG" collectionClass="NSMutableArray" id="nlv-dw-zk3"/>
+                <outletCollection property="buttons" destination="1b6-AY-1dg" collectionClass="NSMutableArray" id="fQ3-CR-FgE"/>
+            </connections>
+            <point key="canvasLocation" x="155.07246376811597" y="69.642857142857139"/>
+        </view>
+    </objects>
+</document>

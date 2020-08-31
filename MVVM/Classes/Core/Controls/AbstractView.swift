@@ -7,21 +7,26 @@ import UIKit
 
 open class AbstractView: UIView {
     
+    public static func nibName() -> String{
+        return String(describing: self)
+    }
+    
     public init() {
         super.init(frame: .zero)
-        setupView()
+        initialize()
     }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        initialize()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupView()
+        initialize()
     }
     
+    open func initialize() {}
     open func setupView() {}
 }
 

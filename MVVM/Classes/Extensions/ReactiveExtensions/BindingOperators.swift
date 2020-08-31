@@ -46,6 +46,14 @@ public func ~><T>(source: Observable<T>, relay: BehaviorRelay<T?>) -> Disposable
     return source.bind(to: relay)
 }
 
+public func ~><T>(source: BehaviorRelay<T>, relay: BehaviorRelay<T?>) -> Disposable {
+    return source.bind(to: relay)
+}
+
+public func ~><T>(source: BehaviorRelay<T>, relay: BehaviorRelay<T>) -> Disposable {
+    return source.bind(to: relay)
+}
+
 /// Single
 public func ~><T>(source: Single<T>, relay: BehaviorRelay<T?>) -> Disposable {
     return source.subscribe(onSuccess: relay.accept)
