@@ -18,6 +18,8 @@ class TabbarControllerViewModel: BaseViewModel {
     override func react() {
         super.react()
         
+        
+        
     }
     
 }

@@ -22,7 +22,7 @@ class DatabindingExamplesPageViewModel: TableOfContentViewModel {
         let page = MenuTableCellViewModel(model: MenuModel(withTitle: "UIPageViewController (coming soon)",
                                                            desc: "Examples about how to create a  UIPageViewController"))
         
-        let tabbar = MenuTableCellViewModel(model: MenuModel(withTitle: "TabbarController (coming soon)",
+        let tabbar = MenuTableCellViewModel(model: MenuModel(withTitle: "TabbarController",
                                                              desc: "Examples about how to create a TabbarController"))
         
         itemsSource.reset([[segmentBar, customControl, page, tabbar]])

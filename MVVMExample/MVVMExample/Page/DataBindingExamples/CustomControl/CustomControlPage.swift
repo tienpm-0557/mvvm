@@ -15,8 +15,7 @@ class CustomControlPage: BasePage {
     let label = UILabel()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()   
     }
     
     override func initialize() {

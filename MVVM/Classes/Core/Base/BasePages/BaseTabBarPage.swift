@@ -16,10 +16,29 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
     
     public var disposeBag: DisposeBag? = DisposeBag()
     public private(set) var backButton: UIBarButtonItem?
+    
+    public var enableBackButton: Bool = false {
+        didSet {
+            if enableBackButton {
+                backButton = backButtonFactory().create()
+                navigationItem.leftBarButtonItem = backButton
+                backButton?.rx.bind(to: backAction, input: ())
+            } else {
+                navigationItem.leftBarButtonItem = nil
+                backButton?.rx.unbindAction()
+            }
+        }
+    }
+    
+    private lazy var backAction: Action<Void, Void> = {
+        return Action() { .just(self.onBack()) }
+    }()
+    
     public var animatorDelegate: AnimatorDelegate?
     
     public let alertService: IAlertService = DependencyManager.shared.getService()
     public let localeService: LocalizeService = DependencyManager.shared.getService()
+    public let navigationService: INavigationService = DependencyManager.shared.getService()
     
     deinit {
         destroy()
@@ -67,6 +86,10 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
      ```
      */
     open func bindViewAndViewModel() {}
+    
+    open func onBack() {
+        navigationService.pop()
+    }
     
     /**
      Subclasses override this method to remove all things related to `DisposeBag`.
