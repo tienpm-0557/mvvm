@@ -38,6 +38,11 @@
 		9C5D0195248542BA00AF87F9 /* ValidatePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */; };
 		9C5D019A248550D600AF87F9 /* AuthenticationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0198248550D600AF87F9 /* AuthenticationPage.swift */; };
 		9C5D019B248550D600AF87F9 /* AuthenticationPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */; };
+		9C6504A22501DAD1004B4696 /* TabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A02501DAD1004B4696 /* TabPage.swift */; };
+		9C6504A32501DAD1004B4696 /* TabPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C6504A12501DAD1004B4696 /* TabPage.xib */; };
+		9C6504A62501DB0B004B4696 /* TabPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */; };
+		9C6504A92501E4CE004B4696 /* ColorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A82501E4CE004B4696 /* ColorConfig.swift */; };
+		9C6504AB2501EF8B004B4696 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504AA2501EF8B004B4696 /* DeviceManager.swift */; };
 		9C74B1772477BA5F0061F2BF /* ContactListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B1752477BA5F0061F2BF /* ContactListPage.swift */; };
 		9C74B1782477BA5F0061F2BF /* ContactListPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74B1762477BA5F0061F2BF /* ContactListPage.xib */; };
 		9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */; };
@@ -227,6 +232,11 @@
 		9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePageViewModel.swift; sourceTree = "<group>"; };
 		9C5D0198248550D600AF87F9 /* AuthenticationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPage.swift; sourceTree = "<group>"; };
 		9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationPage.xib; sourceTree = "<group>"; };
+		9C6504A02501DAD1004B4696 /* TabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPage.swift; sourceTree = "<group>"; };
+		9C6504A12501DAD1004B4696 /* TabPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabPage.xib; sourceTree = "<group>"; };
+		9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPageViewModel.swift; sourceTree = "<group>"; };
+		9C6504A82501E4CE004B4696 /* ColorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConfig.swift; sourceTree = "<group>"; };
+		9C6504AA2501EF8B004B4696 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		9C74B1752477BA5F0061F2BF /* ContactListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPage.swift; sourceTree = "<group>"; };
 		9C74B1762477BA5F0061F2BF /* ContactListPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListPage.xib; sourceTree = "<group>"; };
 		9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPageViewModel.swift; sourceTree = "<group>"; };
@@ -593,6 +603,31 @@
 			path = AuthenticationView;
 			sourceTree = "<group>";
 		};
+		9C65049F2501DAB7004B4696 /* TabPage */ = {
+			isa = PBXGroup;
+			children = (
+				9C6504A42501DADA004B4696 /* TabPageViewModel */,
+				9C6504A02501DAD1004B4696 /* TabPage.swift */,
+				9C6504A12501DAD1004B4696 /* TabPage.xib */,
+			);
+			path = TabPage;
+			sourceTree = "<group>";
+		};
+		9C6504A42501DADA004B4696 /* TabPageViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */,
+			);
+			path = TabPageViewModel;
+			sourceTree = "<group>";
+		};
+		9C6504A72501E4AC004B4696 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		9C74B1792477BAC50061F2BF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,6 +681,7 @@
 			children = (
 				9CC01B6124DA58F700995A07 /* README.md */,
 				09BC282424C19BB400D874CE /* MVVM.podspec */,
+				9C6504A72501E4AC004B4696 /* Common */,
 				9CCBA65D247AB1EB00D73A7B /* SystemConfiguration */,
 				9CCBA656247A79F300D73A7B /* Services */,
 				9C74EBBE246D1B5A00A3CF1D /* Models */,
@@ -1297,6 +1333,8 @@
 			isa = PBXGroup;
 			children = (
 				9CCBA65E247AB20000D73A7B /* Constants.swift */,
+				9C6504A82501E4CE004B4696 /* ColorConfig.swift */,
+				9C6504AA2501EF8B004B4696 /* DeviceManager.swift */,
 			);
 			path = SystemConfiguration;
 			sourceTree = "<group>";
@@ -1338,6 +1376,7 @@
 		9CE8BA0324FCD12C001EA3A3 /* TabbarController */ = {
 			isa = PBXGroup;
 			children = (
+				9C65049F2501DAB7004B4696 /* TabPage */,
 				9C004D8024FCD92E007E9298 /* ViewModel */,
 				9CE8BA0824FCD27F001EA3A3 /* TabbarView */,
 				9CE8BA0424FCD1F8001EA3A3 /* TabbarViewController.swift */,
@@ -1564,6 +1603,7 @@
 				9C74EBBB246D1AF000A3CF1D /* MenuTableViewCell.xib in Resources */,
 				9C74EBF8246D435400A3CF1D /* ListPageExamplePage.xib in Resources */,
 				9C74EBFD246D4E7C00A3CF1D /* MVVMExamplePage.xib in Resources */,
+				9C6504A32501DAD1004B4696 /* TabPage.xib in Resources */,
 				9C59387D24D945EA00AB6F1E /* LocalizationPage.xib in Resources */,
 				9C74EC48246E4B0500A3CF1D /* SectionImageCell.xib in Resources */,
 				9C59386C24D9355100AB6F1E /* Localizable.strings in Resources */,
@@ -1758,6 +1798,7 @@
 				9C74EC39246E477900A3CF1D /* SectionTextCell.swift in Sources */,
 				9C74EC572470037200A3CF1D /* SectionFooterListView.swift in Sources */,
 				9CF158E6247144B1006A1CFB /* HeaderCollectionViewModel.swift in Sources */,
+				9C6504A62501DB0B004B4696 /* TabPageViewModel.swift in Sources */,
 				9C76D7D724867E7400DEABA1 /* CustomControlViewPageModel.swift in Sources */,
 				9CD35C1E24D7C7E40087B8CF /* TransitionContentModel.swift in Sources */,
 				9C74EBF7246D435400A3CF1D /* ListPageExamplePage.swift in Sources */,
@@ -1770,10 +1811,12 @@
 				9C74EBE6246D23F000A3CF1D /* FailNavigationWebPage.swift in Sources */,
 				9C74EBC5246D1E2500A3CF1D /* IntroductionViewModel.swift in Sources */,
 				9C109034249A164B009C3166 /* MoyaProviderServicePageViewModel.swift in Sources */,
+				9C6504A92501E4CE004B4696 /* ColorConfig.swift in Sources */,
 				09DC47A024C146A100906F6F /* ReachabilityPage.swift in Sources */,
 				9C74EBDA246D20D800A3CF1D /* AlertWebPageViewModel.swift in Sources */,
 				9C79EE152471293B00FEF5EC /* DynamicCollectionPageViewModel.swift in Sources */,
 				9C109036249A173B009C3166 /* MoyaNetworkService.swift in Sources */,
+				9C6504AB2501EF8B004B4696 /* DeviceManager.swift in Sources */,
 				9CF158E224713B1F006A1CFB /* HeaderCollectionView.swift in Sources */,
 				9CCBA663247AC21E00D73A7B /* APIService.swift in Sources */,
 				9C74EC3F246E49C800A3CF1D /* SectionTextCellViewModel.swift in Sources */,
@@ -1796,6 +1839,7 @@
 				9C92957B247CB63400AC7E8E /* NetworkServicePage.swift in Sources */,
 				9C74EC08246D8AAC00A3CF1D /* DataBindingExamplesViewModel.swift in Sources */,
 				9C74EC42246E4A3B00A3CF1D /* SectionListPageViewModel.swift in Sources */,
+				9C6504A22501DAD1004B4696 /* TabPage.swift in Sources */,
 				9CAEA2852478C90F00061B49 /* FlickrImageCell.swift in Sources */,
 				9C5D0195248542BA00AF87F9 /* ValidatePageViewModel.swift in Sources */,
 				9C8268F524BEEB9C008497A6 /* AlertServices.swift in Sources */,

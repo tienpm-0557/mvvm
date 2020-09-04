@@ -23,17 +23,20 @@ public extension UIColor {
         self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: a)
     }
     
-    convenience init?(hexString: String) {
-        var hexString = hexString.replacingOccurrences(of: "#", with: "")
-        if hexString.count == 3 {
-            hexString += hexString
-        }
-        guard let hex = hexString.toHex() else { return nil }
-        self.init(hex: hex)
+    convenience init(hexString: String) {
+        let hexString = hexString.replacingOccurrences(of: "#", with: "")
+        let scanner = Scanner(string: hexString)
+        scanner.scanLocation = 0
+        var rgbValue: UInt64 = 0
+        scanner.scanHexInt64(&rgbValue)
+        let r = (rgbValue & 0xff0000) >> 16
+        let g = (rgbValue & 0xff00) >> 8
+        let b = rgbValue & 0xff
+        self.init(red: CGFloat(r) / 0xff, green: CGFloat(g) / 0xff, blue: CGFloat(b) / 0xff, alpha: 1.0)
     }
     
     static func fromHex(_ hexString: String) -> UIColor {
-        return UIColor(hexString: hexString) ?? .clear
+        return UIColor(hexString: hexString) 
     }
 }
 

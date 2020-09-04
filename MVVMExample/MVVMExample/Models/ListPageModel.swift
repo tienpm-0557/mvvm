@@ -72,3 +72,18 @@ class HeaderFooterModel: Model {
         footer <- map["footer"]
     }
 }
+
+class TabbarModel: Model {
+    
+    private(set) var title = ""
+    private(set) var index = 0
+    
+    convenience init?(withTitle title: String) {
+        self.init(JSON:["title":title])
+    }
+    
+    override func mapping(map: Map) {
+        title <- map["title"]
+        index <- map["index"]
+    }
+}

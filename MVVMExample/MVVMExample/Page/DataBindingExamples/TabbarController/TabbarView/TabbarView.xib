@@ -18,11 +18,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0W-iM-Gx1">
-                            <rect key="frame" x="0.0" y="0.0" width="83" height="60"/>
+                            <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXD-IL-o5p">
-                                    <rect key="frame" x="0.0" y="0.0" width="83" height="60"/>
-                                    <state key="normal" title="Tab 01"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXD-IL-o5p">
+                                    <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
+                                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                                    <state key="normal" title="TimeLine">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
                                     <connections>
                                         <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="WDg-9e-UWB"/>
                                     </connections>
@@ -37,11 +42,15 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elQ-41-qQB">
-                            <rect key="frame" x="83" y="0.0" width="82.5" height="60"/>
+                            <rect key="frame" x="103.5" y="0.0" width="103.5" height="60"/>
                             <subviews>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86h-Wm-crE">
-                                    <rect key="frame" x="0.0" y="0.0" width="82.5" height="60"/>
-                                    <state key="normal" title="Tab 02"/>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86h-Wm-crE">
+                                    <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                                    <state key="normal" title="Messages">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
                                     <connections>
                                         <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="yK6-ka-F6D"/>
                                     </connections>
@@ -56,11 +65,15 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1A-PU-VdG">
-                            <rect key="frame" x="165.5" y="0.0" width="83" height="60"/>
+                            <rect key="frame" x="207" y="0.0" width="103.5" height="60"/>
                             <subviews>
-                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdw-cd-bd1">
-                                    <rect key="frame" x="0.0" y="0.0" width="83" height="60"/>
-                                    <state key="normal" title="Tab 03"/>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdw-cd-bd1">
+                                    <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                                    <state key="normal" title="Notificatons">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
                                     <connections>
                                         <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="Sak-9C-GzU"/>
                                     </connections>
@@ -75,11 +88,15 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xF4-rv-o7y">
-                            <rect key="frame" x="248.5" y="0.0" width="82.5" height="60"/>
+                            <rect key="frame" x="310.5" y="0.0" width="103.5" height="60"/>
                             <subviews>
-                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3p-3C-OXG">
-                                    <rect key="frame" x="0.0" y="0.0" width="82.5" height="60"/>
-                                    <state key="normal" title="Tab 04"/>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3p-3C-OXG">
+                                    <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                                    <state key="normal" title="Profile">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
                                     <connections>
                                         <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="sh7-Qo-aPK"/>
                                     </connections>
@@ -93,30 +110,10 @@
                                 <constraint firstAttribute="bottom" secondItem="A3p-3C-OXG" secondAttribute="bottom" id="ylV-Dd-wEP"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRY-PS-xeZ">
-                            <rect key="frame" x="331" y="0.0" width="83" height="60"/>
-                            <subviews>
-                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1b6-AY-1dg">
-                                    <rect key="frame" x="0.0" y="0.0" width="83" height="60"/>
-                                    <state key="normal" title="Tab 05"/>
-                                    <connections>
-                                        <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="zgq-kh-dF0"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="1b6-AY-1dg" secondAttribute="bottom" id="4sV-jc-7df"/>
-                                <constraint firstItem="1b6-AY-1dg" firstAttribute="top" secondItem="qRY-PS-xeZ" secondAttribute="top" id="Ltm-L7-JAR"/>
-                                <constraint firstAttribute="trailing" secondItem="1b6-AY-1dg" secondAttribute="trailing" id="OfR-AP-ZFK"/>
-                                <constraint firstItem="1b6-AY-1dg" firstAttribute="leading" secondItem="qRY-PS-xeZ" secondAttribute="leading" id="vuv-b6-EfW"/>
-                            </constraints>
-                        </view>
                     </subviews>
                     <constraints>
                         <constraint firstItem="elQ-41-qQB" firstAttribute="width" secondItem="R1A-PU-VdG" secondAttribute="width" id="5nt-eB-lIS"/>
                         <constraint firstItem="M0W-iM-Gx1" firstAttribute="width" secondItem="elQ-41-qQB" secondAttribute="width" id="G89-vW-h5R"/>
-                        <constraint firstItem="xF4-rv-o7y" firstAttribute="width" secondItem="qRY-PS-xeZ" secondAttribute="width" multiplier="1:1" id="TT4-fE-nkv"/>
                         <constraint firstItem="R1A-PU-VdG" firstAttribute="width" secondItem="xF4-rv-o7y" secondAttribute="width" id="hXO-hv-wII"/>
                     </constraints>
                 </stackView>
@@ -135,7 +132,6 @@
                 <outletCollection property="buttons" destination="86h-Wm-crE" collectionClass="NSMutableArray" id="ner-FA-ge0"/>
                 <outletCollection property="buttons" destination="pdw-cd-bd1" collectionClass="NSMutableArray" id="sq3-Tc-uyb"/>
                 <outletCollection property="buttons" destination="A3p-3C-OXG" collectionClass="NSMutableArray" id="nlv-dw-zk3"/>
-                <outletCollection property="buttons" destination="1b6-AY-1dg" collectionClass="NSMutableArray" id="fQ3-CR-FgE"/>
             </connections>
             <point key="canvasLocation" x="155.07246376811597" y="69.642857142857139"/>
         </view>

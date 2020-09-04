@@ -30,10 +30,6 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
     public convenience init(viewModel vm: BaseViewModel) {
         self.init()
         self.viewModel = vm
-    }
-    
-    open override func viewDidLoad() {
-        super.viewDidLoad()
         initialize()
         updateAfterViewModelChanged()
     }
