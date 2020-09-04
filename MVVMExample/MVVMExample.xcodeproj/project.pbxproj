@@ -43,6 +43,9 @@
 		9C6504A62501DB0B004B4696 /* TabPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */; };
 		9C6504A92501E4CE004B4696 /* ColorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A82501E4CE004B4696 /* ColorConfig.swift */; };
 		9C6504AB2501EF8B004B4696 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504AA2501EF8B004B4696 /* DeviceManager.swift */; };
+		9C6504B225022C7C004B4696 /* UIPageExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504B025022C7C004B4696 /* UIPageExample.swift */; };
+		9C6504B325022C7C004B4696 /* UIPageExample.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C6504B125022C7C004B4696 /* UIPageExample.xib */; };
+		9C6504B625022D4B004B4696 /* UIPageExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504B525022D4B004B4696 /* UIPageExampleViewModel.swift */; };
 		9C74B1772477BA5F0061F2BF /* ContactListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B1752477BA5F0061F2BF /* ContactListPage.swift */; };
 		9C74B1782477BA5F0061F2BF /* ContactListPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C74B1762477BA5F0061F2BF /* ContactListPage.xib */; };
 		9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */; };
@@ -237,6 +240,9 @@
 		9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPageViewModel.swift; sourceTree = "<group>"; };
 		9C6504A82501E4CE004B4696 /* ColorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConfig.swift; sourceTree = "<group>"; };
 		9C6504AA2501EF8B004B4696 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		9C6504B025022C7C004B4696 /* UIPageExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageExample.swift; sourceTree = "<group>"; };
+		9C6504B125022C7C004B4696 /* UIPageExample.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIPageExample.xib; sourceTree = "<group>"; };
+		9C6504B525022D4B004B4696 /* UIPageExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageExampleViewModel.swift; sourceTree = "<group>"; };
 		9C74B1752477BA5F0061F2BF /* ContactListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPage.swift; sourceTree = "<group>"; };
 		9C74B1762477BA5F0061F2BF /* ContactListPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListPage.xib; sourceTree = "<group>"; };
 		9C74B17A2477BAE90061F2BF /* ContactListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPageViewModel.swift; sourceTree = "<group>"; };
@@ -628,6 +634,24 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		9C6504AC2502184D004B4696 /* PageController */ = {
+			isa = PBXGroup;
+			children = (
+				9C6504B425022D28004B4696 /* ViewModel */,
+				9C6504B025022C7C004B4696 /* UIPageExample.swift */,
+				9C6504B125022C7C004B4696 /* UIPageExample.xib */,
+			);
+			path = PageController;
+			sourceTree = "<group>";
+		};
+		9C6504B425022D28004B4696 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C6504B525022D4B004B4696 /* UIPageExampleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9C74B1792477BAC50061F2BF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -931,6 +955,7 @@
 		9C74EC01246D8A0900A3CF1D /* DataBindingExamples */ = {
 			isa = PBXGroup;
 			children = (
+				9C6504AC2502184D004B4696 /* PageController */,
 				9CE8BA0324FCD12C001EA3A3 /* TabbarController */,
 				9C5116E1248655BD00DEAE1D /* CustomControl */,
 				9C5D0197248550B800AF87F9 /* AuthenticationView */,
@@ -1576,6 +1601,7 @@
 				9C74EC16246D8F8000A3CF1D /* TransitionExamplesPage.xib in Resources */,
 				9C74EC592470038300A3CF1D /* SectionFooterListView.xib in Resources */,
 				9C74EBE7246D23F000A3CF1D /* FailNavigationWebPage.xib in Resources */,
+				9C6504B325022C7C004B4696 /* UIPageExample.xib in Resources */,
 				9C74EC3A246E477900A3CF1D /* SectionTextCell.xib in Resources */,
 				9C74EBEF246D246F00A3CF1D /* EvaluateJavaScriptWebPage.xib in Resources */,
 				9CF158E324713B1F006A1CFB /* HeaderCollectionView.xib in Resources */,
@@ -1806,6 +1832,7 @@
 				9C79EE0F247124FB00FEF5EC /* DynamicCollectionPage.swift in Sources */,
 				9C004D8724FCF433007E9298 /* TabbarViewModel.swift in Sources */,
 				9CF158E924715B15006A1CFB /* SimpleCollectionViewDellModel.swift in Sources */,
+				9C6504B225022C7C004B4696 /* UIPageExample.swift in Sources */,
 				9CCBA65F247AB20000D73A7B /* Constants.swift in Sources */,
 				9C74EC25246D906F00A3CF1D /* WebKitPageViewModel.swift in Sources */,
 				9C74EBE6246D23F000A3CF1D /* FailNavigationWebPage.swift in Sources */,
@@ -1828,6 +1855,7 @@
 				9CCBA65A247A7C4C00D73A7B /* ContactModel.swift in Sources */,
 				9C59387C24D945EA00AB6F1E /* LocalizationPage.swift in Sources */,
 				9CC01B6624DA935400995A07 /* ImagePickerPage.swift in Sources */,
+				9C6504B625022D4B004B4696 /* UIPageExampleViewModel.swift in Sources */,
 				9CC01B6A24DA938B00995A07 /* ImagePickerViewModel.swift in Sources */,
 				9C79EE022470DCE100FEF5EC /* CollectionPageViewModel.swift in Sources */,
 				9C79EE0A2470E0C500FEF5EC /* SimpleCollectionPage.swift in Sources */,
