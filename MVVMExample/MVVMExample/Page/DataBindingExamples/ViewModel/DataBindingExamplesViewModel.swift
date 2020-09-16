@@ -42,7 +42,7 @@ class DatabindingExamplesPageViewModel: TableOfContentViewModel {
             page = vc
         case 2:
             let vm = UIPageExampleViewModel(model: cellViewModel.model)
-            let vc = UIPageExample(viewModel: vm)
+            let vc = UIPageExample(viewModel: vm, withOption: nil)
             page = vc
         case 3:
             let vm = TabbarControllerViewModel(model: cellViewModel.model)

@@ -19,8 +19,8 @@ class TabbarViewController: BaseTabBarPage {
         enableBackButton = false
         self.view.backgroundColor = UIColor.white
         /// Setup Tabbar Controller
-        let vm0 = TabPageViewModel(model: TabbarModel(JSON: ["title":"Home", "index":0]))
-        let tab0 = TabPage(viewModel: vm0)
+        let timelineViewModel = TimelinePageViewModel(model: TabbarModel(JSON: ["title": "TimeLine", "index": 0]))
+        let tab0 = TimelinePage(viewModel: timelineViewModel)
         let nv0 = NavigationPage(rootViewController: tab0)
         tab0.view.backgroundColor = UIColor.tabbarBackgroundColor
         
