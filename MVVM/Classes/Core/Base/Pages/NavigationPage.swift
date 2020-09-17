@@ -13,7 +13,7 @@ open class NavigationPage: UINavigationController, UIGestureRecognizerDelegate, 
     /**
      Request to update status bar content color
      */
-    public var statusBarStyle: UIStatusBarStyle = .lightContent {
+    public var statusBarStyle: UIStatusBarStyle = .default {
         didSet { setNeedsStatusBarAppearanceUpdate() }
     }
     

@@ -11,9 +11,9 @@ import UIKit
 
 extension UIColor {
     static let tabbarTitleColor             =  UIColor(hexString: "1C2826")
-    static let tabbarTitleSelectedColor     =  UIColor(hexString: "D64550")
+    static let tabbarTitleSelectedColor     =  UIColor(hexString: "0875F7")
     
-    static let tabbarBackgroundColor                =  UIColor(hexString: "EEF4D4")
-    static let tabbarBackgroundSelectedColor        =  UIColor(hexString: "DAEFB3")
+    static let tabbarBackgroundColor                =  UIColor.white
+    static let tabbarBackgroundSelectedColor        =  UIColor.white
     
 }

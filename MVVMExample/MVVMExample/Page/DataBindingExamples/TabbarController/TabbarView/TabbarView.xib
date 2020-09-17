@@ -20,14 +20,15 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0W-iM-Gx1">
                             <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXD-IL-o5p">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXD-IL-o5p">
                                     <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
-                                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
-                                    <state key="normal" title="TimeLine">
+                                    <state key="normal" image="tab_home">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </state>
+                                    <state key="selected" image="tab_home_selected"/>
                                     <connections>
                                         <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="WDg-9e-UWB"/>
                                     </connections>
@@ -44,13 +45,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elQ-41-qQB">
                             <rect key="frame" x="103.5" y="0.0" width="103.5" height="60"/>
                             <subviews>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86h-Wm-crE">
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86h-Wm-crE">
                                     <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
-                                    <state key="normal" title="Messages">
+                                    <state key="normal" image="tab_message">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </state>
+                                    <state key="selected" image="tab_message_selected"/>
                                     <connections>
                                         <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="yK6-ka-F6D"/>
                                     </connections>
@@ -67,13 +69,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1A-PU-VdG">
                             <rect key="frame" x="207" y="0.0" width="103.5" height="60"/>
                             <subviews>
-                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdw-cd-bd1">
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdw-cd-bd1">
                                     <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
-                                    <state key="normal" title="Notificatons">
+                                    <state key="normal" image="icon_notification">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </state>
+                                    <state key="selected" image="icon_notification_selected"/>
                                     <connections>
                                         <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="Sak-9C-GzU"/>
                                     </connections>
@@ -90,13 +93,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xF4-rv-o7y">
                             <rect key="frame" x="310.5" y="0.0" width="103.5" height="60"/>
                             <subviews>
-                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3p-3C-OXG">
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3p-3C-OXG">
                                     <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
-                                    <state key="normal" title="Profile">
+                                    <state key="normal" image="tab_profile">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </state>
+                                    <state key="selected" image="tab_profile_selected"/>
                                     <connections>
                                         <action selector="didSelectedTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="sh7-Qo-aPK"/>
                                     </connections>
@@ -136,4 +140,14 @@
             <point key="canvasLocation" x="155.07246376811597" y="69.642857142857139"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_notification" width="30" height="30"/>
+        <image name="icon_notification_selected" width="30" height="30"/>
+        <image name="tab_home" width="30" height="30"/>
+        <image name="tab_home_selected" width="30" height="30"/>
+        <image name="tab_message" width="30" height="30"/>
+        <image name="tab_message_selected" width="30" height="30"/>
+        <image name="tab_profile" width="30" height="30"/>
+        <image name="tab_profile_selected" width="30" height="30"/>
+    </resources>
 </document>
