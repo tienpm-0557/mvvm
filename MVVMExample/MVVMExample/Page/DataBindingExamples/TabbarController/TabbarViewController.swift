@@ -17,11 +17,20 @@ class TabbarViewController: BaseTabBarPage {
     override func initialize() {
         super.initialize()
         enableBackButton = false
-        self.view.backgroundColor = UIColor.white
+        
         /// Setup Tabbar Controller
         let timelineViewModel = TimelinePageViewModel(model: TabbarModel(JSON: ["title": "TimeLine", "index": 0]))
         let tab0 = TimelinePage(viewModel: timelineViewModel)
         let nv0 = NavigationPage(rootViewController: tab0)
+        
+        if #available(iOS 13.0, *) {
+            let app = UINavigationBarAppearance()
+            app.backgroundColor = .blue
+            nv0.navigationBar.scrollEdgeAppearance = app
+        } else {
+            // Fallback on earlier versions
+        }
+        
         tab0.view.backgroundColor = UIColor.tabbarBackgroundColor
         
         let vm1 = TabPageViewModel(model: TabbarModel(JSON: ["title":"Messages", "index":1]))
@@ -49,6 +58,36 @@ class TabbarViewController: BaseTabBarPage {
         _tabBarView?.autoPinEdge(toSuperviewEdge: .left)
         _tabBarView?.autoPinEdge(toSuperviewEdge: .right)
         _tabBarView?.autoSetDimension(.height, toSize: 82)
+        
+        self.addCloseBtn()
+    }
+    
+    func addCloseBtn() {
+        let button = UIButton(frame: CGRect(x: 10, y: 40, width: 110, height: 25))
+        button.addTarget(self, action: #selector(self.popView), for: UIControl.Event.touchUpInside)
+        button.backgroundColor = UIColor.groupTableViewBackground
+        button.cornerRadius = 5
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.titleLabel?.font = Font.system.bold(withSize: 12)
+        
+        button.setTitle("Close Example", for: UIControl.State.normal)
+        self.view.addSubview(button)
+    }
+    
+    @objc func popView() {
+        /// Note: In example we have two navigation on stack.
+        /// Navigation Service only get navigation on top stack.
+        // self.navigationService.pop()
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
     }
     
