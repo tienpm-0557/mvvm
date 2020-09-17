@@ -44,7 +44,7 @@ A MVVM library for iOS Swift, including interfaces for View, ViewModel and Model
   s.dependency 'RxCocoa'
   s.dependency 'Action'
   s.dependency 'Alamofire'
-  s.dependency 'AlamofireImage', '4.1.0'
+  s.dependency 'AlamofireImage'
   s.dependency 'ObjectMapper'
   s.dependency 'PureLayout'
   s.dependency 'Moya'
