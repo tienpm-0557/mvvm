@@ -22,13 +22,11 @@ class FlickrImageSearchPageViewModel: BaseListViewModel {
     let rxSearchText = BehaviorRelay<String?>(value: nil)
     
     var tmpBag: DisposeBag?
-    var page = 1
     var finishedSearching = false
     
     lazy var loadMoreAction: Action<Void, Void> = {
         return Action() { .just(self.loadMore()) }
     }()
-    
     
     override func react() {
         super.react()
@@ -52,7 +50,6 @@ class FlickrImageSearchPageViewModel: BaseListViewModel {
         }) => disposeBag
     }
     
-    
     private func doSearch(keyword: String, isLoadMore: Bool = false) {
         let bag = isLoadMore ? tmpBag : disposeBag
         self.networkService?.search(withKeyword: keyword, page: page)
@@ -67,9 +64,7 @@ class FlickrImageSearchPageViewModel: BaseListViewModel {
             }, onError: { (error) in
                     
             }) => bag
-        
     }
-    
     
     private func loadMore() {
         if itemsSource.countElements() <= 0 || finishedSearching || self.rxState.value == .loadingMore { return }
@@ -96,6 +91,5 @@ class FlickrImageSearchPageViewModel: BaseListViewModel {
         
         return response.photos.toBaseCellViewModels() as [FlickrCellViewModel]
     }
-    
     
 }

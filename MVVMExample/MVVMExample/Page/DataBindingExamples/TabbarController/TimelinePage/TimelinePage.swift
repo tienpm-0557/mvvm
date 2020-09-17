@@ -19,6 +19,8 @@ class TimelinePage: BaseListPage {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        guard let viewModel = self.viewModel as? TimelinePageViewModel else { return }
+        viewModel.getDataAction.execute()
     }
      
     override func initialize() {
@@ -34,21 +36,19 @@ class TimelinePage: BaseListPage {
        
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? TimelinePageViewModel else {
-            return
-        }
-        
+        guard let viewModel = self.viewModel as? TimelinePageViewModel else { return }
         viewModel.rxTille ~> self.rx.title => disposeBag
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
+        
+        // call out load more when reach to end of table view
+        tableView.rx.endReach(30).subscribe(onNext: {
+            viewModel.loadMoreAction.execute(())
+        }) => disposeBag
     }
 
     override func setupTableView(_ tableView: UITableView) {
         super.setupTableView(tableView)
-        tableView.register(cellType: SectionImageCell.self)
-        tableView.register(cellType: SectionTextCell.self)
+        tableView.register(cellType: ActivityCell.self)
+        tableView.register(cellType: TimeLineCell.self)
         tableView.register(headerType: SectionHeaderListView.self)
     }
     
@@ -59,10 +59,12 @@ class TimelinePage: BaseListPage {
     
     override func cellIdentifier(_ cellViewModel: Any, _ returnClassName: Bool = false) -> String {
         switch cellViewModel {
-        case is SectionImageCellViewModel:
-            return SectionImageCell.identifier(returnClassName)
+        case is ActivityCellViewModel:
+            return ActivityCell.identifier(returnClassName)
+        case is TimelineCellViewModel:
+            return TimeLineCell.identifier(returnClassName)
         default:
-            return SectionTextCell.identifier(returnClassName)
+            return TimeLineCell.identifier(returnClassName)
         }
     }
     

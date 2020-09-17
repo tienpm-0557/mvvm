@@ -1,0 +1,73 @@
+//
+//  TimelineModel.swift
+//  MVVMExample
+//
+//  Created by pham.minh.tien on 9/17/20.
+//  Copyright © 2020 Sun*. All rights reserved.
+//
+
+import MVVM
+import ObjectMapper
+import SwiftyJSON
+
+class TimelineModel: Model {
+    
+    var title = ""
+    var desc = ""
+    var thumbnail = ""
+    var createDate = ""
+    var reaction:Int = 0
+    
+    var type: TimelineModelType = .normal
+    var json: JSON = []
+    
+    convenience init(withAnyObject json: [String: Any]) {
+        self.init(JSON: json)!
+    }
+    
+    override func mapping(map: Map) {
+        title <- map["title"]
+        desc <- map["desc"]
+        thumbnail <- map["thumbnail"]
+        createDate <- map["createDate"]
+        type <- (map["type"], TimelineModelTypeTransform())
+    }
+
+}
+
+class TimelineModelTypeTransform: TransformType {
+    typealias Object = TimelineModelType
+    typealias JSON = String
+    
+    func transformFromJSON(_ value: Any?) -> Object? {
+        if let type = value as? String, let code = Int(type) {
+            return TimelineModelType(rawValue: code)
+        }
+        return nil
+    }
+    
+    func transformToJSON(_ value: Object?) -> JSON? {
+        return "\(value?.rawValue ?? 0)"
+    }
+}
+
+public enum TimelineModelType: Int {
+    case normal = 0
+    case activity = 1
+    
+    init?(statusCode: Int?) {
+        guard let _statusCode = statusCode else {
+            return nil
+        }
+        self.init(rawValue: _statusCode)
+    }
+    
+    var message: String {
+        switch self {
+        case .normal:
+            return "Normal post"
+        case .activity:
+            return "Activity view"
+        }
+    }
+}

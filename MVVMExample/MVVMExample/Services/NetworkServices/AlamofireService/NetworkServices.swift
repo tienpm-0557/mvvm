@@ -49,13 +49,13 @@ class NetworkService {
                 resultKey = resultKey + "\(String(describing: objectDict[key]!))"
             }
         }
-        return resultKey;
+        return  MTLAB_SECRET_KEY + resultKey;
     }
     
     open func request(withService service: APIService,
                       withHash hash:Bool,
                       usingCache cache:Bool,
-                      injectDefaulParameter defaultParamter: Bool = true) -> Single<APIResponse> {
+                      injectDefaulParameter defaultParamter: Bool = false) -> Single<APIResponse> {
 
         
         var _params: [String:Any] = [:]
@@ -77,12 +77,11 @@ class NetworkService {
         
         guard let urlString = service.urlRequest?.url?.absoluteString else { return Single.create { _ in Disposables.create { } } }
         
-        debugPrint("Network: start request \(urlString)")
         return Single.create { [weak self] single in
             self?.state.accept(.requesting)
             BaseNetworkService.shared.request(urlString: urlString,
                                          method: service.method,
-                                         params: service.parameters,
+                                         params: _params,
                                          parameterEncoding: service.encoding,
                                          additionalHeaders: service.header)
                 .map(service.prepareSources)

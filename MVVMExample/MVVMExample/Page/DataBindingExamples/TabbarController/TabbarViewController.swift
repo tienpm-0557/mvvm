@@ -19,7 +19,7 @@ class TabbarViewController: BaseTabBarPage {
         enableBackButton = false
         
         /// Setup Tabbar Controller
-        let timelineViewModel = TimelinePageViewModel(model: TabbarModel(JSON: ["title": "TimeLine", "index": 0]))
+        let timelineViewModel = TimelinePageViewModel(model: TabbarModel(JSON: ["title": "Home", "index": 0]))
         let tab0 = TimelinePage(viewModel: timelineViewModel)
         let nv0 = NavigationPage(rootViewController: tab0)
         
@@ -77,6 +77,11 @@ class TabbarViewController: BaseTabBarPage {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     override func bindViewAndViewModel() {

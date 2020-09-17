@@ -19,10 +19,13 @@ class TimelinePageViewModel: BaseListViewModel {
     let rxSearchText = BehaviorRelay<String?>(value: nil)
       
     var tmpBag: DisposeBag?
-    var page = 1
     var finishedSearching = false
       
     let rxTille = BehaviorRelay<String>(value: "")
+    
+    lazy var getDataAction: Action<Void, Void> = {
+        return Action() { .just(self.getData()) }
+    }()
     
     lazy var loadMoreAction: Action<Void, Void> = {
         return Action() { .just(self.loadMore()) }
@@ -31,67 +34,45 @@ class TimelinePageViewModel: BaseListViewModel {
     override func react() {
         super.react()
         
-        guard let model = self.model as? TabbarModel else {
-            return
-        }
+        guard let model = self.model as? TabbarModel else { return }
         rxTille.accept(model.title)
         
-        
         networkService = DependencyManager.shared.getService()
-            
-        rxSearchText
-            .do(onNext: { text in
-                self.tmpBag = nil // stop current load more if any
-                self.page = 1 // reset to page 1
-                self.finishedSearching = false // reset done state
-              
-                if !text.isNilOrEmpty {
-                    self.rxState.accept(.loadingData)
-                }
-            }).debounce(.milliseconds(500), scheduler: Scheduler.shared.mainScheduler)
-            .subscribe(onNext: { [weak self] text in
-                if !text.isNilOrEmpty {
-                    self?.getData()
-                }
-            }) => disposeBag
     }
     
     private func getData() {
-        /*
-          self.networkService?.search(withKeyword: keyword, page: page)
-              .map(prepareSources)
-              .subscribe(onSuccess: { [weak self](results) in
-                  if isLoadMore {
-                      self?.itemsSource.append(results, animated: false)
-                  } else {
-                      self?.itemsSource.reset([results])
-                  }
-                  self?.rxState.accept(.normal)
-              }, onError: { (error) in
-                      
-              }) => bag
-          */
+        self.networkService?.loadTimeline(withPage: self.page, withLimit: self.limit)
+            .map(prepareSources).subscribe(onSuccess: {[weak self] (results) in
+                if let data = results {
+                    self?.itemsSource.append(data, animated: false)
+                }
+                
+            }, onError: { (aaa) in
+                
+            })
+            
     }
-      
-      
-      private func loadMore() {
-         
-      }
-      
-      private func prepareSources(_ response: FlickrSearchResponse?) -> [FlickrCellViewModel] {
-          guard let response = response else {
-              return []
-          }
-          if response.stat == .fail {
-              alertService.presentOkayAlert(title: "Error",
-                                            message: "\(response.message)\nPlease be sure to provide your own API key from Flickr.")
-          }
-          
-          if response.page >= response.pages {
-              finishedSearching = true
-          }
-          
-          return response.photos.toBaseCellViewModels() as [FlickrCellViewModel]
-      }
-      
+    
+    private func loadMore() {
+        
+    }
+    
+    private func prepareSources(_ response: TimelineResponseModel?) -> [BaseCellViewModel]? {
+        guard let response = response else { return [] }
+        if response.stat == .badRequest {
+            alertService.presentOkayAlert(title: "Error",
+                                          message: "\(response.message)\nPlease be sure to provide your own SECRET key from MTLAB.")
+        }
+        
+//        let result = response.timelines.map {
+//
+//        }
+        
+//        if response.page >= response.pages {
+//            finishedSearching = true
+//        }
+        
+        return response.timelines as? [BaseCellViewModel]
+    }
+    
 }

@@ -25,6 +25,9 @@
 		9C109031249A1617009C3166 /* MoyaProviderServicePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C10902F249A1617009C3166 /* MoyaProviderServicePage.xib */; };
 		9C109034249A164B009C3166 /* MoyaProviderServicePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C109033249A164B009C3166 /* MoyaProviderServicePageViewModel.swift */; };
 		9C109036249A173B009C3166 /* MoyaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C109035249A173B009C3166 /* MoyaNetworkService.swift */; };
+		9C2D3BF62513097500F412DD /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D3BF42513097400F412DD /* ActivityCell.swift */; };
+		9C2D3BF72513097500F412DD /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D3BF52513097400F412DD /* ActivityCell.xib */; };
+		9C2D3BFB251309F300F412DD /* ActivityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D3BFA251309F300F412DD /* ActivityCellViewModel.swift */; };
 		9C423CC6247819AD00D9B950 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */; };
 		9C423CC7247819AD00D9B950 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */; };
 		9C423CCA24781D2300D9B950 /* ContactCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */; };
@@ -154,6 +157,13 @@
 		9CAEA2852478C90F00061B49 /* FlickrImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAEA2832478C90F00061B49 /* FlickrImageCell.swift */; };
 		9CAEA2862478C90F00061B49 /* FlickrImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAEA2842478C90F00061B49 /* FlickrImageCell.xib */; };
 		9CAEA2892478CA8600061B49 /* FlickrCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAEA2882478CA8600061B49 /* FlickrCellViewModel.swift */; };
+		9CB0D87825130BF2009826B2 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87725130BF2009826B2 /* ActivityModel.swift */; };
+		9CB0D87A25131149009826B2 /* NetworkService+Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87925131149009826B2 /* NetworkService+Timeline.swift */; };
+		9CB0D87C2513141F009826B2 /* TimelineResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87B2513141F009826B2 /* TimelineResponseModel.swift */; };
+		9CB0D87E25131505009826B2 /* TimelineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87D25131505009826B2 /* TimelineModel.swift */; };
+		9CB0D880251363E5009826B2 /* TimelineCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87F251363E5009826B2 /* TimelineCellViewModel.swift */; };
+		9CB0D8852513656D009826B2 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D8832513656D009826B2 /* TimeLineCell.swift */; };
+		9CB0D8862513656D009826B2 /* TimeLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB0D8842513656D009826B2 /* TimeLineCell.xib */; };
 		9CC01B6224DA58F700995A07 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9CC01B6124DA58F700995A07 /* README.md */; };
 		9CC01B6624DA935400995A07 /* ImagePickerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC01B6424DA935400995A07 /* ImagePickerPage.swift */; };
 		9CC01B6724DA935400995A07 /* ImagePickerPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CC01B6524DA935400995A07 /* ImagePickerPage.xib */; };
@@ -221,6 +231,9 @@
 		9C10902F249A1617009C3166 /* MoyaProviderServicePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoyaProviderServicePage.xib; sourceTree = "<group>"; };
 		9C109033249A164B009C3166 /* MoyaProviderServicePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderServicePageViewModel.swift; sourceTree = "<group>"; };
 		9C109035249A173B009C3166 /* MoyaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNetworkService.swift; sourceTree = "<group>"; };
+		9C2D3BF42513097400F412DD /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		9C2D3BF52513097400F412DD /* ActivityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
+		9C2D3BFA251309F300F412DD /* ActivityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCellViewModel.swift; sourceTree = "<group>"; };
 		9C423CC4247819AD00D9B950 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		9C423CC5247819AD00D9B950 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		9C423CC924781D2300D9B950 /* ContactCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCellViewModel.swift; sourceTree = "<group>"; };
@@ -360,6 +373,13 @@
 		9CAEA2832478C90F00061B49 /* FlickrImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageCell.swift; sourceTree = "<group>"; };
 		9CAEA2842478C90F00061B49 /* FlickrImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlickrImageCell.xib; sourceTree = "<group>"; };
 		9CAEA2882478CA8600061B49 /* FlickrCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrCellViewModel.swift; sourceTree = "<group>"; };
+		9CB0D87725130BF2009826B2 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
+		9CB0D87925131149009826B2 /* NetworkService+Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Timeline.swift"; sourceTree = "<group>"; };
+		9CB0D87B2513141F009826B2 /* TimelineResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineResponseModel.swift; sourceTree = "<group>"; };
+		9CB0D87D25131505009826B2 /* TimelineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineModel.swift; sourceTree = "<group>"; };
+		9CB0D87F251363E5009826B2 /* TimelineCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCellViewModel.swift; sourceTree = "<group>"; };
+		9CB0D8832513656D009826B2 /* TimeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineCell.swift; sourceTree = "<group>"; };
+		9CB0D8842513656D009826B2 /* TimeLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLineCell.xib; sourceTree = "<group>"; };
 		9CC01B6124DA58F700995A07 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		9CC01B6424DA935400995A07 /* ImagePickerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerPage.swift; sourceTree = "<group>"; };
 		9CC01B6524DA935400995A07 /* ImagePickerPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagePickerPage.xib; sourceTree = "<group>"; };
@@ -450,6 +470,8 @@
 		6CFBB58F25124610003299A2 /* TimelinePage */ = {
 			isa = PBXGroup;
 			children = (
+				9C2D3BF32513095C00F412DD /* Cells */,
+				9C2D3BF2251307CC00F412DD /* DummyModel */,
 				6CFBB59425124671003299A2 /* ViewModel */,
 				6CFBB59025124645003299A2 /* TimelinePage.swift */,
 				6CFBB59125124645003299A2 /* TimelinePage.xib */,
@@ -505,6 +527,43 @@
 				9C109033249A164B009C3166 /* MoyaProviderServicePageViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C2D3BF2251307CC00F412DD /* DummyModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CB0D87725130BF2009826B2 /* ActivityModel.swift */,
+				9CB0D87B2513141F009826B2 /* TimelineResponseModel.swift */,
+				9CB0D87D25131505009826B2 /* TimelineModel.swift */,
+			);
+			path = DummyModel;
+			sourceTree = "<group>";
+		};
+		9C2D3BF32513095C00F412DD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9CB0D88125136549009826B2 /* TimeLine */,
+				9C2D3BF8251309A800F412DD /* Activity */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9C2D3BF8251309A800F412DD /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				9C2D3BF9251309B300F412DD /* CellViewModel */,
+				9C2D3BF42513097400F412DD /* ActivityCell.swift */,
+				9C2D3BF52513097400F412DD /* ActivityCell.xib */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		9C2D3BF9251309B300F412DD /* CellViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C2D3BFA251309F300F412DD /* ActivityCellViewModel.swift */,
+			);
+			path = CellViewModel;
 			sourceTree = "<group>";
 		};
 		9C3D0C4E2470DBE700DA3444 /* CollectionPage */ = {
@@ -1300,6 +1359,7 @@
 				9CCBA662247AC21E00D73A7B /* APIService.swift */,
 				9CCBA664247AC29C00D73A7B /* NetworkServices.swift */,
 				9C929576247BD2D700AC7E8E /* NetworkService+Flickr.swift */,
+				9CB0D87925131149009826B2 /* NetworkService+Timeline.swift */,
 			);
 			path = AlamofireService;
 			sourceTree = "<group>";
@@ -1346,6 +1406,24 @@
 			isa = PBXGroup;
 			children = (
 				9CAEA2882478CA8600061B49 /* FlickrCellViewModel.swift */,
+			);
+			path = CellViewModel;
+			sourceTree = "<group>";
+		};
+		9CB0D88125136549009826B2 /* TimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				9CB0D88225136550009826B2 /* CellViewModel */,
+				9CB0D8832513656D009826B2 /* TimeLineCell.swift */,
+				9CB0D8842513656D009826B2 /* TimeLineCell.xib */,
+			);
+			path = TimeLine;
+			sourceTree = "<group>";
+		};
+		9CB0D88225136550009826B2 /* CellViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CB0D87F251363E5009826B2 /* TimelineCellViewModel.swift */,
 			);
 			path = CellViewModel;
 			sourceTree = "<group>";
@@ -1620,10 +1698,12 @@
 				9C79EE10247124FB00FEF5EC /* DynamicCollectionPage.xib in Resources */,
 				9C423CC7247819AD00D9B950 /* ContactTableViewCell.xib in Resources */,
 				9CAEA27E2478C21C00061B49 /* FlickrImageSearchPage.xib in Resources */,
+				9C2D3BF72513097500F412DD /* ActivityCell.xib in Resources */,
 				9C79EE0B2470E0C500FEF5EC /* SimpleCollectionPage.xib in Resources */,
 				9C74EC50246E51CF00A3CF1D /* SectionHeaderListView.xib in Resources */,
 				9C74EC23246D905F00A3CF1D /* WebKitExamplesPage.xib in Resources */,
 				9C74EC16246D8F8000A3CF1D /* TransitionExamplesPage.xib in Resources */,
+				9CB0D8862513656D009826B2 /* TimeLineCell.xib in Resources */,
 				9C74EC592470038300A3CF1D /* SectionFooterListView.xib in Resources */,
 				9C74EBE7246D23F000A3CF1D /* FailNavigationWebPage.xib in Resources */,
 				9C6504B325022C7C004B4696 /* UIPageExample.xib in Resources */,
@@ -1812,6 +1892,7 @@
 				9C74EC1D246D8FFF00A3CF1D /* TransitionExamplesPageViewModel.swift in Sources */,
 				9C74B17B2477BAE90061F2BF /* ContactListPageViewModel.swift in Sources */,
 				9C8268EE24BEE343008497A6 /* AlertServicePage.swift in Sources */,
+				9CB0D87A25131149009826B2 /* NetworkService+Timeline.swift in Sources */,
 				9CD35C1B24D7C6320087B8CF /* TransitionContentPage.swift in Sources */,
 				9C74B17F2477C1220061F2BF /* ContactEditPage.swift in Sources */,
 				9C74EBB4246D1ABA00A3CF1D /* IntroductionPage.swift in Sources */,
@@ -1834,15 +1915,18 @@
 				9C74EC6224700A2200A3CF1D /* DynamicListPage.swift in Sources */,
 				9C74EC00246D4EE500A3CF1D /* MvvmExamplesPageViewModel.swift in Sources */,
 				9C74EB81246D19B900A3CF1D /* ViewController.swift in Sources */,
+				9C2D3BF62513097500F412DD /* ActivityCell.swift in Sources */,
 				9C74EBF2246D24E600A3CF1D /* EvaluateJavaScriptWebViewModel.swift in Sources */,
 				09DC47A324C146BF00906F6F /* ReachabilityPageViewModel.swift in Sources */,
 				9C929577247BD2D700AC7E8E /* NetworkService+Flickr.swift in Sources */,
+				9CB0D87C2513141F009826B2 /* TimelineResponseModel.swift in Sources */,
 				9C74EBBC246D1AF000A3CF1D /* TableOfContentsPage.swift in Sources */,
 				9C76D7D324867E5400DEABA1 /* CustomControlPage.swift in Sources */,
 				9C74EBC0246D1B6300A3CF1D /* MenuModel.swift in Sources */,
 				9C76D7DA24867ED300DEABA1 /* SegmentedView.swift in Sources */,
 				9C74EC2F246D9A8700A3CF1D /* ListPageExampleViewModel.swift in Sources */,
 				9C74EC4B246E4BC400A3CF1D /* SectionImageCellViewModel.swift in Sources */,
+				9C2D3BFB251309F300F412DD /* ActivityCellViewModel.swift in Sources */,
 				9C74EC47246E4B0500A3CF1D /* SectionImageCell.swift in Sources */,
 				9C74EC3D246E49A400A3CF1D /* SimpleListPageCellViewModel.swift in Sources */,
 				9C59386924D9345900AB6F1E /* LocalizeStringConfigs.swift in Sources */,
@@ -1852,6 +1936,7 @@
 				9C74EC39246E477900A3CF1D /* SectionTextCell.swift in Sources */,
 				9C74EC572470037200A3CF1D /* SectionFooterListView.swift in Sources */,
 				9CF158E6247144B1006A1CFB /* HeaderCollectionViewModel.swift in Sources */,
+				9CB0D880251363E5009826B2 /* TimelineCellViewModel.swift in Sources */,
 				9C6504A62501DB0B004B4696 /* TabPageViewModel.swift in Sources */,
 				9C76D7D724867E7400DEABA1 /* CustomControlViewPageModel.swift in Sources */,
 				9CD35C1E24D7C7E40087B8CF /* TransitionContentModel.swift in Sources */,
@@ -1870,8 +1955,10 @@
 				09DC47A024C146A100906F6F /* ReachabilityPage.swift in Sources */,
 				9C74EBDA246D20D800A3CF1D /* AlertWebPageViewModel.swift in Sources */,
 				9C79EE152471293B00FEF5EC /* DynamicCollectionPageViewModel.swift in Sources */,
+				9CB0D87825130BF2009826B2 /* ActivityModel.swift in Sources */,
 				9C109036249A173B009C3166 /* MoyaNetworkService.swift in Sources */,
 				9C6504AB2501EF8B004B4696 /* DeviceManager.swift in Sources */,
+				9CB0D87E25131505009826B2 /* TimelineModel.swift in Sources */,
 				9CF158E224713B1F006A1CFB /* HeaderCollectionView.swift in Sources */,
 				9CCBA663247AC21E00D73A7B /* APIService.swift in Sources */,
 				9C74EC3F246E49C800A3CF1D /* SectionTextCellViewModel.swift in Sources */,
@@ -1908,6 +1995,7 @@
 				9C74EB87246D19B900A3CF1D /* MVVMExample.xcdatamodeld in Sources */,
 				9C74EC10246D8C2B00A3CF1D /* ServiceExamplesViewModel.swift in Sources */,
 				9C74EBBA246D1AF000A3CF1D /* MenuTableViewCell.swift in Sources */,
+				9CB0D8852513656D009826B2 /* TimeLineCell.swift in Sources */,
 				9C79EE062470DE0200FEF5EC /* SimpleCollectionViewCell.swift in Sources */,
 				9C74EBD6246D206100A3CF1D /* AlertWebPage.swift in Sources */,
 				9CCBA65C247A7C7900D73A7B /* FlickrSearchModel.swift in Sources */,
