@@ -27,7 +27,7 @@ class TimelineModel: Model {
     
     override func mapping(map: Map) {
         title <- map["title"]
-        desc <- map["desc"]
+        desc <- map["description"]
         thumbnail <- map["thumbnail"]
         createDate <- map["createDate"]
         type <- (map["type"], TimelineModelTypeTransform())

@@ -349,7 +349,6 @@ open class BaseTableCell: UITableViewCell, IView {
     deinit { destroy() }
     
     private func setup() {
-        backgroundColor = .white
         self.backgroundView = UIView()
         separatorInset = .zero
         layoutMargins = .zero

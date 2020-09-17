@@ -87,6 +87,9 @@ open class BaseListViewModel: BaseViewModel, IListViewModel {
     public let rxSelectedIndex = BehaviorRelay<IndexPath?>(value: nil)
     public let rxState = BehaviorRelay<ListState>(value: .normal)
     
+    public var page: Int = 0
+    public var limit: Int = 20
+    
     required public init(model: Model? = nil, timerScheduler: SchedulerType? = Scheduler.shared.mainScheduler) {
         super.init(model: model, timerScheduler: timerScheduler)
     }
