@@ -177,7 +177,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="FollowerLb" destination="owt-1G-HyE" id="aFd-6I-kor"/>
+                <outlet property="followerLb" destination="owt-1G-HyE" id="LEe-JR-tnq"/>
                 <outlet property="followingLb" destination="hYX-Qd-bRo" id="bR7-JE-YbD"/>
                 <outlet property="likesLb" destination="XN1-jU-OTc" id="ISV-Qo-rzV"/>
                 <outlet property="tweetsLb" destination="G9d-qE-ToU" id="f3B-HD-DGi"/>

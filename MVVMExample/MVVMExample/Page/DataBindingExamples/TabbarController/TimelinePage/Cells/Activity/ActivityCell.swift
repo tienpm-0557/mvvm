@@ -14,7 +14,7 @@ import RxCocoa
 class ActivityCell: BaseTableCell {
     @IBOutlet private weak var tweetsLb: UILabel!
     @IBOutlet private weak var followingLb: UILabel!
-    @IBOutlet private weak var FollowerLb: UILabel!
+    @IBOutlet private weak var followerLb: UILabel!
     @IBOutlet private weak var likesLb: UILabel!
     
     override func awakeFromNib() {
@@ -26,5 +26,14 @@ class ActivityCell: BaseTableCell {
         super.bindViewAndViewModel()
         guard let viewModel = self.viewModel as? ActivityCellViewModel else { return }
         
+        viewModel.rxTweets ~> tweetsLb.rx.text => disposeBag
+        viewModel.rxFollowing ~> followingLb.rx.text => disposeBag
+        viewModel.rxFollower ~> followerLb.rx.text => disposeBag
+        viewModel.rxLikes ~> likesLb.rx.text => disposeBag
+        
+    }
+    
+    override func initialize() {
+        super.initialize()
     }
 }
