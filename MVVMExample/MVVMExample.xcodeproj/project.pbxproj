@@ -16,7 +16,6 @@
 		6CFBB5962512468D003299A2 /* TimelinePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFBB5952512468D003299A2 /* TimelinePageViewModel.swift */; };
 		9C004D8224FCD954007E9298 /* TabbarControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C004D8124FCD954007E9298 /* TabbarControllerViewModel.swift */; };
 		9C0C751C24E281F600FE58DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0C751B24E281F600FE58DA /* NetworkServiceTests.swift */; };
-		9C0C751F24E2836A00FE58DA /* ContactPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0C751E24E2836A00FE58DA /* ContactPageTests.swift */; };
 		9C2D3BF62513097500F412DD /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D3BF42513097400F412DD /* ActivityCell.swift */; };
 		9C2D3BF72513097500F412DD /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D3BF52513097400F412DD /* ActivityCell.xib */; };
 		9C2D3BFB251309F300F412DD /* ActivityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D3BFA251309F300F412DD /* ActivityCellViewModel.swift */; };
@@ -86,7 +85,6 @@
 		97C3B9A82D5320B68365A108 /* Pods-MVVMExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMExample.release.xcconfig"; path = "Target Support Files/Pods-MVVMExample/Pods-MVVMExample.release.xcconfig"; sourceTree = "<group>"; };
 		9C004D8124FCD954007E9298 /* TabbarControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarControllerViewModel.swift; sourceTree = "<group>"; };
 		9C0C751B24E281F600FE58DA /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
-		9C0C751E24E2836A00FE58DA /* ContactPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPageTests.swift; sourceTree = "<group>"; };
 		9C2D3BF42513097400F412DD /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		9C2D3BF52513097400F412DD /* ActivityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
 		9C2D3BFA251309F300F412DD /* ActivityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCellViewModel.swift; sourceTree = "<group>"; };
@@ -212,14 +210,6 @@
 			path = NetworkService;
 			sourceTree = "<group>";
 		};
-		9C0C751D24E282DE00FE58DA /* ContactPage */ = {
-			isa = PBXGroup;
-			children = (
-				9C0C751E24E2836A00FE58DA /* ContactPageTests.swift */,
-			);
-			path = ContactPage;
-			sourceTree = "<group>";
-		};
 		9C2D3BF32513095C00F412DD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,7 +312,6 @@
 			isa = PBXGroup;
 			children = (
 				9CB799AD2514929900902E3A /* ModelTest */,
-				9C0C751D24E282DE00FE58DA /* ContactPage */,
 				9C0C751824E2819800FE58DA /* NetworkService */,
 				9C74EB96246D19BD00A3CF1D /* MVVMExampleTests.swift */,
 				9C74EB98246D19BD00A3CF1D /* Info.plist */,
@@ -767,7 +756,6 @@
 			files = (
 				9C0C751C24E281F600FE58DA /* NetworkServiceTests.swift in Sources */,
 				9C74EB97246D19BD00A3CF1D /* MVVMExampleTests.swift in Sources */,
-				9C0C751F24E2836A00FE58DA /* ContactPageTests.swift in Sources */,
 				9CB799AF251492C800902E3A /* ModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
