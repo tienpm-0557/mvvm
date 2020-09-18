@@ -21,6 +21,16 @@ class ModelTests: XCTestCase {
     }
     
     /// Implement test case
+    func testTabbarModel() {
+        let tabbarModel = TabbarModel(JSON: [:])
+        XCTAssertEqual(tabbarModel?.title, "", "ActivityModel title initial is wrong")
+        XCTAssertEqual(tabbarModel?.index, 0, "ActivityModel tweets initial is wrong")
+        
+        let tabbarModel1 = TabbarModel(withTitle: "abc")
+        XCTAssertEqual(tabbarModel1?.title, "abc", "ActivityModel title initial is wrong")
+        XCTAssertEqual(tabbarModel1?.index, 0, "ActivityModel tweets initial is wrong")
+    }
+    
     func testActivityModel() {
         /// In case: correct data input
         let activityModelCase1 = ActivityModel(JSON: ["title":"Activity Title", "tweets":1, "following": 2, "follower": 3, "likes": 4])

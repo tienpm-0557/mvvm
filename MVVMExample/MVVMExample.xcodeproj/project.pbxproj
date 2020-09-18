@@ -27,7 +27,6 @@
 		9C6504A92501E4CE004B4696 /* ColorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A82501E4CE004B4696 /* ColorConfig.swift */; };
 		9C6504AB2501EF8B004B4696 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504AA2501EF8B004B4696 /* DeviceManager.swift */; };
 		9C74EB7D246D19B900A3CF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EB7C246D19B900A3CF1D /* AppDelegate.swift */; };
-		9C74EB81246D19B900A3CF1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EB80246D19B900A3CF1D /* ViewController.swift */; };
 		9C74EB84246D19B900A3CF1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EB82246D19B900A3CF1D /* Main.storyboard */; };
 		9C74EB87246D19B900A3CF1D /* MVVMExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EB85246D19B900A3CF1D /* MVVMExample.xcdatamodeld */; };
 		9C74EB89246D19BC00A3CF1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C74EB88246D19BC00A3CF1D /* Assets.xcassets */; };
@@ -101,7 +100,6 @@
 		9C6504AA2501EF8B004B4696 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		9C74EB79246D19B900A3CF1D /* MVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C74EB7C246D19B900A3CF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9C74EB80246D19B900A3CF1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9C74EB83246D19B900A3CF1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C74EB86246D19B900A3CF1D /* MVVMExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MVVMExample.xcdatamodel; sourceTree = "<group>"; };
 		9C74EB88246D19BC00A3CF1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -297,7 +295,6 @@
 				9C74EBAF246D1A0B00A3CF1D /* Page */,
 				9C59386724D9341000AB6F1E /* Localization */,
 				9C74EB7C246D19B900A3CF1D /* AppDelegate.swift */,
-				9C74EB80246D19B900A3CF1D /* ViewController.swift */,
 				9C74EB82246D19B900A3CF1D /* Main.storyboard */,
 				9CE8BA0D24FCD564001EA3A3 /* 8957173.png */,
 				9C74EB88246D19BC00A3CF1D /* Assets.xcassets */,
@@ -726,7 +723,6 @@
 				6CFBB59225124645003299A2 /* TimelinePage.swift in Sources */,
 				9C004D8224FCD954007E9298 /* TabbarControllerViewModel.swift in Sources */,
 				6CFBB5962512468D003299A2 /* TimelinePageViewModel.swift in Sources */,
-				9C74EB81246D19B900A3CF1D /* ViewController.swift in Sources */,
 				9C2D3BF62513097500F412DD /* ActivityCell.swift in Sources */,
 				9CB0D87C2513141F009826B2 /* TimelineResponseModel.swift in Sources */,
 				9C2D3BFB251309F300F412DD /* ActivityCellViewModel.swift in Sources */,

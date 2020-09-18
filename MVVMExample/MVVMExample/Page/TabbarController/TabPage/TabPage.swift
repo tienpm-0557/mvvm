@@ -19,7 +19,9 @@ class TabPage: BasePage {
 
     override func initialize() {
         super.initialize()
-        
+        guard let model = self.viewModel as? TabPageViewModel else {
+            return
+        }
     }
     
     override func bindViewAndViewModel() {
