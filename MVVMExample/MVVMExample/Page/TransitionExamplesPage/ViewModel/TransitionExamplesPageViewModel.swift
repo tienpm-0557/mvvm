@@ -98,7 +98,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         ///Create flip page model
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Flip Animation",
                                                                 desc: "Example transition page with Flip animation.",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         ///Create flip animator
         let animator = FlipAnimator(withDuration: 0.5, isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
@@ -107,7 +107,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushAndZoom() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Zoom Animation",
                                                                 desc: "Example transition page with Zoom animation.",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = ZoomAnimator(withDuration: 2.0, isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
         
@@ -116,7 +116,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithClockAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Zoom Animation",
                                                                 desc: "Example transition page with Clock animation.",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md",
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md",
                                                                 withBGColor: "#F2F2F7"))
         
         let animator = ClockAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
@@ -126,7 +126,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithCircleAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Circle Animation",
                                                                 desc: "Example transition page with Circle animation.",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md",
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md",
                                                                 withBGColor: "#F2F2F7"))
         let animator = CircleAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
@@ -135,7 +135,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithCrossAndFadeAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Cross And Fade",
                                                                 desc: "Example transition page with Cross And Fade animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = CrossFadeAnimator(withDuration: TimeInterval(0.75), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
@@ -143,7 +143,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithRectangularAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Rectangular Animation",
                                                                 desc: "Example transition page with Rectangular animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = RectanglerAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
@@ -151,7 +151,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithMultiCircleAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Multi Circle",
                                                                 desc: "Example transition page with Multi Circle animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = MultiCircleAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
@@ -159,7 +159,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithTileFlipAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Tiled Flip Animation",
                                                                 desc: "Example transition page with Tiled Flip animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = TiledFlipAnimator(withDuration: TimeInterval(0.75), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
@@ -167,7 +167,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithImageRepeatingAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Image Repeating Animation",
                                                                 desc: "Example transition page with Image Repeating animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = ImageRepeatingAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         
         self.pushWithAnimator(animator, model: model)
@@ -176,7 +176,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithMultiFlipAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Multi Flip Animation",
                                                                 desc: "Example transition page with Multi Flip animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = MultiFlipRetroAnimator(withDuration: TimeInterval(0.75), isPresenting: self.usingShowModal)
         
         self.pushWithAnimator(animator, model: model)
@@ -185,7 +185,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithAngleLineAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Angle Line Animation",
                                                                 desc: "Example transition page with Angle Line animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = AngleLineAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         
         self.pushWithAnimator(animator, model: model)
@@ -194,7 +194,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithStraightLineAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Straight Line Animation",
                                                                 desc: "Example transition page with Straight Line Animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = StraightLineAnimator(withDuration: TimeInterval(0.25), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
@@ -202,7 +202,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithCollidingDiamondsAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Colliding Diamonds Animation",
                                                                 desc:"Example transition page with Colliding Diamonds Animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = CollidingDiamondsAnimator(withDuration: TimeInterval(0.25), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
@@ -210,7 +210,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithShrinkingGrowingAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Shrinking Growing Diamonds Animation",
                                                                 desc: "Example transition page with Shrinking Growing Diamonds Animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = ShrinkingGrowingDiamondsAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
@@ -218,7 +218,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithSplitFromCenterAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Split from center Animation",
                                                                 desc: "Example transition page with Split From Center Animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = SplitFromCenterAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
@@ -226,7 +226,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     private func pushWithSwingInAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Split from center Animation",
                                                                 desc: "Example transition page with Swing In Animation",
-                                                                url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+                                                                url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = SwingInAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }

@@ -72,7 +72,7 @@ class TableOfContentViewModel: BaseListViewModel {
     }
     
     func fetchData() {
-        let intro = MenuTableCellViewModel(model: IntroductionModel(withTitle: "Introduction", desc: "MVVM is a library for who wants to start writing iOS application using MVVM (Model-View-ViewModel), written in Swift.", url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md"))
+        let intro = MenuTableCellViewModel(model: IntroductionModel(withTitle: "Introduction", desc: "MVVM is a library for who wants to start writing iOS application using MVVM (Model-View-ViewModel), written in Swift.", url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let mvvm = MenuTableCellViewModel(model: MenuModel(withTitle: "MVVM Examples",
                                                            desc: "Examples about different ways to use base classes Page, ListPage and CollectionPage."))
         let dataBinding = MenuTableCellViewModel(model: MenuModel(withTitle: "Data Binding Examples",

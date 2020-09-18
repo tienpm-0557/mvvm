@@ -13,6 +13,8 @@ import RxCocoa
 
 class TimelinePage: BaseListPage {
     
+    @IBOutlet private weak var bottomPadding: NSLayoutConstraint!
+    
     let indicatorView = UIActivityIndicatorView(style: .gray)
     
     override func viewDidLoad() {
@@ -22,13 +24,21 @@ class TimelinePage: BaseListPage {
         guard let viewModel = self.viewModel as? TimelinePageViewModel else { return }
         viewModel.getDataAction.execute()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        bottomPadding.constant = SystemConfiguration.TabbarHeight
+    }
      
     override func initialize() {
         super.initialize()
-           
-        /// Before use. You must register your service
+        /// Before using. You must register your service
         DependencyManager.shared.registerService(Factory<NetworkService> {
             NetworkService()
+        })
+        
+        DependencyManager.shared.registerService(Factory<ShareService> {
+            ShareService()
         })
         
         indicatorView.hidesWhenStopped = true
@@ -39,7 +49,7 @@ class TimelinePage: BaseListPage {
         guard let viewModel = self.viewModel as? TimelinePageViewModel else { return }
         viewModel.rxTille ~> self.rx.title => disposeBag
         
-        // call out load more when reach to end of table view
+        // Call out load more when reach to end of table view
         tableView.rx.endReach(30).subscribe(onNext: {
             viewModel.loadMoreAction.execute(())
         }) => disposeBag

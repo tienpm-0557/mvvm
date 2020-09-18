@@ -23,7 +23,6 @@ class ServiceExamplesPage: TableOfContentsPage {
     override func initialize() {
         super.initialize()
         DependencyManager.shared.registerService(Factory<MailService> { MailService() })
-        DependencyManager.shared.registerService(Factory<AlertService> { AlertService() })
         DependencyManager.shared.registerService(Factory<ShareService> { ShareService() })
     }
     

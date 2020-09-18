@@ -15,6 +15,7 @@ import Action
 class TabbarView: AbstractView {
     
     @IBOutlet private var buttons: Array<UIButton>!
+    @IBOutlet private var topLineHeight: NSLayoutConstraint!
     private var prevButton: UIButton?
     let rxSelectedIndex = BehaviorRelay(value: 0)
     
@@ -24,9 +25,9 @@ class TabbarView: AbstractView {
         }
     }()
     
-    
     class func newTabbarView() -> TabbarView? {
-        guard let _tabBarView = TabbarView.loadFrom(nibNamed: TabbarView.nibName(), bundle: Bundle.main) as? TabbarView else {
+        guard let _tabBarView = TabbarView.loadFrom(nibNamed: TabbarView.nibName(),
+                                                    bundle: Bundle.main) as? TabbarView else {
             return nil
         }
         _tabBarView.setupView()
@@ -35,21 +36,23 @@ class TabbarView: AbstractView {
     
     override func setupView() {
         super.setupView()
+        /// Setup tab items
         self.backgroundColor = UIColor.tabbarBackgroundColor
         buttons.forEach { (btn) in
             btn.setTitleColor(.tabbarTitleColor, for: .normal)
             btn.setTitleColor(.tabbarTitleSelectedColor, for: .selected)
             btn.backgroundColor = UIColor.clear
             
-            btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+            btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         
         self.prevButton = buttons.first
-        
+        /// Top line
+        topLineHeight.constant = 1 / UIScreen.main.scale
+        /// Update selected button
         guard let selectBtn = self.prevButton else { return }
         self.setSelectedTab(selectBtn)
     }
-    
     
     @IBAction func didSelectedTab(_ sender: UIButton) {
         if let prevButton = self.prevButton {

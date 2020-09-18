@@ -22,35 +22,65 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjZ-rf-QX9">
-                    <rect key="frame" x="20" y="144" width="374" height="50"/>
-                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="20" y="94" width="374" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="oZM-Fh-SOK"/>
                     </constraints>
-                    <state key="normal" title="Okay Alert"/>
+                    <state key="normal" title="Okay Alert">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulx-7a-eB2">
-                    <rect key="frame" x="20" y="214" width="374" height="50"/>
-                    <color key="backgroundColor" red="0.86274509799999999" green="0.039215686270000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="20" y="164" width="374" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="YBK-ss-wRX"/>
                     </constraints>
-                    <state key="normal" title="Confirm Alert"/>
+                    <state key="normal" title="Confirm Alert">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9e-3i-4Pz">
-                    <rect key="frame" x="20" y="284" width="374" height="50"/>
-                    <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="20" y="234" width="374" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Op9-61-OoP"/>
                     </constraints>
-                    <state key="normal" title="Action sheet alert"/>
+                    <state key="normal" title="Action sheet alert">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="M9e-3i-4Pz" firstAttribute="top" secondItem="Ulx-7a-eB2" secondAttribute="bottom" constant="20" id="9Jh-kJ-eQ8"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="M9e-3i-4Pz" secondAttribute="trailing" constant="20" id="Buu-U8-WGf"/>
-                <constraint firstItem="tjZ-rf-QX9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="XRY-rd-3SJ"/>
+                <constraint firstItem="tjZ-rf-QX9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="XRY-rd-3SJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ulx-7a-eB2" secondAttribute="trailing" constant="20" id="Zbg-Yr-EdK"/>
                 <constraint firstItem="Ulx-7a-eB2" firstAttribute="top" secondItem="tjZ-rf-QX9" secondAttribute="bottom" constant="20" id="bkK-J9-GQ3"/>
                 <constraint firstItem="M9e-3i-4Pz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="eel-ig-L91"/>

@@ -24,7 +24,7 @@ class AlertServicePage: BasePage {
     override func initialize() {
         super.initialize()
         //guard let viewModel = self.viewModel as? AlertServiceViewModel else { return }
-        
+        enableBackButton = true
         DependencyManager.shared.registerService(Factory<AlertService> { AlertService() })
     }
     

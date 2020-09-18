@@ -14,8 +14,10 @@ import RxCocoa
 
 //MARK: ViewModel For Service Examples
 class ServiceExamplesPageViewModel: TableOfContentViewModel {
+    
+    var alertService: IAlertService = DependencyManager.shared.getService()
+    
     private var mailService: MailService?
-    private var alertService: AlertService?
     private var shareService: ShareService?
     
     override func react() {
@@ -88,25 +90,25 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
                     message = nil
                 }
                 if let message = message {
-                    self?.alertService?.presentOkayAlert(title: "MVVM Examples", message: message)
+                    self?.alertService.presentOkayAlert(title: "MVVM Examples", message: message)
                 }
             }) => disposeBag
             
             mailService?.rxMailSettingValidate.subscribe(onNext: {[weak self] (validateMessage) in
-                self?.alertService?.presentOkayAlert(title: "MVVM Examples", message: validateMessage)
+                self?.alertService.presentOkayAlert(title: "MVVM Examples", message: validateMessage)
             }) => disposeBag
         case 5:
             shareService?.openShare(title: "[Your share Title]",
-                                    url: "https://github.com/tienpm-0557/mvvm/blob/AddBaseNonGeneric/README.md")
+                                    url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md")
             
             shareService?.rxShareServiceState.subscribe(onNext: {[weak self] (result) in
                 guard let result = result else { return }
                 if result.completed {
-                     self?.alertService?.presentOkayAlert(title: "",
+                     self?.alertService.presentOkayAlert(title: "",
                                                           message: "Share success!")
                 } else {
                     if let err = result.error {
-                        self?.alertService?.presentOkayAlert(title: "",
+                        self?.alertService.presentOkayAlert(title: "",
                                                              message: err.localizedDescription)
                     }
                 }

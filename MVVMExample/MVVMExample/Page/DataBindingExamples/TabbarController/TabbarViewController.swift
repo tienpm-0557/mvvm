@@ -51,15 +51,18 @@ class TabbarViewController: BaseTabBarPage {
         _tabBarView?.autoPinEdge(toSuperviewEdge: .bottom)
         _tabBarView?.autoPinEdge(toSuperviewEdge: .left)
         _tabBarView?.autoPinEdge(toSuperviewEdge: .right)
-        _tabBarView?.autoSetDimension(.height, toSize: 82)
+        _tabBarView?.autoSetDimension(.height, toSize: SystemConfiguration.TabbarHeight)
     }
     
     func addCloseBtn() {
         /// Note: In example we have two navigation on stack.
         /// Navigation Service only get navigation on top stack.
         // self.navigationService.pop()
-        
-        let button = UIButton(frame: CGRect(x: 10, y: 40, width: 110, height: 25))
+        var position_y = 30
+        if DeviceManager.DeviceType.IS_IPHONE_X {
+            position_y = 50
+        }
+        let button = UIButton(frame: CGRect(x: 10, y: position_y, width: 110, height: 25))
         button.addTarget(self, action: #selector(self.popView), for: UIControl.Event.touchUpInside)
         button.backgroundColor = UIColor.groupTableViewBackground
         button.cornerRadius = 5

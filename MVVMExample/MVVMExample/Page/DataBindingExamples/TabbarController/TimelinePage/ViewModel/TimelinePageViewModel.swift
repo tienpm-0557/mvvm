@@ -47,10 +47,9 @@ class TimelinePageViewModel: BaseListViewModel {
                     self?.itemsSource.append(data, animated: false)
                 }
                 
-            }, onError: { (aaa) in
+        }, onError: { (error) in
                 
-            })
-            
+        }) => tmpBag
     }
     
     private func loadMore() {

@@ -164,6 +164,7 @@
 		9CB0D880251363E5009826B2 /* TimelineCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87F251363E5009826B2 /* TimelineCellViewModel.swift */; };
 		9CB0D8852513656D009826B2 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D8832513656D009826B2 /* TimeLineCell.swift */; };
 		9CB0D8862513656D009826B2 /* TimeLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB0D8842513656D009826B2 /* TimeLineCell.xib */; };
+		9CB799AA2514574000902E3A /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A92514574000902E3A /* UserInfoModel.swift */; };
 		9CC01B6224DA58F700995A07 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9CC01B6124DA58F700995A07 /* README.md */; };
 		9CC01B6624DA935400995A07 /* ImagePickerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC01B6424DA935400995A07 /* ImagePickerPage.swift */; };
 		9CC01B6724DA935400995A07 /* ImagePickerPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CC01B6524DA935400995A07 /* ImagePickerPage.xib */; };
@@ -380,6 +381,7 @@
 		9CB0D87F251363E5009826B2 /* TimelineCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCellViewModel.swift; sourceTree = "<group>"; };
 		9CB0D8832513656D009826B2 /* TimeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineCell.swift; sourceTree = "<group>"; };
 		9CB0D8842513656D009826B2 /* TimeLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLineCell.xib; sourceTree = "<group>"; };
+		9CB799A92514574000902E3A /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		9CC01B6124DA58F700995A07 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		9CC01B6424DA935400995A07 /* ImagePickerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerPage.swift; sourceTree = "<group>"; };
 		9CC01B6524DA935400995A07 /* ImagePickerPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagePickerPage.xib; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				9CB0D87725130BF2009826B2 /* ActivityModel.swift */,
 				9CB0D87B2513141F009826B2 /* TimelineResponseModel.swift */,
 				9CB0D87D25131505009826B2 /* TimelineModel.swift */,
+				9CB799A92514574000902E3A /* UserInfoModel.swift */,
 			);
 			path = DummyModel;
 			sourceTree = "<group>";
@@ -1931,6 +1934,7 @@
 				9C74EC3D246E49A400A3CF1D /* SimpleListPageCellViewModel.swift in Sources */,
 				9C59386924D9345900AB6F1E /* LocalizeStringConfigs.swift in Sources */,
 				9CAEA27D2478C21C00061B49 /* FlickrImageSearchPage.swift in Sources */,
+				9CB799AA2514574000902E3A /* UserInfoModel.swift in Sources */,
 				9C74EC2D246D984100A3CF1D /* ListPageModel.swift in Sources */,
 				9C5D01912485428600AF87F9 /* ValidatePage.swift in Sources */,
 				9C74EC39246E477900A3CF1D /* SectionTextCell.swift in Sources */,

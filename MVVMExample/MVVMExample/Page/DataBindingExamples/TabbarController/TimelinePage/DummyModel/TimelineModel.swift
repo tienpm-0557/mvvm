@@ -18,6 +18,8 @@ class TimelineModel: Model {
     var createDate = ""
     var reaction:Int = 0
     
+    var user: UserInfoModel?
+    
     var type: TimelineModelType = .normal
     var json: JSON = []
     
@@ -30,9 +32,28 @@ class TimelineModel: Model {
         desc <- map["description"]
         thumbnail <- map["thumbnail"]
         createDate <- map["createDate"]
+        reaction <- map["reaction"]
         type <- (map["type"], TimelineModelTypeTransform())
+        user <- (map["user"], UserInfoTransform())
     }
 
+}
+
+
+class UserInfoTransform: TransformType {
+    typealias Object = UserInfoModel
+    typealias JSON = String
+    
+    func transformFromJSON(_ value: Any?) -> Object? {
+        if let userInfo = value as? [String: Any] {
+            return UserInfoModel(JSON: userInfo)
+        }
+        return nil
+    }
+    
+    func transformToJSON(_ value: Object?) -> JSON? {
+        return nil
+    }
 }
 
 class TimelineModelTypeTransform: TransformType {

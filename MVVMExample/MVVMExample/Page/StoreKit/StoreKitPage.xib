@@ -19,19 +19,29 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGv-7f-ROT">
-                    <rect key="frame" x="10" y="64" width="394" height="45"/>
-                    <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="20" y="74" width="374" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="erH-OA-Zos"/>
+                        <constraint firstAttribute="height" constant="50" id="erH-OA-Zos"/>
                     </constraints>
-                    <state key="normal" title="Rate App"/>
+                    <state key="normal" title="Rating App">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="WGv-7f-ROT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="NhP-vG-9Iq"/>
-                <constraint firstItem="WGv-7f-ROT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="hSL-Ma-2V7"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WGv-7f-ROT" secondAttribute="trailing" constant="10" id="saf-KT-3z4"/>
+                <constraint firstItem="WGv-7f-ROT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="NhP-vG-9Iq"/>
+                <constraint firstItem="WGv-7f-ROT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="hSL-Ma-2V7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WGv-7f-ROT" secondAttribute="trailing" constant="20" id="saf-KT-3z4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="121"/>

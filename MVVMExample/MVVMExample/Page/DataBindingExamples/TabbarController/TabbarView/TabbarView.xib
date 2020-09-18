@@ -121,17 +121,28 @@
                         <constraint firstItem="R1A-PU-VdG" firstAttribute="width" secondItem="xF4-rv-o7y" secondAttribute="width" id="hXO-hv-wII"/>
                     </constraints>
                 </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wyp-JR-dKs">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                    <color key="backgroundColor" white="0.59399079623287676" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="6IV-kj-t5P"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Wyp-JR-dKs" secondAttribute="trailing" id="BZv-bR-1kN"/>
                 <constraint firstItem="S8w-z4-sfi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HCe-xW-Tbq"/>
                 <constraint firstAttribute="bottom" secondItem="S8w-z4-sfi" secondAttribute="bottom" id="M6F-VF-iDZ"/>
                 <constraint firstItem="S8w-z4-sfi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eYx-1F-Fo5"/>
+                <constraint firstItem="Wyp-JR-dKs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ejW-de-LLT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="S8w-z4-sfi" secondAttribute="trailing" id="rLp-45-Hmo"/>
+                <constraint firstItem="Wyp-JR-dKs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ty7-zc-ohZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="topLineHeight" destination="6IV-kj-t5P" id="YIk-TL-zK3"/>
                 <outletCollection property="buttons" destination="JXD-IL-o5p" collectionClass="NSMutableArray" id="JBr-xo-UC3"/>
                 <outletCollection property="buttons" destination="86h-Wm-crE" collectionClass="NSMutableArray" id="ner-FA-ge0"/>
                 <outletCollection property="buttons" destination="pdw-cd-bd1" collectionClass="NSMutableArray" id="sq3-Tc-uyb"/>
