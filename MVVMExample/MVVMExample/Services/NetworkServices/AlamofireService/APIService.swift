@@ -11,22 +11,16 @@ import Alamofire
 import MVVM
 import SwiftyJSON
 
-/*
-https://api.flickr.com/services/rest?method=flickr.photos.search&api_key=dc4c20e9d107a9adfa54917799e44650&format=json&nojsoncallback=1&page=0&per_page=10&text=oke
- */
 
 let MTLAB_SECRET_KEY: String = "#---demomvvm-xxxyyyzzzz@1231---#"
 
 enum APIUrl {
     #if DEBUG
-    static let rootURL                      = "https://api.flickr.com"
-    static let mtlabRootURL                 = "http://tienpm.pythonanywhere.com"
+    static let rootURL                      = "http://tienpm.pythonanywhere.com"
     #elseif STAGING
-    static let rootURL                      = "https://api.flickr.com"
-    static let mtlabRootURL                 = "http://tienpm.pythonanywhere.com"
+    static let rootURL                      = "http://tienpm.pythonanywhere.com"
     #else
-    static let rootURL                      = "https://api.flickr.com"
-    static let mtlabRootURL                 = "http://tienpm.pythonanywhere.com"
+    static let rootURL                      = "http://tienpm.pythonanywhere.com"
     #endif
     /// Authorization
     static let login                        = "/login"
@@ -134,20 +128,20 @@ public enum APIService: URLRequestConvertible {
     
     // MARK: URLRequestConvertible
     public func asURLRequest() throws -> URLRequest {
-        var url = try APIUrl.rootURL.asURL()
-        switch self {
-        case .loadTimeline:
-            url = try APIUrl.mtlabRootURL.asURL()
-        default:
-            break
-        }
-        
+        let url = try APIUrl.rootURL.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         ///Common configuration
         urlRequest.httpMethod = method.rawValue
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.timeoutInterval = TimeInterval(30)
         urlRequest.httpMethod = method.rawValue
+        
+        switch self {
+        case .loadTimeline:
+            ()
+        default:
+            break
+        }
         
         return urlRequest
     }

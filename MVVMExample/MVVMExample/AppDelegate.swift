@@ -20,14 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DependencyManager.shared.registerDefaults()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        // Create Roote page
-        let page = TableOfContentsPage(viewModel: TableOfContentViewModel())
-        let rootPage = NavigationPage(rootViewController: page)
-        rootPage.statusBarStyle = .default
-        // Set new root Viewcontroller
+        /// Create Roote page
+        let vm = TabbarControllerViewModel()
+        let rootPage = TabbarViewController(viewModel: vm)
+        /// Set new root Viewcontroller
         window?.rootViewController = rootPage
         window?.makeKeyAndVisible()
-        
         
         return true
     }
