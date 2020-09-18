@@ -45,6 +45,7 @@
 		9CB0D8862513656D009826B2 /* TimeLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB0D8842513656D009826B2 /* TimeLineCell.xib */; };
 		9CB799AA2514574000902E3A /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A92514574000902E3A /* UserInfoModel.swift */; };
 		9CB799AC25148E9E00902E3A /* TabbarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799AB25148E9E00902E3A /* TabbarModel.swift */; };
+		9CB799AF251492C800902E3A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799AE251492C800902E3A /* ModelTests.swift */; };
 		9CC01B6224DA58F700995A07 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9CC01B6124DA58F700995A07 /* README.md */; };
 		9CCBA65F247AB20000D73A7B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCBA65E247AB20000D73A7B /* Constants.swift */; };
 		9CCBA663247AC21E00D73A7B /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCBA662247AC21E00D73A7B /* APIService.swift */; };
@@ -124,6 +125,7 @@
 		9CB0D8842513656D009826B2 /* TimeLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLineCell.xib; sourceTree = "<group>"; };
 		9CB799A92514574000902E3A /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		9CB799AB25148E9E00902E3A /* TabbarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarModel.swift; sourceTree = "<group>"; };
+		9CB799AE251492C800902E3A /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		9CC01B6124DA58F700995A07 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		9CCBA65E247AB20000D73A7B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9CCBA662247AC21E00D73A7B /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 		9C74EB95246D19BD00A3CF1D /* MVVMExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				9CB799AD2514929900902E3A /* ModelTest */,
 				9C0C751D24E282DE00FE58DA /* ContactPage */,
 				9C0C751824E2819800FE58DA /* NetworkService */,
 				9C74EB96246D19BD00A3CF1D /* MVVMExampleTests.swift */,
@@ -382,6 +385,14 @@
 				9CB0D87F251363E5009826B2 /* TimelineCellViewModel.swift */,
 			);
 			path = CellViewModel;
+			sourceTree = "<group>";
+		};
+		9CB799AD2514929900902E3A /* ModelTest */ = {
+			isa = PBXGroup;
+			children = (
+				9CB799AE251492C800902E3A /* ModelTests.swift */,
+			);
+			path = ModelTest;
 			sourceTree = "<group>";
 		};
 		9CCBA656247A79F300D73A7B /* Services */ = {
@@ -757,6 +768,7 @@
 				9C0C751C24E281F600FE58DA /* NetworkServiceTests.swift in Sources */,
 				9C74EB97246D19BD00A3CF1D /* MVVMExampleTests.swift in Sources */,
 				9C0C751F24E2836A00FE58DA /* ContactPageTests.swift in Sources */,
+				9CB799AF251492C800902E3A /* ModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

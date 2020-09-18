@@ -18,11 +18,6 @@ class ActivityModel: Model {
     var follower: Int = 0
     var likes: Int = 0
     
-    convenience init() {
-        let dummyData = ["title": "Activity", "desc": "Description"]
-        self.init(JSON: dummyData)!
-    }
-    
     override func mapping(map: Map) {
         title <- map["title"]
         tweets <- map["tweets"]
