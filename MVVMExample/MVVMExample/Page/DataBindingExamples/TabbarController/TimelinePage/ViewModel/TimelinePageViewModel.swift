@@ -53,7 +53,7 @@ class TimelinePageViewModel: BaseListViewModel {
     }
     
     private func loadMore() {
-        
+        print("DEBUG: Loading more")
     }
     
     private func prepareSources(_ response: TimelineResponseModel?) -> [BaseCellViewModel]? {

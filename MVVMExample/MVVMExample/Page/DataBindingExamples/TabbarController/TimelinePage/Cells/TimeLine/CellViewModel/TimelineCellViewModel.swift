@@ -77,6 +77,10 @@ class TimelineCellViewModel: BaseCellViewModel {
     }
     
     fileprivate func like(_ sender: AnyObject) {
+        if let btn = sender as? Button {
+            btn.isSelected = !btn.isSelected
+        }
+        
         alertService.presentOkayAlert(title: "Like Action", message: "Coming soon!")
     }
     

@@ -227,7 +227,9 @@
                                                 <state key="normal" title="Like" image="ic_like">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <state key="selected" image="ic_like_selected"/>
+                                                <state key="selected" image="ic_like_selected">
+                                                    <color key="titleColor" red="0.0" green="0.58823529409999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgH-uE-hp9">
                                                 <rect key="frame" x="125" y="0.0" width="125" height="50"/>
