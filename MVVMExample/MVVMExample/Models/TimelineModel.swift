@@ -23,10 +23,6 @@ class TimelineModel: Model {
     var type: TimelineModelType = .normal
     var json: JSON = []
     
-    convenience init(withAnyObject json: [String: Any]) {
-        self.init(JSON: json)!
-    }
-    
     override func mapping(map: Map) {
         title <- map["title"]
         desc <- map["description"]
@@ -52,6 +48,9 @@ class UserInfoTransform: TransformType {
     }
     
     func transformToJSON(_ value: Object?) -> JSON? {
+        if let user = value {
+            return "{id:\"\(user.user_id)\", username: \"\(user.username)\", avatar: \"\(user.avatar)\", displayName:\"\(user.displayName)\"}"
+        }
         return nil
     }
 }
@@ -77,10 +76,10 @@ public enum TimelineModelType: Int {
     case activity = 1
     
     init?(statusCode: Int?) {
-        guard let _statusCode = statusCode else {
-            return nil
+        if let _statusCode = statusCode {
+            self.init(rawValue: _statusCode)
         }
-        self.init(rawValue: _statusCode)
+        return nil
     }
     
     var message: String {

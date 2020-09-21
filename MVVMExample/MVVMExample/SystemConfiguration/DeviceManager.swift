@@ -228,3 +228,15 @@ class DeviceManager {
     }
     
 }
+
+
+@discardableResult func logD(_ message: String, function: String = #function) -> String {
+    #if !NDEBUG
+    let formatter = DateFormatter()
+    formatter.dateFormat = "HH:mm:ss"
+    let date = formatter.string(from: NSDate() as Date)
+    let printText = "\(date) Func: \(function) : \(message)"
+    print(printText)
+    return printText
+    #endif
+}

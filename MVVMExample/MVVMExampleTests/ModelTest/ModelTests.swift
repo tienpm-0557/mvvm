@@ -12,6 +12,7 @@ import RxCocoa
 import RxTest
 import RxBlocking
 import MVVM
+import ObjectMapper
 
 @testable import MVVMExample
 class ModelTests: XCTestCase {
@@ -65,7 +66,14 @@ class ModelTests: XCTestCase {
         XCTAssertEqual(activityModelCase3?.likes, 4, "ActivityModel likes initial is wrong")
 
     }
+    
+    func testTimelineModel() {
         
+        let json: [String: Any] = ["title": "Test title", "description": "description", "thumbnail":"thumbnail", "createDate": "createDate", "reaction":"reaction", "type":0, "user":["id":"user id", "username":"username", "displayName":"displayName", "avatar":"avatar"]]
+        let timeline = TimelineModel(JSON: json)
+        let xxx <- (timeline?.user, UserInfoTransform())
+        print(xxx)
+    }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.

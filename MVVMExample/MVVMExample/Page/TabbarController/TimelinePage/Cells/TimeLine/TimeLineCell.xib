@@ -221,6 +221,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gp8-td-OEV">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="like_btn"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="2"/>
@@ -233,6 +234,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgH-uE-hp9">
                                                 <rect key="frame" x="125" y="0.0" width="125" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="comment_btn"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Comment" image="ic_comments">
@@ -241,6 +243,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQm-Nf-lNE">
                                                 <rect key="frame" x="250" y="0.0" width="125" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="share_btn"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Share" image="ic_share_post">

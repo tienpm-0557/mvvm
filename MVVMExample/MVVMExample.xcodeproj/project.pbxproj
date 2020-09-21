@@ -34,6 +34,7 @@
 		9C74EB97246D19BD00A3CF1D /* MVVMExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EB96246D19BD00A3CF1D /* MVVMExampleTests.swift */; };
 		9C74EBA2246D19BD00A3CF1D /* MVVMExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EBA1246D19BD00A3CF1D /* MVVMExampleUITests.swift */; };
 		9C8268F524BEEB9C008497A6 /* AlertServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8268F424BEEB9C008497A6 /* AlertServices.swift */; };
+		9C98F1B425185C8000B5B486 /* AlertServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C98F1B325185C8000B5B486 /* AlertServiceTests.swift */; };
 		9CB0D87825130BF2009826B2 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87725130BF2009826B2 /* ActivityModel.swift */; };
 		9CB0D87A25131149009826B2 /* NetworkService+Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87925131149009826B2 /* NetworkService+Timeline.swift */; };
 		9CB0D87C2513141F009826B2 /* TimelineResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87B2513141F009826B2 /* TimelineResponseModel.swift */; };
@@ -112,6 +113,7 @@
 		9C74EBA1246D19BD00A3CF1D /* MVVMExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMExampleUITests.swift; sourceTree = "<group>"; };
 		9C74EBA3246D19BD00A3CF1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C8268F424BEEB9C008497A6 /* AlertServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServices.swift; sourceTree = "<group>"; };
+		9C98F1B325185C8000B5B486 /* AlertServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServiceTests.swift; sourceTree = "<group>"; };
 		9CB0D87725130BF2009826B2 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		9CB0D87925131149009826B2 /* NetworkService+Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Timeline.swift"; sourceTree = "<group>"; };
 		9CB0D87B2513141F009826B2 /* TimelineResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineResponseModel.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 		9C74EB95246D19BD00A3CF1D /* MVVMExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				9C98F1B225185C6400B5B486 /* AlertService */,
 				9CB799AD2514929900902E3A /* ModelTest */,
 				9C0C751824E2819800FE58DA /* NetworkService */,
 				9C74EB96246D19BD00A3CF1D /* MVVMExampleTests.swift */,
@@ -343,6 +346,14 @@
 				9CB799AB25148E9E00902E3A /* TabbarModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9C98F1B225185C6400B5B486 /* AlertService */ = {
+			isa = PBXGroup;
+			children = (
+				9C98F1B325185C8000B5B486 /* AlertServiceTests.swift */,
+			);
+			path = AlertService;
 			sourceTree = "<group>";
 		};
 		9CA044C424D9040F00F4673A /* AlamofireService */ = {
@@ -752,6 +763,7 @@
 			files = (
 				9C0C751C24E281F600FE58DA /* NetworkServiceTests.swift in Sources */,
 				9C74EB97246D19BD00A3CF1D /* MVVMExampleTests.swift in Sources */,
+				9C98F1B425185C8000B5B486 /* AlertServiceTests.swift in Sources */,
 				9CB799AF251492C800902E3A /* ModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
