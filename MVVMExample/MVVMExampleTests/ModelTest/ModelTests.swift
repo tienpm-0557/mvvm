@@ -71,8 +71,6 @@ class ModelTests: XCTestCase {
         
         let json: [String: Any] = ["title": "Test title", "description": "description", "thumbnail":"thumbnail", "createDate": "createDate", "reaction":"reaction", "type":0, "user":["id":"user id", "username":"username", "displayName":"displayName", "avatar":"avatar"]]
         let timeline = TimelineModel(JSON: json)
-        let xxx <- (timeline?.user, UserInfoTransform())
-        print(xxx)
     }
     
     override func tearDown() {

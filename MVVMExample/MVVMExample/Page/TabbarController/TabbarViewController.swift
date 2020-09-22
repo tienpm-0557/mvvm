@@ -41,7 +41,11 @@ class TabbarViewController: BaseTabBarPage {
 
     fileprivate func addTabBarView() {
         _tabBarView = TabbarView.newTabbarView()
-        
+        if #available(iOS 12.0, *) {
+            _tabBarView?.updateDarkmode(self.traitCollection.userInterfaceStyle == .dark)
+        } else {
+            // Fallback on earlier versions
+        }
         if let tabbarView = _tabBarView {
             self.view.addSubview(tabbarView)
         }
@@ -73,6 +77,21 @@ class TabbarViewController: BaseTabBarPage {
         }) => disposeBag
         
         self.rx.title.onNext("Tabbar Controller")
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard UIApplication.shared.applicationState == .inactive else {
+            return
+        }
+        
+        if #available(iOS 12.0, *) {
+            self._tabBarView?.updateDarkmode(self.traitCollection.userInterfaceStyle == .dark)
+        } else {
+            // Fallback on earlier versions
+            self._tabBarView?.updateDarkmode(false)
+        }
     }
 
 }

@@ -19,6 +19,22 @@ class TabbarView: AbstractView {
     private var prevButton: UIButton?
     let rxSelectedIndex = BehaviorRelay(value: 0)
     
+    private var darkmode: Bool = false {
+        didSet {
+            if darkmode {
+                buttons.forEach { (btn) in
+                    btn.backgroundColor = UIColor.black
+                }
+                self.backgroundColor = UIColor.black
+            } else {
+                buttons.forEach { (btn) in
+                    btn.backgroundColor = UIColor.tabbarBackgroundColor
+                }
+                self.backgroundColor = UIColor.tabbarBackgroundColor
+            }
+        }
+    }
+    
     lazy var testAction: Action<AnyObject, Void> = {
         return Action<AnyObject, Void> { input in
             return .just(())
@@ -41,7 +57,12 @@ class TabbarView: AbstractView {
         buttons.forEach { (btn) in
             btn.setTitleColor(.tabbarTitleColor, for: .normal)
             btn.setTitleColor(.tabbarTitleSelectedColor, for: .selected)
-            btn.backgroundColor = UIColor.clear
+            if self.darkmode {
+                btn.backgroundColor = UIColor.black
+            } else {
+                btn.backgroundColor = UIColor.tabbarBackgroundColor
+            }
+            
             
             btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
@@ -66,11 +87,25 @@ class TabbarView: AbstractView {
     
     fileprivate func setNormalTab(_ normalBtn: UIButton) {
         normalBtn.isSelected = false
-        normalBtn.backgroundColor = UIColor.clear
+
+        if self.darkmode {
+            normalBtn.backgroundColor = UIColor.black
+        } else {
+            normalBtn.backgroundColor = UIColor.tabbarBackgroundColor
+        }
     }
     
     fileprivate func setSelectedTab(_ selectedBtn: UIButton) {
         selectedBtn.isSelected = true
-        selectedBtn.backgroundColor = .tabbarBackgroundSelectedColor
+        if self.darkmode {
+            selectedBtn.backgroundColor = UIColor.black
+        } else {
+            selectedBtn.backgroundColor = .tabbarBackgroundSelectedColor
+        }
+        
+    }
+    
+    func updateDarkmode(_ darkmode:Bool) {
+        self.darkmode = darkmode
     }
 }
