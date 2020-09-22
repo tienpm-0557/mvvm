@@ -28,7 +28,7 @@ The library heavily depends on [RxSwift](https://github.com/ReactiveX/RxSwift) f
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 - [Action](https://github.com/RxSwiftCommunity/Action)
 - [Alamofire](https://github.com/Alamofire/Alamofire)
-- [AlamofireImage](https://github.com/Alamofire/AlamofireImage)
+- [SDWebImage](https://github.com/SDWebImage/SDWebImage)
 - [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
 - [PureLayout](https://github.com/PureLayout/PureLayout)
 - [Moya](https://github.com/Moya/Moya)
