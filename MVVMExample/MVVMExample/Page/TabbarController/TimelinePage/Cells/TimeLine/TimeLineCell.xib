@@ -52,6 +52,9 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMY-90-xyc">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="userinfo_btn">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -186,6 +189,7 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nq6-qe-pdT">
                                                         <rect key="frame" x="55.5" y="10" width="30" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="reaction_btn"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="gEn-KG-B3X"/>
                                                             <constraint firstAttribute="height" constant="30" id="z7u-1H-01T"/>

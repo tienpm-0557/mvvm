@@ -35,12 +35,6 @@ class TabbarView: AbstractView {
         }
     }
     
-    lazy var testAction: Action<AnyObject, Void> = {
-        return Action<AnyObject, Void> { input in
-            return .just(())
-        }
-    }()
-    
     class func newTabbarView() -> TabbarView? {
         guard let _tabBarView = TabbarView.loadFrom(nibNamed: TabbarView.nibName(),
                                                     bundle: Bundle.main) as? TabbarView else {

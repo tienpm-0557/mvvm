@@ -27,8 +27,8 @@ class TimeLineCell: BaseTableCell {
     @IBOutlet private weak var likeBtn: UIButton!
     @IBOutlet private weak var commentBtn: UIButton!
     @IBOutlet private weak var shareBtn: UIButton!
-    @IBOutlet private weak var reactionBtn: UIButton!
     
+    @IBOutlet private weak var reactionBtn: UIButton!
     @IBOutlet private weak var userInfoBtn: UIButton!
     
     @IBOutlet private weak var separateLineImgHeight: NSLayoutConstraint!
@@ -57,6 +57,7 @@ class TimeLineCell: BaseTableCell {
         likeBtn.rx.bind(to: viewModel.likeAction, input: likeBtn)
         commentBtn.rx.bind(to: viewModel.commentAction, input: likeBtn)
         shareBtn.rx.bind(to: viewModel.shareAction, input: likeBtn)
+        
         reactionBtn.rx.bind(to: viewModel.reactionAction, input: reactionBtn)
         userInfoBtn.rx.bind(to: viewModel.userInfoAction, input: userInfoBtn)
     }

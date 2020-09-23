@@ -19,7 +19,7 @@ class TimelinePage: BaseListPage {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.accessibilityIdentifier = "TimelineNavigationAccessibilityId"
         // Do any additional setup after loading the view.
         guard let viewModel = self.viewModel as? TimelinePageViewModel else { return }
         viewModel.getDataAction.execute()

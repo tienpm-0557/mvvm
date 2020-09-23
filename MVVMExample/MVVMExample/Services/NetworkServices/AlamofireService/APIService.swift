@@ -24,7 +24,6 @@ enum APIUrl {
     #endif
     /// Authorization
     static let login                        = "/login"
-    static let apiFlickrSearch              = "/services/rest"
     static let apiTimeline                  = "/api/dummyTimeline"
 }
 
@@ -50,13 +49,12 @@ struct HeaderValue {
 
 public enum APIService: URLRequestConvertible {
     case login(parameters: Parameters?)
-    case flickrSearch(parameters: Parameters?)
     case loadTimeline(parameters: Parameters?)
     
     var name: String {
         switch self {
-        case .flickrSearch:
-            return "Flickr Search"
+        case .loadTimeline:
+            return "loadTimeline"
         default:
             return ""
         }
@@ -64,7 +62,7 @@ public enum APIService: URLRequestConvertible {
     
     var usingCache: Bool {
         switch self {
-        case .flickrSearch:
+        case .loadTimeline:
             return false
         default:
             return false
@@ -73,8 +71,6 @@ public enum APIService: URLRequestConvertible {
     
     var parameters: Parameters? {
         switch self {
-        case .flickrSearch(let parameter):
-            return parameter
         case .loadTimeline(let parameter):
             return parameter
         default:
@@ -84,7 +80,7 @@ public enum APIService: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .flickrSearch:
+        case .loadTimeline:
             return .get
         default:
             return .get
@@ -96,9 +92,6 @@ public enum APIService: URLRequestConvertible {
         case .login:
             return APIUrl.login
             
-        case .flickrSearch:
-            return APIUrl.apiFlickrSearch
-
         case .loadTimeline:
             return APIUrl.apiTimeline
         }
@@ -121,7 +114,7 @@ public enum APIService: URLRequestConvertible {
         switch self {
         case .login:
             return JSONEncoding.default
-        case .flickrSearch, .loadTimeline:
+        case .loadTimeline:
             return URLEncoding.default
         }
     }
@@ -140,7 +133,7 @@ public enum APIService: URLRequestConvertible {
         case .loadTimeline:
             ()
         default:
-            break
+            ()
         }
         
         return urlRequest

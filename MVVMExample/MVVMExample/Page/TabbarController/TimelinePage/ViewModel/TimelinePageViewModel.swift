@@ -31,6 +31,8 @@ class TimelinePageViewModel: BaseListViewModel {
         return Action() { .just(self.loadMore()) }
     }()
     
+    let rxRequestDataState = PublishRelay<NetworkServiceState>()
+    
     override func react() {
         super.react()
         
@@ -46,9 +48,9 @@ class TimelinePageViewModel: BaseListViewModel {
                 if let data = results {
                     self?.itemsSource.append(data, animated: false)
                 }
-                
+                self?.rxRequestDataState.accept(.success)
         }, onError: { (error) in
-                
+            self.rxRequestDataState.accept(.error)
         }) => tmpBag
     }
     

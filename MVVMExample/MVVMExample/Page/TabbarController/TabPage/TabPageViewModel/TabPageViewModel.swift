@@ -21,7 +21,9 @@ class TabPageViewModel: BaseViewModel {
         guard let model = self.model as? TabbarModel else {
             return
         }
-        rxTille.accept(model.title)
         
+        rxTille.accept(model.title)
     }
+    
+    
 }

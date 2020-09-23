@@ -28,25 +28,94 @@ class MVVMExampleUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() {
+    //MARK: TabbarController
+    func testTabPage() {
+        app?.launch()
+        guard let app = self.app else { return }
+        let tabHomeQuery = app.buttons.matching(identifier: "tabhome_btn")
+        // If there is at least one
+        if tabHomeQuery.count > 0 {
+            // We take the first one and tap it
+            let firstButton = tabHomeQuery.firstMatch
+            if firstButton.waitForExistence(timeout: 3) {
+                firstButton.tap()
+            } else {
+                XCTFail("TEST:: Tab Home not found")
+            }
+        }
+        sleep(2)
+        
+        if let tabbarView = self.app?.otherElements["tabbarview"] {
+            
+        } else {
+            XCTFail("TEST:: Tabbar view not found")
+        }
+        
+    }
+    
+    //MARK: Timeline screen
+    func testTimeline() {
         // UI tests must launch the application that they test.
         app?.launch()
         
-        if let accordianButtonsQuery = self.app?.buttons.matching(identifier: "like_btn") {
+        if let likeButtonsQuery = self.app?.buttons.matching(identifier: "like_btn") {
             // If there is at least one
-            if accordianButtonsQuery.count > 0 {
+            if likeButtonsQuery.count > 0 {
                 // We take the first one and tap it
-                let firstButton = accordianButtonsQuery.element(boundBy: 0)
+                let firstButton = likeButtonsQuery.firstMatch
+                XCTAssertTrue(firstButton.waitForExistence(timeout: 3))
                 firstButton.tap()
             }
         }
+        sleep(2)
         
-//        let service = AlertService()
-//        service.presentPMConfirmAlert(title: "[Provide your title]", message: "[Provide your alert message]")
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        if let commentButtonsQuery = self.app?.buttons.matching(identifier: "comment_btn") {
+            // If there is at least one
+            if commentButtonsQuery.count > 0 {
+                // We take the first one and tap it
+                let firstButton = commentButtonsQuery.firstMatch
+                XCTAssertTrue(firstButton.waitForExistence(timeout: 3))
+                firstButton.tap()
+            }
+        }
+        sleep(2)
+        
+        if let reactionButtonsQuery = self.app?.buttons.matching(identifier: "reaction_btn") {
+            // If there is at least one
+            if reactionButtonsQuery.count > 0 {
+                // We take the first one and tap it
+                let firstButton = reactionButtonsQuery.firstMatch
+                XCTAssertTrue(firstButton.waitForExistence(timeout: 3))
+                firstButton.tap()
+            }
+        }
+        sleep(2)
+        
+        if let userInfoButtonsQuery = self.app?.buttons.matching(identifier: "userinfo_btn") {
+            // If there is at least one
+            if userInfoButtonsQuery.count > 0 {
+                // We take the first one and tap it
+                let firstButton = userInfoButtonsQuery.firstMatch
+                XCTAssertTrue(firstButton.waitForExistence(timeout: 3))
+                firstButton.tap()
+            }
+        }
+        sleep(2)
+        
+    }
+    
+    func testShareAction() {
+        app?.launch()
+        if let shareButtonsQuery = self.app?.buttons.matching(identifier: "share_btn") {
+            // If there is at least one
+            if shareButtonsQuery.count > 0 {
+                // We take the first one and tap it
+                let firstButton = shareButtonsQuery.firstMatch
+                XCTAssertTrue(firstButton.waitForExistence(timeout: 3))
+                firstButton.tap()
+            }
+        }
+        sleep(5)
     }
 
     /*

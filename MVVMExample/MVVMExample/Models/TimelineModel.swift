@@ -32,9 +32,7 @@ class TimelineModel: Model {
         type <- (map["type"], TimelineModelTypeTransform())
         user <- (map["user"], UserInfoTransform())
     }
-
 }
-
 
 class UserInfoTransform: TransformType {
     typealias Object = UserInfoModel
@@ -74,13 +72,6 @@ class TimelineModelTypeTransform: TransformType {
 public enum TimelineModelType: Int {
     case normal = 0
     case activity = 1
-    
-    init?(statusCode: Int?) {
-        if let _statusCode = statusCode {
-            self.init(rawValue: _statusCode)
-        }
-        return nil
-    }
     
     var message: String {
         switch self {

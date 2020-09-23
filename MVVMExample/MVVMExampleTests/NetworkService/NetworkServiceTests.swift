@@ -11,13 +11,23 @@ import RxSwift
 import RxCocoa
 import RxTest
 import MVVM
+import Foundation
+import Alamofire
 
 @testable import MVVMExample
+
+extension ParameterEncoding {
+    
+    static func ==(lhs: Self, rhs: Self) -> Bool {
+        return true
+    }
+}
+
 class NetworkServiceTests: XCTestCase {
 
-    var networkModel: NetworkService?
+    var networkPageModel: TimelinePageViewModel?
     var disposeBag: DisposeBag?
-//    var response: FlickrSearchResponse?
+    var response: TimelineResponseModel?
     private let scheduler: TestScheduler = TestScheduler(initialClock: 0)
     
     override func setUp() {
@@ -27,75 +37,89 @@ class NetworkServiceTests: XCTestCase {
         })
         
         disposeBag = DisposeBag()
-//
-//        let model = MenuModel(withTitle: "Mock for test Network Service",
-//                              desc: "Mock for test Network Service")
-//
-//        networkModel = NetworkServicePageViewModel(model: model, timerScheduler: scheduler)
-//        networkModel?.react()
-    }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        networkPageModel = TimelinePageViewModel(model: TabbarModel(JSON: ["title": "Home", "index": 0]))
+        networkPageModel?.react()
     }
     
+    func testAPIService() {
+        let parameters: [String: Any] = [
+            "page": 0,
+            "limie": 10
+        ]
+        
+        let apiServiceTimeline = APIService.loadTimeline(parameters: parameters)
+        let apiServiceLogin = APIService.login(parameters: nil)
+        
+        XCTAssertEqual(apiServiceTimeline.name, "loadTimeline", "API service NAME incorrect.", file: "NetworkServiceTests")
+        XCTAssertEqual(apiServiceLogin.name, "", "API service NAME incorrect.", file: "NetworkServiceTests")
+        
+        XCTAssertEqual(apiServiceTimeline.method, .get, "API service METHOD incorrect.", file: "NetworkServiceTests")
+        XCTAssertEqual(apiServiceLogin.method, .get, "API service METHOD incorrect.", file: "NetworkServiceTests")
+
+        XCTAssertFalse(apiServiceTimeline.usingCache, "API service CACHE incorrect.", file: "NetworkServiceTests")
+        XCTAssertFalse(apiServiceLogin.usingCache, "API service CACHE incorrect.", file: "NetworkServiceTests")
+
+        XCTAssertNotNil(apiServiceTimeline.parameters, "API service PARAMETER incorrect.", file: "NetworkServiceTests")
+        XCTAssertNil(apiServiceLogin.parameters, "API service PARAMETER incorrect.", file: "NetworkServiceTests")
+        
+        XCTAssertEqual(apiServiceTimeline.path, APIUrl.apiTimeline, "API service PARAMETER incorrect.", file: "NetworkServiceTests")
+        XCTAssertEqual(apiServiceLogin.path, APIUrl.login, "API service PARAMETER incorrect.", file: "NetworkServiceTests")
+        
+        let timelineRequestLoginHeader = [HeaderKey.ContentType: HeaderValue.ApplicationJson,
+                                          HeaderKey.Accept: HeaderValue.ApplicationJson,
+                                          HeaderKey.Language: HeaderValue.LanguageEng,
+                                          HeaderKey.TimeZone: TimeZone.current.identifier,
+                                          HeaderKey.Platform: HeaderValue.PLatformIos]
+        
+        XCTAssertEqual(apiServiceTimeline.header?.dictionary, [:], "API service HEADER incorrect.", file: "NetworkServiceTests")
+        XCTAssertEqual(apiServiceLogin.header?.dictionary, timelineRequestLoginHeader, "API service HEADER incorrect.", file: "NetworkServiceTests")
+        
+    }
+
     func testNetworkService() {
-        /*
-        guard let networkModel = networkModel else { return }
-        let exp = expectation(description: "Loading stories")
+        
+        guard let networkPageModel = networkPageModel else { return }
+        let exp = expectation(description: "Loading timeline")
         /// For test net
-        _ = networkModel.networkService?.search(withKeyword: "animal", page: 0).map({ response in
+        networkPageModel.networkService?.loadTimeline(withPage: 0, withLimit: 10).map({ response in
             response
-        }).subscribe(onSuccess: { [weak self] (results) in
+        }).subscribe(onSuccess: { [weak self](results) in
             self?.response = results
-            XCTAssertEqual(results.stat, .ok, "We should have loaded exactly 10 photos.")
+            
+            XCTAssertEqual(results.stat, .ok, "We should have loaded time line data with 20 items.", file: "NetworkServiceTests")
             exp.fulfill()
         }, onError: { (error) in
+            XCTFail("Request timeline data error \(error.localizedDescription)", file: "NetworkServiceTests")
             exp.fulfill()
-        })
+        }) => disposeBag
         
         waitForExpectations(timeout: 30) { (error) in
-            print("MVVMTests: search flickr error \(error.debugDescription)")
+            if let err = error {
+                XCTFail("Load timeline error \(err.localizedDescription)", file: "NetworkServiceTests")
+            }
         }
-         */
+         
     }
     
     func testNetworkServicePageViewModel() {
-        /*
-        guard let networkModel = networkModel else { return }
-        let exp = expectation(description: "Start Testing")
         
+        guard let networkPageModel = networkPageModel else { return }
         /// Start case search on page View Model
-        networkModel.search(withText: "animal", withPage: 0)
+        networkPageModel.getDataAction.execute()
+        
         /// Detect callback did Search
-        networkModel.rxDidSearchState.subscribe(onNext: { (state) in
+        networkPageModel.rxRequestDataState.subscribe(onNext: { (state) in
             ///validate test case
             XCTAssertEqual(state, .success, "We should have loaded exactly 10 photos.")
         }, onError: { (error) in
             XCTAssertTrue(false, "MVVMTests: flickrSearch on page View Model missed ")
         }) => disposeBag
-        
-        let mock = MockNetworkServiceOps()
-        ///In case: keyword empty
-        mock.flickrSearch(withKey: "", withPage: 0).subscribe(onSuccess: { (response) in
-            XCTAssertEqual(response.stat, .ok, "We should have loaded exactly 10 photos.")
-        }) { (error) in
-            XCTAssertTrue(false, "MVVMTests: flickrSearch with key empty missed")
-        } => disposeBag
-        
-        ///In case: keyword not empty
-        mock.flickrSearch(withKey: "animal", withPage: 0).subscribe(onSuccess: { (response) in
-            XCTAssertEqual(response.stat, .ok, "We should have loaded exactly 10 photos.")
-            exp.fulfill()
-        }) { (error) in
-            XCTAssertTrue(false, "MVVMTests: flickrSearch with key \"animal\" empty missed")
-            exp.fulfill()
-        } => disposeBag
-        ///Waite for 30 second
-        waitForExpectations(timeout: 30) { (error) in
-            print("MVVMTests: search flickr error \(error.debugDescription)")
-        }
-         */
+
+    }
+    
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
     func testPerformanceExample() {
@@ -105,15 +129,4 @@ class NetworkServiceTests: XCTestCase {
         }
     }
 }
-/*
-protocol FlickrSearchOpsType {
-    func flickrSearch(withKey key: String, withPage page: Int) -> Single<FlickrSearchResponse>
-}
 
-struct MockNetworkServiceOps: FlickrSearchOpsType {
-    var networkService: NetworkService = DependencyManager.shared.getService()
-    func flickrSearch(withKey key: String, withPage page: Int) -> Single<FlickrSearchResponse> {
-        return networkService.search(withKeyword: key, page: page)
-    }
-}
-*/

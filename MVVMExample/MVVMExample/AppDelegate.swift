@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// Create Roote page
         let vm = TabbarControllerViewModel()
         let rootPage = TabbarViewController(viewModel: vm)
+        
         /// Set new root Viewcontroller
         window?.rootViewController = rootPage
         window?.makeKeyAndVisible()

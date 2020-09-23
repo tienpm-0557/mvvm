@@ -17,6 +17,10 @@ import ObjectMapper
 @testable import MVVMExample
 class ModelTests: XCTestCase {
     
+    private let scheduler: TestScheduler = TestScheduler(initialClock: 0)
+    
+    var disposeBag: DisposeBag?
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -64,13 +68,51 @@ class ModelTests: XCTestCase {
         XCTAssertEqual(activityModelCase3?.following, 2, "ActivityModel following initial is wrong")
         XCTAssertEqual(activityModelCase3?.follower, 3, "ActivityModel follower initial is wrong")
         XCTAssertEqual(activityModelCase3?.likes, 4, "ActivityModel likes initial is wrong")
-
+        
     }
     
     func testTimelineModel() {
         
-        let json: [String: Any] = ["title": "Test title", "description": "description", "thumbnail":"thumbnail", "createDate": "createDate", "reaction":"reaction", "type":0, "user":["id":"user id", "username":"username", "displayName":"displayName", "avatar":"avatar"]]
-        let timeline = TimelineModel(JSON: json)
+        let json: [String: Any] = ["title": "Test title", "description": "description", "thumbnail":"thumbnail", "createDate": "createDate", "reaction":"reaction", "type":"0", "user":["id":"user id", "username":"username", "displayName":"displayName", "avatar":"avatar"]]
+        guard let timelineModel = TimelineModel(JSON: json) else { return }
+
+        let json1: [String: Any] = ["title": "Test title", "description": "description", "thumbnail":"thumbnail", "createDate": "createDate", "reaction":"reaction", "type":"1"]
+        guard let timelineModel1 = TimelineModel(JSON: json1) else { return }
+        /// Check user tranform
+        XCTAssertNotNil(timelineModel.user, "TimelineModel in case user not nil")
+        XCTAssertNil(timelineModel1.user, "TimelineModel in case user nil")
+        /// Check Timeline type transform
+        XCTAssertEqual(timelineModel.type.message, "Normal post")
+        XCTAssertEqual(timelineModel1.type.message, "Activity view")
+        
+    }
+    
+    ///View Model
+    func testTabPageViewModel() {
+        
+        let viewModel = TabPageViewModel(model: TabbarModel(JSON: ["title":"Title", "index":0]))
+        viewModel.react()
+        /// Tạo một TestableObserver để ghi lại các event trong bối cảnh test.
+        let titleScheduler = scheduler.createObserver(String.self)
+        /// Lấy viewmodel ra để tiến hành test
+        /// Binding TestableObserver với rxTille là một BehaviorRelay trên viewmodel.
+        viewModel.rxTille
+            .asDriver()
+            .drive(titleScheduler) => disposeBag
+        /// Tạo một kịch bản test tại thời điểm nextTime 10, 15 emit value "Title 10", "Title 15"
+        scheduler.createColdObservable([.next(10, "Title 10"),
+                                        .next(15, "Title 15")])
+            .bind(to: viewModel.rxTille) => disposeBag
+
+        scheduler.start()
+        /// Với BehaviorRelay events nhận thêm một latest event nữa.
+        /// Tiến hành so sánh kết quả nhận được với giá trị mong đợi
+        XCTAssertEqual(titleScheduler.events, [
+            .next(0, "Title"),
+            .next(10, "Title 10"),
+            .next(15, "Title 15")
+        ])
+        
     }
     
     override func tearDown() {

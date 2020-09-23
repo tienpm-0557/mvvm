@@ -28,7 +28,7 @@ class DeviceManager {
         return UIDevice.current.systemName as NSString
     }
     
-    func getDeviceID() -> String {
+    class func getDeviceID() -> String {
         return UIDevice.current.identifierForVendor!.uuidString
     }
     
@@ -37,18 +37,6 @@ class DeviceManager {
         let screenSize = screenRect.size
 
         return screenSize
-    }
-    
-    class func getScreenWidth() -> CGFloat {
-        let screenRect = UIScreen.main.bounds
-        let screenSize = screenRect.size
-        return min(screenSize.width, screenSize.height)
-    }
-    
-    class func getScreenHeight() -> CGFloat {
-        let screenRect = UIScreen.main.bounds
-        let screenSize = screenRect.size
-        return max(screenSize.width, screenSize.height)
     }
     
     class func getWinFrame() -> CGRect {
@@ -116,7 +104,7 @@ class DeviceManager {
         let directoryURLs = FileManager.default.urls(for:  FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
         
         if !directoryURLs.isEmpty {
-            return directoryURLs[0].absoluteString
+            return directoryURLs[0].path
         }
         return ""
     }
@@ -156,16 +144,6 @@ class DeviceManager {
         }
     }
     
-    class func isFirstLaunch() -> Bool {
-        let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
-        let isFirstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunchedBeforeFlag)
-        if (isFirstLaunch) {
-            UserDefaults.standard.set(true, forKey: hasBeenLaunchedBeforeFlag)
-            UserDefaults.standard.synchronize()
-        }
-        return isFirstLaunch
-    }
-    
     class func sizeOfFolderInFormatStr(_ folderPath: String) -> String {
         if let folderSize = DeviceManager.sizeOfFolder(folderPath) {
             /// This line will give you formatted size from bytes ....
@@ -191,12 +169,11 @@ class DeviceManager {
             return folderSize
         } catch let error {
             print(error.localizedDescription)
-            return 0
+            return nil
         }
     }
     
-    class func getListFileOfFolder() -> [String]? {
-        let directory = DeviceManager.getPathDataFolder()
+    class func getListFileOfFolder(_ directory: URL) -> [String]? {
         if let urlArray = try? FileManager.default.contentsOfDirectory(at: directory,
                                                                        includingPropertiesForKeys: [.contentModificationDateKey],
                                                                        options:.skipsHiddenFiles) {

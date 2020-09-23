@@ -23,6 +23,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXD-IL-o5p">
                                     <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="tabhome_btn"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
                                     <state key="normal" image="tab_home">
@@ -47,6 +48,7 @@
                             <subviews>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86h-Wm-crE">
                                     <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="message_btn"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
                                     <state key="normal" image="tab_message">
@@ -71,6 +73,7 @@
                             <subviews>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdw-cd-bd1">
                                     <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="notification_btn"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
                                     <state key="normal" image="icon_notification">
@@ -95,6 +98,7 @@
                             <subviews>
                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3p-3C-OXG">
                                     <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="profile_btn"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
                                     <state key="normal" image="tab_profile">
@@ -131,6 +135,7 @@
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <accessibility key="accessibilityConfiguration" identifier="tabbarview"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Wyp-JR-dKs" secondAttribute="trailing" id="BZv-bR-1kN"/>
                 <constraint firstItem="S8w-z4-sfi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HCe-xW-Tbq"/>

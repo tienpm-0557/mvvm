@@ -11,26 +11,13 @@ import MVVM
 
 class TabPage: BasePage {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
     override func initialize() {
         super.initialize()
-        guard let model = self.viewModel as? TabPageViewModel else {
+        guard let modelView = self.viewModel as? TabPageViewModel else {
             return
         }
-    }
-    
-    override func bindViewAndViewModel() {
-        super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? TabPageViewModel else { return }
         
-        viewModel.rxTille ~> self.rx.title => disposeBag
-        
+        modelView.rxTille ~> self.rx.title => disposeBag
     }
-    
 
 }
