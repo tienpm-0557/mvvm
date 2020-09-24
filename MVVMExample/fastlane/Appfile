@@ -1,0 +1,12 @@
+#
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
+# app_identifier "[Provide your bundle id]"
+
+app_identifier 'com.mtlab.mvvm'
+# Apple ID
+apple_id 'funylab@gmail.com'
+# Team ID
+team_name 'Nguyen Hang'
+team_id '747LG25T2M'
+

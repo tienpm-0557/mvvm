@@ -142,6 +142,14 @@
 		9C79EE0F247124FB00FEF5EC /* DynamicCollectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C79EE0D247124FB00FEF5EC /* DynamicCollectionPage.swift */; };
 		9C79EE10247124FB00FEF5EC /* DynamicCollectionPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C79EE0E247124FB00FEF5EC /* DynamicCollectionPage.xib */; };
 		9C79EE152471293B00FEF5EC /* DynamicCollectionPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C79EE142471293B00FEF5EC /* DynamicCollectionPageViewModel.swift */; };
+		9C7C5CF1251C454800C8CEF7 /* content.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C5CE8251C454700C8CEF7 /* content.txt */; };
+		9C7C5CF2251C454800C8CEF7 /* releaseNote.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C5CE9251C454700C8CEF7 /* releaseNote.txt */; };
+		9C7C5CF3251C454800C8CEF7 /* Pluginfile in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C5CEB251C454700C8CEF7 /* Pluginfile */; };
+		9C7C5CF4251C454800C8CEF7 /* .env.secret in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C5CEC251C454700C8CEF7 /* .env.secret */; };
+		9C7C5CF5251C454800C8CEF7 /* Appfile in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C5CED251C454700C8CEF7 /* Appfile */; };
+		9C7C5CF6251C454800C8CEF7 /* Fastfile in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C5CEE251C454700C8CEF7 /* Fastfile */; };
+		9C7C5CF7251C454800C8CEF7 /* FREADME.md in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C5CEF251C454700C8CEF7 /* FREADME.md */; };
+		9C7C5CF8251C454800C8CEF7 /* report.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C5CF0251C454700C8CEF7 /* report.xml */; };
 		9C8268EE24BEE343008497A6 /* AlertServicePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8268EC24BEE343008497A6 /* AlertServicePage.swift */; };
 		9C8268EF24BEE343008497A6 /* AlertServicePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8268ED24BEE343008497A6 /* AlertServicePage.xib */; };
 		9C8268F224BEE377008497A6 /* AlertServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8268F124BEE377008497A6 /* AlertServiceViewModel.swift */; };
@@ -359,6 +367,14 @@
 		9C79EE0D247124FB00FEF5EC /* DynamicCollectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionPage.swift; sourceTree = "<group>"; };
 		9C79EE0E247124FB00FEF5EC /* DynamicCollectionPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DynamicCollectionPage.xib; sourceTree = "<group>"; };
 		9C79EE142471293B00FEF5EC /* DynamicCollectionPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionPageViewModel.swift; sourceTree = "<group>"; };
+		9C7C5CE8251C454700C8CEF7 /* content.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = content.txt; sourceTree = "<group>"; };
+		9C7C5CE9251C454700C8CEF7 /* releaseNote.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = releaseNote.txt; sourceTree = "<group>"; };
+		9C7C5CEB251C454700C8CEF7 /* Pluginfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pluginfile; sourceTree = "<group>"; };
+		9C7C5CEC251C454700C8CEF7 /* .env.secret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .env.secret; sourceTree = "<group>"; };
+		9C7C5CED251C454700C8CEF7 /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
+		9C7C5CEE251C454700C8CEF7 /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
+		9C7C5CEF251C454700C8CEF7 /* FREADME.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = FREADME.md; sourceTree = "<group>"; };
+		9C7C5CF0251C454700C8CEF7 /* report.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = report.xml; sourceTree = "<group>"; };
 		9C8268EC24BEE343008497A6 /* AlertServicePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServicePage.swift; sourceTree = "<group>"; };
 		9C8268ED24BEE343008497A6 /* AlertServicePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertServicePage.xib; sourceTree = "<group>"; };
 		9C8268F124BEE377008497A6 /* AlertServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServiceViewModel.swift; sourceTree = "<group>"; };
@@ -767,6 +783,7 @@
 		9C74EB70246D19B900A3CF1D = {
 			isa = PBXGroup;
 			children = (
+				9C7C5CE6251C454700C8CEF7 /* fastlane */,
 				9C74EB7B246D19B900A3CF1D /* MVVMExample */,
 				9C74EB95246D19BD00A3CF1D /* MVVMExampleTests */,
 				9C74EBA0246D19BD00A3CF1D /* MVVMExampleUITests */,
@@ -1320,6 +1337,37 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		9C7C5CE6251C454700C8CEF7 /* fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C5CE7251C454700C8CEF7 /* temp */,
+				9C7C5CEA251C454700C8CEF7 /* ipa */,
+				9C7C5CEB251C454700C8CEF7 /* Pluginfile */,
+				9C7C5CEC251C454700C8CEF7 /* .env.secret */,
+				9C7C5CED251C454700C8CEF7 /* Appfile */,
+				9C7C5CEE251C454700C8CEF7 /* Fastfile */,
+				9C7C5CEF251C454700C8CEF7 /* FREADME.md */,
+				9C7C5CF0251C454700C8CEF7 /* report.xml */,
+			);
+			path = fastlane;
+			sourceTree = "<group>";
+		};
+		9C7C5CE7251C454700C8CEF7 /* temp */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C5CE8251C454700C8CEF7 /* content.txt */,
+				9C7C5CE9251C454700C8CEF7 /* releaseNote.txt */,
+			);
+			path = temp;
+			sourceTree = "<group>";
+		};
+		9C7C5CEA251C454700C8CEF7 /* ipa */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ipa;
+			sourceTree = "<group>";
+		};
 		9C8268EB24BEE317008497A6 /* AlertService */ = {
 			isa = PBXGroup;
 			children = (
@@ -1696,9 +1744,11 @@
 				9C59388524D95E6500AB6F1E /* StoreKitPage.xib in Resources */,
 				9C74EC34246E468B00A3CF1D /* SectionListPage.xib in Resources */,
 				9C74B1782477BA5F0061F2BF /* ContactListPage.xib in Resources */,
+				9C7C5CF2251C454800C8CEF7 /* releaseNote.txt in Resources */,
 				9CC01B6224DA58F700995A07 /* README.md in Resources */,
 				09BC282524C19BB500D874CE /* MVVM.podspec in Resources */,
 				9C79EE10247124FB00FEF5EC /* DynamicCollectionPage.xib in Resources */,
+				9C7C5CF4251C454800C8CEF7 /* .env.secret in Resources */,
 				9C423CC7247819AD00D9B950 /* ContactTableViewCell.xib in Resources */,
 				9CAEA27E2478C21C00061B49 /* FlickrImageSearchPage.xib in Resources */,
 				9C2D3BF72513097500F412DD /* ActivityCell.xib in Resources */,
@@ -1712,6 +1762,8 @@
 				9C6504B325022C7C004B4696 /* UIPageExample.xib in Resources */,
 				9C74EC3A246E477900A3CF1D /* SectionTextCell.xib in Resources */,
 				9C74EBEF246D246F00A3CF1D /* EvaluateJavaScriptWebPage.xib in Resources */,
+				9C7C5CF7251C454800C8CEF7 /* FREADME.md in Resources */,
+				9C7C5CF6251C454800C8CEF7 /* Fastfile in Resources */,
 				9CF158E324713B1F006A1CFB /* HeaderCollectionView.xib in Resources */,
 				9CF158DA24712A55006A1CFB /* DynamicCollectionViewCell.xib in Resources */,
 				9C74EC5E2470069500A3CF1D /* HeaderFooterListPage.xib in Resources */,
@@ -1723,11 +1775,14 @@
 				9C5D019B248550D600AF87F9 /* AuthenticationPage.xib in Resources */,
 				9C74EBBD246D1AF000A3CF1D /* TableOfContentsPage.xib in Resources */,
 				9CE8BA0E24FCD564001EA3A3 /* 8957173.png in Resources */,
+				9C7C5CF8251C454800C8CEF7 /* report.xml in Resources */,
+				9C7C5CF1251C454800C8CEF7 /* content.txt in Resources */,
 				9CD35C1C24D7C6320087B8CF /* TransitionContentPage.xib in Resources */,
 				09DC47A124C146A100906F6F /* ReachabilityPage.xib in Resources */,
 				9C74EB89246D19BC00A3CF1D /* Assets.xcassets in Resources */,
 				9CC01B6724DA935400995A07 /* ImagePickerPage.xib in Resources */,
 				9C74EC2A246D97BF00A3CF1D /* SimpleTableCell.xib in Resources */,
+				9C7C5CF3251C454800C8CEF7 /* Pluginfile in Resources */,
 				9C74EBD7246D206100A3CF1D /* AlertWebPage.xib in Resources */,
 				9C109031249A1617009C3166 /* MoyaProviderServicePage.xib in Resources */,
 				9C76D7D424867E5400DEABA1 /* CustomControlPage.xib in Resources */,
@@ -1746,6 +1801,7 @@
 				9CAEA2862478C90F00061B49 /* FlickrImageCell.xib in Resources */,
 				9C79EE072470DE0200FEF5EC /* SimpleCollectionViewCell.xib in Resources */,
 				9C92957C247CB63400AC7E8E /* NetworkServicePage.xib in Resources */,
+				9C7C5CF5251C454800C8CEF7 /* Appfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

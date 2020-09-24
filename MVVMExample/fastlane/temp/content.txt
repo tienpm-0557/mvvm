@@ -1,0 +1,6 @@
+
+    New Binary has been uploaded successfully to Firebase!
+    Platform : IOS
+    BuildType : develop
+    Note : 2020-09-24 10:48:20   Test Fastlane develop
+    

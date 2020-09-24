@@ -1,0 +1,236 @@
+default_platform(:ios)
+
+before_all do
+	Dotenv.overload '.env.secret'
+end
+
+after_all do |lane|
+
+end
+
+#++++++++++++++++++++++++++++++++++++++++++++++++
+# COMMON LANE
+#++++++++++++++++++++++++++++++++++++++++++++++++
+private_lane :inputNoteIOS do |options|
+    releaseNoteInput = prompt(
+        text: "Please enter your release notes. This note will be pushed on Firebase: ",
+		multi_line_end_keyword: "END"
+    )
+    
+	time1 = Time.new
+	time = time1.strftime("%Y-%m-%d %H:%M:%S")
+	releaseNote =   time + "   " + releaseNoteInput
+    
+    # Save to file
+    commit = last_git_commit
+    File.write("./temp/releaseNote.txt", releaseNote)
+    
+    contentSave =
+    "
+    New Binary has been uploaded successfully to Firebase!
+    Platform : IOS
+    BuildType : #{options[:buildType]}
+    Note : #{releaseNote}
+    "
+    
+    #Author : #{commit[:author]}
+    #Author email : #{commit[:author_email]}
+    
+    File.write("./temp/content.txt", contentSave)
+end
+
+#++++++++++++++++++++++++++++++++++++++++++++++++
+private_lane :pushChatwork do
+
+    puts "------------------- Push notification to Chatwork ---------------------- "
+    sendTo = ENV['CHATWORK_SEND_TO_TESTER']
+    content = File.read("./temp/content.txt")
+    chatwork(
+        message: "#{sendTo}
+        #{content}",
+        roomid: "#{ENV['CHATWORK_ROOM_ID']}", #change with your room id
+        success: true,
+        api_token: "#{ENV['CHATWORK_API_TOKEN']}" #api token of chatbot
+    )
+    
+end
+
+#++++++++++++++++++++++++++++++++++++++++++++++++
+# PLATFORM IOS
+platform :ios do
+#++++++++++++++++++++++++++++++++++++++++++++++++
+desc "* Beta Distribution develop: Build ipa with develop env. Upload file ipa to firebase distribution. Send message to chatwork group."
+desc "* Run: fastlane ios develop"
+desc "* Input release note"
+desc "* Input END to finish release note"
+lane :develop do |options|
+
+	inputNoteIOS(
+        buildType: "develop"
+	)
+    
+    # Start Build ipa
+    begin
+        buildAppDevelop
+    rescue => ex
+        UI.error(ex)
+        next
+    end
+    
+    # Start upload to Firebase
+    begin
+        uploadFirebaseDevelop
+    rescue => ex
+        UI.error(ex)
+        next
+    end
+  
+    # Notify: Send message to chatwork
+    #begin
+    #    pushChatwork
+    #rescue => ex
+    #    UI.error(ex)
+    #end
+    
+end
+
+desc "* Beta Distribution Staging: Build ipa with staging env. Upload file ipa to firebase distribution. Send message to chatwork group."
+lane :staging do |options|
+    
+	inputNoteIOS(
+		buildType: "staging"
+    )
+
+    # Start build stagin evironment
+    begin
+        buildAppStaging
+    rescue => ex
+        UI.error(ex)
+        next
+    end
+    
+    # Start upload to Firebase
+    begin
+        uploadFirebaseStaging
+    rescue => ex
+        UI.error(ex)
+        next
+    end
+
+    # Notify: Send message to chatwork
+    #begin
+    #    pushChatwork
+    #rescue => ex
+    #    UI.error(ex)
+    #end
+end
+
+desc "* Beta Distribution Production: Build ipa with prod env. Upload file ipa to firebase distribution. Send message to chatwork group."
+lane :production do |options|
+
+    inputNoteIOS(
+        buildType: "production"
+    )
+
+    # Start Build ipa
+    begin
+        buildAppProduction
+    rescue => ex
+        UI.error(ex)
+        next
+    end
+
+    # Upload to firebase
+    begin
+        uploadFirebaseProduction
+    rescue => ex
+        UI.error(ex)
+        next
+    end
+
+    # Notify: Send message to chatwork
+    #begin
+    #    pushChatwork
+    #rescue => ex
+    #    UI.error(ex)
+    #end
+end
+
+
+#++++++++++++++++++++++++++++++++++++++++++++++++
+private_lane :buildAppDevelop do
+    #build
+    gym(
+        scheme: "#{ENV['SCHEME_NAME_IOS']}",
+        workspace: "./#{ENV['SCHEME_NAME_IOS']}.xcworkspace",
+        output_directory:"./fastlane/ipa/developer/",
+        output_name: "#{ENV['IPA_NAME']}",
+        export_method: "#{ENV['EXPORT_METHOD_DEV']}",
+        configuration: "Debug",
+        clean: true
+        )
+end
+
+lane :uploadFirebaseDevelop do |options|
+    releaseNote = File.read("./temp/releaseNote.txt")
+    firebase_app_distribution(
+                    app:"#{ENV['FIREBASE_IOS_APP_DEV']}" ,
+                    ipa_path: "./fastlane/ipa/developer/#{ENV['SCHEME_NAME']}.ipa",
+                    release_notes: "#{releaseNote}",
+                    groups:"#{ENV['FIREBASE_GROUP_TESTER_DEV']}"
+    )
+  
+end
+
+#++++++++++++++++++++++++++++++++++++++++++++++++
+private_lane :buildAppStaging do
+    #build
+    gym(
+        scheme: "#{ENV['SCHEME_NAME_IOS']}",
+        workspace: "./#{ENV['SCHEME_NAME_IOS']}.xcworkspace",
+        output_directory:"./fastlane/ipa/staging/",
+        output_name: "#{ENV['IPA_NAME']}",
+        export_method: "#{ENV['EXPORT_METHOD_STG']}",
+        configuration: "Staging",
+        clean: true
+        )
+end
+
+lane :uploadFirebaseStaging do |options|
+    releaseNote = File.read("./temp/releaseNote.txt")
+    firebase_app_distribution(
+           app:"#{ENV['FIREBASE_IOS_APP_STG']}" ,
+           ipa_path: "./fastlane/ipa/staging/#{ENV['SCHEME_NAME']}.ipa",
+           release_notes: "#{releaseNote}",
+           groups:"#{ENV['FIREBASE_GROUP_TESTER_STG']}"
+         )
+end
+
+#++++++++++++++++++++++++++++++++++++++++++++++++
+private_lane :buildAppProduction do
+    #build
+    gym(
+      scheme: "#{ENV['SCHEME_NAME_IOS']}",
+      workspace: "./#{ENV['SCHEME_NAME_IOS']}.xcworkspace",
+      output_directory:"./fastlane/ipa/release/",
+      output_name: "#{ENV['IPA_NAME']}",
+      export_method: "#{ENV['EXPORT_METHOD_PROD']}",
+      configuration: "Release",
+      clean: true
+      )
+end
+
+lane :uploadFirebaseProduction do |options|
+  releaseNote = File.read("./temp/releaseNote.txt")
+    firebase_app_distribution(
+           app:"#{ENV['FIREBASE_IOS_APP_PROD']}" ,
+           ipa_path: "./fastlane/ipa/release/#{ENV['IPA_NAME']}.ipa",
+           release_notes: "#{releaseNote}",
+           groups:"#{ENV['FIREBASE_GROUP_TESTER_PROD']}",
+         )
+end
+
+#++++++++++++++++++++++++++++++++++++++++++++++++
+# END PLATFORM IOS
+end
+#++++++++++++++++++++++++++++++++++++++++++++++++

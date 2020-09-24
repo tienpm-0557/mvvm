@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+      
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.001997">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: Switch to ios inputNoteIOS lane" time="0.002255">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: prompt" time="27.403866">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: last_git_commit" time="0.103439">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: Switch to ios buildAppDevelop lane" time="0.001382">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: gym" time="739.593125">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: Switch to ios uploadFirebaseDevelop lane" time="0.00589">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="7: firebase_app_distribution" time="49.262532">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
