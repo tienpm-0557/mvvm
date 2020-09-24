@@ -22,11 +22,7 @@ class AlertServiceTests: XCTestCase {
     }
 
     func testAlertService() {
-//        let service = AlertService()
-//        service.presentPMConfirmAlert(title: "[Provide your title]", message: "[Provide your alert message]").asObservable().subscribe(onNext: { (result) in
-//            
-//        }) => disposeBag
-        
+
     }
     
     override func tearDown() {

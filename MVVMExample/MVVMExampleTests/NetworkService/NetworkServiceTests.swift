@@ -111,9 +111,9 @@ class NetworkServiceTests: XCTestCase {
         /// Detect callback did Search
         networkPageModel.rxRequestDataState.subscribe(onNext: { (state) in
             ///validate test case
-            XCTAssertEqual(state, .success, "We should have loaded exactly 10 photos.")
+            XCTAssertEqual(state, .success, "We should have loaded exactly 10 photos.", file: "NetworkServiceTests")
         }, onError: { (error) in
-            XCTAssertTrue(false, "MVVMTests: flickrSearch on page View Model missed ")
+            XCTAssertTrue(false, "MVVMTests: flickrSearch on page View Model missed.", file: "NetworkServiceTests")
         }) => disposeBag
 
     }
