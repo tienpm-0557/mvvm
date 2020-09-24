@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
   <testsuite name="fastlane.lanes">
+    
+    
+    
       
-      
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.001997">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.043815">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: Switch to ios inputNoteIOS lane" time="0.002255">
+      <testcase classname="fastlane.lanes" name="1: Switch to ios inputNoteIOS lane" time="0.001558">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: prompt" time="27.403866">
+      <testcase classname="fastlane.lanes" name="2: prompt" time="11.659305">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: last_git_commit" time="0.103439">
+      <testcase classname="fastlane.lanes" name="3: last_git_commit" time="0.094421">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: Switch to ios buildAppDevelop lane" time="0.001382">
+      <testcase classname="fastlane.lanes" name="4: Switch to ios buildAppDevelop lane" time="0.001433">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: gym" time="739.593125">
+      <testcase classname="fastlane.lanes" name="5: gym" time="411.052204">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: Switch to ios uploadFirebaseDevelop lane" time="0.00589">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="7: firebase_app_distribution" time="49.262532">
+      <testcase classname="fastlane.lanes" name="6: Switch to ios uploadFirebaseDevelop lane" time="0.026152">
         
       </testcase>
     

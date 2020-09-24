@@ -10,6 +10,7 @@ MVVM is a library for who wants to start writing iOS application using MVVM (Mod
 - [Example](#example)
 
 
+
 ## Features
 
 - [x] Base classes for UIViewController,  UIView, UITableView, UICollectionView, UITableViewCell and UICollectionCell.
@@ -17,6 +18,7 @@ MVVM is a library for who wants to start writing iOS application using MVVM (Mod
 - [x] Base classes for UIWekit. Support handle navigation, evaluateJavaScript, handle java script function...
 - [x] Services injection: Network service base on Alamofire, Moya library. Localize service, Alert Service, Reachability service, Mail and Share service...
 - [x] Custom transitioning for UINavigationController and UIViewController
+- [x] Integration Fastlane app distribution.
 
 ## Requirements
 - iOS 10.0+
@@ -193,6 +195,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ```bash
 $ open MVVMExample.xcworkspace
 ``` 
+
+- Testing
+Please check on testing branch. Excute basic test case with coverage over 80%.
 
 ##### Services
 The library also supports services injection (for Unit Test) and some built-in services, especially navigation service, that helps us to navigate between our pages. Navigation service, by default, is injected to Page and ViewModel
