@@ -77,6 +77,11 @@ class TimelinePage: BaseListPage {
         }
     }
     
+    override func selectedItemDidChange(_ cellViewModel: Any) {
+        let page = PostDetailPage()
+        
+        navigationService.push(to: page)
+    }
     
     override func destroy() {
         super.destroy()

@@ -76,4 +76,8 @@ class TimelinePageViewModel: BaseListViewModel {
         return response.timelines as? [BaseCellViewModel]
     }
     
+    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel) {
+        
+    }
+    
 }

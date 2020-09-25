@@ -52,7 +52,10 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
     }
     
-    open override func initialize() {    
+    open override func initialize() {
+        guard tableView != nil else {
+            fatalError("Subclasses must connect tableview outlet!")
+        }
         setupTableView(tableView)
     }
     

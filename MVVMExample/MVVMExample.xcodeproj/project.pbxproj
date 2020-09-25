@@ -35,6 +35,9 @@
 		9C74EBA2246D19BD00A3CF1D /* MVVMExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74EBA1246D19BD00A3CF1D /* MVVMExampleUITests.swift */; };
 		9C8268F524BEEB9C008497A6 /* AlertServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8268F424BEEB9C008497A6 /* AlertServices.swift */; };
 		9C98F1B425185C8000B5B486 /* AlertServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C98F1B325185C8000B5B486 /* AlertServiceTests.swift */; };
+		9CA50BD8251DE2600086B1DA /* PostDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA50BD6251DE2600086B1DA /* PostDetailPage.swift */; };
+		9CA50BD9251DE2600086B1DA /* PostDetailPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CA50BD7251DE2600086B1DA /* PostDetailPage.xib */; };
+		9CA50BDC251DE6CF0086B1DA /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA50BDB251DE6CF0086B1DA /* PostDetailViewModel.swift */; };
 		9CB0D87825130BF2009826B2 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87725130BF2009826B2 /* ActivityModel.swift */; };
 		9CB0D87A25131149009826B2 /* NetworkService+Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87925131149009826B2 /* NetworkService+Timeline.swift */; };
 		9CB0D87C2513141F009826B2 /* TimelineResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0D87B2513141F009826B2 /* TimelineResponseModel.swift */; };
@@ -114,6 +117,9 @@
 		9C74EBA3246D19BD00A3CF1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C8268F424BEEB9C008497A6 /* AlertServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServices.swift; sourceTree = "<group>"; };
 		9C98F1B325185C8000B5B486 /* AlertServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServiceTests.swift; sourceTree = "<group>"; };
+		9CA50BD6251DE2600086B1DA /* PostDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailPage.swift; sourceTree = "<group>"; };
+		9CA50BD7251DE2600086B1DA /* PostDetailPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailPage.xib; sourceTree = "<group>"; };
+		9CA50BDB251DE6CF0086B1DA /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		9CB0D87725130BF2009826B2 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		9CB0D87925131149009826B2 /* NetworkService+Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Timeline.swift"; sourceTree = "<group>"; };
 		9CB0D87B2513141F009826B2 /* TimelineResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineResponseModel.swift; sourceTree = "<group>"; };
@@ -331,6 +337,7 @@
 		9C74EBAF246D1A0B00A3CF1D /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				9CA50BD5251DE2370086B1DA /* PostDetail */,
 				9CE8BA0324FCD12C001EA3A3 /* TabbarController */,
 			);
 			path = Page;
@@ -364,6 +371,24 @@
 				9CB0D87925131149009826B2 /* NetworkService+Timeline.swift */,
 			);
 			path = AlamofireService;
+			sourceTree = "<group>";
+		};
+		9CA50BD5251DE2370086B1DA /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9CA50BDA251DE6B40086B1DA /* ViewModel */,
+				9CA50BD6251DE2600086B1DA /* PostDetailPage.swift */,
+				9CA50BD7251DE2600086B1DA /* PostDetailPage.xib */,
+			);
+			path = PostDetail;
+			sourceTree = "<group>";
+		};
+		9CA50BDA251DE6B40086B1DA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CA50BDB251DE6CF0086B1DA /* PostDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CB0D88125136549009826B2 /* TimeLine */ = {
@@ -581,6 +606,7 @@
 				9CE8BA0E24FCD564001EA3A3 /* 8957173.png in Resources */,
 				9C74EB89246D19BC00A3CF1D /* Assets.xcassets in Resources */,
 				6CFBB59325124645003299A2 /* TimelinePage.xib in Resources */,
+				9CA50BD9251DE2600086B1DA /* PostDetailPage.xib in Resources */,
 				9C6504A32501DAD1004B4696 /* TabPage.xib in Resources */,
 				9C59386C24D9355100AB6F1E /* Localizable.strings in Resources */,
 				9C74EB84246D19B900A3CF1D /* Main.storyboard in Resources */,
@@ -741,6 +767,7 @@
 				9CB799AA2514574000902E3A /* UserInfoModel.swift in Sources */,
 				9CB0D880251363E5009826B2 /* TimelineCellViewModel.swift in Sources */,
 				9C6504A62501DB0B004B4696 /* TabPageViewModel.swift in Sources */,
+				9CA50BDC251DE6CF0086B1DA /* PostDetailViewModel.swift in Sources */,
 				9CCBA665247AC29C00D73A7B /* NetworkServices.swift in Sources */,
 				9CCBA65F247AB20000D73A7B /* Constants.swift in Sources */,
 				9C6504A92501E4CE004B4696 /* ColorConfig.swift in Sources */,
@@ -754,6 +781,7 @@
 				9C74EB7D246D19B900A3CF1D /* AppDelegate.swift in Sources */,
 				9C74EB87246D19B900A3CF1D /* MVVMExample.xcdatamodeld in Sources */,
 				9CB0D8852513656D009826B2 /* TimeLineCell.swift in Sources */,
+				9CA50BD8251DE2600086B1DA /* PostDetailPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
