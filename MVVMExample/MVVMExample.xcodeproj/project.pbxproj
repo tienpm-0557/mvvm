@@ -337,6 +337,7 @@
 		9C74EBAF246D1A0B00A3CF1D /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				6CFBB58F25124610003299A2 /* TimelinePage */,
 				9CA50BD5251DE2370086B1DA /* PostDetail */,
 				9CE8BA0324FCD12C001EA3A3 /* TabbarController */,
 			);
@@ -455,7 +456,6 @@
 		9CE8BA0324FCD12C001EA3A3 /* TabbarController */ = {
 			isa = PBXGroup;
 			children = (
-				6CFBB58F25124610003299A2 /* TimelinePage */,
 				9C65049F2501DAB7004B4696 /* TabPage */,
 				9C004D8024FCD92E007E9298 /* ViewModel */,
 				9CE8BA0824FCD27F001EA3A3 /* TabbarView */,

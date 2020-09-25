@@ -79,8 +79,8 @@ class TimelinePage: BaseListPage {
     
     override func selectedItemDidChange(_ cellViewModel: Any) {
         let page = PostDetailPage()
-        
-        navigationService.push(to: page)
+        let animator = RectanglerAnimator(withDuration: TimeInterval(0.5), isPresenting: false) 
+        navigationService.push(to: page, options: .push(with: animator))
     }
     
     override func destroy() {
