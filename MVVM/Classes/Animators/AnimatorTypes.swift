@@ -1,9 +1,8 @@
 //
-//  TransitionType.swift
-//  MVVMExample
+//  AnimatorTypes.swift
+//  Action
 //
-//  Created by pham.minh.tien on 8/3/20.
-//  Copyright © 2020 Sun*. All rights reserved.
+//  Created by pham.minh.tien on 9/25/20.
 //
 
 import Foundation
@@ -18,7 +17,7 @@ func delay(_ delay: Double, closure: @escaping ()->()) {
     )
 }
 
-class BasicAnimation : CABasicAnimation, CAAnimationDelegate {
+public class BasicAnimation : CABasicAnimation, CAAnimationDelegate {
     public var onFinish : (() -> (Void))?
     
     override init() {
@@ -30,26 +29,25 @@ class BasicAnimation : CABasicAnimation, CAAnimationDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let onFinish = onFinish {
             onFinish()
         }
     }
 }
 
-
 /*
 /// Overidde animateTransition and Implement Animation
 ///
 */
 
-class FlipAnimator: Animator {
+public class FlipAnimator: Animator {
     
-    override func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    override public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return self.duration
     }
     
-    override func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let toVC = transitionContext.viewController(forKey: .to)!
         let fromVC = transitionContext.viewController(forKey: .from)!
@@ -72,13 +70,13 @@ class FlipAnimator: Animator {
     }
 }
 
-class ZoomAnimator: Animator {
+public class ZoomAnimator: Animator {
     
-    override func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    override public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return self.duration
     }
     
-    override func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let toVC = transitionContext.viewController(forKey: .to)!
         let fromVC = transitionContext.viewController(forKey: .from)!
@@ -137,7 +135,7 @@ class ZoomAnimator: Animator {
     }
 }
 
-class ClockAnimator: Animator {
+public class ClockAnimator: Animator {
     
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
@@ -202,7 +200,7 @@ class ClockAnimator: Animator {
     }
 }
 
-class CircleAnimator: Animator {
+public class CircleAnimator: Animator {
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to)
@@ -241,7 +239,7 @@ class CircleAnimator: Animator {
     }
 }
 
-class CrossFadeAnimator: Animator {
+public class CrossFadeAnimator: Animator {
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to)
@@ -266,10 +264,10 @@ class CrossFadeAnimator: Animator {
     }
 }
 
-class RectanglerAnimator: Animator {
+public class RectanglerAnimator: Animator {
     var rectangleGrowthDistance : CGFloat = 60
     
-    override func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to)
             else {
@@ -359,7 +357,7 @@ class RectanglerAnimator: Animator {
     }
 }
 
-class MultiCircleAnimator: Animator {
+public class MultiCircleAnimator: Animator {
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to)
@@ -431,7 +429,7 @@ class MultiCircleAnimator: Animator {
 }
 
 
-class TiledFlipAnimator: Animator {
+public class TiledFlipAnimator: Animator {
     private func flipSegment(toViewImage: UIImage, fromViewImage: UIImage, delay: TimeInterval, rect: CGRect, animationTime: CGFloat, parentView: UIView) {
         guard let cgToImage = toViewImage.cgImage,
             let cgFromImage = fromViewImage.cgImage,
@@ -516,11 +514,11 @@ class TiledFlipAnimator: Animator {
     }
 }
 
-class ImageRepeatingAnimator: Animator {
+public class ImageRepeatingAnimator: Animator {
     var imageStepPercent : CGFloat = 0.05
     var imageViews : [UIImageView] = []
     
-    override func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    override public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         let numberOfImageViews = Int(0.5 / imageStepPercent)
         return (self.duration / 10)  * TimeInterval(numberOfImageViews * 2)
     }
@@ -566,7 +564,7 @@ class ImageRepeatingAnimator: Animator {
         })
     }
     
-    override func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to),
             let fromViewControllerImage = snapshot(fromVC.view)
@@ -634,7 +632,7 @@ public class MultiFlipRetroAnimator: Animator {
     }
 }
 
-class AngleLineAnimator: Animator {
+public class AngleLineAnimator: Animator {
     var cornerToSlideFrom : UIRectCorner = .topLeft
     
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -719,7 +717,7 @@ class AngleLineAnimator: Animator {
     }
 }
 
-class StraightLineAnimator: Animator {
+public class StraightLineAnimator: Animator {
     var sideToSlideFrom : UIRectEdge = .left
     
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -773,7 +771,7 @@ class StraightLineAnimator: Animator {
 }
 
 
-class CollidingDiamondsAnimator: Animator {
+public class CollidingDiamondsAnimator: Animator {
     
     enum CollidingDiamondsOrientation {
         case vertical
@@ -866,7 +864,7 @@ class CollidingDiamondsAnimator: Animator {
 }
 
 
-class ShrinkingGrowingDiamondsAnimator: Animator {
+public class ShrinkingGrowingDiamondsAnimator: Animator {
     
     private func animatedDiamondPath(startCenter: CGPoint, startSize: CGSize, endSizeLarge: CGSize, endSizeSmall: CGSize, screenBounds: CGRect, completion: (() -> (Void))?) -> CALayer {
         let pathStart = UIBezierPath()
@@ -1036,7 +1034,7 @@ public class SplitFromCenterAnimator: Animator {
     }
 }
 
-class SwingInAnimator: Animator {
+public class SwingInAnimator: Animator {
     enum InitialDirection {
         case left
         case right
