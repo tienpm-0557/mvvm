@@ -77,6 +77,7 @@ class TabbarModel: Model {
     
     private(set) var title = ""
     private(set) var index = 0
+    private(set) var hex = ""
     
     convenience init?(withTitle title: String) {
         self.init(JSON:["title":title])
@@ -85,5 +86,6 @@ class TabbarModel: Model {
     override func mapping(map: Map) {
         title <- map["title"]
         index <- map["index"]
+        hex <- map["hex"]
     }
 }
