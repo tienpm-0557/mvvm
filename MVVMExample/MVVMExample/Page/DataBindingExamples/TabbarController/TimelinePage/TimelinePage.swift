@@ -47,6 +47,7 @@ class TimelinePage: BaseListPage {
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
         guard let viewModel = self.viewModel as? TimelinePageViewModel else { return }
+        
         viewModel.rxTille ~> self.rx.title => disposeBag
         
         // Call out load more when reach to end of table view

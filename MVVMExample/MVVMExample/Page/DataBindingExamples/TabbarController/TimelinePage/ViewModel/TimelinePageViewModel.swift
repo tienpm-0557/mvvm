@@ -16,10 +16,8 @@ class TimelinePageViewModel: BaseListViewModel {
     
     let alertService: IAlertService = DependencyManager.shared.getService()
     var networkService: NetworkService?
-    let rxSearchText = BehaviorRelay<String?>(value: nil)
-      
+    
     var tmpBag: DisposeBag?
-    var finishedSearching = false
       
     let rxTille = BehaviorRelay<String>(value: "")
     
