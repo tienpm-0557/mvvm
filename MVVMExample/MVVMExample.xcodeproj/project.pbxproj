@@ -25,6 +25,7 @@
 		9C109031249A1617009C3166 /* MoyaProviderServicePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C10902F249A1617009C3166 /* MoyaProviderServicePage.xib */; };
 		9C109034249A164B009C3166 /* MoyaProviderServicePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C109033249A164B009C3166 /* MoyaProviderServicePageViewModel.swift */; };
 		9C109036249A173B009C3166 /* MoyaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C109035249A173B009C3166 /* MoyaNetworkService.swift */; };
+		9C1A15702525B3BF00275706 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A156F2525B3BF00275706 /* CoreDataManager.swift */; };
 		9C2D3BF62513097500F412DD /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D3BF42513097400F412DD /* ActivityCell.swift */; };
 		9C2D3BF72513097500F412DD /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D3BF52513097400F412DD /* ActivityCell.xib */; };
 		9C2D3BFB251309F300F412DD /* ActivityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D3BFA251309F300F412DD /* ActivityCellViewModel.swift */; };
@@ -239,6 +240,7 @@
 		9C10902F249A1617009C3166 /* MoyaProviderServicePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoyaProviderServicePage.xib; sourceTree = "<group>"; };
 		9C109033249A164B009C3166 /* MoyaProviderServicePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderServicePageViewModel.swift; sourceTree = "<group>"; };
 		9C109035249A173B009C3166 /* MoyaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNetworkService.swift; sourceTree = "<group>"; };
+		9C1A156F2525B3BF00275706 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		9C2D3BF42513097400F412DD /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		9C2D3BF52513097400F412DD /* ActivityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
 		9C2D3BFA251309F300F412DD /* ActivityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCellViewModel.swift; sourceTree = "<group>"; };
@@ -545,6 +547,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9C1A156E2525B34000275706 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9C74EB85246D19B900A3CF1D /* MVVMExample.xcdatamodeld */,
+				9C1A156F2525B3BF00275706 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		9C2D3BF2251307CC00F412DD /* DummyModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,7 +830,7 @@
 				9C74EB88246D19BC00A3CF1D /* Assets.xcassets */,
 				9C74EB8A246D19BC00A3CF1D /* LaunchScreen.storyboard */,
 				9C74EB8D246D19BC00A3CF1D /* Info.plist */,
-				9C74EB85246D19B900A3CF1D /* MVVMExample.xcdatamodeld */,
+				9C1A156E2525B34000275706 /* CoreData */,
 			);
 			path = MVVMExample;
 			sourceTree = "<group>";
@@ -2030,6 +2041,7 @@
 				9CC01B6A24DA938B00995A07 /* ImagePickerViewModel.swift in Sources */,
 				9C79EE022470DCE100FEF5EC /* CollectionPageViewModel.swift in Sources */,
 				9C79EE0A2470E0C500FEF5EC /* SimpleCollectionPage.swift in Sources */,
+				9C1A15702525B3BF00275706 /* CoreDataManager.swift in Sources */,
 				9C74EC33246E468B00A3CF1D /* SectionListPage.swift in Sources */,
 				9C74EC29246D97BF00A3CF1D /* SimpleTableCell.swift in Sources */,
 				9C74EC15246D8F8000A3CF1D /* TransitionExamplesPage.swift in Sources */,
