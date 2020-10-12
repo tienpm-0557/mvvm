@@ -35,8 +35,7 @@ class ContactEditPage: BasePage {
         enableBackButton = true
         
         view.addSubview(scrollView)
-        scrollView.autoPin(toTopLayoutGuideOf: self, withInset: 0)
-        scrollView.autoPinEdgesToSuperviewEdges(with: .zero, excludingEdge: .top)
+        scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         
         nameTxt.borderStyle = .roundedRect
         nameTxt.placeholder = "Enter your name"
