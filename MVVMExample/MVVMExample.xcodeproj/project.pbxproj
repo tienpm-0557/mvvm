@@ -713,13 +713,6 @@
 			path = TabPageViewModel;
 			sourceTree = "<group>";
 		};
-		9C6504A72501E4AC004B4696 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		9C6504AC2502184D004B4696 /* PageController */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,7 +784,6 @@
 			children = (
 				9CC01B6124DA58F700995A07 /* README.md */,
 				09BC282424C19BB400D874CE /* MVVM.podspec */,
-				9C6504A72501E4AC004B4696 /* Common */,
 				9CCBA65D247AB1EB00D73A7B /* SystemConfiguration */,
 				9CCBA656247A79F300D73A7B /* Services */,
 				9C74EBBE246D1B5A00A3CF1D /* Models */,
@@ -2205,7 +2197,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 747LG25T2M;
 				INFOPLIST_FILE = MVVMExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2228,7 +2220,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 747LG25T2M;
 				INFOPLIST_FILE = MVVMExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

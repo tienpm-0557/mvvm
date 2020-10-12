@@ -35,9 +35,9 @@ class ContactEditPage: BasePage {
         enableBackButton = true
         
         view.addSubview(scrollView)
-        scrollView.autoPin(toTopLayoutGuideOf: self, withInset: 0)
-        scrollView.autoPinEdgesToSuperviewEdges(with: .zero, excludingEdge: .top)
+        scrollView.frame = CGRect(x: 0, y: 50, width: 200, height: 200)
         
+        scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         nameTxt.borderStyle = .roundedRect
         nameTxt.placeholder = "Enter your name"
         
@@ -71,16 +71,6 @@ class ContactEditPage: BasePage {
             StackSpaceItem(height: 40),
             buttonLayout
         ])
-        
-        /*
-         Adding custom space between items can be replaced with belows
-         
-        scrollView.appendChildren([
-            StackViewItem(view: nameTxt, attribute: .margin(insets: .only(top: 40))),
-            StackViewItem(view: phoneTxt, attribute: .margin(insets: .only(top: 20))),
-            StackViewItem(view: buttonLayout, attribute: .margin(insets: .only(top: 40))),
-        ])
-         */
     }
     
     override func bindViewAndViewModel() {
