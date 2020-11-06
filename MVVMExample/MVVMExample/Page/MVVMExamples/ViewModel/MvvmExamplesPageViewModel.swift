@@ -40,7 +40,7 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
         let webKit = MenuTableCellViewModel(model: MenuModel(withTitle: "WebKit",
                                                              desc: "Examples about how to create a  Webkit and apply it."))
         
-        let imagepicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Image Picker(coming soon)",
+        let imagepicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Image Picker",
                                                                   desc: "Examples about how to create a  UIImagePickerController and apply it."))
         
         let mediaPicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Media Picker(coming soon)",

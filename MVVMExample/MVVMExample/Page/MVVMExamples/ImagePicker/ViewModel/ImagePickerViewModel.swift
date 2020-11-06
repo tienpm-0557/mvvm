@@ -13,26 +13,16 @@ import RxSwift
 import Action
 
 class ImagePickerViewModel: BaseViewModel {
-    
-    lazy var addAction: Action<Void, Void> = {
-        return Action() { .just(self.addImage())}
-    }()
+    let rxImage = BehaviorRelay<UIImage?>(value: nil)
     
     override func react() {
         super.react()
+        rxImage.subscribe(onNext: { (image) in
+            
+        }) => disposeBag
     }
     
     private func addImage() {
         openCameraRoll()
-    }
-    
-    
-    private func openCameraRoll() {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let picker = UIImagePickerController()
-            picker.sourceType = .photoLibrary
-            
-            self.navigationService.push(to: picker, options: .modal(presentationStyle: .fullScreen, animator: nil))
-        }
     }
 }

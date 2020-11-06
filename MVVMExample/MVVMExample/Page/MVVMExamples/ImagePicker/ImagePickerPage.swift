@@ -12,7 +12,6 @@ import RxCocoa
 import RxSwift
 
 class ImagePickerPage: BasePage {
-
     let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     
     override func viewDidLoad() {
@@ -33,8 +32,17 @@ class ImagePickerPage: BasePage {
         super.bindViewAndViewModel()
         guard let viewModel = self.viewModel as? ImagePickerViewModel else { return }
         
-        addBtn.rx.bind(to: viewModel.addAction, input: ())
+        addBtn.rx.tap
+            .flatMapLatest { [weak self]_ in
+                return UIImagePickerController.rx.createWithParent(self, animated: true) { picker in
+                    picker.sourceType = .photoLibrary
+                    picker.allowsEditing = true
+                }
+                .flatMap { $0.rx.didFinishPickingMediaWithInfo }
+            }
+            .map { info in
+                return info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage
+            }
+            .bind(to: viewModel.rxImage) => disposeBag
     }
-
-    
 }
