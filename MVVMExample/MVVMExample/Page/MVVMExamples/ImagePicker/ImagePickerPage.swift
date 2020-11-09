@@ -48,6 +48,16 @@ class ImagePickerPage: BasePage {
         viewModel.rxTitle <~> titleTxt.rx.text => disposeBag
         viewModel.rxDescription <~> descLb.rx.text => disposeBag
         
+        descLb.rx.didBeginEditing.subscribe(onNext: {
+            self.descLb.rx.text.onNext("")
+        }) => disposeBag
+        
+        descLb.rx.didEndEditing.subscribe(onNext: {
+            if self.descLb.text == "" {
+                self.descLb.rx.text.onNext("What's on your mind?")
+            }
+        }) => disposeBag
+        
         viewModel.rxImage.subscribe(onNext: {[weak self] image in
             if image == nil {
                 self?.actackViewHeight.constant = 0
@@ -56,25 +66,7 @@ class ImagePickerPage: BasePage {
             }
             self?.photoImg.image = image
         }) => disposeBag
-        /// Or
-        /*
-        viewModel.rxImage.subscribe { (img) in
-            switch img {
-            case let .next(image):
-                if image == nil {
-                    self.actackViewHeight.constant = 0
-                } else {
-                    self.actackViewHeight.constant = 80
-                }
-            case .error(_):
-                ()
-            case .completed:
-                ()
-            }
-        } => disposeBag
-         */
-        
-        
+
         photoBtn.rx.tap
             .flatMapLatest { [weak self]_ in
                 return UIImagePickerController.rx.createWithParent(self, animated: true) { picker in
