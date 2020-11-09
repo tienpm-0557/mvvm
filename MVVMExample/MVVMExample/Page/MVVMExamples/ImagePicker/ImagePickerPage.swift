@@ -78,8 +78,8 @@ class ImagePickerPage: BasePage {
         photoBtn.rx.tap
             .flatMapLatest { [weak self]_ in
                 return UIImagePickerController.rx.createWithParent(self, animated: true) { picker in
-                    picker.sourceType = .photoLibrary
-                    picker.allowsEditing = true
+                    picker.sourceType = .camera
+                    picker.allowsEditing = false
                 }
                 .flatMap { $0.rx.didFinishPickingMediaWithInfo }
             }

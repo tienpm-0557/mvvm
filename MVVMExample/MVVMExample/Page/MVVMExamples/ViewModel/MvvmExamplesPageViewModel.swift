@@ -40,13 +40,13 @@ class MvvmExamplesPageViewModel: TableOfContentViewModel {
         let webKit = MenuTableCellViewModel(model: MenuModel(withTitle: "WebKit",
                                                              desc: "Examples about how to create a  Webkit and apply it."))
         
-        let imagepicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Image Picker",
-                                                                  desc: "Examples about how to create a  UIImagePickerController and apply it."))
+        let imagepicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Media Picker",
+                                                                  desc: "Examples about how to create a UIImagePickerController for select photo or take photos and apply it."))
         
-        let mediaPicker = MenuTableCellViewModel(model: MenuModel(withTitle: "Media Picker(coming soon)",
-                                                                  desc: "Examples about how to create a  Webkit and apply it."))
+        let qrcode = MenuTableCellViewModel(model: MenuModel(withTitle: "Scan QR Code(coming soon)",
+                                                                  desc: "Examples about how to create scan QR code screen and apply it."))
         
-        itemsSource.reset([[listPage, listCollectionPage, listCollectionHeaderFooterPage, dynamicListPage, collectionPage, dynamicCollectionPage, advanced, searchBar, webKit, imagepicker, mediaPicker]])
+        itemsSource.reset([[listPage, listCollectionPage, listCollectionHeaderFooterPage, dynamicListPage, collectionPage, dynamicCollectionPage, advanced, searchBar, webKit, imagepicker, qrcode]])
     }
     
     override func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
