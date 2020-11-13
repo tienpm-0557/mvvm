@@ -64,26 +64,26 @@ public extension UIView {
 }
 
 public extension UIView {
-    
-    @IBInspectable @objc var cornerRadius: CGFloat {
-        get { return layer.cornerRadius }
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        
         set {
             layer.cornerRadius = newValue
-            layer.masksToBounds = true
-            clipsToBounds = true
         }
     }
     
     @IBInspectable @objc var borderWidth: CGFloat {
-        get { return layer.borderWidth }
-        set { layer.borderWidth = newValue }
+        get {
+            return layer.borderWidth
+        }
+        
+        set {
+            layer.borderWidth = newValue
+        }
     }
     
-//    @IBInspectable @objc var borderColor: CGColor? {
-//        get { return layer.borderColor }
-//        set { layer.borderColor = newValue }
-//    }
-//
     @IBInspectable @objc var borderColor: UIColor {
         get {
             let color = UIColor.init(cgColor: layer.borderColor!)
