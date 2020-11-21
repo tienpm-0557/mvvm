@@ -78,15 +78,7 @@ open class BaseHeaderTableView: UITableViewHeaderFooterView {
     open class var identifier: String {
         return String(describing: self)
     }
-    
-    open class var nib: UINib {
-        return UINib(nibName:String(describing: self), bundle: Bundle.main)
-    }
-    
-    open class var className: String {
-        return NSStringFromClass(self.self)
-    }
-    
+
     open class func identifier(_ returnClassName: Bool = false) -> String {
         return (returnClassName ? NSStringFromClass(self.self) : String(describing: self))
     }
@@ -153,14 +145,6 @@ open class BaseHeaderCollectionView: UICollectionReusableView {
         return String(describing: self)
     }
     
-    open class var nib: UINib {
-        return UINib(nibName:String(describing: self), bundle: Bundle.main)
-    }
-    
-    open class var className: String {
-        return NSStringFromClass(self.self)
-    }
-    
     open class func identifier(_ returnClassName: Bool = false) -> String {
         return (returnClassName ? NSStringFromClass(self.self) : String(describing: self))
     }
@@ -223,14 +207,6 @@ open class BaseCollectionCell: UICollectionViewCell, IView {
     
     open class var identifier: String {
         return String(describing: self)
-    }
-    
-    open class var nib: UINib {
-        return UINib(nibName:String(describing: self), bundle: Bundle.main)
-    }
-    
-    open class var className: String {
-        return NSStringFromClass(self.self)
     }
     
     public var disposeBag: DisposeBag? = DisposeBag()
@@ -298,14 +274,6 @@ open class BaseTableCell: UITableViewCell, IView {
     
     open class var identifier: String {
         return String(describing: self)
-    }
-    
-    open class var nib: UINib {
-        return UINib(nibName:String(describing: self), bundle: Bundle.main)
-    }
-    
-    open class var className: String {
-        return NSStringFromClass(self.self)
     }
     
     open class func identifier(_ returnClass: Bool = false) -> String {

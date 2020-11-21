@@ -18,8 +18,8 @@ open class BasePage: UIViewController, ITransitionView {
     
     public private(set) var backButton: UIBarButtonItem?
     
-    private lazy var backAction: Action<Void, Void> = {
-        return Action() { .just(self.onBack()) }
+    public lazy var backAction: Action<AnyObject, Void> = {
+        return Action() { sender in .just(self.onBack(sender)) }
     }()
     
     public var enableBackButton: Bool = false {
@@ -27,7 +27,7 @@ open class BasePage: UIViewController, ITransitionView {
             if enableBackButton {
                 backButton = backButtonFactory().create()
                 navigationItem.leftBarButtonItem = backButton
-                backButton?.rx.bind(to: backAction, input: ())
+                backButton?.rx.bind(to: backAction, input: (backButton!))
             } else {
                 navigationItem.leftBarButtonItem = nil
                 backButton?.rx.unbindAction()
@@ -117,7 +117,7 @@ open class BasePage: UIViewController, ITransitionView {
      
      By default, this will call pop action in navigation or dismiss in modal
      */
-    open func onBack() {
+    open func onBack(_ sender: AnyObject) {
         navigationService.pop()
     }
     

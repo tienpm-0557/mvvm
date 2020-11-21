@@ -93,7 +93,7 @@ class ContactEditPage: BasePage {
         submitBtn.rx.bind(to: viewModel.saveAction, input: ())
     }
     
-    override func onBack() {
+    override func onBack(_ sender: AnyObject) {
         navigationService.pop(with: PopOptions(popType: .dismissPopup))
     }
 

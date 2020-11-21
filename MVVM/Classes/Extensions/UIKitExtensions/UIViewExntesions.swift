@@ -7,6 +7,18 @@ import UIKit
 
 public extension UIView {
     
+    class var nib: UINib {
+        return UINib(nibName:String(describing: self), bundle: Bundle.main)
+    }
+    
+    class var nibName: String {
+        return String(describing: self)
+    }
+    
+    class var className: String {
+        return NSStringFromClass(self.self)
+    }
+    
     /// Load Xib from name
     static func loadFrom<T: UIView>(nibNamed: String, bundle : Bundle? = nil) -> T? {
         let nib = UINib(nibName: nibNamed, bundle: bundle)
@@ -47,23 +59,10 @@ public extension UIView {
     func clearConstraints() {
         constraints.forEach { $0.autoRemove() }
     }
-    
-    /// Set corder radius for specific corners
-    func setCornerRadius(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
-    }
-    
-    /// Set layer border style
-    func setBorder(with color: UIColor, width: CGFloat) {
-        layer.borderColor = color.cgColor
-        layer.borderWidth = width
-    }
 }
 
 public extension UIView {
+    
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -111,6 +110,30 @@ public extension UIView {
         }
     }
     
+    /// Set layer border style
+    func setBorder(with color: UIColor, width: CGFloat) {
+        layer.borderColor = color.cgColor
+        layer.borderWidth = width
+    }
+    
+    /// Set corder radius for specific corners
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+    
+    func setupBackgroundGradient(colorTop: CGColor, colorBottom: CGColor) {
+        let gl = CAGradientLayer()
+        gl.colors = [colorTop, colorBottom]
+        gl.startPoint = CGPoint(x: 0, y: 0.5)
+        gl.endPoint = CGPoint(x: 1, y: 0.5)
+        gl.frame = self.bounds
+        self.layer.insertSublayer(gl, at: 0)
+    }
 }
 
 

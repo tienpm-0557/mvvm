@@ -14,6 +14,8 @@
 		3579A4D15E28F22B20BF9FD7 /* Pods_MVVMExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D7E9E7E062208592A06C56 /* Pods_MVVMExample.framework */; };
 		4D6A5B2A394A722435A693DC /* Pods_MVVMExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09415DDFBD3132436ED59D9 /* Pods_MVVMExampleTests.framework */; };
 		5671E3ABD4CD31A9F77A2149 /* Pods_MVVMExample_MVVMExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9358D747A0B5C8E5411F9A1 /* Pods_MVVMExample_MVVMExampleUITests.framework */; };
+		6C3C21E0256966E800561A33 /* UIBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3C21DE256966E800561A33 /* UIBarItems.swift */; };
+		6C3C21E1256966E800561A33 /* UIBarItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3C21DF256966E800561A33 /* UIBarItems.xib */; };
 		6CFBB59225124645003299A2 /* TimelinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFBB59025124645003299A2 /* TimelinePage.swift */; };
 		6CFBB59325124645003299A2 /* TimelinePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CFBB59125124645003299A2 /* TimelinePage.xib */; };
 		6CFBB5962512468D003299A2 /* TimelinePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFBB5952512468D003299A2 /* TimelinePageViewModel.swift */; };
@@ -224,6 +226,8 @@
 		09DC479F24C146A100906F6F /* ReachabilityPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReachabilityPage.xib; sourceTree = "<group>"; };
 		09DC47A224C146BF00906F6F /* ReachabilityPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityPageViewModel.swift; sourceTree = "<group>"; };
 		48D7E9E7E062208592A06C56 /* Pods_MVVMExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C3C21DE256966E800561A33 /* UIBarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarItems.swift; sourceTree = "<group>"; };
+		6C3C21DF256966E800561A33 /* UIBarItems.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIBarItems.xib; sourceTree = "<group>"; };
 		6CFBB59025124645003299A2 /* TimelinePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinePage.swift; sourceTree = "<group>"; };
 		6CFBB59125124645003299A2 /* TimelinePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelinePage.xib; sourceTree = "<group>"; };
 		6CFBB5952512468D003299A2 /* TimelinePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinePageViewModel.swift; sourceTree = "<group>"; };
@@ -483,6 +487,30 @@
 				D09415DDFBD3132436ED59D9 /* Pods_MVVMExampleTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6C3C21DB2569660300561A33 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		6C3C21DC256966E800561A33 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6C3C21DD256966E800561A33 /* UIBarButton */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		6C3C21DD256966E800561A33 /* UIBarButton */ = {
+			isa = PBXGroup;
+			children = (
+				6C3C21DE256966E800561A33 /* UIBarItems.swift */,
+				6C3C21DF256966E800561A33 /* UIBarItems.xib */,
+			);
+			path = UIBarButton;
 			sourceTree = "<group>";
 		};
 		6CFBB58F25124610003299A2 /* TimelinePage */ = {
@@ -810,6 +838,7 @@
 			children = (
 				9CC01B6124DA58F700995A07 /* README.md */,
 				09BC282424C19BB400D874CE /* MVVM.podspec */,
+				6C3C21DC256966E800561A33 /* Common */,
 				9CCBA65D247AB1EB00D73A7B /* SystemConfiguration */,
 				9CCBA656247A79F300D73A7B /* Services */,
 				9C74EBBE246D1B5A00A3CF1D /* Models */,
@@ -1013,6 +1042,7 @@
 		9C74EBF3246D326C00A3CF1D /* MVVMExamples */ = {
 			isa = PBXGroup;
 			children = (
+				6C3C21DB2569660300561A33 /* NavigationBar */,
 				9CC01B6324DA933900995A07 /* ImagePicker */,
 				9CAEA2762478C16700061B49 /* FlickrSearchPage */,
 				9C531A2B2472C6A400C843BA /* ContactPage */,
@@ -1757,6 +1787,7 @@
 				9C74EC23246D905F00A3CF1D /* WebKitExamplesPage.xib in Resources */,
 				9C74EC16246D8F8000A3CF1D /* TransitionExamplesPage.xib in Resources */,
 				9CB0D8862513656D009826B2 /* TimeLineCell.xib in Resources */,
+				6C3C21E1256966E800561A33 /* UIBarItems.xib in Resources */,
 				9C74EC592470038300A3CF1D /* SectionFooterListView.xib in Resources */,
 				9C74EBE7246D23F000A3CF1D /* FailNavigationWebPage.xib in Resources */,
 				9C6504B325022C7C004B4696 /* UIPageExample.xib in Resources */,
@@ -2004,6 +2035,7 @@
 				9C79EE0F247124FB00FEF5EC /* DynamicCollectionPage.swift in Sources */,
 				9C004D8724FCF433007E9298 /* TabbarViewModel.swift in Sources */,
 				9CF158E924715B15006A1CFB /* SimpleCollectionViewDellModel.swift in Sources */,
+				6C3C21E0256966E800561A33 /* UIBarItems.swift in Sources */,
 				9C6504B225022C7C004B4696 /* UIPageExample.swift in Sources */,
 				9CCBA65F247AB20000D73A7B /* Constants.swift in Sources */,
 				9C74EC25246D906F00A3CF1D /* WebKitPageViewModel.swift in Sources */,

@@ -31,7 +31,6 @@ public protocol FontFactory {
 }
 
 public extension FontFactory {
-    
     func normal(withSize size: CGFloat, shouldScaleForScreenSize shouldScale: Bool = true) -> UIFont {
         if let font = UIFont(name: normalName, size: shouldScale ? calculateFontSize(size) : size) {
             return font
@@ -79,7 +78,6 @@ public extension FontFactory {
 }
 
 public struct System: FontFactory {
-    
     public var normalName: String {
         return ""
     }

@@ -42,11 +42,11 @@ class TransitionContentPage: BasePage {
         //label.autoCenterInSuperview()
     }
     
-    override func onBack() {
+    override func onBack(_ sender: AnyObject) {
         if navigationController?.presentingViewController != nil {
             navigationService.pop(with: PopOptions(popType: .dismiss, animated: true))
         } else {
-            super.onBack()
+            super.onBack(sender)
         }
     }
 
