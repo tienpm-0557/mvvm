@@ -109,7 +109,3 @@ class FlickrStatusTransform: TransformType {
         return value?.rawValue
     }
 }
-
-
-
-

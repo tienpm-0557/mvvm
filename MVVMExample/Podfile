@@ -14,6 +14,9 @@ target 'MVVMExample' do
     # Pods for testing
     pod 'RxBlocking', '~> 5'
     pod 'RxTest', '~> 5'
+    pod 'XCGLogger'
+    pod 'SwiftDate'
+    pod 'RxOptional'
   end
   
   target 'MVVMExampleUITests' do
