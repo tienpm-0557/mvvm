@@ -26,3 +26,19 @@ class IntroductionModel: Model {
         url <- map["url"]
     }
 }
+
+
+extension NSURL {
+    func isAbleFormatImage() -> Bool {
+        guard let pathExtension = self.pathExtension else {
+            return false
+        }
+        
+        if pathExtension.contains("png") ||
+            pathExtension.contains("jpeg") ||
+            pathExtension.contains("jpg") {
+            return true
+        }
+        return false
+    }
+}

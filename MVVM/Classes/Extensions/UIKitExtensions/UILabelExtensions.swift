@@ -2,28 +2,13 @@
 //  UILabelExtensions.swift
 //  MVVM
 //
+//  Created by tienpm on 11/28/20.
+//
 
-import UIKit
-import RxSwift
-import RxCocoa
-
-public extension Reactive where Base: UILabel {
-    
-    var attributedText: Binder<NSAttributedString> {
-        return Binder(self.base) { $0.attributedText = $1 }
-    }
-    
-    var textColor: Binder<UIColor> {
-        return Binder(self.base) { $0.textColor = $1 }
-    }
-    
-    var numberOfLines: Binder<Int> {
-        return Binder(self.base) { $0.numberOfLines = $1 }
-    }
-}
+import Foundation
 
 public extension UILabel {
-    func setLineSpacing(lineSpacing: CGFloat = 0.0,
+    public func setLineSpacing(lineSpacing: CGFloat = 0.0,
                         lineHeightMultiple: CGFloat = 0.0,
                         alignment: NSTextAlignment = .left) {
         guard let labelText = self.text else { return }
@@ -49,7 +34,7 @@ public extension UILabel {
     }
     
     
-    func setHTMLFromString(htmlText: String, withTextHexColor hex: String = "929292") {
+    public func setHTMLFromString(htmlText: String, withTextHexColor hex: String = "929292") {
         let modifiedFont = String(format:"<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(self.font!.pointSize)\">%@</span>", htmlText)
 
         let attrStr = try! NSAttributedString(
@@ -60,7 +45,7 @@ public extension UILabel {
         self.textColor = UIColor(hexString: hex)
     }
     
-    func setHTMLFromStringWithSettingFontSize(htmlText: String, withTextHexColor hex: String = "929292") {
+    public func setHTMLFromStringWithSettingFontSize(htmlText: String, withTextHexColor hex: String = "929292") {
         var font = self.font!.pointSize
         if let fontSize = UserDefaults.standard.value(forKey: "FontSize") as? CGFloat {
             font = fontSize
@@ -75,9 +60,3 @@ public extension UILabel {
         self.textColor = UIColor(hexString: hex)
     }
 }
-
-
-
-
-
-
