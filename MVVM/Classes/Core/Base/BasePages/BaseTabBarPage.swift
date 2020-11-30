@@ -11,7 +11,6 @@ import RxCocoa
 import Action
 import PureLayout
 
-
 open class BaseTabBarPage: UITabBarController, ITransitionView {
     
     public var disposeBag: DisposeBag? = DisposeBag()

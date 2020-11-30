@@ -8,7 +8,6 @@ import UIKit
 open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITableViewDelegate {
 
     public typealias CVM = VM.CellViewModelElement
-    
     public let tableView: UITableView
     
     public init(viewModel: VM? = nil, style: UITableView.Style = .plain) {
@@ -26,7 +25,6 @@ open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITabl
         tableView.delegate = self
         tableView.backgroundColor = .clear
         addSubview(tableView)
-        
         super.setup()
     }
     
@@ -57,12 +55,9 @@ open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITabl
     private func onItemSelected(_ indexPath: IndexPath) {
         guard let viewModel = self.viewModel else { return }
         let cellViewModel = viewModel.itemsSource[indexPath.row, indexPath.section]
-        
         viewModel.rxSelectedItem.accept(cellViewModel)
         viewModel.rxSelectedIndex.accept(indexPath)
-        
         viewModel.selectedItemDidChange(cellViewModel)
-        
         selectedItemDidChange(cellViewModel)
     }
     

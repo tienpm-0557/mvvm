@@ -35,17 +35,19 @@ open class BaseView: UIView, IView {
     public init(viewModel: BaseViewModel? = nil) {
         self._viewModel = viewModel
         super.init(frame: .zero)
-        setup()
     }
     
     public init(frame: CGRect, viewModel: BaseViewModel? = nil) {
         self._viewModel = viewModel
         super.init(frame: frame)
-        setup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    open override func awakeFromNib() {
+        super.awakeFromNib()
         setup()
     }
     
@@ -242,7 +244,6 @@ open class BaseCollectionCell: UICollectionViewCell, IView {
     deinit { destroy() }
     
     private func setup() {
-        backgroundColor = .clear
         initialize()
     }
     

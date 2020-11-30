@@ -489,13 +489,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6C3C21DB2569660300561A33 /* NavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NavigationBar;
-			sourceTree = "<group>";
-		};
 		6C3C21DC256966E800561A33 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1042,7 +1035,6 @@
 		9C74EBF3246D326C00A3CF1D /* MVVMExamples */ = {
 			isa = PBXGroup;
 			children = (
-				6C3C21DB2569660300561A33 /* NavigationBar */,
 				9CC01B6324DA933900995A07 /* ImagePicker */,
 				9CAEA2762478C16700061B49 /* FlickrSearchPage */,
 				9C531A2B2472C6A400C843BA /* ContactPage */,

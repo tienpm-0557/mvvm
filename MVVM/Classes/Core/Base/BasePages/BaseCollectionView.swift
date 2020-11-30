@@ -1,41 +1,23 @@
 //
-//  BaseCollectionPage.swift
-//  Action
+//  BaseCollectionView.swift
+//  MVVM
 //
-//  Created by pham.minh.tien on 4/29/20.
+//  Created by pham.minh.tien on 11/30/20.
 //
 
-import Foundation
-import RxSwift
-import RxCocoa
+import UIKit
 
-public extension Reactive where Base: BaseCollectionPage {
-    var state: Binder<ListState> {
-        return Binder(base) { view, newState in
-            view.state = newState
-        }
-    }
-}
+open class BaseCollectionView: BaseView {
 
-open class BaseCollectionPage: BasePage {
-    
     @IBOutlet public weak var collectionView: UICollectionView!
     
     open var allowLoadmoreData: Bool = false
     open var state: ListState = .normal
     open var pageSize: Int = 10
     
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-       
     open override func initialize() {
         super.initialize()
         setupCollectionView()
-    }
-    
-    open func getItemSource() -> RxCollection? {
-        fatalError("Subclasses have to implement this method.")
     }
     
     open func setupCollectionView()  {
@@ -46,11 +28,7 @@ open class BaseCollectionPage: BasePage {
         collectionView.dataSource = self
         registerNibWithColletion(collectionView)
     }
-    
-    // MARK: - Abstract for subclasses
-    /**
-    Subclasses have to override this method to return correct cell identifier based `CVM` type.
-    */
+
     open func registerNibWithColletion(_ collectionView: UICollectionView) {
         assert(false, "This is an abstract method and should be overridden.")
     }
@@ -67,6 +45,10 @@ open class BaseCollectionPage: BasePage {
     open func footerIdentifier(_ footerViewModel: Any, _ returnClassName: Bool = false) -> String? {
         assert(true, "Subclasses have to implement this method.")
         return nil
+    }
+    
+    open func getItemSource() -> RxCollection? {
+        fatalError("Subclasses have to implement this method.")
     }
     
     /**
@@ -169,9 +151,11 @@ open class BaseCollectionPage: BasePage {
             }
         }
     }
+    
 }
 
-extension BaseCollectionPage: UICollectionViewDataSource {
+
+extension BaseCollectionView: UICollectionViewDataSource {
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return getItemSource()?.count ?? 0
@@ -209,12 +193,12 @@ extension BaseCollectionPage: UICollectionViewDataSource {
     }
 }
 
-extension BaseCollectionPage: UICollectionViewDelegate {
+extension BaseCollectionView: UICollectionViewDelegate {
     
 }
 
 
-extension BaseCollectionPage: UICollectionViewDelegateFlowLayout {
+extension BaseCollectionView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let cellViewModel = itemAtIndexPath(indexPath) else {
