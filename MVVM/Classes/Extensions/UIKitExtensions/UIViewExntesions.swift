@@ -93,14 +93,46 @@ public extension UIView {
         }
     }
     
+    @IBInspectable var shadowRadius: CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        set {
+            layer.shadowOffset = CGSize.zero
+            layer.shadowOpacity = 0.3
+            layer.shadowRadius = newValue
+        }
+    }
+    
+    @IBInspectable var shadowColor: UIColor {
+        get {
+            return UIColor(cgColor: layer.shadowColor ?? UIColor.black.cgColor)
+        }
+        set {
+            layer.shadowColor = newValue.cgColor
+        }
+        
+    }
+    
+    @IBInspectable var lightShadowRadius: CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        set {
+            layer.shadowOffset = CGSize(width: 0, height: 0.5)
+            layer.shadowOpacity = 1.0
+            layer.shadowRadius = shadowRadius
+        }
+    }
+    
     /// Set box shadow
-    @objc func setShadow(offset: CGSize, color: UIColor, opacity: Float, blur: CGFloat) {
+    @objc func setShadow(offset: CGSize, color: UIColor, opacity: Float, radius: CGFloat) {
         let shadowPath = UIBezierPath(roundedRect: layer.bounds, cornerRadius: layer.cornerRadius)
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor
         layer.shadowOffset = offset
         layer.shadowOpacity = opacity
-        layer.shadowRadius = blur
+        layer.shadowRadius = radius
         layer.shadowPath = shadowPath.cgPath
     }
     
