@@ -63,7 +63,7 @@ open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITabl
             }) => disposeBag
     }
     
-    open override func localHudToggled(_ value: Bool) {
+    open override func localActivityIndicatorHudToggled(_ value: Bool) {
         tableView.isHidden = value
     }
     

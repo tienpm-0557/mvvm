@@ -10,9 +10,7 @@ import Action
 import PureLayout
 
 extension Reactive where Base: IView {
-    
     public typealias ViewModelElement = Base.ViewModelElement
-    
     /**
      Custom binder for viewModel, can be any type
      
@@ -24,11 +22,11 @@ extension Reactive where Base: IView {
 }
 
 open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
-    
     public var disposeBag: DisposeBag? = DisposeBag()
-    private var hudBag: DisposeBag? = DisposeBag()
+    private var activityBag: DisposeBag? = DisposeBag()
     
     public var animatorDelegate: AnimatorDelegate?
+    public let navigationService: INavigationService = DependencyManager.shared.getService()
     
     private var _viewModel: VM?
     public var viewModel: VM? {
@@ -49,7 +47,7 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
     }
     
     public private(set) var backButton: UIBarButtonItem?
-    public private(set) var localHud: LocalHud? {
+    public private(set) var activityIndicatorHub: LocalHud? {
         didSet { bindLocalHud() }
     }
     
@@ -70,8 +68,6 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
         }
     }
     
-    public let navigationService: INavigationService = DependencyManager.shared.getService()
-    
     public init(viewModel: VM? = nil) {
         _viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -83,15 +79,7 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        
-        // setup default local hud
-        let localHud = localHudFactory().create()
-        view.addSubview(localHud)
-        localHud.setupView()
-        self.localHud = localHud
-        
+    
         initialize()
         viewModelChanged()
     }
@@ -120,13 +108,21 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
         }
     }
     
+    open func setupActivityIndicator() {
+        /// Setup Activity indicator
+        let localHud = localActivityIndicatorFactory().create()
+        view.addSubview(localHud)
+        localHud.setupView()
+        self.activityIndicatorHub = localHud
+    }
+    
     /**
      Subclasses override this method to create its own hud loader.
      
      This method allows subclasses to create custom hud loader. To create the default hud loader, use global configurations `DDConfigurations.localHudFactory`
      */
-    open func localHudFactory() -> Factory<LocalHud> {
-        return DDConfigurations.localHudFactory
+    open func localActivityIndicatorFactory() -> Factory<LocalHud> {
+        return DDConfigurations.activityIndicatorFactory
     }
     
     /**
@@ -159,14 +155,14 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
     /**
      Subclasses override this method to do custom actions when hud loader view is toggle (hidden/shown).
      */
-    open func localHudToggled(_ value: Bool) {}
+    open func localActivityIndicatorHudToggled(_ value: Bool) {}
     
     /**
      Subclasses override this method to remove all things related to `DisposeBag`.
      */
     open func destroy() {
         disposeBag = DisposeBag()
-        hudBag = DisposeBag()
+        activityBag = DisposeBag()
         viewModel?.destroy()
     }
     
@@ -180,12 +176,17 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
     }
     
     private func bindLocalHud() {
-        hudBag = DisposeBag()
-        
-        if let viewModel = viewModel, let localHud = localHud {
-            let shared = viewModel.rxShowLocalHud.distinctUntilChanged()
-            shared ~> localHud.rx.show => hudBag
-            shared.subscribe(onNext: localHudToggled) => hudBag
+        activityBag = DisposeBag()
+        /// Bind Activity hub 
+        if let viewModel = viewModel,
+           let activityBag = activityBag,
+           let activityIndicatorHub = activityIndicatorHub {
+            viewModel.rxIndicator
+                .asObservable()
+                .bind(to: viewModel.rxShowLocalActivityIndicatorHud) => activityBag
+            let shared = viewModel.rxShowLocalActivityIndicatorHud.distinctUntilChanged()
+            shared ~> activityIndicatorHub.rx.show => activityBag
+            shared.subscribe(onNext: localActivityIndicatorHudToggled) => activityBag
         }
     }
     

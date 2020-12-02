@@ -32,7 +32,7 @@ open class LocalHud: UIView {
     open func hide() { }
 }
 
-class DefaultLocalHud: LocalHud {
+class ActivityIndicatorHub: LocalHud {
     
     let label = UILabel()
     let indicatorView = UIActivityIndicatorView(style: .white)

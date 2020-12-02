@@ -30,7 +30,8 @@ open class BaseViewModel: NSObject, IViewModel, IReactable {
     public var disposeBag: DisposeBag? = DisposeBag()
     
     public let rxViewState = BehaviorRelay<ViewState>(value: .none)
-    public let rxShowLocalHud = BehaviorRelay(value: false)
+    public let rxShowLocalActivityIndicatorHud = BehaviorRelay(value: false)
+    public let rxIndicator = ActivityIndicator()
     
     public let navigationService: INavigationService = DependencyManager.shared.getService()
     
@@ -262,5 +263,4 @@ open class UIPageItem: NSObject, IReactable {
     open func destroy() {
         disposeBag = DisposeBag()
     }
-    
 }

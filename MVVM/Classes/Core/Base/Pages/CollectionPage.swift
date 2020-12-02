@@ -66,7 +66,7 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
         collectionView.removeFromSuperview()
     }
 
-    open override func localHudToggled(_ value: Bool) {
+    open override func localActivityIndicatorHudToggled(_ value: Bool) {
         collectionView.isHidden = value
     }
 

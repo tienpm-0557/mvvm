@@ -41,7 +41,8 @@ open class ViewModel<M>: NSObject, IViewModel, IReactable {
     public var disposeBag: DisposeBag? = DisposeBag()
     
     public let rxViewState = BehaviorRelay<ViewState>(value: .none)
-    public let rxShowLocalHud = BehaviorRelay(value: false)
+    public let rxShowLocalActivityIndicatorHud = BehaviorRelay(value: false)
+    public let rxIndicator = ActivityIndicator()
     
     public let navigationService: INavigationService = DependencyManager.shared.getService()
     

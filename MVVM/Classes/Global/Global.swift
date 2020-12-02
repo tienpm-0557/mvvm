@@ -117,7 +117,7 @@ public struct DDConfigurations {
      If we want to make local hud different layouts, show and hide animations, then
      inherit from LocalHud class to implement your custom local hud
      */
-    public static var localHudFactory: Factory<LocalHud> = Factory { DefaultLocalHud() }
+    public static var activityIndicatorFactory: Factory<LocalHud> = Factory { ActivityIndicatorHub() }
     
     /*
      Factory for creating back button.
