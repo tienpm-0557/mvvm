@@ -59,6 +59,7 @@ open class BasePage: UIViewController, ITransitionView {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
+        registerService()
         initialize()
         updateAfterViewModelChanged()
     }
@@ -103,6 +104,7 @@ open class BasePage: UIViewController, ITransitionView {
      not sure about it
      */
     open func initialize() {}
+    open func registerService() {}
     
     /**
      Subclasses override this method to create data binding between view and viewModel.
