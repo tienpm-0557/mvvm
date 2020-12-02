@@ -117,8 +117,8 @@ class SegmentedView: AbstractControlView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        setShadow(offset: CGSize(width: 0, height: -2), color: .gray, opacity: 0.05, blur: 1)
-        shadowView.setShadow(offset: CGSize(width: 0, height: 3), color: .gray, opacity: 0.4, blur: 3)
+        setShadow(offset: CGSize(width: 0, height: -2), color: .gray, opacity: 0.05, radius: 1)
+        shadowView.setShadow(offset: CGSize(width: 0, height: 3), color: .gray, opacity: 0.4, radius: 3)
     }
     
     @objc func buttonPressed(_ sender: UIButton) {

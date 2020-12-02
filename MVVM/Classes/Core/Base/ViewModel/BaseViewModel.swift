@@ -71,7 +71,6 @@ open class BaseViewModel: NSObject, IViewModel, IReactable {
     func reactIfNeeded() {
         guard !isReacted else { return }
         isReacted = true
-        
         react()
     }
     

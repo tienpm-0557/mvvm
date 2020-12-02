@@ -59,7 +59,6 @@ open class BasePage: UIViewController, ITransitionView {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        
         initialize()
         updateAfterViewModelChanged()
     }

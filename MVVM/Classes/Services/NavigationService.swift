@@ -104,38 +104,31 @@ public struct PopOptions {
 }
 
 public protocol INavigationService {
+    var rootPage:UIViewController? { get }
+    init(rootViewController: UIViewController?)
     func push(to page: UIViewController, options: PushOptions)
     func pop(with options: PopOptions)
-    func changeTopPage(_ topPage: UIViewController?)
 }
 
 extension INavigationService {
+    var topPage: UIViewController? {
+        get {
+            return rootPage ?? DDConfigurations.topPageFindingBlock.create()
+        }
+    }
+    public init(rootViewController: UIViewController?) {
+        self.init(rootViewController: rootViewController)
+    }
     
     public func push(to page: UIViewController, options: PushOptions = .defaultOptions) {
-        push(to: page, options: options)
+        startPush(to: page, options: options)
     }
     
     public func pop(with options: PopOptions = .defaultOptions) {
-        pop(with: options)
-    }
-}
-
-public class NavigationService: INavigationService {
-    private var atopPage: UIViewController?
-    
-    private var topPage: UIViewController? {
-        get {
-            return atopPage ?? DDConfigurations.topPageFindingBlock.create()
-        }
+        startPop(with: options)
     }
     
-    // MARK: - Push functions
-    
-    public func changeTopPage(_ topPage: UIViewController?) {
-        atopPage = topPage
-    }
-    
-    public func push(to page: UIViewController, options: PushOptions) {
+    func startPush(to page: UIViewController, options: PushOptions) {
         guard let topPage = topPage else { return }
         
         let handlePush = {
@@ -180,7 +173,7 @@ public class NavigationService: INavigationService {
     
     // MARK: - Pop functions
     
-    public func pop(with options: PopOptions) {
+    func startPop(with options: PopOptions) {
         guard let topPage = topPage else { return }
         
         let destroyPageBlock = DDConfigurations.destroyPageBlock
@@ -221,6 +214,11 @@ public class NavigationService: INavigationService {
             presenterPage.dismiss(animated: false)
         }
     }
+}
+
+open class NavigationService: INavigationService {
+    private(set) public var rootPage: UIViewController? = nil
+    
 }
 
 
