@@ -104,9 +104,9 @@ public struct PopOptions {
 }
 
 public protocol INavigationService {
-    
     func push(to page: UIViewController, options: PushOptions)
     func pop(with options: PopOptions)
+    func changeTopPage(_ topPage: UIViewController?)
 }
 
 extension INavigationService {
@@ -121,12 +121,19 @@ extension INavigationService {
 }
 
 public class NavigationService: INavigationService {
+    private var atopPage: UIViewController?
     
     private var topPage: UIViewController? {
-        return DDConfigurations.topPageFindingBlock.create()
+        get {
+            return atopPage ?? DDConfigurations.topPageFindingBlock.create()
+        }
     }
     
     // MARK: - Push functions
+    
+    public func changeTopPage(_ topPage: UIViewController?) {
+        atopPage = topPage
+    }
     
     public func push(to page: UIViewController, options: PushOptions) {
         guard let topPage = topPage else { return }
@@ -159,7 +166,8 @@ public class NavigationService: INavigationService {
                 handleModal(.custom)
             }
             
-        case .push: handlePush()
+        case .push:
+            handlePush()
             
         case .modally(let presentationStyle): handleModal(presentationStyle)
             

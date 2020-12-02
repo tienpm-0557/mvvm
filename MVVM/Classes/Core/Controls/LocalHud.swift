@@ -24,7 +24,7 @@ open class LocalHud: UIView {
     
     /// Subclasses override this method to style and re-layout components
     open func setupView() { }
-    
+    open func setupView(color: UIColor) {}
     /// Subclasses override this method to setup a custom show animation if needed
     open func show() { }
     
@@ -37,14 +37,14 @@ class ActivityIndicatorHub: LocalHud {
     let label = UILabel()
     let indicatorView = UIActivityIndicatorView(style: .white)
     
-    override func setupView() {
+    override func setupView(color: UIColor = .black) {
         indicatorView.hidesWhenStopped = true
-        indicatorView.color = .black
+        indicatorView.color = color
         addSubview(indicatorView)
         indicatorView.autoAlignAxis(toSuperviewAxis: .vertical)
         indicatorView.autoPinEdge(toSuperviewEdge: .top)
         
-        label.textColor = .lightGray
+        label.textColor = color
         label.font = Font.system.normal(withSize: 15)
         label.text = "LOADING"
         addSubview(label)

@@ -75,7 +75,7 @@ open class BasePage: UIViewController, ITransitionView {
         // setup default local hud
         let acitvityIndicatorHud = activityIndicatorFactory().create()
         view.addSubview(acitvityIndicatorHud)
-        acitvityIndicatorHud.setupView()
+        acitvityIndicatorHud.setupView(color: UIColor.systemTeal)
         self.activityIndicatorHub = acitvityIndicatorHud
     }
     
