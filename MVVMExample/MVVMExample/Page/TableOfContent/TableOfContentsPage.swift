@@ -49,7 +49,7 @@ class TableOfContentsPage: BaseListPage {
     }
     
     // Not recommended for use. override selectedItemDidChange on ViewModel.
-    override func selectedItemDidChange(_ cellViewModel: Any) { }
+    override func selectedItemDidChange(_ cellViewModel: Any, _ indexPath: IndexPath) {}
 
 }
 
@@ -114,7 +114,7 @@ class TableOfContentViewModel: BaseListViewModel {
         return page
     }
     
-    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel) {
+    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) {
         if let page = pageToNavigate(cellViewModel) {
             navigationService.push(to: page, options: .defaultOptions)
         }

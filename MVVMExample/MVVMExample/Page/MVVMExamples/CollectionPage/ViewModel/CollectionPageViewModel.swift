@@ -44,7 +44,7 @@ class CollectionPageViewModel: BaseListViewModel {
         itemsSource.append(cvm)
     }
 
-    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel) {
+    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) {
         guard let cellViewModel = cellViewModel as? SimpleCollectionViewDellModel else {
             return
         }

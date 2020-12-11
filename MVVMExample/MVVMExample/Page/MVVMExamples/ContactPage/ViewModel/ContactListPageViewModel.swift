@@ -96,7 +96,7 @@ class ContactListPageViewModel: BaseListViewModel {
         handleContactModification()
     }
     
-    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel) {
+    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) {
         guard let model = cellViewModel.model as? ContactModel else {
             return
         }

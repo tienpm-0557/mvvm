@@ -33,7 +33,7 @@ class ListPageExampleViewModel: BaseListViewModel {
         itemsSource.append(cvm)
     }
         
-    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel) {
+    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) {
         /// navigationService
         /// Use navigation service for push view controller into Navigation.
         /// In case View is Root. Navigation service will present viewcontroller.
