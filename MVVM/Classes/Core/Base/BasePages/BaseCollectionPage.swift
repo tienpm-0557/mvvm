@@ -72,7 +72,7 @@ open class BaseCollectionPage: BasePage {
     /**
     Subclasses override this method to handle cell pressed action.
     */
-    open func selectedItemDidChange(_ cellViewModel: Any) { }
+    open func selectedItemDidChange(_ cellViewModel: Any,_ indexPath: IndexPath) { }
     
     open func itemAtIndexPath(_ indexPath: IndexPath) -> Any? {
         if let itemsSource = getItemSource(),
@@ -161,11 +161,11 @@ open class BaseCollectionPage: BasePage {
     private func onItemSelected(_ indexPath: IndexPath) {
         guard let itemsSource = getItemSource() else { return }
         if let cellViewModel = itemsSource.element(atIndexPath: indexPath) {
-            selectedItemDidChange(cellViewModel)
+            selectedItemDidChange(cellViewModel, indexPath)
             
             if let viewModel = self.viewModel as? BaseListViewModel,
                 let cvm = cellViewModel as? BaseCellViewModel {
-                viewModel.selectedItemDidChange(cvm)
+                viewModel.selectedItemDidChange(cvm, indexPath)
             }
         }
     }

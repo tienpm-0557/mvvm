@@ -102,7 +102,7 @@ public protocol IListViewModel: IViewModel {
     var rxSelectedItem: BehaviorRelay<CellViewModelElement?> { get }
     var rxSelectedIndex: BehaviorRelay<IndexPath?> { get }
     
-    func selectedItemDidChange(_ cellViewModel: CellViewModelElement)
+    func selectedItemDidChange(_ cellViewModel: CellViewModelElement,_ indexPath: IndexPath)
 }
 
 

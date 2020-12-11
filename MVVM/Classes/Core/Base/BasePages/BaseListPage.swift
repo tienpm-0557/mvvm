@@ -95,11 +95,11 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     private func onItemSelected(_ indexPath: IndexPath) {
         guard let itemsSource = getItemSource() else { return }
         if let cellViewModel = itemsSource.element(atIndexPath: indexPath) as? BaseCellViewModel {
-            selectedItemDidChange(cellViewModel)
+            selectedItemDidChange(cellViewModel, indexPath)
             guard let viewModel = self.viewModel as? BaseListViewModel else { return }
             viewModel.rxSelectedItem.accept(cellViewModel)
             viewModel.rxSelectedIndex.accept(indexPath)
-            viewModel.selectedItemDidChange(cellViewModel)
+            viewModel.selectedItemDidChange(cellViewModel, indexPath)
         }
     }
     
@@ -186,7 +186,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     /**
      Subclasses override this method to handle cell pressed action.
      */
-    open func selectedItemDidChange(_ cellViewModel: Any) { }
+    open func selectedItemDidChange(_ cellViewModel: Any,_ indexPath: IndexPath) { }
     
     // MARK: - Table view datasources
     

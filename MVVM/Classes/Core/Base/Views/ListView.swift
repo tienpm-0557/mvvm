@@ -57,8 +57,8 @@ open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITabl
         let cellViewModel = viewModel.itemsSource[indexPath.row, indexPath.section]
         viewModel.rxSelectedItem.accept(cellViewModel)
         viewModel.rxSelectedIndex.accept(indexPath)
-        viewModel.selectedItemDidChange(cellViewModel)
-        selectedItemDidChange(cellViewModel)
+        viewModel.selectedItemDidChange(cellViewModel, indexPath)
+        selectedItemDidChange(cellViewModel, indexPath)
     }
     
     private func onDataSourceChanged(_ changeSet: ChangeSet) {
@@ -129,7 +129,7 @@ open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITabl
         fatalError("Subclasses have to implement this method.")
     }
     
-    open func selectedItemDidChange(_ cellViewModel: CVM) { }
+    open func selectedItemDidChange(_ cellViewModel: CVM,_ indexPath: IndexPath) { }
     
     // MARK: - Table view datasources
     

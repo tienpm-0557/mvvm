@@ -108,7 +108,7 @@ open class BaseListViewModel: BaseViewModel, IListViewModel {
         }
     }
     
-    open func selectedItemDidChange(_ cellViewModel: BaseCellViewModel) { }
+    open func selectedItemDidChange(_ cellViewModel: BaseCellViewModel,_ indexPath: IndexPath) { }
     open func loadMoreContent() {}
 }
 
@@ -231,7 +231,7 @@ open class BaseUIPageViewModel: BaseViewModel {
         }
     }
     
-    open func selectedItemDidChange(_ cellViewModel: BaseCellViewModel) { }
+    open func selectedItemDidChange(_ cellViewModel: BaseCellViewModel,_ indexPath: IndexPath) { }
     open func loadMoreContent() {}
 }
 

@@ -16,6 +16,24 @@ open class Model: NSObject, Mappable {
     open func mapping(map: Map) {}
 }
 
+
+open class HeaderFooterModel: Model {
+    
+    open var title = ""
+    open var footer = ""
+    open var desc = ""
+    
+    public convenience init(withTitle title: String, desc: String, footer: String) {
+        self.init(JSON: ["title": title, "desc": desc, "footer": footer])!
+    }
+    
+    open override func mapping(map: Map) {
+        title <- map["title"]
+        desc <- map["desc"]
+        footer <- map["footer"]
+    }
+}
+
 public extension Model {
     
     /*

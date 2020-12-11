@@ -74,9 +74,9 @@ open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITabl
         viewModel.rxSelectedItem.accept(cellViewModel)
         viewModel.rxSelectedIndex.accept(indexPath)
         
-        viewModel.selectedItemDidChange(cellViewModel)
+        viewModel.selectedItemDidChange(cellViewModel, indexPath)
         
-        selectedItemDidChange(cellViewModel)
+        selectedItemDidChange(cellViewModel, indexPath)
     }
     
     private func onDataSourceChanged(_ changeSet: ChangeSet) {
@@ -153,7 +153,7 @@ open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITabl
     /**
      Subclasses override this method to handle cell pressed action.
      */
-    open func selectedItemDidChange(_ cellViewModel: CVM) { }
+    open func selectedItemDidChange(_ cellViewModel: CVM,_ indexPath: IndexPath) { }
     
     // MARK: - Table view datasources
     

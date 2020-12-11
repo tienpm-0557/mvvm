@@ -108,7 +108,7 @@ open class ListViewModel<M, CVM: IGenericViewModel>: ViewModel<M>, IListViewMode
         }
     }
     
-    open func selectedItemDidChange(_ cellViewModel: CVM) { }
+    open func selectedItemDidChange(_ cellViewModel: CVM,_ indexPath: IndexPath) { }
 }
 
 /**

@@ -256,7 +256,7 @@ class TimelinePageViewModel: BaseListViewModel {
         return response.timelines as? [BaseCellViewModel]
     }
     
-    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel) {
+    override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel,_ indexPath: IndexPath) {
         /// Do something
     }
     
@@ -334,7 +334,7 @@ class TimelinePage: BaseListPage {
         }
     }
     
-    override func selectedItemDidChange(_ cellViewModel: Any) {
+    override func selectedItemDidChange(_ cellViewModel: Any,_ indexPath: IndexPath) {
         /// Handle did tap on table view cell
         let page = PostDetailPage()
         let animator = RectanglerAnimator(withDuration: TimeInterval(0.5), isPresenting: false) 

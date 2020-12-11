@@ -219,6 +219,9 @@ extension INavigationService {
 open class NavigationService: INavigationService {
     private(set) public var rootPage: UIViewController? = nil
     
+    required public init(rootViewController: UIViewController? = nil) {
+        rootPage = rootViewController
+    }
 }
 
 
