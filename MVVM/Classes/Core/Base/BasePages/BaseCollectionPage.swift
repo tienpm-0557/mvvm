@@ -270,7 +270,7 @@ extension BaseCollectionPage: UICollectionViewDelegateFlowLayout {
         guard let _headerFooterClassName = headerFooterClassName else { return CGSize.zero }
         
         if let headerFooterClass = NSClassFromString(_headerFooterClassName) as? BaseHeaderCollectionView.Type {
-            return headerFooterClass.headerSize(withItem: viewModel)
+            return headerFooterClass.headerSize(withItem: headerViewModel)
         }
         
         return CGSize.zero

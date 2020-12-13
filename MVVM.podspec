@@ -52,5 +52,6 @@ A MVVM library for iOS Swift, including interfaces for View, ViewModel and Model
   s.dependency 'MagicalRecord'
   s.dependency 'KeychainAccess'
   s.dependency 'RNCryptor'
+  s.dependency 'RxOptional'
   
 end

@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 
 public class KeyboardManager: NSObject {
-    class func keyboardHeight() -> Observable<CGFloat> {
+    open class func keyboardHeight() -> Observable<CGFloat> {
         return Observable.from([
                     NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
                                 .map { notification -> CGFloat in

@@ -15,7 +15,11 @@ public class AlertPage: UIAlertController {
         guard let rootViewContorller = window?.rootViewController else {
             return
         }
-        rootViewContorller.present(self, animated: true)
+        if rootViewContorller.presentedViewController == nil {
+            rootViewContorller.present(self, animated: true)
+        } else {
+            rootViewContorller.presentedViewController?.present(self, animated: true)
+        }
     }
     
     public func hide() {

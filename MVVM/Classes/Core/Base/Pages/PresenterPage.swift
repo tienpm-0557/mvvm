@@ -90,6 +90,7 @@ public class PresenterPage: UIViewController, IDestroyable {
         }, completion: nil)
     }
     
+    /*
     public override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         if let popupView = contentPage as? IPopupView {
             popupView.hide(overlayView: overlayView) {
@@ -105,6 +106,7 @@ public class PresenterPage: UIViewController, IDestroyable {
             })
         }
     }
+    */
     
     public func destroy() {
         overlayView.tapGesture.unbindAction()
