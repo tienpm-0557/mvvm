@@ -128,7 +128,11 @@ public struct DDConfigurations {
     public static var backButtonFactory: Factory<UIBarButtonItem> = Factory {
         let barButton = UIBarButtonItem()
         barButton.setTitleTextAttributes([.font: Font.system.normal(withSize: 18)], for: .normal)
-        barButton.title = "\u{2190}"
+        if #available(iOS 13.0, *) {
+            barButton.image = UIImage(systemName: "chevron.backward")
+        } else {
+            barButton.title = "\u{2190}"
+        }
         return barButton
     }
 }

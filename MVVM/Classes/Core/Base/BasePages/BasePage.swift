@@ -41,7 +41,7 @@ open class BasePage: UIViewController, ITransitionView {
         }
     }
     
-    public let navigationService: INavigationService = DependencyManager.shared.getService()
+    public let navigationService: NavigationService = DependencyManager.shared.getService()
     public let storageService: IStorageService = DependencyManager.shared.getService()
     public let alertService: IAlertService = DependencyManager.shared.getService()
     public let localeService: LocalizeService = DependencyManager.shared.getService()
@@ -134,7 +134,8 @@ open class BasePage: UIViewController, ITransitionView {
      By default, this will call pop action in navigation or dismiss in modal
      */
     open func onBack(_ sender: AnyObject) {
-        navigationService.pop()
+        let navigationSerview: NavigationService = DependencyManager.shared.getService()
+        navigationSerview.pop()
     }
     
     private func bindLocalHud() {

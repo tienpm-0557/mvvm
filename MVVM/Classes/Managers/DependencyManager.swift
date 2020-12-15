@@ -69,7 +69,7 @@ public class DependencyManager {
     private let resolver: IMutableDependencyResolver = DefaultDependencyResolver()
     
     public func registerDefaults() {
-        registerService(Factory<INavigationService> { NavigationService() })
+        registerService(Factory<NavigationService> { NavigationService() })
         registerService(Factory<IStorageService> { StorageService() })
         registerService(Factory<IAlertService> { AlertService() })
         registerService(Factory<LocalizeService> { LocalizeService.shared })

@@ -37,7 +37,7 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
     
     public let alertService: IAlertService = DependencyManager.shared.getService()
     public let localeService: LocalizeService = DependencyManager.shared.getService()
-    public let navigationService: INavigationService = DependencyManager.shared.getService()
+    public let navigationService: NavigationService = DependencyManager.shared.getService()
     
     deinit {
         destroy()

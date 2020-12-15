@@ -44,7 +44,7 @@ open class ViewModel<M>: NSObject, IViewModel, IReactable {
     public let rxShowLocalActivityIndicatorHud = BehaviorRelay(value: false)
     public let rxIndicator = ActivityIndicator()
     
-    public let navigationService: INavigationService = DependencyManager.shared.getService()
+    public let navigationService: NavigationService = DependencyManager.shared.getService()
     
     var isReacted = false
     

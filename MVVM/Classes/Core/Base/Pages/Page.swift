@@ -26,7 +26,7 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
     private var activityBag: DisposeBag? = DisposeBag()
     
     public var animatorDelegate: AnimatorDelegate?
-    public let navigationService: INavigationService = DependencyManager.shared.getService()
+    public let navigationService: NavigationService = DependencyManager.shared.getService()
     
     private var _viewModel: VM?
     public var viewModel: VM? {

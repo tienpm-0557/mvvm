@@ -164,10 +164,10 @@ extension INavigationService {
             
         case .modally(let presentationStyle): handleModal(presentationStyle)
             
-        case .popup(let options):
-            let presenterPage = PresenterPage(contentPage: page, options: options)
+        case .popup(let option):
+            let presenterPage = PresenterPage(contentPage: page, options: option)
             presenterPage.modalPresentationStyle = .overFullScreen
-            topPage.present(presenterPage, animated: false)
+            topPage.present(presenterPage, animated: options.animated)
         }
     }
     
