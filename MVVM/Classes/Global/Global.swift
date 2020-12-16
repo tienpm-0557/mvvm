@@ -50,7 +50,10 @@ public struct DDConfigurations {
      then override this block to make navigation service can find the correct top page
      */
     public static var topPageFindingBlock: Factory<UIViewController?> = Factory {
-        let myWindow = UIApplication.shared.keyWindow
+//        let myWindow = UIApplication.shared.keyWindow
+        let myWindow = UIApplication.shared.windows
+            .filter { !($0.rootViewController is UIAlertController) }
+            .first
         
         guard let rootPage = myWindow?.rootViewController else {
             return nil
@@ -71,6 +74,9 @@ public struct DDConfigurations {
             currPage = currPage?.children.first
         }
         
+        if let sideMenuViewController = currPage as? SideMenu {
+            currPage = sideMenuViewController.contentViewController
+        }
         while currPage is UINavigationController || currPage is UITabBarController {
             if let navPage = currPage as? UINavigationController {
                 currPage = navPage.viewControllers.last
@@ -80,6 +86,8 @@ public struct DDConfigurations {
                 currPage = tabPage.selectedViewController
             }
         }
+        
+        
         
         return currPage
     }

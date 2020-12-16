@@ -64,6 +64,10 @@ open class BasePage: UIViewController, ITransitionView {
         updateAfterViewModelChanged()
     }
     
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         if isMovingFromParent {
