@@ -149,8 +149,10 @@ open class BaseCellViewModel: NSObject, IGenericViewModel, IIndexable, IReactabl
     open func react() {}
     
     func reactIfNeeded() {
+        /*
         guard !isReacted else { return }
         isReacted = true
+        */
         react()
     }
     

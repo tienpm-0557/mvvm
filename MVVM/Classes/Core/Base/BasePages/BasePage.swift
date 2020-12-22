@@ -71,11 +71,11 @@ open class BasePage: UIViewController, ITransitionView {
         }
     }
     
-    open func setupActivityIndicatorView() {
+    open func setupActivityIndicatorView(withMessage message: String? = "Loading") {
         // setup default local hud
         let acitvityIndicatorHud = activityIndicatorFactory().create()
         view.addSubview(acitvityIndicatorHud)
-        acitvityIndicatorHud.setupView(color: UIColor.systemTeal)
+        acitvityIndicatorHud.setupView(color: UIColor.systemTeal, message: message)
         self.activityIndicatorHub = acitvityIndicatorHud
     }
     

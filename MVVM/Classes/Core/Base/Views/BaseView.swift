@@ -248,6 +248,7 @@ open class BaseCollectionCell: UICollectionViewCell, IView {
     }
     
     private func viewModelChanged() {
+        
         bindViewAndViewModel()
         _viewModel?.reactIfNeeded()
     }
