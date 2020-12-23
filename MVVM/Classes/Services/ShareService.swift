@@ -10,12 +10,9 @@ import RxSwift
 import RxCocoa
 
 public class ShareService {
-    
-    public init() {
-        
-    }
-    
     public var rxShareServiceState = BehaviorRelay<(completed:Bool, items:[Any]?, error: Error?)?>(value: nil)
+    
+    public init() {}
     
     public func openShare(title: String, url: String) {
         if let myWebSite = URL(string: url) {
