@@ -48,7 +48,7 @@ struct MoveElements: ChangeSet {
 /// Section list data sources
 public class SectionList<T> where T: Equatable {
     
-    public let key: Any
+    public let element: Any
     
     private var innerSources = [T]()
     
@@ -74,7 +74,7 @@ public class SectionList<T> where T: Equatable {
     }
     
     public init(_ key: Any, initialElements: [T] = []) {
-        self.key = key
+        self.element = key
         innerSources.append(contentsOf: initialElements)
     }
     
@@ -441,7 +441,7 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
     }
     
     public func indexForSection(withKey key: AnyObject) -> Int? {
-        return innerSources.firstIndex(where: { key.isEqual($0.key) })
+        return innerSources.firstIndex(where: { key.isEqual($0.element) })
     }
     
     @discardableResult

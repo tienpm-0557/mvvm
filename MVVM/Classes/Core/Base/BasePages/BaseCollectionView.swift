@@ -225,7 +225,7 @@ extension BaseCollectionView: UICollectionViewDelegateFlowLayout {
     }
     
     private func dequeueReusableHeaderFooterView(kind:String,  isFooter:Bool = false, indexPath: IndexPath ) -> UICollectionReusableView? {
-        guard let viewModel = viewModel as? BaseListViewModel, let cellViewModel = viewModel.itemsSource[indexPath.section].key as? BaseViewModel else { return nil }
+        guard let viewModel = viewModel as? BaseListViewModel, let cellViewModel = viewModel.itemsSource[indexPath.section].element as? BaseViewModel else { return nil }
 
         var identifier = headerIdentifier(cellViewModel)
         if isFooter {
@@ -244,7 +244,7 @@ extension BaseCollectionView: UICollectionViewDelegateFlowLayout {
     }
     
     private func heightForFooterInSection(isFooter:Bool = false, section: Int ) -> CGSize {
-        guard let viewModel = viewModel as? BaseListViewModel, let headerViewModel = viewModel.itemsSource[section].key as? BaseViewModel else { return CGSize.zero }
+        guard let viewModel = viewModel as? BaseListViewModel, let headerViewModel = viewModel.itemsSource[section].element as? BaseViewModel else { return CGSize.zero }
         
         var headerFooterClassName = headerIdentifier(headerViewModel, true)
         if isFooter {

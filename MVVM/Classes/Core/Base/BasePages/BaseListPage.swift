@@ -257,7 +257,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     }
     
     private func dequeueReusableHeaderFooterView(isFooter:Bool = false, section: Int ) -> UIView? {
-        guard let viewModel = viewModel as? BaseListViewModel, let cellViewModel = viewModel.itemsSource[section].key as? BaseViewModel else { return nil }
+        guard let viewModel = viewModel as? BaseListViewModel, let cellViewModel = viewModel.itemsSource[section].element as? BaseViewModel else { return nil }
         
         var identifier = headerIdentifier(cellViewModel)
         if isFooter {
@@ -275,7 +275,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     }
     
     private func heightForFooterInSection(isFooter:Bool = false, section: Int ) -> CGFloat {
-        guard let viewModel = viewModel as? BaseListViewModel, let headerViewModel = viewModel.itemsSource[section].key as? BaseViewModel else { return 0.0 }
+        guard let viewModel = viewModel as? BaseListViewModel, let headerViewModel = viewModel.itemsSource[section].element as? BaseViewModel else { return 0.0 }
         
         var headerFooterClassName = headerIdentifier(headerViewModel, true)
         if isFooter {
