@@ -18,8 +18,11 @@ extension Reactive where Base: MPMediaPickerController {
     }
     
     public var didPickMediaItems: Observable<[MPMediaItem]> {
-        return pickerDelegate.methodInvoked(#selector(MPMediaPickerControllerDelegate.mediaPicker(_:didPickMediaItems:))).map({
-            return ($0 as? [MPMediaItem] ?? [])
+        return pickerDelegate.methodInvoked(#selector(MPMediaPickerControllerDelegate.mediaPicker(_:didPickMediaItems:))).map({ info in
+            if let mediaCollection = info[1] as? MPMediaItemCollection {
+                return mediaCollection.items
+            }
+            return []
         })
     }
     
