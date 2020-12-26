@@ -71,9 +71,10 @@ open class ViewModel<M>: NSObject, IViewModel, IReactable {
     open func react() {}
     
     func reactIfNeeded() {
+        /*
         guard !isReacted else { return }
         isReacted = true
-        
+        */
         react()
     }
 }
@@ -157,9 +158,10 @@ open class CellViewModel<M>: NSObject, IGenericViewModel, IIndexable, IReactable
     open func react() {}
     
     func reactIfNeeded() {
+        /*
         guard !isReacted else { return }
         isReacted = true
-        
+        */
         react()
     }
 }

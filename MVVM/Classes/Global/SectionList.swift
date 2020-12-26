@@ -248,6 +248,17 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         publisher.onNext(ModifySection(type: .insert, section: index, animated: animated ?? self.animated))
     }
     
+    public func insertSection(_ sectionList: BaseViewModel, at index: Int, animated: Bool? = false) {
+        if innerSources.count == 0 {
+            innerSources.append(SectionList<T>(sectionList))
+        } else {
+            innerSources.insert(SectionList<T>(sectionList), at: index)
+        }
+        
+        rxInnerSources.accept(innerSources)
+        publisher.onNext(ModifySection(type: .insert, section: index, animated: animated ?? self.animated))
+    }
+    
     public func appendSections(_ sectionLists: [SectionList<T>], animated: Bool? = false) {
         for sectionList in sectionLists {
             appendSection(sectionList, animated: animated)
