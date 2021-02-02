@@ -15,7 +15,6 @@ public enum PopType {
 
 /// Popup options, allow to change overlay color and enable dimiss when tap outside the popup
 public struct PopupOptions {
-    
     public let shouldDismissOnTapOutside: Bool
     public let overlayColor: UIColor
     
@@ -31,7 +30,6 @@ public struct PopupOptions {
 
 /// Push options for pushing new page, including push, modally or popup
 public struct PushOptions {
-    
     public let pushType: PushType
     public let animator: Animator?
     public let animated: Bool
@@ -65,7 +63,6 @@ public struct PushOptions {
 
 /// Pop options for poping/dismissing current active page
 public struct PopOptions {
-    
     public let popType: PopType
     public let animated: Bool
     
@@ -104,8 +101,10 @@ public struct PopOptions {
 }
 
 public protocol INavigationService {
-    var rootPage:UIViewController? { get }
+    var rootPage: UIViewController? { get }
+    
     init(rootViewController: UIViewController?)
+    
     func push(to page: UIViewController, options: PushOptions)
     func pop(with options: PopOptions)
 }
@@ -116,6 +115,7 @@ extension INavigationService {
             return rootPage ?? DDConfigurations.topPageFindingBlock.create()
         }
     }
+    
     public init(rootViewController: UIViewController?) {
         self.init(rootViewController: rootViewController)
     }
@@ -129,7 +129,9 @@ extension INavigationService {
     }
     
     func startPush(to page: UIViewController, options: PushOptions) {
-        guard let topPage = topPage else { return }
+        guard let topPage = topPage else {
+            return
+        }
         
         let handlePush = {
             if let animator = options.animator {
@@ -162,7 +164,8 @@ extension INavigationService {
         case .push:
             handlePush()
             
-        case .modally(let presentationStyle): handleModal(presentationStyle)
+        case .modally(let presentationStyle):
+            handleModal(presentationStyle)
             
         case .popup(let option):
             let presenterPage = PresenterPage(contentPage: page, options: option)
@@ -174,7 +177,9 @@ extension INavigationService {
     // MARK: - Pop functions
     
     func startPop(with options: PopOptions) {
-        guard let topPage = topPage else { return }
+        guard let topPage = topPage else {
+            return
+        }
         
         let destroyPageBlock = DDConfigurations.destroyPageBlock
         let handleDismiss = {
@@ -223,9 +228,3 @@ open class NavigationService: INavigationService {
         rootPage = rootViewController
     }
 }
-
-
-
-
-
-

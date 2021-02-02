@@ -6,14 +6,15 @@
 import UIKit
 
 extension UIViewController {
-    @objc open func onUpdateLocalize() {
+    @objc
+    open func onUpdateLocalize() {
         self.view.onUpdateLocalize()
     }
 }
 
 public extension UINavigationController {
-    
-    func popViewController(animated: Bool, completions: ((UIViewController?) -> Void)?) {
+    func popViewController(animated: Bool,
+                           completions: ((UIViewController?) -> Void)?) {
         if animated {
             CATransaction.begin()
             let page = popViewController(animated: animated)
@@ -25,7 +26,8 @@ public extension UINavigationController {
         }
     }
     
-    func popToRootViewController(animated: Bool, completions: (([UIViewController]?) -> Void)?) {
+    func popToRootViewController(animated: Bool,
+                                 completions: (([UIViewController]?) -> Void)?) {
         if animated {
             CATransaction.begin()
             let pages = popToRootViewController(animated: animated)
@@ -37,7 +39,9 @@ public extension UINavigationController {
         }
     }
     
-    func popToViewController(at index: Int, animated: Bool, completions: (([UIViewController]?) -> Void)?) {
+    func popToViewController(at index: Int,
+                             animated: Bool,
+                             completions: (([UIViewController]?) -> Void)?) {
         let len = viewControllers.count
         if index >= 0 && index < len - 1 {
             if animated {
@@ -52,7 +56,9 @@ public extension UINavigationController {
         }
     }
     
-    func popToViewController(_ viewController: UIViewController, animated: Bool, completions: (([UIViewController]?) -> Void)?) {
+    func popToViewController(_ viewController: UIViewController,
+                             animated: Bool,
+                             completions: (([UIViewController]?) -> Void)?) {
         if animated {
             CATransaction.begin()
             let pages = popToViewController(viewController, animated: animated)
@@ -76,4 +82,3 @@ public extension UINavigationController {
         }
     }
 }
-

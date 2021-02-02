@@ -7,7 +7,6 @@ import Foundation
 import RxSwift
 
 public class Scheduler {
-    
     public static let shared = Scheduler()
     
     public let backgroundScheduler: ImmediateSchedulerType
@@ -20,6 +19,5 @@ public class Scheduler {
         
         backgroundScheduler = OperationQueueScheduler(operationQueue: operationQueue)
         mainScheduler = MainScheduler.instance
-    }
-    
+    }    
 }

@@ -18,9 +18,9 @@ public enum ListState: Int {
 public extension ReactiveCollection {
     func toBaseViewModelCollection() -> ReactiveCollection<BaseViewModel>? {
         let newItems = ReactiveCollection<BaseViewModel>()
-        self.forEach { (sectionIndex, section) in
+        self.forEach { _, section in
             var newSection: [BaseViewModel] = []
-            section.forEach({ (index, element) in
+            section.forEach({ _, element in
                 if let vm = element as? BaseViewModel {
                     newSection.append(vm)
                 }
@@ -40,7 +40,6 @@ public extension Reactive where Base: BaseListPage {
 }
 
 open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
-    
     @IBOutlet public weak var tableView: UITableView!
     open var autoEstimateRowHeight = true
     open var allowLoadmoreData: Bool = false
@@ -77,7 +76,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
         
         tableView.rx.itemSelected
             .asObservable()
-            .subscribe(onNext:{ [weak self] indexPath in
+            .subscribe(onNext: { [weak self] indexPath in
                 self?.onItemSelected(indexPath)
             }) => disposeBag
         
@@ -93,10 +92,14 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     }
     
     private func onItemSelected(_ indexPath: IndexPath) {
-        guard let itemsSource = getItemSource() else { return }
+        guard let itemsSource = getItemSource() else {
+            return
+        }
         if let cellViewModel = itemsSource.element(atIndexPath: indexPath) as? BaseCellViewModel {
             selectedItemDidChange(cellViewModel, indexPath)
-            guard let viewModel = self.viewModel as? BaseListViewModel else { return }
+            guard let viewModel = self.viewModel as? BaseListViewModel else {
+                return
+            }
             viewModel.rxSelectedItem.accept(cellViewModel)
             viewModel.rxSelectedIndex.accept(indexPath)
             viewModel.selectedItemDidChange(cellViewModel, indexPath)
@@ -135,6 +138,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
                         tableView.reloadSections(IndexSet([data.section]), with: .automatic)
                     }
                 }
+                
             case let data as ModifyElements:
                 switch data.type {
                 case .insert:
@@ -170,7 +174,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     /**
      Subclasses have to override this method to return correct cell identifier based `CVM` type.
      */
-    open func cellIdentifier(_ cellViewModel: Any,_ returnClassName: Bool = false) -> String {
+    open func cellIdentifier(_ cellViewModel: Any, _ returnClassName: Bool = false) -> String {
         fatalError("Subclasses have to implement this method.")
     }
     
@@ -186,7 +190,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     /**
      Subclasses override this method to handle cell pressed action.
      */
-    open func selectedItemDidChange(_ cellViewModel: Any,_ indexPath: IndexPath) { }
+    open func selectedItemDidChange(_ cellViewModel: Any, _ indexPath: IndexPath) { }
     
     // MARK: - Table view datasources
     
@@ -218,9 +222,8 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
         
         /// Load more data if need
         if allowLoadmoreData,
-            indexPath.row >= pageSize - 1,
-            indexPath.row > tableView.numberOfRows(inSection: indexPath.section)  - 2
-        {
+           indexPath.row >= pageSize - 1,
+           indexPath.row > tableView.numberOfRows(inSection: indexPath.section) - 2 {
             if state == .normal {
                 if let viewModel = self.viewModel as? BaseListViewModel {
                     viewModel.loadMoreContent()
@@ -256,15 +259,20 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
         return heightForFooterInSection(isFooter: true, section: section)
     }
     
-    private func dequeueReusableHeaderFooterView(isFooter:Bool = false, section: Int ) -> UIView? {
-        guard let viewModel = viewModel as? BaseListViewModel, let cellViewModel = viewModel.itemsSource[section].element as? BaseViewModel else { return nil }
+    private func dequeueReusableHeaderFooterView(isFooter: Bool = false, section: Int ) -> UIView? {
+        guard let viewModel = viewModel as? BaseListViewModel,
+              let cellViewModel = viewModel.itemsSource[section].element as? BaseViewModel else {
+            return nil
+        }
         
         var identifier = headerIdentifier(cellViewModel)
         if isFooter {
             identifier = footerIdentifier(cellViewModel)
         }
         
-        guard let _identifier = identifier else { return nil }
+        guard let _identifier = identifier else {
+            return nil
+        }
         
         if let headerFooterView = tableView.dequeueReusableHeaderFooterView(withIdentifier: _identifier) as? BaseHeaderTableView {
             headerFooterView.viewModel = cellViewModel
@@ -274,15 +282,20 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
         return nil
     }
     
-    private func heightForFooterInSection(isFooter:Bool = false, section: Int ) -> CGFloat {
-        guard let viewModel = viewModel as? BaseListViewModel, let headerViewModel = viewModel.itemsSource[section].element as? BaseViewModel else { return 0.0 }
+    private func heightForFooterInSection(isFooter: Bool = false, section: Int ) -> CGFloat {
+        guard let viewModel = viewModel as? BaseListViewModel,
+              let headerViewModel = viewModel.itemsSource[section].element as? BaseViewModel else {
+            return 0.0
+        }
         
         var headerFooterClassName = headerIdentifier(headerViewModel, true)
         if isFooter {
             headerFooterClassName = footerIdentifier(headerViewModel, true)
         }
         
-        guard let _headerFooterClassName = headerFooterClassName else { return 0.0 }
+        guard let _headerFooterClassName = headerFooterClassName else {
+            return 0.0
+        }
         
         if let headerFooterClass = NSClassFromString(_headerFooterClassName) as? BaseHeaderTableView.Type {
             return headerFooterClass.height(withItem: headerViewModel)
@@ -301,7 +314,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
             return UITableView.automaticDimension
         }
         /// get cell class with identifier
-        guard let cell =  NSClassFromString(self.cellIdentifier(cellViewModel, true)) as? BaseTableCell.Type else {
+        guard let cell = NSClassFromString(self.cellIdentifier(cellViewModel, true)) as? BaseTableCell.Type else {
             return UITableView.automaticDimension
         }
         /// return cell height

@@ -11,7 +11,6 @@ import RxCocoa
 
 //MARK: - Based UIView that support BasePage
 open class BaseView: UIView, IView {
-    
     public var disposeBag: DisposeBag? = DisposeBag()
     
     private var _viewModel: BaseViewModel?
@@ -76,31 +75,30 @@ open class BaseView: UIView, IView {
 
 //MARK: Based Header TableView for list page
 open class BaseHeaderTableView: UITableViewHeaderFooterView {
-    
     open class var identifier: String {
         return String(describing: self)
     }
-
+    
     open class func identifier(_ returnClassName: Bool = false) -> String {
         return (returnClassName ? NSStringFromClass(self.self) : String(describing: self))
     }
     
     public var disposeBag: DisposeBag? = DisposeBag()
-
+    
     private var _viewModel: BaseViewModel?
     public var viewModel: BaseViewModel? {
         get { return _viewModel }
         set {
             if newValue != _viewModel {
                 disposeBag = DisposeBag()
-
+                
                 _viewModel = newValue
                 viewModelChanged()
             }
         }
     }
-
-    open class func height(withItem _item: BaseViewModel) -> CGFloat{
+    
+    open class func height(withItem _item: BaseViewModel) -> CGFloat {
         return 30.0
     }
     
@@ -108,41 +106,39 @@ open class BaseHeaderTableView: UITableViewHeaderFooterView {
         super.init(coder: aDecoder)
         setup()
     }
-
+    
     deinit { destroy() }
-
+    
     private func setup() {
         self.backgroundView = UIView()
         initialize()
     }
-
+    
     private func viewModelChanged() {
         bindViewAndViewModel()
         _viewModel?.reactIfNeeded()
     }
-
+    
     open override func prepareForReuse() {
         super.prepareForReuse()
         _viewModel = nil
     }
-
+    
     open func destroy() {
         disposeBag = DisposeBag()
         viewModel?.destroy()
     }
-
+    
     open func initialize() {}
     open func bindViewAndViewModel() {}
-
+    
     open class func getSize(withItem data: Any?) -> CGSize? {
         return nil
     }
 }
 
-
 //MARK: Based Header TableView for list page
 open class BaseHeaderCollectionView: UICollectionReusableView {
-    
     open class var identifier: String {
         return String(describing: self)
     }
@@ -152,21 +148,21 @@ open class BaseHeaderCollectionView: UICollectionReusableView {
     }
     
     public var disposeBag: DisposeBag? = DisposeBag()
-
+    
     private var _viewModel: BaseViewModel?
     public var viewModel: BaseViewModel? {
         get { return _viewModel }
         set {
             if newValue != _viewModel {
                 disposeBag = DisposeBag()
-
+                
                 _viewModel = newValue
                 viewModelChanged()
             }
         }
     }
-
-    open class func headerSize(withItem _item: BaseViewModel) -> CGSize{
+    
+    open class func headerSize(withItem _item: BaseViewModel) -> CGSize {
         return CGSize(width: 30.0, height: 30.0)
     }
     
@@ -174,31 +170,31 @@ open class BaseHeaderCollectionView: UICollectionReusableView {
         super.init(coder: aDecoder)
         setup()
     }
-
+    
     deinit { destroy() }
-
+    
     private func setup() {
         initialize()
     }
-
+    
     private func viewModelChanged() {
         bindViewAndViewModel()
         _viewModel?.reactIfNeeded()
     }
-
+    
     open override func prepareForReuse() {
         super.prepareForReuse()
         _viewModel = nil
     }
-
+    
     open func destroy() {
         disposeBag = DisposeBag()
         viewModel?.destroy()
     }
-
+    
     open func initialize() {}
     open func bindViewAndViewModel() {}
-
+    
     open class func getSize(withItem data: Any?) -> CGSize? {
         return nil
     }
@@ -206,7 +202,6 @@ open class BaseHeaderCollectionView: UICollectionReusableView {
 
 //MARK: Based collection view cell for BaseCollectionPage
 open class BaseCollectionCell: UICollectionViewCell, IView {
-    
     open class var identifier: String {
         return String(describing: self)
     }
@@ -248,7 +243,6 @@ open class BaseCollectionCell: UICollectionViewCell, IView {
     }
     
     private func viewModelChanged() {
-        
         bindViewAndViewModel()
         _viewModel?.reactIfNeeded()
     }
@@ -273,7 +267,6 @@ open class BaseCollectionCell: UICollectionViewCell, IView {
 
 //MARK: Base table view cell for BaseListPage
 open class BaseTableCell: UITableViewCell, IView {
-    
     open class var identifier: String {
         return String(describing: self)
     }
@@ -282,7 +275,7 @@ open class BaseTableCell: UITableViewCell, IView {
         return (returnClass ? NSStringFromClass(self.self) : String(describing: self))
     }
     
-    open class func height(withItem _item: BaseViewModel) -> CGFloat{
+    open class func height(withItem _item: BaseViewModel) -> CGFloat {
         return 30.0
     }
     
@@ -345,4 +338,3 @@ open class BaseTableCell: UITableViewCell, IView {
     open func initialize() {}
     open func bindViewAndViewModel() {}
 }
-

@@ -8,7 +8,6 @@ import RxSwift
 import RxCocoa
 
 extension Reactive where Base: LocalHud {
-    
     public var show: Binder<Bool> {
         return Binder(base) { view, value in
             if value {
@@ -21,7 +20,6 @@ extension Reactive where Base: LocalHud {
 }
 
 open class LocalHud: UIView {
-    
     /// Subclasses override this method to style and re-layout components
     open func setupView() { }
     open func setupView(color: UIColor, message: String?) {}
@@ -33,7 +31,6 @@ open class LocalHud: UIView {
 }
 
 class ActivityIndicatorHub: LocalHud {
-    
     let label = UILabel()
     let indicatorView = UIActivityIndicatorView(style: .white)
     
@@ -66,15 +63,3 @@ class ActivityIndicatorHub: LocalHud {
         indicatorView.stopAnimating()
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

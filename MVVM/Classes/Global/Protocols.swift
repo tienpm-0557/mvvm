@@ -8,15 +8,14 @@ import RxSwift
 import RxCocoa
 
 /// Destroyable type for handling dispose bag and destroy it
-public protocol IDestroyable: class {
-    
+public protocol IDestroyable: AnyObject {
     var disposeBag: DisposeBag? { get set }
+    
     func destroy()
 }
 
 /// PopView type for Page to implement as a pop view
-public protocol IPopupView: class {
-    
+public protocol IPopupView: AnyObject {
     /*
      Setup popup layout
      
@@ -42,12 +41,11 @@ public protocol IPopupView: class {
      
      Must call completion when the animation is finished
      */
-    func hide(overlayView: UIView, completion: @escaping (() -> ()))
+    func hide(overlayView: UIView, completion: @escaping (() -> Void))
 }
 
 /// TransitionView type to create custom transitioning between pages
-public protocol ITransitionView: class {
-    
+public protocol ITransitionView: AnyObject {
     /**
      Keep track of animator delegate for custom transitioning
      */
@@ -55,8 +53,7 @@ public protocol ITransitionView: class {
 }
 
 /// AnyView type for helping assign any viewModel to any view
-public protocol IAnyView: class {
-    
+public protocol IAnyView: AnyObject {
     /**
      Any value assign to this property will be delegate to its correct viewModel type
      */
@@ -65,7 +62,6 @@ public protocol IAnyView: class {
 
 /// Base View type for the whole library
 public protocol IView: IAnyView, IDestroyable {
-    
     associatedtype ViewModelElement
     
     var viewModel: ViewModelElement? { get set }
@@ -78,7 +74,6 @@ public protocol IView: IAnyView, IDestroyable {
 
 /// Base generic viewModel type, implement Destroyable and Equatable
 public protocol IGenericViewModel: IDestroyable, Equatable {
-    
     associatedtype ModelElement
     
     var model: ModelElement? { get set }
@@ -95,30 +90,11 @@ public protocol IViewModel: IGenericViewModel {
 }
 
 public protocol IListViewModel: IViewModel {
-    
     associatedtype CellViewModelElement: IGenericViewModel
     
     var itemsSource: ReactiveCollection<CellViewModelElement> { get }
     var rxSelectedItem: BehaviorRelay<CellViewModelElement?> { get }
     var rxSelectedIndex: BehaviorRelay<IndexPath?> { get }
     
-    func selectedItemDidChange(_ cellViewModel: CellViewModelElement,_ indexPath: IndexPath)
+    func selectedItemDidChange(_ cellViewModel: CellViewModelElement, _ indexPath: IndexPath)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

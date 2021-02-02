@@ -7,8 +7,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-public extension Reactive where Base: UITabBarItem {
-    
+public extension Reactive where Base: UITabBarItem {    
     var image: Binder<UIImage?> {
         return Binder(self.base) { $0.image = $1 }
     }

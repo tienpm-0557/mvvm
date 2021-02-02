@@ -10,7 +10,6 @@ import Alamofire
 import SDWebImage
 
 public struct NetworkImage {
-    
     public private(set) var url: URL? = nil
     public private(set) var placeholder: UIImage? = nil
     
@@ -21,7 +20,6 @@ public struct NetworkImage {
 }
 
 public extension Reactive where Base: UIImageView {
-    
     /// Simple binder for `NetworkImage`
     var networkImage: Binder<NetworkImage> {
         return networkImage()
@@ -35,37 +33,30 @@ public extension Reactive where Base: UIImageView {
             }
             
             if let url = image.url {
-                view.sd_setImage(with: url, placeholderImage: image.placeholder, options: .avoidAutoSetImage) { (image, error, cacheType, url) in
+                view.sd_setImage(with: url,
+                                 placeholderImage: image.placeholder,
+                                 options: .avoidAutoSetImage) { image, _, cacheType, _ in
                     if cacheType == .none {
                         UIView.transition(with: view,
                                           duration: 0.35,
                                           options: imageTransition,
                                           animations: {
-                            view.image = image
-                                            
-                        }, completion: nil)
+                                            view.image = image
+                                          }, completion: nil)
                     } else {
                         view.image = image
                     }
                 }
                 /*
-                view.af_setImage(withURL: url, imageTransition: imageTransition, completion: { response in
-                    /// callback for ViewModel to handle after completion
-                    image.completion?(response)
-                    
-                    /// callback for View to handle after completion
-                    completion?(response)
-                })
+                 view.af_setImage(withURL: url, imageTransition: imageTransition, completion: { response in
+                 /// callback for ViewModel to handle after completion
+                 image.completion?(response)
+                 
+                 /// callback for View to handle after completion
+                 completion?(response)
+                 })
                  */
             }
         }
     }
 }
-
-
-
-
-
-
-
-

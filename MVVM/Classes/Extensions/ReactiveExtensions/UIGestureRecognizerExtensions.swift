@@ -9,16 +9,14 @@ import RxCocoa
 import Action
 
 public extension Reactive where Base: UIGestureRecognizer {
-    
     var isEnabled: Binder<Bool> {
         return Binder(base) { $0.isEnabled = $1 }
     }
 }
 
 public extension UIGestureRecognizer {
-    
     /// Bind action with input transformation
-    func bind<Input, Output>(to action: Action<Input, Output>, inputTransform: @escaping (UIGestureRecognizer) -> (Input))   {
+    func bind<Input, Output>(to action: Action<Input, Output>, inputTransform: @escaping (UIGestureRecognizer) -> (Input)) {
         // This effectively disposes of any existing subscriptions.
         unbindAction()
         
@@ -36,7 +34,7 @@ public extension UIGestureRecognizer {
     }
     
     /// Bind action with static input
-    func bind<Input, Output>(to action: Action<Input, Output>, input: Input)   {
+    func bind<Input, Output>(to action: Action<Input, Output>, input: Input) {
         bind(to: action) { _ in input }
     }
     

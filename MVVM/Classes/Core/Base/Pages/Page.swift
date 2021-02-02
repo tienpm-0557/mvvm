@@ -171,7 +171,8 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
      
      By default, this will call pop action in navigation or dismiss in modal
      */
-    @objc open func onBack() {
+    @objc
+    open func onBack() {
         navigationService.pop()
     }
     
@@ -196,9 +197,3 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
         (_viewModel as? IReactable)?.reactIfNeeded()
     }
 }
-
-
-
-
-
-

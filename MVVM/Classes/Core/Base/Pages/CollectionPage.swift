@@ -8,9 +8,8 @@ import RxSwift
 import RxCocoa
 
 open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
     public typealias CVM = VM.CellViewModelElement
-
+    
     public lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         collectionView.backgroundColor = .clear
@@ -29,7 +28,7 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     override open func viewDidLoad() {
         view.addSubview(collectionView)
         super.viewDidLoad()
@@ -39,10 +38,10 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
         super.viewWillAppear(animated)
         collectionView.backgroundView = nil
     }
-
+    
     override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-
+        
         coordinator.animate(alongsideTransition: { _ in
             self.collectionView.collectionViewLayout.invalidateLayout()
         }, completion: nil)
@@ -56,7 +55,7 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
     open func collectionViewLayout() -> UICollectionViewLayout {
         return UICollectionViewFlowLayout()
     }
-
+    
     open override func initialize() {
         collectionView.autoPinEdgesToSuperviewEdges()
     }
@@ -65,11 +64,11 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
         super.destroy()
         collectionView.removeFromSuperview()
     }
-
+    
     open override func localActivityIndicatorHudToggled(_ value: Bool) {
         collectionView.isHidden = value
     }
-
+    
     /// Every time the viewModel changed, this method will be called again, so make sure to call super for CollectionPage to work
     open override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
@@ -86,9 +85,11 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
                 self?.onDataSourceChanged(indexPath)
             }) => disposeBag
     }
-
+    
     private func onItemSelected(_ indexPath: IndexPath) {
-        guard let viewModel = viewModel else { return }
+        guard let viewModel = viewModel else {
+            return
+        }
         let cellViewModel = viewModel.itemsSource[indexPath.row, indexPath.section]
         
         viewModel.rxSelectedItem.accept(cellViewModel)
@@ -109,7 +110,7 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
                     switch data.type {
                     case .insert:
                         collectionView.insertSections(IndexSet([data.section]))
-                    
+                        
                     case .delete:
                         if data.section < 0 {
                             let sections = Array(0...collectionView.numberOfSections - 1)
@@ -173,7 +174,7 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
     /**
      Subclasses override this method to handle cell pressed action.
      */
-    open func selectedItemDidChange(_ cellViewModel: CVM,_ indexPath: IndexPath) { }
+    open func selectedItemDidChange(_ cellViewModel: CVM, _ indexPath: IndexPath) { }
     
     // MARK: - Collection view datasources
     
@@ -216,33 +217,20 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return .zero
     }
-
+    
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .zero
     }
-
+    
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .zero
     }
-
+    
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
+    
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

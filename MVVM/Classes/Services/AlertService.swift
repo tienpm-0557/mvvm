@@ -41,14 +41,14 @@ public class AlertPage: UIAlertController {
     func updateFont(withMessage message: String?) {
         var myMutableStringMessage = NSMutableAttributedString()
         myMutableStringMessage = NSMutableAttributedString(string: message ?? "",
-                                                           attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14) , NSAttributedString.Key.baselineOffset: 1])
+                                                           attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.baselineOffset: 1])
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 8
         paragraphStyle.alignment = .center
         
         let range = NSRange(location: 0, length: myMutableStringMessage.length)
-        myMutableStringMessage.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:range)
+        myMutableStringMessage.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
         myMutableStringMessage.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], range: range)
         
         var myMutableStringTitle = NSMutableAttributedString()
@@ -74,8 +74,11 @@ public class AlertService: IAlertService {
     
     public func presentObservableOkayAlert(title: String?, message: String?) -> Single<Void> {
         return Single.create { single in
-            let alertPage = AlertPage(title: title, message: message, preferredStyle: .alert)
-            let okayAction = UIAlertAction(title: "OK", style: .cancel) { _ in
+            let alertPage = AlertPage(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "OK",
+                                           style: .cancel) { _ in
                 single(.success(()))
             }
             
@@ -87,9 +90,14 @@ public class AlertService: IAlertService {
         }
     }
     
-    public func presentObservableConfirmAlert(title: String?, message: String?, yesText: String = "Yes", noText: String = "No") -> Single<Bool> {
+    public func presentObservableConfirmAlert(title: String?,
+                                              message: String?,
+                                              yesText: String = "Yes",
+                                              noText: String = "No") -> Single<Bool> {
         return Single.create { single in
-            let alertPage = AlertPage(title: title, message: message, preferredStyle: .alert)
+            let alertPage = AlertPage(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
             
             let yesAction = UIAlertAction(title: yesText, style: .cancel) { _ in
                 single(.success(true))
@@ -107,7 +115,10 @@ public class AlertService: IAlertService {
         }
     }
     
-    public func presentObservaleActionSheet(title: String?, message: String?, actionTitles: [String] = ["OK"], cancelTitle: String = "Cancel") -> Single<String> {
+    public func presentObservaleActionSheet(title: String?,
+                                            message: String?,
+                                            actionTitles: [String] = ["OK"],
+                                            cancelTitle: String = "Cancel") -> Single<String> {
         return Single.create { single in
             let alertPage = AlertPage(title: title, message: message, preferredStyle: .actionSheet)
             

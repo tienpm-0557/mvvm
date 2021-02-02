@@ -15,7 +15,6 @@ import WebKit
 // Mỗi View model sẽ đi với một Base Model tưng ứng.
 
 open class BaseViewModel: NSObject, IViewModel, IReactable {
-    
     public typealias ModelElement = Model
     
     private var _model: Model?
@@ -70,16 +69,14 @@ open class BaseViewModel: NSObject, IViewModel, IReactable {
     
     func reactIfNeeded() {
         /*
-        guard !isReacted else { return }
-        isReacted = true
+         guard !isReacted else { return }
+         isReacted = true
          */
         react()
     }
-    
 }
 
 open class BaseListViewModel: BaseViewModel, IListViewModel {
-    
     public typealias CellViewModelElement = BaseCellViewModel
     
     public typealias ItemsSourceType = [SectionList<BaseCellViewModel>]
@@ -103,26 +100,25 @@ open class BaseListViewModel: BaseViewModel, IListViewModel {
     open override func destroy() {
         super.destroy()
         
-        itemsSource.forEach { (_, sectionList) in
-            sectionList.forEach({ (_, cvm) in
+        itemsSource.forEach { _, sectionList in
+            sectionList.forEach({ _, cvm in
                 cvm.destroy()
             })
         }
     }
     
-    open func selectedItemDidChange(_ cellViewModel: BaseCellViewModel,_ indexPath: IndexPath) { }
+    open func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) { }
     open func loadMoreContent() {}
 }
 
 /**
-A based ViewModel for TableCell and CollectionCell
-
-The difference between ViewModel and CellViewModel is that CellViewModel does not contain NavigationService. Also CellViewModel
-contains its own index
-*/
+ A based ViewModel for TableCell and CollectionCell
+ 
+ The difference between ViewModel and CellViewModel is that CellViewModel does not contain NavigationService. Also CellViewModel
+ contains its own index
+ */
 
 open class BaseCellViewModel: NSObject, IGenericViewModel, IIndexable, IReactable {
-    
     public typealias ModelElement = Model
     
     private var _model: Model?
@@ -146,15 +142,15 @@ open class BaseCellViewModel: NSObject, IGenericViewModel, IIndexable, IReactabl
     public required init(model: Model? = nil) {
         _model = model
     }
-
+    
     open func modelChanged() {}
     open func react() {}
     
     func reactIfNeeded() {
         /*
-        guard !isReacted else { return }
-        isReacted = true
-        */
+         guard !isReacted else { return }
+         isReacted = true
+         */
         react()
     }
     
@@ -169,29 +165,42 @@ public enum WebViewSuorceType: String {
 }
 
 open class BaseWebViewModel: BaseViewModel {
-    
     public let rxSourceType = BehaviorRelay<String>(value: WebViewSuorceType.url.rawValue)
     public let rxSource = BehaviorRelay<String?>(value: "")
     public let rxEstimatedProgress = BehaviorRelay<Double>(value: 0.0)
     
-    public let rxCanGoBack = BehaviorRelay<Bool>(value:false)
-    public let rxCanGoForward = BehaviorRelay<Bool>(value:false)
-    public let rxIsLoading = BehaviorRelay<Bool>(value:false)
+    public let rxCanGoBack = BehaviorRelay<Bool>(value: false)
+    public let rxCanGoForward = BehaviorRelay<Bool>(value: false)
+    public let rxIsLoading = BehaviorRelay<Bool>(value: false)
     
-    open func webView(_ webView: WKWebView, estimatedProgress:Double) {}
+    open func webView(_ webView: WKWebView, estimatedProgress: Double) {}
     
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {}
     
     open func webView(_ webView: WKWebView, evaluateJavaScript:(event: Any?, error: Error?)?) {}
-          
-    open func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) { completionHandler() }
-          
-    open func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {completionHandler(false)}
-          
-    open func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {completionHandler(.useCredential, nil)}
+    
+    open func webView(_ webView: WKWebView,
+                      runJavaScriptAlertPanelWithMessage message: String,
+                      initiatedByFrame frame: WKFrameInfo,
+                      completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
+    open func webView(_ webView: WKWebView,
+                      runJavaScriptConfirmPanelWithMessage message: String,
+                      initiatedByFrame frame: WKFrameInfo,
+                      completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(false)
+    }
+    
+    open func webView(_ webView: WKWebView,
+                      didReceive challenge: URLAuthenticationChallenge,
+                      completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        completionHandler(.useCredential, nil)
+    }
     
     open func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation, withError error: Error) {}
-          
+    
     open func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void) {
         decisionHandler(.allow)
     }
@@ -199,17 +208,14 @@ open class BaseWebViewModel: BaseViewModel {
     open func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Swift.Void) {
         decisionHandler(.allow)
     }
-    
 }
 
 open class PageOption {
     public var isInfinity: Bool = false
     public var transitionStyle: Int = 0
-    
 }
 
 open class BaseUIPageViewModel: BaseViewModel {
-    
     public let itemsSource = ReactiveCollection<UIPageItem>()
     public let rxSelectedItem = BehaviorRelay<UIPageItem?>(value: nil)
     public let rxSelectedIndex = BehaviorRelay<Int>(value: 0)
@@ -228,22 +234,21 @@ open class BaseUIPageViewModel: BaseViewModel {
     open override func destroy() {
         super.destroy()
         
-        itemsSource.forEach { (_, sectionList) in
-            sectionList.forEach({ (_, cvm) in
+        itemsSource.forEach { _, sectionList in
+            sectionList.forEach({ _, cvm in
                 cvm.destroy()
             })
         }
     }
     
-    open func selectedItemDidChange(_ cellViewModel: BaseCellViewModel,_ indexPath: IndexPath) { }
+    open func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) { }
     open func loadMoreContent() {}
 }
 
 open class UIPageItem: NSObject, IReactable {
-    
     public internal(set) var pageIndex: Int = 0
     public var disposeBag: DisposeBag? = DisposeBag()
-       
+    
     var isReacted = false
     
     private var _model: Model?
@@ -253,18 +258,18 @@ open class UIPageItem: NSObject, IReactable {
         self._model = model
         self.vc = viewController
     }
-   
+    
     open func modelChanged() {}
     open func react() {}
-       
+    
     func reactIfNeeded() {
         /*
-        guard !isReacted else { return }
-        isReacted = true
+         guard !isReacted else { return }
+         isReacted = true
          */
         react()
     }
-          
+    
     open func destroy() {
         disposeBag = DisposeBag()
     }

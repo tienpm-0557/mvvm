@@ -6,7 +6,6 @@
 import UIKit
 
 public extension UIEdgeInsets {
-    
     @available(*, deprecated, renamed: "all")
     static func equally(_ padding: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
@@ -49,11 +48,3 @@ public extension UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: value)
     }
 }
-
-
-
-
-
-
-
-

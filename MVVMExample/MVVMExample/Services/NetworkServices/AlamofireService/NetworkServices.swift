@@ -28,35 +28,36 @@ class NetworkService {
     
     /// Define default parameter
     func getDefaultParams() -> [String:Any] {
-        var params:[String:Any] = [String:Any]()
+        var params: [String: Any] = [String: Any]()
         params["version"] = SystemConfiguration.version
         params["build"] = SystemConfiguration.buildIndex
         return params
     }
     
     /// Encode hash key for content api
-    func getResultKeyAlphabeFromDict(_ objectDict:[String:Any]) -> String {
+    func getResultKeyAlphabeFromDict(_ objectDict: [String: Any]) -> String {
         let allKeys = objectDict.keys
         let sortedArray = allKeys.sorted {
             $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending
         }
         
-        var resultKey:String = ""
+        var resultKey: String = ""
         for key in sortedArray {
-            if (objectDict[key] is String) {
-                resultKey = resultKey + (objectDict[key] as! String)
+            if objectDict[key] is String {
+                let value = objectDict[key] as! String
+                resultKey = resultKey + value
             } else {
                 resultKey = resultKey + "\(String(describing: objectDict[key]!))"
             }
         }
-        return  MTLAB_SECRET_KEY + resultKey;
+        return  MTLAB_SECRET_KEY + resultKey
     }
     
     open func request(withService service: APIService,
                       withHash hash:Bool,
                       usingCache cache:Bool,
                       injectDefaulParameter defaultParamter: Bool = false) -> Single<APIResponse> {
-
+        
         
         var _params: [String:Any] = [:]
         /// Consider inject default parameter.
@@ -80,10 +81,10 @@ class NetworkService {
         return Single.create { [weak self] single in
             self?.state.accept(.requesting)
             BaseNetworkService.shared.request(urlString: urlString,
-                                         method: service.method,
-                                         params: _params,
-                                         parameterEncoding: service.encoding,
-                                         additionalHeaders: service.header)
+                                              method: service.method,
+                                              params: _params,
+                                              parameterEncoding: service.encoding,
+                                              additionalHeaders: service.header)
                 .map(service.prepareSources)
                 .subscribe(onSuccess: { [weak self](json) in
                     self?.state.accept(.success)

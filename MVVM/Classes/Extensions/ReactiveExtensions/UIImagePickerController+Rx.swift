@@ -11,12 +11,12 @@ import RxCocoa
 import RxSwift
 
 extension Reactive where Base: UIImagePickerController {
-    public var pickerDelegate: DelegateProxy<UIImagePickerController,
+    public var pickerDelegate: DelegateProxy< UIImagePickerController,
                                              UIImagePickerControllerDelegate & UINavigationControllerDelegate > {
         return RxImagePickerDelegateProxy.proxy(for: base)
     }
     
-    public var didFinishPickingMediaWithInfo: Observable<[String : AnyObject]> {
+    public var didFinishPickingMediaWithInfo: Observable<[String: AnyObject]> {
         return pickerDelegate.methodInvoked(#selector(UIImagePickerControllerDelegate.imagePickerController(_:didFinishPickingMediaWithInfo:))).map({
             return try castOrThrow(Dictionary<String, AnyObject>.self, $0[1])
         })
@@ -46,12 +46,12 @@ public func dismissViewController(_ viewController: UIViewController, animated: 
 extension Reactive where Base: UIImagePickerController {
     static public func createWithParent(_ parent: UIViewController?,
                                         animated: Bool = true,
-                                        configureImagePicker: @escaping (UIImagePickerController) throws -> () = { _ in })
+                                        configureImagePicker: @escaping (UIImagePickerController) throws -> Void = { _ in })
     -> Observable<UIImagePickerController> {
         return Observable.create { [weak parent] observer in
             let imagePicker = UIImagePickerController()
             let dismissDisposable = Observable.merge(
-                imagePicker.rx.didFinishPickingMediaWithInfo.map{ _ in ()},
+                imagePicker.rx.didFinishPickingMediaWithInfo.map { _ in () },
                 imagePicker.rx.didCancel
             )
             .subscribe(onNext: {  _ in
@@ -81,12 +81,11 @@ extension Reactive where Base: UIImagePickerController {
     }
 }
 
-public class RxImagePickerDelegateProxy : DelegateProxy<UIImagePickerController,
+public class RxImagePickerDelegateProxy: DelegateProxy< UIImagePickerController,
                                                         UIImagePickerControllerDelegate & UINavigationControllerDelegate>,
                                           DelegateProxyType,
                                           UIImagePickerControllerDelegate,
                                           UINavigationControllerDelegate {
-    
     public init(imagePicker: UIImagePickerController) {
         super.init(parentObject: imagePicker,
                    delegateProxy: RxImagePickerDelegateProxy.self)

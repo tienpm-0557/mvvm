@@ -8,7 +8,7 @@ import RxSwift
 import RxCocoa
 
 // MARK: - Two way binding shorthand
-
+// swiftlint:disable operator_whitespace
 infix operator <~> : DefaultPrecedence
 
 public func <~><T>(property: ControlProperty<T>, relay: BehaviorRelay<T>) -> Disposable {
@@ -103,21 +103,3 @@ public func =>(disposable: Disposable?, bag: DisposeBag?) {
         d.disposed(by: b)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

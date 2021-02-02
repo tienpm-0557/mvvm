@@ -8,7 +8,6 @@ import RxSwift
 import ObjectMapper
 
 public protocol IStorageService {
-    
     func save<T>(_ value: T, forKey key: String)
     func get<T>(forKey key: String) -> T?
     
@@ -22,7 +21,6 @@ public protocol IStorageService {
 }
 
 open class StorageService: IStorageService {
-    
     private let defaults = UserDefaults.standard
     
     /// Save generic type to UserDefaults
@@ -78,20 +76,3 @@ open class StorageService: IStorageService {
         defaults.synchronize()
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

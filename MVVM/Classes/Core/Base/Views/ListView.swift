@@ -6,7 +6,6 @@
 import UIKit
 
 open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITableViewDelegate {
-
     public typealias CVM = VM.CellViewModelElement
     public let tableView: UITableView
     
@@ -47,13 +46,15 @@ open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITabl
         
         viewModel?.itemsSource.collectionChanged
             .observeOn(Scheduler.shared.mainScheduler)
-            .subscribe(onNext:{[weak self] indexPath in
+            .subscribe(onNext: {[weak self] indexPath in
                 self?.onDataSourceChanged(indexPath)
             }) => disposeBag
     }
     
     private func onItemSelected(_ indexPath: IndexPath) {
-        guard let viewModel = self.viewModel else { return }
+        guard let viewModel = self.viewModel else {
+            return
+        }
         let cellViewModel = viewModel.itemsSource[indexPath.row, indexPath.section]
         viewModel.rxSelectedItem.accept(cellViewModel)
         viewModel.rxSelectedIndex.accept(indexPath)
@@ -93,6 +94,7 @@ open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITabl
                         tableView.reloadSections(IndexSet([data.section]), with: .automatic)
                     }
                 }
+                
             case let data as ModifyElements:
                 switch data.type {
                 case .insert:
@@ -129,7 +131,7 @@ open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITabl
         fatalError("Subclasses have to implement this method.")
     }
     
-    open func selectedItemDidChange(_ cellViewModel: CVM,_ indexPath: IndexPath) { }
+    open func selectedItemDidChange(_ cellViewModel: CVM, _ indexPath: IndexPath) {}
     
     // MARK: - Table view datasources
     

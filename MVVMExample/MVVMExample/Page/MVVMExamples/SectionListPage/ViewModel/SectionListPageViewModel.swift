@@ -40,7 +40,7 @@ class SectionListPageViewModel: BaseListViewModel {
                 self.tmpBag = DisposeBag()
                 
                 for sectionList in sectionLists {
-                    if let cvm = sectionList.key as? SectionHeaderViewViewModel {
+                    if let cvm = sectionList.element as? SectionHeaderViewViewModel {
                         cvm.addAction
                             .executionObservables
                             .switchLatest()

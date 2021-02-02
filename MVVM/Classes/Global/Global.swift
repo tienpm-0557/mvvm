@@ -17,7 +17,6 @@ public enum ApplicationState {
 
 /// Factory type
 public struct Factory<T> {
-    
     /// Block type for factory creation
     public typealias Instantiation<T> = (() -> T)
     
@@ -39,9 +38,8 @@ public struct Factory<T> {
  correctly
  */
 public struct DDConfigurations {
-    
     /// Block type for destroy a page (mainly to clean up DisposeBag)
-    public typealias DestroyPageBlock = ((UIViewController?) -> ())
+    public typealias DestroyPageBlock = ((UIViewController?) -> Void)
     
     /*
      Factory for searching top page in our main window
@@ -50,9 +48,9 @@ public struct DDConfigurations {
      then override this block to make navigation service can find the correct top page
      */
     public static var topPageFindingBlock: Factory<UIViewController?> = Factory {
-        let myWindow = UIApplication.shared.windows
-            .filter { !($0.rootViewController is UIAlertController) }
-            .first
+        let myWindow = UIApplication.shared.windows.first(where: { window -> Bool in
+            return !(window.rootViewController is UIAlertController)
+        })
         
         guard let rootPage = myWindow?.rootViewController else {
             return nil

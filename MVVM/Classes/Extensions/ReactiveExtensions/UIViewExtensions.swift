@@ -8,7 +8,6 @@ import RxSwift
 import RxCocoa
 
 public extension Reactive where Base: UIView {
-    
     var backgroundColor: Binder<UIColor> {
         return Binder(base) { $0.backgroundColor = $1 }
     }
@@ -69,16 +68,3 @@ public extension Reactive where Base: UIView {
         return longPress.rx.event
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

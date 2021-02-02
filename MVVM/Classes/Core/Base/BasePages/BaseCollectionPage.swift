@@ -18,7 +18,6 @@ public extension Reactive where Base: BaseCollectionPage {
 }
 
 open class BaseCollectionPage: BasePage {
-    
     @IBOutlet public weak var collectionView: UICollectionView!
     
     open var allowLoadmoreData: Bool = false
@@ -38,7 +37,7 @@ open class BaseCollectionPage: BasePage {
         fatalError("Subclasses have to implement this method.")
     }
     
-    open func setupCollectionView()  {
+    open func setupCollectionView() {
         if collectionView == nil {
             assert(false, "BaseCollectionPage: You must set outlet for collectionView")
         }
@@ -55,7 +54,7 @@ open class BaseCollectionPage: BasePage {
         assert(false, "This is an abstract method and should be overridden.")
     }
     
-    open func cellIdentifier(_ cellViewModel: Any,_ isClass: Bool = false) -> String {
+    open func cellIdentifier(_ cellViewModel: Any, _ isClass: Bool = false) -> String {
         fatalError("This is an abstract method and should be overridden.")
     }
     
@@ -72,7 +71,7 @@ open class BaseCollectionPage: BasePage {
     /**
     Subclasses override this method to handle cell pressed action.
     */
-    open func selectedItemDidChange(_ cellViewModel: Any,_ indexPath: IndexPath) { }
+    open func selectedItemDidChange(_ cellViewModel: Any, _ indexPath: IndexPath) { }
     
     open func itemAtIndexPath(_ indexPath: IndexPath) -> Any? {
         if let itemsSource = getItemSource(),
@@ -100,7 +99,6 @@ open class BaseCollectionPage: BasePage {
             .observeOn(Scheduler.shared.mainScheduler)
             .subscribe(onNext: onDataSourceChanged) => disposeBag
     }
-    
     
     private func onDataSourceChanged(_ changeSet: ChangeSet) {
         if !changeSet.animated || (changeSet.type == .reload && collectionView.numberOfSections == 0) {
@@ -155,11 +153,12 @@ open class BaseCollectionPage: BasePage {
                 // update counter
             }, completion: nil)
         }
-        
     }
     
     private func onItemSelected(_ indexPath: IndexPath) {
-        guard let itemsSource = getItemSource() else { return }
+        guard let itemsSource = getItemSource() else {
+            return
+        }
         if let cellViewModel = itemsSource.element(atIndexPath: indexPath) {
             selectedItemDidChange(cellViewModel, indexPath)
             
@@ -172,7 +171,6 @@ open class BaseCollectionPage: BasePage {
 }
 
 extension BaseCollectionPage: UICollectionViewDataSource {
-    
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return getItemSource()?.count ?? 0
     }
@@ -209,13 +207,9 @@ extension BaseCollectionPage: UICollectionViewDataSource {
     }
 }
 
-extension BaseCollectionPage: UICollectionViewDelegate {
-    
-}
-
+extension BaseCollectionPage: UICollectionViewDelegate { }
 
 extension BaseCollectionPage: UICollectionViewDelegateFlowLayout {
-    
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let cellViewModel = itemAtIndexPath(indexPath) else {
             return CGSize.zero
@@ -240,16 +234,22 @@ extension BaseCollectionPage: UICollectionViewDelegateFlowLayout {
         return heightForFooterInSection(isFooter: true, section: section)
     }
     
-    private func dequeueReusableHeaderFooterView(kind:String,  isFooter:Bool = false, indexPath: IndexPath ) -> UICollectionReusableView? {
-        guard let viewModel = viewModel as? BaseListViewModel, let cellViewModel = viewModel.itemsSource[indexPath.section].element as? BaseViewModel else { return nil }
+    private func dequeueReusableHeaderFooterView(kind: String,
+                                                 isFooter: Bool = false,
+                                                 indexPath: IndexPath ) -> UICollectionReusableView? {
+        guard let viewModel = viewModel as? BaseListViewModel,
+              let cellViewModel = viewModel.itemsSource[indexPath.section].element as? BaseViewModel else {
+            return nil
+        }
 
         var identifier = headerIdentifier(cellViewModel)
         if isFooter {
             identifier = footerIdentifier(cellViewModel)
         }
 
-        guard let _identifier = identifier else { return nil }
-
+        guard let _identifier = identifier else {
+            return nil
+        }
         
         if let headerFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: _identifier, for: indexPath) as? BaseHeaderCollectionView {
             headerFooterView.viewModel = cellViewModel
@@ -259,15 +259,20 @@ extension BaseCollectionPage: UICollectionViewDelegateFlowLayout {
         return nil
     }
     
-    private func heightForFooterInSection(isFooter:Bool = false, section: Int ) -> CGSize {
-        guard let viewModel = viewModel as? BaseListViewModel, let headerViewModel = viewModel.itemsSource[section].element as? BaseViewModel else { return CGSize.zero }
+    private func heightForFooterInSection(isFooter: Bool = false, section: Int ) -> CGSize {
+        guard let viewModel = viewModel as? BaseListViewModel,
+              let headerViewModel = viewModel.itemsSource[section].element as? BaseViewModel else {
+            return CGSize.zero
+        }
         
         var headerFooterClassName = headerIdentifier(headerViewModel, true)
         if isFooter {
             headerFooterClassName = footerIdentifier(headerViewModel, true)
         }
         
-        guard let _headerFooterClassName = headerFooterClassName else { return CGSize.zero }
+        guard let _headerFooterClassName = headerFooterClassName else {
+            return CGSize.zero
+        }
         
         if let headerFooterClass = NSClassFromString(_headerFooterClassName) as? BaseHeaderCollectionView.Type {
             return headerFooterClass.headerSize(withItem: headerViewModel)

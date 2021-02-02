@@ -7,7 +7,6 @@ import UIKit
 import RxSwift
 
 public extension Reactive where Base: UIScrollView {
-    
     func endReach(_ distance: CGFloat) -> Observable<Void> {
         return Observable.create { observer in
             return self.base.rx.contentOffset.subscribe(onNext: { offset in

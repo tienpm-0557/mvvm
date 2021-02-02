@@ -18,7 +18,7 @@ class TimelinePageViewModel: BaseListViewModel {
     var networkService: NetworkService?
     
     var tmpBag: DisposeBag?
-      
+    
     let rxTille = BehaviorRelay<String>(value: "")
     
     lazy var getDataAction: Action<Void, Void> = {
@@ -45,9 +45,9 @@ class TimelinePageViewModel: BaseListViewModel {
                     self?.itemsSource.append(data, animated: false)
                 }
                 
-        }, onError: { (error) in
+            }, onError: { (error) in
                 
-        }) => tmpBag
+            }) => tmpBag
     }
     
     private func loadMore() {
@@ -60,16 +60,7 @@ class TimelinePageViewModel: BaseListViewModel {
             alertService.presentOkayAlert(title: "Error",
                                           message: "\(response.message)\nPlease be sure to provide your own SECRET key from MTLAB.")
         }
-        
-//        let result = response.timelines.map {
-//
-//        }
-        
-//        if response.page >= response.pages {
-//            finishedSearching = true
-//        }
-        
-        return response.timelines as? [BaseCellViewModel]
+        return response.timelines
     }
     
 }

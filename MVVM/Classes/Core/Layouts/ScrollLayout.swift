@@ -9,7 +9,6 @@ import UIKit
 
 /// Wrap scroll view into a horizontal or vertical stack layout
 public class ScrollLayout: UIScrollView {
-    
     private let layout = StackLayout()
     private let containerView = UIView()
     
@@ -42,6 +41,7 @@ public class ScrollLayout: UIScrollView {
         case .vertical:
             alwaysBounceVertical = true
             containerView.autoMatch(.width, to: .width, of: self)
+            
         default:
             alwaysBounceHorizontal = true
             containerView.autoMatch(.height, to: .height, of: self)
@@ -63,7 +63,6 @@ public class ScrollLayout: UIScrollView {
 }
 
 public extension ScrollLayout {
-    
     /// Append a child into stack layout, accept only UIView or StackItem type,
     /// otherwise will be ignore
     @discardableResult

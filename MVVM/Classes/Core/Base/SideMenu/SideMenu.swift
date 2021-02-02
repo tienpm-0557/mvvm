@@ -7,12 +7,19 @@
 
 import UIKit
 
+public let k_ss = UIScreen.main.bounds.size
+
 @objc public protocol MTASideMenuDelegate {
-    @objc optional func sideMenuDidRecognizePanGesture(_ sideMenu: SideMenu, recongnizer: UIPanGestureRecognizer)
-    @objc optional func sideMenuWillShowMenuViewController(_ sideMenu: SideMenu, menuViewController: UIViewController)
-    @objc optional func sideMenuDidShowMenuViewController(_ sideMenu: SideMenu, menuViewController: UIViewController)
-    @objc optional func sideMenuWillHideMenuViewController(_ sideMenu: SideMenu, menuViewController: UIViewController)
-    @objc optional func sideMenuDidHideMenuViewController(_ sideMenu: SideMenu, menuViewController: UIViewController)
+    @objc
+    optional func sideMenuDidRecognizePanGesture(_ sideMenu: SideMenu, recongnizer: UIPanGestureRecognizer)
+    @objc
+    optional func sideMenuWillShowMenuViewController(_ sideMenu: SideMenu, menuViewController: UIViewController)
+    @objc
+    optional func sideMenuDidShowMenuViewController(_ sideMenu: SideMenu, menuViewController: UIViewController)
+    @objc
+    optional func sideMenuWillHideMenuViewController(_ sideMenu: SideMenu, menuViewController: UIViewController)
+    @objc
+    optional func sideMenuDidHideMenuViewController(_ sideMenu: SideMenu, menuViewController: UIViewController)
 }
 
 open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
@@ -41,14 +48,13 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     }
     
     public struct SideMenuOptions {
-        
         var animationDuration: Float = 0.35
         var panGestureEnabled: Bool = true
         var panDirection: MTASideMenuPanDirection = .edge
         var type: MTASideMenuType = .scale
         var panMinimumOpenThreshold: UInt = 60
-        var menuViewControllerTransformation: CGAffineTransform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-        var backgroundTransformation: CGAffineTransform = CGAffineTransform(scaleX: 1.7, y: 1.7)
+        var menuViewControllerTransformation = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        var backgroundTransformation = CGAffineTransform(scaleX: 1.7, y: 1.7)
         var endAllEditing: Bool = false
         
         init(animationDuration: Float = 0.35,
@@ -58,8 +64,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
              panMinimumOpenThreshold: UInt = 60,
              menuViewControllerTransformation: CGAffineTransform = CGAffineTransform(scaleX: 1.5, y: 1.5),
              backgroundTransformation: CGAffineTransform = CGAffineTransform(scaleX: 1.7, y: 1.7),
-             endAllEditing: Bool = false)
-        {
+             endAllEditing: Bool = false) {
             self.animationDuration = animationDuration
             self.panGestureEnabled = panGestureEnabled
             self.panDirection = panDirection
@@ -113,7 +118,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     @IBInspectable public var rightMenuViewStoryboardID: String?
     
     // MARK : Private Properties: MenuView & BackgroundImageView
-    @IBInspectable public var fadeMenuView: Bool =  true
+    @IBInspectable public var fadeMenuView: Bool = true
     @IBInspectable public var scaleMenuView: Bool = true
     @IBInspectable public var scaleBackgroundImageView: Bool = true
     @IBInspectable public var parallaxEnabled: Bool = true
@@ -125,8 +130,9 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     // MARK : Private Properties: ContentView
     @IBInspectable public var contentViewScaleValue: Float = 0.7
     @IBInspectable public var contentViewFadeOutAlpha: Float = 1.0
-    @IBInspectable public var contentViewInLandscapeOffsetCenterX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(300 - max(UIScreen.main.bounds.size.width,UIScreen.main.bounds.size.height)/2) : 30
-    @IBInspectable public var contentViewInPortraitOffsetCenterX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(300 - min(UIScreen.main.bounds.size.width,UIScreen.main.bounds.size.height)/2) : 100
+    
+    @IBInspectable public var contentViewInLandscapeOffsetCenterX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(300 - max(k_ss.width, k_ss.height) / 2) : 30
+    @IBInspectable public var contentViewInPortraitOffsetCenterX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(300 - min(k_ss.width, k_ss.height) / 2) : 100
     @IBInspectable public var parallaxContentMinimumRelativeValue: Float = 0.0
     @IBInspectable public var parallaxContentMaximumRelativeValue: Float = 0.0
     
@@ -155,14 +161,14 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     fileprivate var visible: Bool = false
     fileprivate var leftMenuVisible: Bool = false
     fileprivate var rightMenuVisible: Bool = false
-    fileprivate var originalPoint: CGPoint = CGPoint()
+    fileprivate var originalPoint = CGPoint()
     fileprivate var didNotifyDelegate: Bool = false
     
     fileprivate let iOS8: Bool = kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_7_1
-    fileprivate let menuViewContainer: UIView = UIView()
-    fileprivate let contentViewContainer: UIView = UIView()
-    fileprivate let contentButton: UIButton = UIButton()
-    fileprivate let backgroundImageView: UIImageView = UIImageView()
+    fileprivate let menuViewContainer = UIView()
+    fileprivate let contentViewContainer = UIView()
+    fileprivate let contentButton = UIButton()
+    fileprivate let backgroundImageView = UIImageView()
     
     // MARK : Public Properties
     @IBInspectable var backgroundImage: UIImage? {
@@ -174,7 +180,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     }
     
     public var contentViewController: UIViewController? {
-        willSet  {
+        willSet {
             setupViewController(contentViewContainer, targetViewController: newValue)
         }
         didSet {
@@ -189,7 +195,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     }
     
     public var leftMenuViewController: UIViewController? {
-        willSet  {
+        willSet {
             setupViewController(menuViewContainer, targetViewController: newValue)
         }
         didSet {
@@ -202,7 +208,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     }
     
     public var rightMenuViewController: UIViewController? {
-        willSet  {
+        willSet {
             setupViewController(menuViewContainer, targetViewController: newValue)
         }
         didSet {
@@ -261,8 +267,8 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     open override func viewDidLoad() {
         super.viewDidLoad()
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        menuViewContainer.frame = view.bounds;
-        menuViewContainer.autoresizingMask = [.flexibleWidth, .flexibleHeight];
+        menuViewContainer.frame = view.bounds
+        menuViewContainer.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         menuViewContainer.alpha = fadeMenuView ? 0 : 1
         
         contentViewContainer.frame = view.bounds
@@ -279,13 +285,13 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
             view.addGestureRecognizer(panGestureRecognizer)
         }
         
-        if let _ = backgroundImage {
+        if backgroundImage != nil {
             if scaleBackgroundImageView {
                 backgroundImageView.transform = backgroundTransformation
             }
             backgroundImageView.frame = view.bounds
-            backgroundImageView.contentMode = .scaleAspectFill;
-            backgroundImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight];
+            backgroundImageView.contentMode = .scaleAspectFill
+            backgroundImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             view.addSubview(backgroundImageView)
         }
         
@@ -313,7 +319,8 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         showRightMenuViewController()
     }
     
-    @objc public func hideMenuViewController() {
+    @objc
+    public func hideMenuViewController() {
         hideMenuViewController(true)
     }
     
@@ -321,13 +328,14 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         if let viewController = rightMenuViewController {
             showMenuViewController(.right, menuViewController: viewController)
             
-            UIView.animate(withDuration: TimeInterval(animationDuration), animations: {[unowned self] () -> Void in
-                self.animateMenuViewController(.right)
-                self.menuViewContainer.alpha = 1
-                self.contentViewContainer.alpha = CGFloat(self.contentViewFadeOutAlpha)
-            }, completion: {[unowned self] (Bool) -> Void in
-                    self.animateMenuViewControllerCompletion(.right, menuViewController: viewController)
-            })
+            UIView.animate(withDuration: TimeInterval(animationDuration),
+                           animations: {[unowned self] () -> Void in
+                            self.animateMenuViewController(.right)
+                            self.menuViewContainer.alpha = 1
+                            self.contentViewContainer.alpha = CGFloat(self.contentViewFadeOutAlpha)
+                           }, completion: {[unowned self] _ in
+                            self.animateMenuViewControllerCompletion(.right, menuViewController: viewController)
+                           })
             statusBarNeedsAppearanceUpdate()
         }
     }
@@ -335,13 +343,14 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     fileprivate func showLeftMenuViewController() {
         if let viewController = leftMenuViewController {
             showMenuViewController(.left, menuViewController: viewController)
-            UIView.animate(withDuration: TimeInterval(animationDuration), animations: {[unowned self] () -> Void in
-                self.animateMenuViewController(.left)
-                self.menuViewContainer.alpha = 1
-                self.contentViewContainer.alpha = CGFloat(self.contentViewFadeOutAlpha)
-            }, completion: {[unowned self] (Bool) -> Void in
-                    self.animateMenuViewControllerCompletion(.left, menuViewController: viewController)
-            })
+            UIView.animate(withDuration: TimeInterval(animationDuration),
+                           animations: {[unowned self] () -> Void in
+                            self.animateMenuViewController(.left)
+                            self.menuViewContainer.alpha = 1
+                            self.contentViewContainer.alpha = CGFloat(self.contentViewFadeOutAlpha)
+                           }, completion: {[unowned self] _ in
+                            self.animateMenuViewControllerCompletion(.left, menuViewController: viewController)
+                           })
             statusBarNeedsAppearanceUpdate()
         }
     }
@@ -352,6 +361,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         case .left:
             leftMenuViewController?.beginAppearanceTransition(true, animated: true)
             rightMenuViewController?.view.isHidden = true
+            
         case .right:
             rightMenuViewController?.beginAppearanceTransition(true, animated: true)
             leftMenuViewController?.view.isHidden = true
@@ -390,7 +400,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         
         menuViewContainer.transform = CGAffineTransform.identity
         if scaleBackgroundImageView {
-            if let _ = backgroundImage {
+            if backgroundImage != nil {
                 backgroundImageView.transform = CGAffineTransform.identity
             }
         }
@@ -406,6 +416,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         case .left:
             leftMenuViewController?.endAppearanceTransition()
             leftMenuVisible = true
+            
         case .right:
             if contentViewContainer.frame.size.width == view.bounds.size.width &&
                 contentViewContainer.frame.size.height == view.bounds.size.height &&
@@ -463,7 +474,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         rightMenuVisible = false
         contentButton.removeFromSuperview()
         
-        let animationsClosure: () -> () =  {[unowned self] () -> () in
+        let animationsClosure: () -> Void = {[unowned self] () -> Void in
             self.contentViewContainer.transform = CGAffineTransform.identity
             self.contentViewContainer.frame = self.view.bounds
             
@@ -484,7 +495,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         
-        let completionClosure: () -> () =  {[unowned self] () -> () in
+        let completionClosure: () -> Void = {[unowned self] () -> Void in
             visibleMenuViewController?.endAppearanceTransition()
             if isRightMenuVisible, let viewController = self.rightMenuViewController {
                 self.delegate?.sideMenuDidHideMenuViewController?(self, menuViewController: viewController)
@@ -497,12 +508,13 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         
         if animated {
             self.view.isUserInteractionEnabled = false
-            UIView.animate(withDuration: TimeInterval(animationDuration), animations: { () -> Void in
-                animationsClosure()
-            }, completion: { (Bool) -> Void in
-                completionClosure()
-                self.view.isUserInteractionEnabled = true
-            })
+            UIView.animate(withDuration: TimeInterval(animationDuration),
+                           animations: { () -> Void in
+                            animationsClosure()
+                           }, completion: { _ in
+                            completionClosure()
+                            self.view.isUserInteractionEnabled = true
+                           })
         } else {
             animationsClosure()
             completionClosure()
@@ -529,11 +541,10 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK : Layout
     fileprivate func setupContentButton() {
-        
-        if let _ = contentButton.superview {
+        if contentButton.superview != nil {
             return
         } else {
-            contentButton.addTarget(self, action: #selector(SideMenu.hideMenuViewController as (SideMenu) -> () -> ()), for:.touchUpInside)
+            contentButton.addTarget(self, action: #selector(SideMenu.hideMenuViewController as (SideMenu) -> () -> Void), for: .touchUpInside)
             contentButton.autoresizingMask = UIView.AutoresizingMask()
             contentButton.frame = contentViewContainer.bounds
             contentButton.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -544,8 +555,8 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate func statusBarNeedsAppearanceUpdate() {
         if self.responds(to: #selector(UIViewController.setNeedsStatusBarAppearanceUpdate)) {
-            
-            UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            UIView.animate(withDuration: 0.3,
+                           animations: { () -> Void in
                 self.setNeedsStatusBarAppearanceUpdate()
             })
         }
@@ -554,7 +565,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     fileprivate func setupContentViewShadow() {
         if contentViewShadowEnabled {
             let layer: CALayer = contentViewContainer.layer
-            let path: UIBezierPath = UIBezierPath(rect: layer.bounds)
+            let path = UIBezierPath(rect: layer.bounds)
             layer.shadowPath = path.cgPath
             layer.shadowColor = contentViewShadowColor.cgColor
             layer.shadowOffset = contentViewShadowOffset
@@ -598,11 +609,11 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
             removeMotionEffects(menuViewContainer)
             // We need to refer to self in closures!
             UIView.animate(withDuration: 0.2, animations: { [unowned self] () -> Void in
-                let interpolationHorizontal: UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+                let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
                 interpolationHorizontal.minimumRelativeValue = self.parallaxContentMinimumRelativeValue
                 interpolationHorizontal.maximumRelativeValue = self.parallaxContentMaximumRelativeValue
                 
-                let interpolationVertical: UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
+                let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
                 interpolationHorizontal.minimumRelativeValue = self.parallaxContentMinimumRelativeValue
                 interpolationHorizontal.maximumRelativeValue = self.parallaxContentMaximumRelativeValue
                 
@@ -617,11 +628,11 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
             removeMotionEffects(contentViewContainer)
             // We need to refer to self in closures!
             UIView.animate(withDuration: 0.2, animations: { [unowned self] () -> Void in
-                let interpolationHorizontal: UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+                let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
                 interpolationHorizontal.minimumRelativeValue = self.parallaxContentMinimumRelativeValue
                 interpolationHorizontal.maximumRelativeValue = self.parallaxContentMaximumRelativeValue
                 
-                let interpolationVertical: UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
+                let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
                 interpolationHorizontal.minimumRelativeValue = self.parallaxContentMinimumRelativeValue
                 interpolationHorizontal.maximumRelativeValue = self.parallaxContentMaximumRelativeValue
                 
@@ -630,9 +641,9 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
             })
         }
     }
-
+    
     // MARK : View Controller Rotation handler
-    open override var shouldAutorotate : Bool {
+    open override var shouldAutorotate: Bool {
         if let cntViewController = contentViewController {
             return cntViewController.shouldAutorotate
         }
@@ -653,21 +664,14 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
             
             var center: CGPoint
             if leftMenuVisible {
-                
                 let centerXLandscape = CGFloat(contentViewInLandscapeOffsetCenterX) + (iOS8 ? CGFloat(view.frame.width) : CGFloat(view.frame.height))
                 let centerXPortrait = CGFloat(contentViewInPortraitOffsetCenterX) + CGFloat(view.frame.width)
-                
                 let centerX = UIDevice.current.orientation.isLandscape ?  centerXLandscape : centerXPortrait
-                
                 center = CGPoint(x: centerX, y: contentViewContainer.center.y)
-                
             } else {
-                
                 let centerXLandscape = -CGFloat(self.contentViewInLandscapeOffsetCenterX)
                 let centerXPortrait = CGFloat(-self.contentViewInPortraitOffsetCenterX)
-                
                 let centerX = UIDevice.current.orientation.isLandscape ? centerXLandscape : centerXPortrait
-                
                 center = CGPoint(x: centerX, y: contentViewContainer.center.y)
             }
             
@@ -677,13 +681,15 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // MARK : Status Bar Appearance Management
-    open override var preferredStatusBarStyle : UIStatusBarStyle {
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
         var style: UIStatusBarStyle
         switch statusBarStyle {
         case .hidden:
             style = .default
+            
         case .black:
             style = .default
+            
         case .light:
             style = .lightContent
         }
@@ -695,21 +701,23 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         return style
     }
     
-    open override var prefersStatusBarHidden : Bool {
+    open override var prefersStatusBarHidden: Bool {
         var statusBarHidden: Bool
         switch statusBarStyle {
         case .hidden:
             statusBarHidden = true
+            
         default:
             statusBarHidden = false
         }
-        if visible || contentViewContainer.frame.origin.y <= 0, let cntViewController = contentViewController {
+        if visible || contentViewContainer.frame.origin.y <= 0,
+           let cntViewController = contentViewController {
             statusBarHidden = cntViewController.prefersStatusBarHidden
         }
         return statusBarHidden
     }
     
-    open override var preferredStatusBarUpdateAnimation : UIStatusBarAnimation {
+    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         var statusBarAnimation: UIStatusBarAnimation = .none
         if let cntViewController = contentViewController, let leftMenuViewController = leftMenuViewController {
             statusBarAnimation = visible ? leftMenuViewController.preferredStatusBarUpdateAnimation : cntViewController.preferredStatusBarUpdateAnimation
@@ -734,7 +742,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     // MARK : UIGestureRecognizer Delegate (Private)
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if interactivePopGestureRecognizerEnabled,
-            let viewController = contentViewController as? UINavigationController, viewController.viewControllers.count > 1 && viewController.interactivePopGestureRecognizer!.isEnabled {
+           let viewController = contentViewController as? UINavigationController, viewController.viewControllers.count > 1 && viewController.interactivePopGestureRecognizer!.isEnabled {
             return false
         }
         
@@ -742,16 +750,21 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
             switch panDirection {
             case .everyWhere:
                 return true
+                
             case .edge:
                 let point = touch.location(in: gestureRecognizer.view)
-                if point.x < 20.0 || point.x > view.frame.size.width - 20.0 { return true }
-                else { return false }
+                if point.x < 20.0 || point.x > view.frame.size.width - 20.0 {
+                    return true
+                } else {
+                    return false
+                }
             }
         }
         return true
     }
     
-    @objc func panGestureRecognized(_ recognizer: UIPanGestureRecognizer) {
+    @objc
+    func panGestureRecognized(_ recognizer: UIPanGestureRecognizer) {
         delegate?.sideMenuDidRecognizePanGesture?(self, recongnizer: recognizer)
         if !panGestureEnabled {
             return
@@ -766,7 +779,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
                                     y: contentViewContainer.center.y - contentViewContainer.bounds.height / 2.0)
             menuViewContainer.transform = CGAffineTransform.identity
             
-            if (scaleBackgroundImageView) {
+            if scaleBackgroundImageView {
                 backgroundImageView.transform = CGAffineTransform.identity
                 backgroundImageView.frame = view.bounds
             }
@@ -784,7 +797,6 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         }
         
         if recognizer.state == .changed {
-            
             var delta: CGFloat = 0.0
             if visible {
                 delta = originalPoint.x != 0 ? (point.x + originalPoint.x) / originalPoint.x : 0
@@ -876,21 +888,18 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         }
         
         if recognizer.state == .ended {
-            
             didNotifyDelegate = false
             if panMinimumOpenThreshold > 0 &&
                 contentViewContainer.frame.origin.x < 0 &&
                 contentViewContainer.frame.origin.x > -CGFloat(panMinimumOpenThreshold) ||
                 contentViewContainer.frame.origin.x > 0 &&
-                contentViewContainer.frame.origin.x < CGFloat(panMinimumOpenThreshold)  {
-                
+                contentViewContainer.frame.origin.x < CGFloat(panMinimumOpenThreshold) {
                 hideMenuViewController()
-                
             }
             else if contentViewContainer.frame.origin.x == 0 {
                 hideMenuViewController(false)
             }
-                
+            
             else if recognizer.velocity(in: view).x > 0 {
                 if contentViewContainer.frame.origin.x < 0 {
                     hideMenuViewController()
@@ -898,7 +907,8 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
                     showLeftMenuViewController()
                 }
             } else {
-                if contentViewContainer.frame.origin.x < 20 &&  rightMenuViewController != nil{
+                if contentViewContainer.frame.origin.x < 20
+                    &&  rightMenuViewController != nil {
                     showRightMenuViewController()
                 } else {
                     hideMenuViewController()
@@ -908,7 +918,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
-public extension UIViewController{
+public extension UIViewController {
     var sideMenuViewController: SideMenu? {
         get {
             return getSideViewController(self)

@@ -8,7 +8,6 @@ import RxSwift
 import RxCocoa
 
 public extension Reactive where Base: UILabel {
-    
     var attributedText: Binder<NSAttributedString> {
         return Binder(self.base) { $0.attributedText = $1 }
     }
@@ -26,7 +25,9 @@ public extension UILabel {
     func setLineSpacing(lineSpacing: CGFloat = 0.0,
                         lineHeightMultiple: CGFloat = 0.0,
                         alignment: NSTextAlignment = .left) {
-        guard let labelText = self.text else { return }
+        guard let labelText = self.text else {
+            return
+        }
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = lineSpacing
@@ -43,18 +44,17 @@ public extension UILabel {
         
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle,
                                       value: paragraphStyle,
-                                      range: NSMakeRange(0, attributedString.length) )
+                                      range: NSRange(location: 0, length: attributedString.length))
         
         self.attributedText = attributedString
     }
     
-    
     func setHTMLFromString(htmlText: String, withTextHexColor hex: String = "929292") {
-        let modifiedFont = String(format:"<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(self.font!.pointSize)\">%@</span>", htmlText)
-
+        let modifiedFont = String(format: "<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(self.font!.pointSize)\">%@</span>", htmlText)
+        
         let attrStr = try! NSAttributedString(
             data: modifiedFont.data(using: .unicode, allowLossyConversion: true)!,
-            options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue],
+            options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue],
             documentAttributes: nil)
         self.attributedText = attrStr
         self.textColor = UIColor(hexString: hex)
@@ -65,19 +65,31 @@ public extension UILabel {
         if let fontSize = UserDefaults.standard.value(forKey: "FontSize") as? CGFloat {
             font = fontSize
         }
-        let modifiedFont = String(format:"<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(font)\">%@</span>", htmlText)
-
+        let modifiedFont = String(format: "<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(font)\">%@</span>", htmlText)
+        
         let attrStr = try! NSAttributedString(
             data: modifiedFont.data(using: .unicode, allowLossyConversion: true)!,
-            options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue],
+            options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue],
             documentAttributes: nil)
         self.attributedText = attrStr
         self.textColor = UIColor(hexString: hex)
     }
 }
 
-
-
-
-
-
+extension NSAttributedString {
+    func attributedStringWithResizedImages(with maxWidth: CGFloat) -> NSAttributedString {
+        let text = NSMutableAttributedString(attributedString: self)
+        text.enumerateAttribute(NSAttributedString.Key.attachment, in: NSRange(location: 0, length: text.length)), options: .init(rawValue: 0), using: { value, range, _ in
+            if let attachement = value as? NSTextAttachment {
+                let image = attachement.image(forBounds: attachement.bounds, textContainer: NSTextContainer(), characterIndex: range.location)!
+                if image.size.width > maxWidth {
+                    let newImage = image.resizeImage(scale: maxWidth / image.size.width)
+                    let newAttribut = NSTextAttachment()
+                    newAttribut.image = newImage
+                    text.addAttribute(NSAttributedString.Key.attachment, value: newAttribut, range: range)
+                }
+            }
+        })
+        return text
+    }
+}

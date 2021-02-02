@@ -6,7 +6,6 @@
 import UIKit
 
 public extension UIColor {
-    
     convenience init(hex: Int) {
         self.init(hex: hex, a: 1.0)
     }
@@ -39,13 +38,3 @@ public extension UIColor {
         return UIColor(hexString: hexString) 
     }
 }
-
-
-
-
-
-
-
-
-
-

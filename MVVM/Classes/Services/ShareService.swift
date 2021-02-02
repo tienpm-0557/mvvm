@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 public class ShareService {
-    public var rxShareServiceState = BehaviorRelay<(completed:Bool, items:[Any]?, error: Error?)?>(value: nil)
+    public var rxShareServiceState = BehaviorRelay<(completed: Bool, items: [Any]?, error: Error?)?>(value: nil)
     
     public init() {}
     
@@ -19,7 +19,7 @@ public class ShareService {
             let objectToShare = [myWebSite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectToShare, applicationActivities: nil)
             
-            activityVC.completionWithItemsHandler =  {[weak self] (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            activityVC.completionWithItemsHandler = {[weak self] (_, completed: Bool, returnedItems: [Any]?, error: Error?) in
                 self?.rxShareServiceState.accept((completed, returnedItems, error))
             }
             
@@ -36,4 +36,3 @@ public class ShareService {
         }
     }
 }
-

@@ -6,7 +6,6 @@
 import Foundation
 
 fileprivate extension String {
-    
     static func describing(for type: Any) -> String {
         var desc = String(describing: type)
         if desc.hasPrefix("Optional<") {
@@ -18,14 +17,12 @@ fileprivate extension String {
 }
 
 protocol IMutableDependencyResolver {
-    
     func getService(_ type: Any) -> Any?
     func registerService(_ factory: Factory<Any>, type: Any)
     func removeService(_ type: Any)
 }
 
 extension IMutableDependencyResolver {
-    
     func getService<T>() -> T {
         return getService(T.self) as! T
     }
@@ -38,7 +35,6 @@ extension IMutableDependencyResolver {
 }
 
 class DefaultDependencyResolver: IMutableDependencyResolver {
-    
     private var registry = [String: Factory<Any>]()
     
     func getService(_ type: Any) -> Any? {
@@ -63,7 +59,6 @@ class DefaultDependencyResolver: IMutableDependencyResolver {
 }
 
 public class DependencyManager {
-    
     public static let shared = DependencyManager()
     
     private let resolver: IMutableDependencyResolver = DefaultDependencyResolver()
@@ -73,8 +68,8 @@ public class DependencyManager {
         registerService(Factory<IStorageService> { StorageService() })
         registerService(Factory<IAlertService> { AlertService() })
         registerService(Factory<LocalizeService> { LocalizeService.shared })
-        registerService(Factory<ShareService>{ ShareService() })
-        registerService(Factory<MailService>{ MailService() })
+        registerService(Factory<ShareService> { ShareService() })
+        registerService(Factory<MailService> { MailService() })
     }
     
     public func getService<T>() -> T {
@@ -89,7 +84,3 @@ public class DependencyManager {
         resolver.removeService(type)
     }
 }
-
-
-
-

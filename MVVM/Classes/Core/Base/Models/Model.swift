@@ -6,8 +6,7 @@
 import Foundation
 import ObjectMapper
 
-open class Model: NSObject, Mappable {
-    
+open class Model: NSObject, Mappable {    
     required public init?(map: Map) {
         super.init()
         mapping(map: map)
@@ -16,9 +15,7 @@ open class Model: NSObject, Mappable {
     open func mapping(map: Map) {}
 }
 
-
 open class HeaderFooterModel: Model {
-    
     open var title = ""
     open var footer = ""
     open var desc = ""
@@ -35,7 +32,6 @@ open class HeaderFooterModel: Model {
 }
 
 public extension Model {
-    
     /*
      JSON to model
      */
@@ -74,4 +70,3 @@ public extension Model {
         return []
     }
 }
-

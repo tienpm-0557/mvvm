@@ -10,7 +10,6 @@ import Action
 import PureLayout
 
 open class BasePage: UIViewController, ITransitionView {
-    
     public var disposeBag: DisposeBag? = DisposeBag()
     private var activityBag: DisposeBag? = DisposeBag()
     
@@ -19,7 +18,9 @@ open class BasePage: UIViewController, ITransitionView {
     public private(set) var backButton: UIBarButtonItem?
     
     public lazy var backAction: Action<AnyObject, Void> = {
-        return Action() { sender in .just(self.onBack(sender)) }
+        return Action() { sender in
+            .just(self.onBack(sender))
+        }
     }()
     
     public var enableBackButton: Bool = false {
@@ -166,7 +167,7 @@ open class BasePage: UIViewController, ITransitionView {
     func updateAfterViewModelChanged() {
         bindViewAndViewModel()
         
-        localeService.rxLocaleState.subscribe(onNext: {[weak self] (newLocale) in
+        localeService.rxLocaleState.subscribe(onNext: {[weak self] _ in
             self?.onUpdateLocalize()
             self?.viewModel?.onUpdateLocalize()
         }) => disposeBag

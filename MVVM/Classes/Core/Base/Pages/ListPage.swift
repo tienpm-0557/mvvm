@@ -8,7 +8,6 @@ import RxSwift
 import RxCocoa
 
 open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITableViewDelegate {
-    
     public typealias CVM = VM.CellViewModelElement
     
     public let tableView: UITableView
@@ -68,7 +67,9 @@ open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITabl
     }
     
     private func onItemSelected(_ indexPath: IndexPath) {
-        guard let viewModel = self.viewModel else { return }
+        guard let viewModel = self.viewModel else {
+            return
+        }
         let cellViewModel = viewModel.itemsSource[indexPath.row, indexPath.section]
         
         viewModel.rxSelectedItem.accept(cellViewModel)
@@ -111,6 +112,7 @@ open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITabl
                         tableView.reloadSections(IndexSet([data.section]), with: .automatic)
                     }
                 }
+                
             case let data as ModifyElements:
                 switch data.type {
                 case .insert:
@@ -153,7 +155,7 @@ open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITabl
     /**
      Subclasses override this method to handle cell pressed action.
      */
-    open func selectedItemDidChange(_ cellViewModel: CVM,_ indexPath: IndexPath) { }
+    open func selectedItemDidChange(_ cellViewModel: CVM, _ indexPath: IndexPath) { }
     
     // MARK: - Table view datasources
     
@@ -210,12 +212,3 @@ open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITabl
         return nil
     }
 }
-
-
-
-
-
-
-
-
-

@@ -8,12 +8,12 @@ import RxSwift
 import RxCocoa
 
 public extension UIControl {
-    
     /*
      Allow a UIControl to create a custom property (2-way binding)
      */
-    static func toProperty<T, ControlType: UIControl>(control: ControlType, getter: @escaping (ControlType) -> T, setter: @escaping (ControlType, T) -> ()) -> ControlProperty<T> {
-        
+    static func toProperty<T, ControlType: UIControl>(control: ControlType,
+                                                      getter: @escaping (ControlType) -> T,
+                                                      setter: @escaping (ControlType, T) -> Void) -> ControlProperty<T> {
         let values: Observable<T> = Observable.deferred { [weak control] in
             guard let existingSelf = control else {
                 return Observable.empty()
@@ -33,8 +33,9 @@ public extension UIControl {
 }
 
 extension UITabBarController {
-    static func toProperty<T, ControlType: UIControl>(control: ControlType, getter: @escaping (ControlType) -> T, setter: @escaping (ControlType, T) -> ()) -> ControlProperty<T> {
-        
+    static func toProperty<T, ControlType: UIControl>(control: ControlType,
+                                                      getter: @escaping (ControlType) -> T,
+                                                      setter: @escaping (ControlType, T) -> Void) -> ControlProperty<T> {
         let values: Observable<T> = Observable.deferred { [weak control] in
             guard let existingSelf = control else {
                 return Observable.empty()
@@ -52,8 +53,3 @@ extension UITabBarController {
         })
     }
 }
-
-
-
-
-

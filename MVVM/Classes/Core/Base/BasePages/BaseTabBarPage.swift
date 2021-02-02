@@ -12,7 +12,6 @@ import Action
 import PureLayout
 
 open class BaseTabBarPage: UITabBarController, ITransitionView {
-    
     public var disposeBag: DisposeBag? = DisposeBag()
     public private(set) var backButton: UIBarButtonItem?
     
@@ -111,12 +110,11 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
     func updateAfterViewModelChanged() {
         bindViewAndViewModel()
         
-        localeService.rxLocaleState.subscribe(onNext: {[weak self] (newLocale) in
+        localeService.rxLocaleState.subscribe(onNext: {[weak self] _ in
             self?.onUpdateLocalize()
             self?.viewModel?.onUpdateLocalize()
         }) => disposeBag
         
         viewModelChanged()
     }
-
 }

@@ -11,13 +11,12 @@ import RxSwift
 import RxCocoa
 
 public class ReachabilityService {
-    
     public static let share = ReachabilityService()
     private var reachability: Reachability?
     public var connectState = BehaviorRelay<Reachability.Connection?>(value: nil)
     private var option: String?
     
-    public func startReachability(_ option:String = "") {
+    public func startReachability(_ option: String = "") {
         self.option = option
         do {
             reachability = try Reachability()
@@ -26,20 +25,19 @@ public class ReachabilityService {
             print("Unable to start notifier")
         }
         
-        
         reachability?.whenReachable = { reachability in
             print("NETWORK: connection did change \(reachability.connection.description)")
             if option == "alert" {
-                
             } else if option == "status bar" {
-                
             }
             
             switch reachability.connection {
             case .wifi:
                 self.connectState.accept(.wifi)
+                
             case .cellular:
                 self.connectState.accept(.cellular)
+                
             default:
                 self.connectState.accept(.unavailable)
             }

@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 public class MailService: NSObject, MFMailComposeViewControllerDelegate {
-    
     static var shared = MailService()
     public var rxMailComposeState = BehaviorRelay<MFMailComposeResult?>(value: nil)
     public var rxMailSettingValidate = BehaviorRelay<String>(value: "")
@@ -24,17 +23,17 @@ public class MailService: NSObject, MFMailComposeViewControllerDelegate {
         }
     }
     
-    public func sendMailTo(listEmail _emails: [String],
-                    withSubject _subject:String,
-                    withMessage _message:String,
-                    withModalType modalType:UIModalPresentationStyle = .fullScreen) {
+    public func sendMailTo(listEmail emails: [String],
+                           withSubject subject: String,
+                           withMessage message: String,
+                           withModalType modalType: UIModalPresentationStyle = .fullScreen) {
         if MailService.shared.canSendEmailAndAlert() {
             let mailer = MFMailComposeViewController()
             mailer.mailComposeDelegate = self
             mailer.modalPresentationStyle = modalType
-            mailer.setToRecipients(_emails)
-            mailer.setSubject(_subject)
-            mailer.setMessageBody(_message, isHTML: false)
+            mailer.setToRecipients(emails)
+            mailer.setSubject(subject)
+            mailer.setMessageBody(message, isHTML: false)
             let window = UIApplication.shared.keyWindow
             guard let rootViewContorller = window?.rootViewController else {
                 return
@@ -46,9 +45,9 @@ public class MailService: NSObject, MFMailComposeViewControllerDelegate {
     }
     
     public func mailComposeController(_ controller: MFMailComposeViewController,
-                                      didFinishWith result: MFMailComposeResult, error: Error?) {
+                                      didFinishWith result: MFMailComposeResult,
+                                      error: Error?) {
         rxMailComposeState.accept(result)
         controller.dismiss(animated: true, completion: nil)
     }
 }
-

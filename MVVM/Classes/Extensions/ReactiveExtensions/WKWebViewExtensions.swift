@@ -10,7 +10,6 @@ import RxCocoa
 import Action
 
 public extension Reactive where Base: WKWebView {
-    
     var url: Binder<URL?> {
         return Binder(base) { view, url in
             if let url = url {
@@ -69,7 +68,7 @@ public extension Reactive where Base: WKWebView {
     ///
     /// - Parameter javaScriptString: The JavaScript string to evaluate.
     /// - Returns: Observable sequence of result of the script evaluation.
-    func evaluateJavaScript(_ javaScriptString:String) -> Observable<Any?> {
+    func evaluateJavaScript(_ javaScriptString: String) -> Observable<Any?> {
         return Observable.create { [weak base] observer in
             base?.evaluateJavaScript(javaScriptString) { value, error in
                 if let error = error {
@@ -82,15 +81,14 @@ public extension Reactive where Base: WKWebView {
             return Disposables.create()
         }
     }
-   
 }
 
 public typealias RxWKUIDelegate = DelegateProxy<WKWebView, WKUIDelegate>
 public typealias RxWKNavigationDelegate = DelegateProxy<WKWebView, WKNavigationDelegate>
 
 extension Reactive where Base: WKWebView {
-    public typealias JSAlertEvent = (webView: WKWebView, message: String, frame: WKFrameInfo, handler: () -> ())
-    public typealias JSConfirmEvent = (webView: WKWebView, message: String, frame: WKFrameInfo, handler: (Bool) -> ())
+    public typealias JSAlertEvent = (webView: WKWebView, message: String, frame: WKFrameInfo, handler: () -> Void)
+    public typealias JSConfirmEvent = (webView: WKWebView, message: String, frame: WKFrameInfo, handler: (Bool) -> Void)
     public typealias CommitPreviewEvent = (webView: WKWebView, controller: UIViewController)
     
     /// Reactive wrapper for `navigationDelegate`.
@@ -98,10 +96,11 @@ extension Reactive where Base: WKWebView {
         return RxWKUIDelegateProxy.proxy(for: base)
     }
     
-    /// Reactive wrapper for `func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Swift.Void)`
+    /// Reactive wrapper for
+    /// `func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Swift.Void)`
     public var javaScriptAlertPanel: ControlEvent<JSAlertEvent> {
-        typealias __CompletionHandler = @convention(block) () -> ()
-        let source:Observable<JSAlertEvent> = uiDelegate
+        typealias WKCompletionHandler = @convention(block) () -> Void
+        let source: Observable<JSAlertEvent> = uiDelegate
             .methodInvoked(.jsAlert).map { args in
                 let view = try castOrThrow(WKWebView.self, args[0])
                 let message = try castOrThrow(String.self, args[1])
@@ -112,17 +111,18 @@ extension Reactive where Base: WKWebView {
                     closureObject = ptr[3] as AnyObject
                 }
                 let __completionBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
-                let handler = unsafeBitCast(__completionBlockPtr, to: __CompletionHandler.self)
+                let handler = unsafeBitCast(__completionBlockPtr, to: WKCompletionHandler.self)
                 return (view, message, frame, handler)
         }
         
         return ControlEvent(events: source)
     }
     
-    /// Reactive wrapper for `func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Swift.Void)`
+    /// Reactive wrapper for
+    /// `func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Swift.Void)`
     public var javaScriptConfirmPanel: ControlEvent<JSConfirmEvent> {
-        typealias __ConfirmHandler = @convention(block) (Bool) -> ()
-        let source:Observable<JSConfirmEvent> = uiDelegate
+        typealias WKConfirmHandler = @convention(block) (Bool) -> Void
+        let source: Observable<JSConfirmEvent> = uiDelegate
             .methodInvoked(.jsConfirm).map { args in
                 let view = try castOrThrow(WKWebView.self, args[0])
                 let message = try castOrThrow(String.self, args[1])
@@ -133,7 +133,7 @@ extension Reactive where Base: WKWebView {
                     closureObject = ptr[3] as AnyObject
                 }
                 let __confirmBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
-                let handler = unsafeBitCast(__confirmBlockPtr, to: __ConfirmHandler.self)
+                let handler = unsafeBitCast(__confirmBlockPtr, to: WKConfirmHandler.self)
                 return (view, message, frame, handler)
         }
         
@@ -156,7 +156,6 @@ extension Reactive where Base: WKWebView {
 }
 
 open class RxWKUIDelegateProxy: RxWKUIDelegate, DelegateProxyType, WKUIDelegate {
-    
     /// Type of parent object
     /// must be WKWebView!
     public weak private(set) var webView: WKWebView?
@@ -184,7 +183,6 @@ open class RxWKUIDelegateProxy: RxWKUIDelegate, DelegateProxyType, WKUIDelegate 
         object.uiDelegate = delegate
     }
 }
-
 
 func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
     guard let returnValue = object as? T else {
@@ -304,13 +302,14 @@ extension Reactive where Base: WKWebView {
         return ControlEvent(events: source)
     }
     
-    /// Reactive wrapper for delegate method `webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void)`
+    /// Reactive wrapper for delegate method
+    /// `webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void)`
     public var didReceiveChallenge: ControlEvent<WKNavigationChallengeEvent> {
         /// __ChallengeHandler is same as ChallengeHandler
         /// They are interchangeable, __ChallengeHandler is for internal use.
         /// ChallengeHandler is exposed to the user on subscription.
         /// @convention attribute makes the swift closure compatible with Objc blocks
-        typealias __ChallengeHandler =  @convention(block) (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
+        typealias WKChallengeHandler =  @convention(block) (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
         /*! @abstract Invoked when the web view needs to respond to an authentication challenge.
          @param webView The web view that received the authentication challenge.
          @param challenge The authentication challenge.
@@ -356,7 +355,7 @@ extension Reactive where Base: WKWebView {
                 /// 5. Here the magic happen we forcefully tell the compiler that anything
                 /// found at this memory address that is refrenced should be a type of
                 /// `__ChallengeHandler`!
-                let handler = unsafeBitCast(__challengeBlockPtr, to: __ChallengeHandler.self)
+                let handler = unsafeBitCast(__challengeBlockPtr, to: WKChallengeHandler.self)
                 return (view, challenge, handler)
         }
         
@@ -377,8 +376,8 @@ extension Reactive where Base: WKWebView {
     
     /// Reactive wrapper for `func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Swift.Void)`
     public var decidePolicyNavigationResponse: ControlEvent<WKNavigationResponsePolicyEvent> {
-        typealias __DecisionHandler = @convention(block) (WKNavigationResponsePolicy) -> ()
-        let source:Observable<WKNavigationResponsePolicyEvent> = delegate
+        typealias WKDecisionHandler = @convention(block) (WKNavigationResponsePolicy) -> Void
+        let source: Observable<WKNavigationResponsePolicyEvent> = delegate
             .methodInvoked(.decidePolicyNavigationResponse).map { args in
                 let view = try castOrThrow(WKWebView.self, args[0])
                 let response = try castOrThrow(WKNavigationResponse.self, args[1])
@@ -388,7 +387,7 @@ extension Reactive where Base: WKWebView {
                     closureObject = ptr[2] as AnyObject
                 }
                 let __decisionBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
-                let handler = unsafeBitCast(__decisionBlockPtr, to: __DecisionHandler.self)
+                let handler = unsafeBitCast(__decisionBlockPtr, to: WKDecisionHandler.self)
                 return (view, response, handler)
         }
         
@@ -397,8 +396,8 @@ extension Reactive where Base: WKWebView {
     
     /// Reactive wrapper for `func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void)`
     public var decidePolicyNavigationAction: ControlEvent<WKNavigationActionPolicyEvent> {
-        typealias __ActionHandler = @convention(block) (WKNavigationActionPolicy) -> ()
-        let source:Observable<WKNavigationActionPolicyEvent> = delegate
+        typealias WKActionHandler = @convention(block) (WKNavigationActionPolicy) -> Void
+        let source: Observable<WKNavigationActionPolicyEvent> = delegate
             .methodInvoked(.decidePolicyNavigationAction).map { args in
                 let view = try castOrThrow(WKWebView.self, args[0])
                 let action = try castOrThrow(WKNavigationAction.self, args[1])
@@ -408,7 +407,7 @@ extension Reactive where Base: WKWebView {
                     closureObject = ptr[2] as AnyObject
                 }
                 let __actionBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
-                let handler = unsafeBitCast(__actionBlockPtr, to: __ActionHandler.self)
+                let handler = unsafeBitCast(__actionBlockPtr, to: WKActionHandler.self)
                 return (view, action, handler)
         }
         
@@ -436,15 +435,17 @@ extension Selector {
     /// Ambiguous use of 'webView(_:decidePolicyFor:decisionHandler:)'
     /// please see this link for further understanding
     /// https://bugs.swift.org/browse/SR-3062
-    static let decidePolicyNavigationResponse = #selector(WKNavigationDelegate.webView(_:decidePolicyFor:decisionHandler:) as ((WKNavigationDelegate) -> (WKWebView, WKNavigationResponse, @escaping(WKNavigationResponsePolicy) -> Void) -> Void)?)
-    static let decidePolicyNavigationAction = #selector(WKNavigationDelegate.webView(_:decidePolicyFor:decisionHandler:) as ((WKNavigationDelegate) -> (WKWebView, WKNavigationAction, @escaping(WKNavigationActionPolicy) -> Void) -> Void)?)
+    static let decidePolicyNavigationResponse = #selector(WKNavigationDelegate.webView(_:decidePolicyFor:decisionHandler:)
+        as ((WKNavigationDelegate) -> (WKWebView, WKNavigationResponse, @escaping(WKNavigationResponsePolicy) -> Void) -> Void)?)
+    static let decidePolicyNavigationAction = #selector(WKNavigationDelegate.webView(_:decidePolicyFor:decisionHandler:)
+        as ((WKNavigationDelegate) -> (WKWebView, WKNavigationAction, @escaping(WKNavigationActionPolicy) -> Void) -> Void)?)
 }
 
-
 extension WKUserContentController {
-    fileprivate class MessageHandler : NSObject, WKScriptMessageHandler {
+    fileprivate class MessageHandler: NSObject, WKScriptMessageHandler {
         typealias MessageReceiveHandler = (WKScriptMessage) -> Void
-        private var messageReceiveHandler:MessageReceiveHandler?
+        
+        private var messageReceiveHandler: MessageReceiveHandler?
         
         func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
             self.messageReceiveHandler?(message)
@@ -456,12 +457,12 @@ extension WKUserContentController {
     }
 }
 
-public extension Reactive where Base : WKUserContentController {
+public extension Reactive where Base: WKUserContentController {
     /// Observable sequence of script message.
     ///
     /// - Parameter name: The name of the message handler
     /// - Returns: Observable sequence of script message.
-    func scriptMessage(forName name:String) -> ControlEvent<WKScriptMessage> {
+    func scriptMessage(forName name: String) -> ControlEvent<WKScriptMessage> {
         return ControlEvent(events: Observable.create { [weak base] observer in
             let handler = WKUserContentController.MessageHandler()
             base?.add(handler, name: name)
@@ -476,7 +477,6 @@ public extension Reactive where Base : WKUserContentController {
 }
 
 open class RxWKNavigationDelegateProxy: RxWKNavigationDelegate, DelegateProxyType, WKNavigationDelegate {
-    
     /// Type of parent object
     public weak private(set) var webView: WKWebView?
     
@@ -503,4 +503,3 @@ open class RxWKNavigationDelegateProxy: RxWKNavigationDelegate, DelegateProxyTyp
         object.navigationDelegate = delegate
     }
 }
-

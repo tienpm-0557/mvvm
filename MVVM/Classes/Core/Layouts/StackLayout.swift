@@ -15,42 +15,41 @@ import UIKit
  ```
  // Basic usage:
  let layout = StackLayout()
-    .direction(.vertical)
-    .alignItems(.center)
-    .children([
-        view1,
-        view2,
-        view3,
-        ...
-    ])
+ .direction(.vertical)
+ .alignItems(.center)
+ .children([
+ view1,
+ view2,
+ view3,
+ ...
+ ])
  
  // Custom space between items:
  let layout = StackLayout()
-     .direction(.vertical)
-     .alignItems(.center)
-     .children([
-         view1,
-         StackSpaceItem(height: 20),
-         view2,
-         StackSpaceItem(height: 20),
-         view3,
-         ...
-     ])
+ .direction(.vertical)
+ .alignItems(.center)
+ .children([
+ view1,
+ StackSpaceItem(height: 20),
+ view2,
+ StackSpaceItem(height: 20),
+ view3,
+ ...
+ ])
  
  // Stack items with attributes:
  let layout = StackLayout()
-     .direction(.vertical)
-     .alignItems(.center)
-     .children([
-         StackViewItem(view: view1, attribute: .centerX),
-         StackViewItem(view: view2, attribute: .margin(.only(top: 20))),
-         view3,
-         ...
-    ])
+ .direction(.vertical)
+ .alignItems(.center)
+ .children([
+ StackViewItem(view: view1, attribute: .centerX),
+ StackViewItem(view: view2, attribute: .margin(.only(top: 20))),
+ view3,
+ ...
+ ])
  ```
  */
 open class StackLayout: UIStackView {
-    
     public init() {
         super.init(frame: .zero)
         setupView()
@@ -66,7 +65,6 @@ open class StackLayout: UIStackView {
 }
 
 public extension StackLayout {
-    
     /// Define stack layout axis
     @discardableResult
     func direction(_ axis: NSLayoutConstraint.Axis) -> StackLayout {
@@ -111,7 +109,9 @@ public extension StackLayout {
     /// otherwise will be ignore
     @discardableResult
     func child(_ child: Any, at index: Int) -> StackLayout {
-        guard index >= 0 && index < arrangedSubviews.count else { return self }
+        guard index >= 0 && index < arrangedSubviews.count else {
+            return self
+        }
         
         if let view = getView(for: child) {
             insertArrangedSubview(view, at: index)
@@ -123,7 +123,9 @@ public extension StackLayout {
     /// Remove a specific child at index
     @discardableResult
     func removeChild(at index: Int) -> StackLayout {
-        guard index >= 0 && index < arrangedSubviews.count else { return self }
+        guard index >= 0 && index < arrangedSubviews.count else {
+            return self
+        }
         
         let child = arrangedSubviews[index]
         removeArrangedSubview(child)
@@ -158,9 +160,9 @@ public protocol StackItem {
  ```
  // Center in stack
  StackViewItem(view: logoView) { view in
-     view.autoAlignAxis(toSuperviewAxis: .vertical)
-     view.autoPinEdge(toSuperviewEdge: .top)
-     view.autoPinEdge(toSuperviewEdge: .bottom)
+ view.autoAlignAxis(toSuperviewAxis: .vertical)
+ view.autoPinEdge(toSuperviewEdge: .top)
+ view.autoPinEdge(toSuperviewEdge: .bottom)
  }
  
  // Using attribute
@@ -168,7 +170,6 @@ public protocol StackItem {
  ```
  */
 public struct StackViewItem: StackItem {
-    
     public enum Attribute {
         /// Align left with insets
         case leading(insets: UIEdgeInsets)
@@ -190,17 +191,17 @@ public struct StackViewItem: StackItem {
     }
     
     private let originalView: UIView
-    private let constraintsDefinition: ((UIView) -> ())
-
+    private let constraintsDefinition: ((UIView) -> Void)
+    
     /// Constructor that takes a custom constraints definition
-    public init(view: UIView, constraintsDefinition: @escaping ((UIView) -> ())) {
+    public init(view: UIView, constraintsDefinition: @escaping ((UIView) -> Void)) {
         self.originalView = view
         self.constraintsDefinition = constraintsDefinition
     }
     
     /// Constructor with custom attribute
     public init(view: UIView, attribute: Attribute) {
-        self.init(view: view) { (view) in
+        self.init(view: view) { view in
             switch attribute {
             case .leading(let insets):
                 view.autoPinEdgesToSuperviewEdges(with: insets, excludingEdge: .trailing)
@@ -242,7 +243,6 @@ public struct StackViewItem: StackItem {
 
 /// Custom spacing between stack items
 public struct StackSpaceItem: StackItem {
-    
     private let width: CGFloat
     private let height: CGFloat
     

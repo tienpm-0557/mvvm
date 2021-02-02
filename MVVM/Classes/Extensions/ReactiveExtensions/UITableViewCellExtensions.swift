@@ -8,7 +8,6 @@ import RxSwift
 import RxCocoa
 
 public extension Reactive where Base: UITableViewCell {
-    
     var accessoryType: Binder<UITableViewCell.AccessoryType> {
         return Binder(self.base) { $0.accessoryType = $1 }
     }
@@ -17,10 +16,3 @@ public extension Reactive where Base: UITableViewCell {
         return Binder(self.base) { $0.selectionStyle = $1 }
     }
 }
-
-
-
-
-
-
-

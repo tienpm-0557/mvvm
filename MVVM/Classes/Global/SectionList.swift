@@ -10,12 +10,12 @@ import RxCocoa
 public protocol RxCollection {
     var collectionChanged: Observable<ChangeSet> { get }
     var count: Int { get }
-    func removeAll(animated: Bool?)
+    
+    func removeAll(animated: Bool)
     func element(atIndexPath: IndexPath) -> Any?
     func element(atSection: Int, row: Int) -> Any?
     func countElements(at section: Int) -> Int
 }
-
 
 public enum ModificationType {
     case reload, delete, insert, move
@@ -47,7 +47,6 @@ struct MoveElements: ChangeSet {
 
 /// Section list data sources
 public class SectionList<T> where T: Equatable {
-    
     public let element: Any
     
     private var innerSources = [T]()
@@ -78,7 +77,7 @@ public class SectionList<T> where T: Equatable {
         innerSources.append(contentsOf: initialElements)
     }
     
-    public func forEach(_ body: ((Int, T) -> ())) {
+    public func forEach(_ body: ((Int, T) -> Void)) {
         for (i, element) in innerSources.enumerated() {
             body(i, element)
         }
@@ -159,8 +158,6 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         return self[row, atSection]
     }
     
-    public var animated: Bool = true
-    
     private var innerSources: [SectionList<T>] = []
     
     private let publisher = PublishSubject<ChangeSet>()
@@ -192,52 +189,55 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         return innerSources.last
     }
     
-    public func forEach(_ body: ((Int, SectionList<T>) -> ())) {
+    public func forEach(_ body: ((Int, SectionList<T>) -> Void)) {
         for (i, section) in innerSources.enumerated() {
             body(i, section)
         }
     }
     
     public func countElements(at section: Int = 0) -> Int {
-        guard section >= 0 && section < innerSources.count else { return 0 }
+        guard section >= 0 && section < innerSources.count else {
+            return 0
+        }
         return innerSources[section].count
     }
     
     // MARK: - section manipulations
     
-    public func reload(at section: Int = -1, animated: Bool? = false) {
+    public func reload(at section: Int = -1,
+                       animated: Bool = true) {
         if innerSources.count > 0 && section < innerSources.count {
             rxInnerSources.accept(innerSources)
-            publisher.onNext(ModifySection(type: .reload, section: section, animated: animated ?? self.animated))
+            publisher.onNext(ModifySection(type: .reload, section: section, animated: animated))
         }
     }
     
-    public func reset(_ elements: [T], of section: Int = 0, animated: Bool? = false) {
+    public func reset(_ elements: [T], of section: Int = 0, animated: Bool = true) {
         if section < innerSources.count {
             innerSources[section].removeAll()
             innerSources[section].append(elements)
             
             rxInnerSources.accept(innerSources)
-            publisher.onNext(ModifySection(type: .reload, section: section, animated: animated ?? self.animated))
+            publisher.onNext(ModifySection(type: .reload, section: section, animated: animated))
         }
     }
     
-    public func reset(_ sources: [[T]], animated: Bool? = false) {
+    public func reset(_ sources: [[T]], animated: Bool = true) {
         reset(sources.map { SectionList("", initialElements: $0) }, animated: animated)
     }
     
-    public func reset(_ sources: [SectionList<T>], animated: Bool? = false) {
+    public func reset(_ sources: [SectionList<T>], animated: Bool = true) {
         innerSources.removeAll()
         innerSources.append(contentsOf: sources)
         
         reload(animated: animated)
     }
     
-    public func insertSection(_ key: Any, elements: [T], at index: Int, animated: Bool? = false) {
+    public func insertSection(_ key: Any, elements: [T], at index: Int, animated: Bool = true) {
         insertSection(SectionList<T>(key, initialElements: elements), at: index, animated: animated)
     }
     
-    public func insertSection(_ sectionList: SectionList<T>, at index: Int, animated: Bool? = false) {
+    public func insertSection(_ sectionList: SectionList<T>, at index: Int, animated: Bool = true) {
         if innerSources.count == 0 {
             innerSources.append(sectionList)
         } else {
@@ -245,10 +245,10 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         }
         
         rxInnerSources.accept(innerSources)
-        publisher.onNext(ModifySection(type: .insert, section: index, animated: animated ?? self.animated))
+        publisher.onNext(ModifySection(type: .insert, section: index, animated: animated))
     }
     
-    public func insertSection(_ sectionList: BaseViewModel, at index: Int, animated: Bool? = false) {
+    public func insertSection(_ sectionList: BaseViewModel, at index: Int, animated: Bool = true) {
         if innerSources.count == 0 {
             innerSources.append(SectionList<T>(sectionList))
         } else {
@@ -256,73 +256,75 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         }
         
         rxInnerSources.accept(innerSources)
-        publisher.onNext(ModifySection(type: .insert, section: index, animated: animated ?? self.animated))
+        publisher.onNext(ModifySection(type: .insert, section: index, animated: animated))
     }
     
-    public func appendSections(_ sectionLists: [SectionList<T>], animated: Bool? = false) {
+    public func appendSections(_ sectionLists: [SectionList<T>], animated: Bool = true) {
         for sectionList in sectionLists {
             appendSection(sectionList, animated: animated)
         }
     }
     
-    public func appendSection(_ key: Any, elements: [T], animated: Bool? = false) {
+    public func appendSection(_ key: Any, elements: [T], animated: Bool = true) {
         appendSection(SectionList<T>(key, initialElements: elements), animated: animated)
     }
     
-    public func appendSectionViewModel(_ vm: BaseViewModel , animated: Bool? = false) {
+    public func appendSectionViewModel(_ vm: BaseViewModel, animated: Bool = true) {
         appendSection(SectionList<T>(vm), animated: animated)
     }
     
-    public func appendSection(_ sectionList: [BaseViewModel], animated: Bool? = false) {
-        
+    public func appendSection(_ sectionList: [BaseViewModel], animated: Bool = true) {
         let section = innerSources.count == 0 ? 0 : innerSources.count
-        let appendSection = sectionList.map{
+        let appendSection = sectionList.map {
             SectionList<T>($0)
         }
+        
         innerSources.append(contentsOf: appendSection)
         rxInnerSources.accept(innerSources)
-        publisher.onNext(ModifySection(type: .insert, section: section, animated: animated ?? self.animated))
+        publisher.onNext(ModifySection(type: .insert, section: section, animated: animated))
     }
     
-    public func appendSection(_ sectionList: SectionList<T>, animated: Bool? = false) {
+    public func appendSection(_ sectionList: SectionList<T>, animated: Bool = true) {
         let section = innerSources.count == 0 ? 0 : innerSources.count
         
         innerSources.append(sectionList)
         rxInnerSources.accept(innerSources)
-        publisher.onNext(ModifySection(type: .insert, section: section, animated: animated ?? self.animated))
+        publisher.onNext(ModifySection(type: .insert, section: section, animated: animated))
     }
     
     @discardableResult
-    public func removeSection(at index: Int, animated: Bool? = nil) -> SectionList<T>? {
-        guard index < innerSources.count, index >= 0 else { return nil }
+    public func removeSection(at index: Int, animated: Bool = true) -> SectionList<T>? {
+        guard index < innerSources.count, index >= 0 else {
+            return nil
+        }
         let element = innerSources.remove(at: index)
         rxInnerSources.accept(innerSources)
-        publisher.onNext(ModifySection(type: .delete, section: index, animated: animated ?? self.animated))
+        publisher.onNext(ModifySection(type: .delete, section: index, animated: animated))
         
         return element
     }
     
-    public func removeAll(animated: Bool? = nil) {
+    public func removeAll(animated: Bool = true) {
         innerSources.removeAll()
         rxInnerSources.accept(innerSources)
-        publisher.onNext(ModifySection(type: .delete, section: -1, animated: animated ?? self.animated))
+        publisher.onNext(ModifySection(type: .delete, section: -1, animated: animated))
     }
     
     // MARK: - section elements manipulations
     
-    public func insert(_ element: T, at indexPath: IndexPath, animated: Bool? = false) {
+    public func insert(_ element: T, at indexPath: IndexPath, animated: Bool = true) {
         insert(element, at: indexPath.row, of: indexPath.section, animated: animated)
     }
     
-    public func insert(_ element: T, at index: Int, of section: Int = 0, animated: Bool? = false) {
+    public func insert(_ element: T, at index: Int, of section: Int = 0, animated: Bool = true) {
         insert([element], at: index, of: section, animated: animated)
     }
     
-    public func insert(_ elements: [T], at indexPath: IndexPath, animated: Bool? = false) {
+    public func insert(_ elements: [T], at indexPath: IndexPath, animated: Bool = true) {
         insert(elements, at: indexPath.row, of: indexPath.section, animated: animated)
     }
     
-    public func insert(_ elements: [T], at index: Int, of section: Int = 0, animated: Bool? = false) {
+    public func insert(_ elements: [T], at index: Int, of section: Int = 0, animated: Bool = true) {
         if section >= innerSources.count {
             appendSection("", elements: elements, animated: animated)
             return
@@ -336,14 +338,14 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         
         let indexPaths = Array(index..<index + elements.count).map { IndexPath(row: $0, section: section) }
         rxInnerSources.accept(innerSources)
-        publisher.onNext(ModifyElements(type: .insert, indexPaths: indexPaths, animated: animated ?? self.animated))
+        publisher.onNext(ModifyElements(type: .insert, indexPaths: indexPaths, animated: animated))
     }
     
-    public func append(_ element: T, to section: Int = 0, animated: Bool? = false) {
+    public func append(_ element: T, to section: Int = 0, animated: Bool = true) {
         append([element], to: section, animated: animated)
     }
     
-    public func append(_ elements: [T], to section: Int = 0, animated: Bool? = false) {
+    public func append(_ elements: [T], to section: Int = 0, animated: Bool = true) {
         if section >= innerSources.count {
             appendSection("", elements: elements, animated: animated)
             return
@@ -359,19 +361,19 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         
         innerSources[section].append(elements)
         rxInnerSources.accept(innerSources)
-        publisher.onNext(ModifyElements(type: .insert, indexPaths: indexPaths, animated: animated ?? self.animated))
+        publisher.onNext(ModifyElements(type: .insert, indexPaths: indexPaths, animated: animated))
     }
     
     @discardableResult
-    public func remove(at indexPath: IndexPath, animated: Bool? = nil) -> T? {
+    public func remove(at indexPath: IndexPath, animated: Bool = true) -> T? {
         return remove(at: indexPath.row, of: indexPath.section, animated: animated)
     }
     
     @discardableResult
-    public func remove(at index: Int, of section: Int = 0, animated: Bool? = nil) -> T? {
+    public func remove(at index: Int, of section: Int = 0, animated: Bool = true) -> T? {
         if let element = innerSources[section].remove(at: index) {
             rxInnerSources.accept(innerSources)
-            publisher.onNext(ModifyElements(type: .delete,indexPaths: [IndexPath(row: index, section: section)], animated: animated ?? self.animated))
+            publisher.onNext(ModifyElements(type: .delete, indexPaths: [IndexPath(row: index, section: section)], animated: animated))
             
             return element
         }
@@ -380,21 +382,21 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
     }
     
     @discardableResult
-    public func remove(at indice: [Int], of section: Int = 0, animated: Bool? = nil) -> [T] {
+    public func remove(at indice: [Int], of section: Int = 0, animated: Bool = true) -> [T] {
         return remove(at: indice.map { IndexPath(row: $0, section: section) })
     }
     
     @discardableResult
-    public func remove(at indexPaths: [IndexPath], animated: Bool? = nil) -> [T] {
+    public func remove(at indexPaths: [IndexPath], animated: Bool = true) -> [T] {
         let removedElements = indexPaths.compactMap { innerSources[$0.section].remove(at: $0.row) }
         
         rxInnerSources.accept(innerSources)
-        publisher.onNext(ModifyElements(type: .delete, indexPaths: indexPaths, animated: animated ?? self.animated))
+        publisher.onNext(ModifyElements(type: .delete, indexPaths: indexPaths, animated: animated))
         
         return removedElements
     }
     
-    public func sort(by predicate: (T, T) throws -> Bool, at section: Int = 0, animated: Bool? = nil) rethrows {
+    public func sort(by predicate: (T, T) throws -> Bool, at section: Int = 0, animated: Bool = true) rethrows {
         let oldElements = innerSources[section].allElements
         
         try innerSources[section].sort(by: predicate)
@@ -403,7 +405,7 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         
         var fromIndexPaths: [IndexPath] = []
         var toIndexPaths: [IndexPath] = []
-        oldElements.enumerated().forEach { (i, element) in
+        oldElements.enumerated().forEach { i, element in
             if let newIndex = newElements.firstIndex(of: element) {
                 toIndexPaths.append(IndexPath(row: newIndex, section: section))
                 fromIndexPaths.append(IndexPath(row: i, section: section))
@@ -412,12 +414,14 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         
         if fromIndexPaths.count == toIndexPaths.count {
             rxInnerSources.accept(innerSources)
-            publisher.onNext(MoveElements(fromIndexPaths: fromIndexPaths, toIndexPaths: toIndexPaths, animated: animated ?? self.animated))
+            publisher.onNext(MoveElements(fromIndexPaths: fromIndexPaths, toIndexPaths: toIndexPaths, animated: animated))
         }
     }
     
-    public func move(from fromIndexPaths: [IndexPath], to toIndexPaths: [IndexPath], animated: Bool? = nil) {
-        guard fromIndexPaths.count == toIndexPaths.count else { return }
+    public func move(from fromIndexPaths: [IndexPath], to toIndexPaths: [IndexPath], animated: Bool = true) {
+        guard fromIndexPaths.count == toIndexPaths.count else {
+            return
+        }
         
         var validIndice: [Int] = []
         for (i, fromIndexPath) in fromIndexPaths.enumerated() {
@@ -443,7 +447,7 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         
         if validIndice.count > 0 {
             rxInnerSources.accept(innerSources)
-            publisher.onNext(MoveElements(fromIndexPaths: validIndice.map { fromIndexPaths[$0] }, toIndexPaths: validIndice.map { toIndexPaths[$0] }, animated: animated ?? self.animated))
+            publisher.onNext(MoveElements(fromIndexPaths: validIndice.map { fromIndexPaths[$0] }, toIndexPaths: validIndice.map { toIndexPaths[$0] }, animated: animated))
         }
     }
     

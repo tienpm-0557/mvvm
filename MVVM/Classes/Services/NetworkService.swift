@@ -10,7 +10,6 @@ import RxSwift
 
 /// Base network service, using SessionManager from Alamofire
 open class BaseNetworkService: SessionDelegate {
-    
     public static var shared = BaseNetworkService()
     
     public let sessionManager: Session
@@ -32,7 +31,6 @@ open class BaseNetworkService: SessionDelegate {
         sessionConfiguration.timeoutIntervalForRequest = timeout
         
         sessionManager = Session(configuration: sessionConfiguration)
-        
     }
     
     public func callRequest(urlString: String,
@@ -48,13 +46,14 @@ open class BaseNetworkService: SessionDelegate {
                                                       encoding: encoding,
                                                       headers: headers)
             
-            request.responseString { (response) in
+            request.responseString { response in
                 //set status code
                 //Check result
                 switch response.result {
                 case .success(let result):
                     //Implement the completion block with parameters
                     single(.success(result))
+                    
                 case .failure(let error):
                     single(.error(error))
                 }
@@ -77,19 +76,15 @@ open class BaseNetworkService: SessionDelegate {
                                                          parameters: params,
                                                          encoding: encoding,
                                                          headers: headers)
-            
-            
-            result.completeBlock { (response, cache) in
+            result.completeBlock { response, cache in
                 single(.success(result))
             }
 
-            result.errorBlock { (error) in
+            result.errorBlock { error in
                 single(.error(error))
             }
             
-            return Disposables.create {
-                                
-            }
+            return Disposables.create {}
         }
     }
     
@@ -150,8 +145,7 @@ open class APIResponse {
     public var result: AnyObject?
     public var statusCode: HttpStatusCode?
     public var _usingCache: Bool = false
-    public var params: [String:Any]?
-    
+    public var params: [String: Any]?
     
     var _onComplete: CompletionBlock?
     var _onError: ErrorBlock?
@@ -167,17 +161,19 @@ open class APIResponse {
         _onError = onError
     }
     
-    
     var request: DataRequest {
-        get{ return rq!}
-        set (newVal){
-            newVal.responseJSON { (response) in
+        get {
+            return rq!
+        }
+        set (newVal) {
+            newVal.responseJSON { response in
                 self.statusCode = HttpStatusCode(statusCode: response.response?.statusCode)
                 switch response.result {
                 case .success(let result):
                     print(result)
                     self.result = result as AnyObject
                     self._onComplete?(self.result, false)
+                    
                 case .failure(let error):
                     self._onError?(error)
                 }
@@ -193,12 +189,7 @@ open class APIResponse {
         return ""
     }
     
-    func cacheAPI(_ object: AnyObject) {
-        
-    }
-    
-    func getDataFromCache(){
-        
-    }
+    func cacheAPI(_ object: AnyObject) {}
 
+    func getDataFromCache() {}
 }

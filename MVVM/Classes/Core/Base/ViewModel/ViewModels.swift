@@ -15,7 +15,6 @@ protocol IReactable {
 }
 
 extension Reactive where Base: IGenericViewModel {
-    
     public typealias ModelElement = Base.ModelElement
     
     public var model: Binder<ModelElement?> {
@@ -23,10 +22,8 @@ extension Reactive where Base: IGenericViewModel {
     }
 }
 
-
 /// A master based ViewModel for all
 open class ViewModel<M>: NSObject, IViewModel, IReactable {
-    
     public typealias ModelElement = M
     
     private var _model: M?
@@ -72,9 +69,9 @@ open class ViewModel<M>: NSObject, IViewModel, IReactable {
     
     func reactIfNeeded() {
         /*
-        guard !isReacted else { return }
-        isReacted = true
-        */
+         guard !isReacted else { return }
+         isReacted = true
+         */
         react()
     }
 }
@@ -86,7 +83,6 @@ open class ViewModel<M>: NSObject, IViewModel, IReactable {
  By using this list, ListPage will render the cell and assign ViewModel to it respectively
  */
 open class ListViewModel<M, CVM: IGenericViewModel>: ViewModel<M>, IListViewModel {
-    
     public typealias CellViewModelElement = CVM
     
     public typealias ItemsSourceType = [SectionList<CVM>]
@@ -102,14 +98,14 @@ open class ListViewModel<M, CVM: IGenericViewModel>: ViewModel<M>, IListViewMode
     open override func destroy() {
         super.destroy()
         
-        itemsSource.forEach { (_, sectionList) in
-            sectionList.forEach({ (_, cvm) in
+        itemsSource.forEach { _, sectionList in
+            sectionList.forEach { _, cvm in
                 cvm.destroy()
-            })
+            }
         }
     }
     
-    open func selectedItemDidChange(_ cellViewModel: CVM,_ indexPath: IndexPath) { }
+    open func selectedItemDidChange(_ cellViewModel: CVM, _ indexPath: IndexPath) { }
 }
 
 /**
@@ -119,13 +115,12 @@ open class ListViewModel<M, CVM: IGenericViewModel>: ViewModel<M>, IListViewMode
  contains its own index
  */
 
-protocol IIndexable: class {
+protocol IIndexable: AnyObject {
     var indexPath: IndexPath? { get set }
     var isLastRow: Bool { get set }
 }
 
 open class CellViewModel<M>: NSObject, IGenericViewModel, IIndexable, IReactable {
-    
     public typealias ModelElement = M
     
     private var _model: M?
@@ -159,16 +154,15 @@ open class CellViewModel<M>: NSObject, IGenericViewModel, IIndexable, IReactable
     
     func reactIfNeeded() {
         /*
-        guard !isReacted else { return }
-        isReacted = true
-        */
+         guard !isReacted else { return }
+         isReacted = true
+         */
         react()
     }
 }
 
 /// A usefull CellViewModel based class to support ListPage and CollectionPage that have more than one cell identifier
 open class SuperCellViewModel: CellViewModel<Any> {
-    
     required public init(model: Any? = nil) {
         super.init(model: model)
     }

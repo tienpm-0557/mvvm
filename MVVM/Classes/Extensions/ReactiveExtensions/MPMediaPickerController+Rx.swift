@@ -12,8 +12,8 @@ import RxSwift
 import MediaPlayer
 
 extension Reactive where Base: MPMediaPickerController {
-    public var pickerDelegate: DelegateProxy<MPMediaPickerController,
-                                             MPMediaPickerControllerDelegate > {
+    public var pickerDelegate: DelegateProxy <MPMediaPickerController,
+                                              MPMediaPickerControllerDelegate > {
         return RxMediaPickerDelegateProxy.proxy(for: base)
     }
     
@@ -31,11 +31,11 @@ extension Reactive where Base: MPMediaPickerController {
     }
 }
 
-public class RxMediaPickerDelegateProxy : DelegateProxy<MPMediaPickerController,
+public class RxMediaPickerDelegateProxy: DelegateProxy <MPMediaPickerController,
                                                         MPMediaPickerControllerDelegate>,
-                                          DelegateProxyType,
-                                          MPMediaPickerControllerDelegate,
-                                          UINavigationControllerDelegate {
+                                         DelegateProxyType,
+                                         MPMediaPickerControllerDelegate,
+                                         UINavigationControllerDelegate {
     public init(imagePicker: MPMediaPickerController) {
         super.init(parentObject: imagePicker,
                    delegateProxy: RxMediaPickerDelegateProxy.self)
@@ -57,12 +57,12 @@ public class RxMediaPickerDelegateProxy : DelegateProxy<MPMediaPickerController,
 extension Reactive where Base: MPMediaPickerController {
     static public func createWithParent(_ parent: UIViewController?,
                                         animated: Bool = true,
-                                        configureImagePicker: @escaping (MPMediaPickerController) throws -> () = { _ in })
+                                        configureImagePicker: @escaping (MPMediaPickerController) throws -> Void = { _ in })
     -> Observable<MPMediaPickerController> {
         return Observable.create { [weak parent] observer in
             let mediaPicker = MPMediaPickerController()
             let dismissDisposable = Observable.merge(
-                mediaPicker.rx.didPickMediaItems.map{ _ in ()},
+                mediaPicker.rx.didPickMediaItems.map { _ in () },
                 mediaPicker.rx.didCancel
             )
             .subscribe(onNext: {  _ in

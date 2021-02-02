@@ -11,7 +11,6 @@ import Action
  PresenterPage used for present a popup
  */
 public class PresenterPage: UIViewController, IDestroyable {
-    
     private let contentPage: UIViewController
     private let overlayView = OverlayView()
     
@@ -91,22 +90,22 @@ public class PresenterPage: UIViewController, IDestroyable {
     }
     
     /*
-    public override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        if let popupView = contentPage as? IPopupView {
-            popupView.hide(overlayView: overlayView) {
-                super.dismiss(animated: false, completion: {
-                    self.destroy()
-                    completion?()
-                })
-            }
-        } else {
-            super.dismiss(animated: false, completion: {
-                self.destroy()
-                completion?()
-            })
-        }
-    }
-    */
+     public override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+     if let popupView = contentPage as? IPopupView {
+     popupView.hide(overlayView: overlayView) {
+     super.dismiss(animated: false, completion: {
+     self.destroy()
+     completion?()
+     })
+     }
+     } else {
+     super.dismiss(animated: false, completion: {
+     self.destroy()
+     completion?()
+     })
+     }
+     }
+     */
     
     public func destroy() {
         overlayView.tapGesture.unbindAction()
@@ -119,7 +118,7 @@ public class PresenterPage: UIViewController, IDestroyable {
         
         // if this presenter page is added as a child on another controller
         // then remove it
-        if let _ = parent {
+        if parent != nil {
             view.removeFromSuperview()
             removeFromParent()
         }
@@ -128,7 +127,9 @@ public class PresenterPage: UIViewController, IDestroyable {
     // MARK: - Toggle content view
     
     public func show() {
-        if isShown { return }
+        if isShown {
+            return
+        }
         isShown = true
         
         if let popupView = contentPage as? IPopupView {
@@ -139,21 +140,23 @@ public class PresenterPage: UIViewController, IDestroyable {
             contentPage.view.isHidden = false
         }
     }
-
+    
     private func adjustContainerSize() {
-        guard widthConstraint != nil && heightConstraint != nil else { return }
+        guard widthConstraint != nil && heightConstraint != nil else {
+            return
+        }
         
         let contentSize = contentPage.preferredContentSize
-
+        
         let maxWidth = view.frame.width - 40
         let maxHeight = view.frame.height - 80
-
+        
         let width = contentSize.width > 0 && contentSize.width < maxWidth ? contentSize.width : maxWidth
         let height = contentSize.height > 0 && contentSize.height < maxHeight ? contentSize.height : maxHeight
-
+        
         widthConstraint.constant = width
         heightConstraint.constant = height
-
+        
         view.layoutIfNeeded()
     }
 }

@@ -12,7 +12,6 @@ import Action
 import PureLayout
 
 open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-    
     public var disposeBag: DisposeBag? = DisposeBag()
     public private(set) var backButton: UIBarButtonItem?
     
@@ -84,10 +83,11 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
     }
     
     func setupPage() {
-        guard let itemsSource = getItemSource() else { return }
+        guard let itemsSource = getItemSource() else {
+            return
+        }
         if let first = itemsSource.first?.allElements.first,
-            let viewcontroller = first.vc {
-            
+           let viewcontroller = first.vc {
             setViewControllers([viewcontroller],
                                direction: .forward,
                                animated: false,
@@ -104,19 +104,14 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
      ```
      */
     open func bindViewAndViewModel() {
-        
         getItemSource()?.collectionChanged
             .observeOn(Scheduler.shared.mainScheduler)
             .subscribe(onNext: { [weak self] indexPath in
                 self?.onDataSourceChanged(indexPath)
             }) => disposeBag
-        
     }
     
-    
-    private func onDataSourceChanged(_ changeSet: ChangeSet) {
-        
-    }
+    private func onDataSourceChanged(_ changeSet: ChangeSet) { }
     
     open func onBack() {
         navigationService.pop()
@@ -143,7 +138,7 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
     func updateAfterViewModelChanged() {
         bindViewAndViewModel()
         
-        localeService.rxLocaleState.subscribe(onNext: {[weak self] (newLocale) in
+        localeService.rxLocaleState.subscribe(onNext: {[weak self] _ in
             self?.onUpdateLocalize()
             self?.viewModel?.onUpdateLocalize()
         }) => disposeBag
@@ -152,12 +147,15 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
         setupPage()
     }
     
-    fileprivate func nextViewController(_ viewController: UIViewController,
-                                        isAfter: Bool) -> UIViewController? {
+    private func nextViewController(_ viewController: UIViewController,
+                                    isAfter: Bool) -> UIViewController? {
+        guard let itemsSource = getItemSource() else {
+            return nil
+        }
+        guard let allItems = itemsSource.first?.allElements else {
+            return nil
+        }
         
-        guard let itemsSource = getItemSource() else { return nil }
-        guard let allItems = itemsSource.first?.allElements else { return nil }
-
         var index = allItems.firstIndex {
             $0.vc == viewController
         } ?? 0
@@ -197,8 +195,10 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
     /// MARK: - UIPageViewControllerDelegate
     public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
     }
-
-    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-    }
     
+    public func pageViewController(_ pageViewController: UIPageViewController,
+                                   didFinishAnimating finished: Bool,
+                                   previousViewControllers: [UIViewController],
+                                   transitionCompleted completed: Bool) {
+    }
 }

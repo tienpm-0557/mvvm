@@ -10,7 +10,6 @@ import Moya
 extension MoyaProvider: ReactiveCompatible {}
 
 public extension Reactive where Base: MoyaProviderType {
-    
     /// Designated request-making method.
     ///
     /// - Parameters:
@@ -23,6 +22,7 @@ public extension Reactive where Base: MoyaProviderType {
                 switch result {
                 case let .success(response):
                     single(.success(response))
+                    
                 case let .failure(error):
                     single(.error(error))
                 }
@@ -47,6 +47,7 @@ public extension Reactive where Base: MoyaProviderType {
                 switch result {
                 case .success:
                     observer.onCompleted()
+                    
                 case let .failure(error):
                     observer.onError(error)
                 }

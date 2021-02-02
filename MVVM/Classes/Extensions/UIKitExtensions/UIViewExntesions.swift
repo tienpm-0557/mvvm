@@ -6,9 +6,8 @@
 import UIKit
 
 public extension UIView {
-    
     class var nib: UINib {
-        return UINib(nibName:String(describing: self), bundle: Bundle.main)
+        return UINib(nibName: String(describing: self), bundle: Bundle.main)
     }
     
     class var nibName: String {
@@ -20,23 +19,25 @@ public extension UIView {
     }
     
     /// Load Xib from name
-    static func loadFrom<T: UIView>(nibNamed: String, bundle : Bundle? = nil) -> T? {
+    static func loadFrom<T: UIView>(nibNamed: String, bundle: Bundle? = nil) -> T? {
         let nib = UINib(nibName: nibNamed, bundle: bundle)
         return nib.instantiate(withOwner: nil, options: nil)[0] as? T
     }
     
     func getGesture<G: UIGestureRecognizer>(_ comparison: ((G) -> Bool)? = nil) -> G? {
-        return gestureRecognizers?.filter { g in
+        return gestureRecognizers?.first(where: { g -> Bool in
             if let comparison = comparison {
                 return g is G && comparison(g as! G)
             }
             
             return g is G
-        }.first as? G
+        }) as? G
     }
     
     func getConstraint(byAttribute attr: NSLayoutConstraint.Attribute) -> NSLayoutConstraint? {
-        return constraints.filter { $0.firstAttribute == attr }.first
+        return constraints.first { cst -> Bool in
+            return cst.firstAttribute == attr
+        }
     }
     
     /// Clear all subviews, destroy if needed
@@ -62,7 +63,6 @@ public extension UIView {
 }
 
 public extension UIView {
-    
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -85,7 +85,7 @@ public extension UIView {
     
     @IBInspectable @objc var borderColor: UIColor {
         get {
-            let color = UIColor.init(cgColor: layer.borderColor!)
+            let color = UIColor(cgColor: layer.borderColor!)
             return color
         }
         set {
@@ -111,7 +111,6 @@ public extension UIView {
         set {
             layer.shadowColor = newValue.cgColor
         }
-        
     }
     
     @IBInspectable var lightShadowRadius: CGFloat {
@@ -126,7 +125,8 @@ public extension UIView {
     }
     
     /// Set box shadow
-    @objc func setShadow(offset: CGSize, color: UIColor, opacity: Float, radius: CGFloat) {
+    @objc
+    func setShadow(offset: CGSize, color: UIColor, opacity: Float, radius: CGFloat) {
         let shadowPath = UIBezierPath(roundedRect: layer.bounds, cornerRadius: layer.cornerRadius)
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor
@@ -136,7 +136,8 @@ public extension UIView {
         layer.shadowPath = shadowPath.cgPath
     }
     
-    @objc func onUpdateLocalize() {
+    @objc
+    func onUpdateLocalize() {
         for subView: UIView in self.subviews {
             subView.onUpdateLocalize()
         }
@@ -167,9 +168,3 @@ public extension UIView {
         self.layer.insertSublayer(gl, at: 0)
     }
 }
-
-
-
-
-
-

@@ -27,7 +27,7 @@ class CoreDataManager: NSObject {
             return nil
         }
         let data = NSMutableData()
-        let archiver = NSKeyedArchiver.init(forWritingWith: data)
+        let archiver = NSKeyedArchiver(requiringSecureCoding: true)
         archiver.encode(params as AnyObject, forKey: _key)
         archiver.finishEncoding()
         return data as Data
@@ -35,10 +35,12 @@ class CoreDataManager: NSObject {
     
     class func unarchiveNSData(withData data : Data,
                                withKey key : String) -> Any? {
-        let unarchiver = NSKeyedUnarchiver.init(forReadingWith: data)
-        let jsonData = unarchiver.decodeObject(forKey: key)
-        return jsonData
+        do {
+            let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
+            let jsonData = unarchiver.decodeObject(forKey: key)
+            return jsonData
+        } catch {
+            return nil
+        }
     }
-    
-    
 }

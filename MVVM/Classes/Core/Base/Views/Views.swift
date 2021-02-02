@@ -9,7 +9,6 @@ import RxCocoa
 
 /// Based UIView that support ViewModel
 open class View<VM: IGenericViewModel>: UIView, IView {
-    
     public typealias ViewModelElement = VM
     
     public var disposeBag: DisposeBag? = DisposeBag()
@@ -74,7 +73,6 @@ open class View<VM: IGenericViewModel>: UIView, IView {
 
 /// Master based cell for CollectionPage
 open class CollectionCell<VM: IGenericViewModel>: UICollectionViewCell, IView {
-    
     open class var identifier: String {
         return String(describing: self)
     }
@@ -135,14 +133,10 @@ open class CollectionCell<VM: IGenericViewModel>: UICollectionViewCell, IView {
     
     open func initialize() {}
     open func bindViewAndViewModel() {}
-    
-    
 }
-
 
 /// Master cell for ListPage
 open class TableCell<VM: IGenericViewModel>: UITableViewCell, IView {
-    
     open class var identifier: String {
         return String(describing: self)
     }
@@ -208,4 +202,3 @@ open class TableCell<VM: IGenericViewModel>: UITableViewCell, IView {
     open func initialize() {}
     open func bindViewAndViewModel() {}
 }
-

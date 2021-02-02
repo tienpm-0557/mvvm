@@ -7,7 +7,6 @@ import UIKit
 import RxSwift
 
 open class NavigationPage: UINavigationController, UIGestureRecognizerDelegate, ITransitionView, IDestroyable {
-    
     public var animatorDelegate: AnimatorDelegate?
     
     /**
@@ -35,14 +34,20 @@ open class NavigationPage: UINavigationController, UIGestureRecognizerDelegate, 
 }
 
 extension NavigationPage: UINavigationControllerDelegate {
-    
-    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
+    public func navigationController(_ navigationController: UINavigationController,
+                                     animationControllerFor operation: UINavigationController.Operation,
+                                     from fromVC: UIViewController,
+                                     to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         var animatorDelegate: AnimatorDelegate?
         switch operation {
-        case .push: animatorDelegate = (toVC as? ITransitionView)?.animatorDelegate
-        case .pop: animatorDelegate = (fromVC as? ITransitionView)?.animatorDelegate
-        default: animatorDelegate = nil
+        case .push:
+            animatorDelegate = (toVC as? ITransitionView)?.animatorDelegate
+            
+        case .pop:
+            animatorDelegate = (fromVC as? ITransitionView)?.animatorDelegate
+            
+        default:
+            animatorDelegate = nil
         }
         
         animatorDelegate?.animator.isPresenting = operation == .push

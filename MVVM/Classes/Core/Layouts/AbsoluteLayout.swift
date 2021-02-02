@@ -7,8 +7,7 @@
 
 import UIKit
 
-open class AbsoluteLayout: UIView {
-    
+open class AbsoluteLayout: UIView {    
     public enum SizeAttribute {
         case none
         case fix(CGFloat)
@@ -61,10 +60,12 @@ open class AbsoluteLayout: UIView {
 }
 
 public extension AbsoluteLayout {
-    
     /// Add a child to layout with specific positions
     @discardableResult
-    func addChild(_ child: UIView, position: AbsolutePosition = .fill(insets: .zero), width: SizeAttribute = .none, height: SizeAttribute = .none) -> AbsoluteLayout {
+    func addChild(_ child: UIView,
+                  position: AbsolutePosition = .fill(insets: .zero),
+                  width: SizeAttribute = .none,
+                  height: SizeAttribute = .none) -> AbsoluteLayout {
         addSubview(child)
         switch position {
         case .absolute(let top, let left, let bottom, let right):
@@ -95,7 +96,6 @@ public extension AbsoluteLayout {
         case .topRight:
             child.autoPinEdge(toSuperviewEdge: .top)
             child.autoPinEdge(toSuperviewEdge: .trailing)
-
             
         case .centerRight:
             child.autoPinEdge(toSuperviewEdge: .trailing)
@@ -124,21 +124,23 @@ public extension AbsoluteLayout {
         switch width {
         case .fix(let value):
             child.autoSetDimension(.width, toSize: value)
+            
         case .ratio(let value):
             child.autoMatch(.width, to: .width, of: self, withMultiplier: value)
+            
         default: ()
         }
         
         switch height {
         case .fix(let value):
             child.autoSetDimension(.height, toSize: value)
+            
         case .ratio(let value):
             child.autoMatch(.height, to: .height, of: self, withMultiplier: value)
+            
         default: ()
         }
         
         return self
     }
 }
-
-

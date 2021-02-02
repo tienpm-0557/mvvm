@@ -16,6 +16,8 @@
 		5671E3ABD4CD31A9F77A2149 /* Pods_MVVMExample_MVVMExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9358D747A0B5C8E5411F9A1 /* Pods_MVVMExample_MVVMExampleUITests.framework */; };
 		6C3C21E0256966E800561A33 /* UIBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3C21DE256966E800561A33 /* UIBarItems.swift */; };
 		6C3C21E1256966E800561A33 /* UIBarItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3C21DF256966E800561A33 /* UIBarItems.xib */; };
+		6C6F9E5925C996860068EA3E /* TableOfContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6F9E5825C996860068EA3E /* TableOfContentViewModel.swift */; };
+		6CB59FB825C8490B00C8E433 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6CB59FB725C8490B00C8E433 /* .swiftlint.yml */; };
 		6CFBB59225124645003299A2 /* TimelinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFBB59025124645003299A2 /* TimelinePage.swift */; };
 		6CFBB59325124645003299A2 /* TimelinePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CFBB59125124645003299A2 /* TimelinePage.xib */; };
 		6CFBB5962512468D003299A2 /* TimelinePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFBB5952512468D003299A2 /* TimelinePageViewModel.swift */; };
@@ -228,6 +230,8 @@
 		48D7E9E7E062208592A06C56 /* Pods_MVVMExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C3C21DE256966E800561A33 /* UIBarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarItems.swift; sourceTree = "<group>"; };
 		6C3C21DF256966E800561A33 /* UIBarItems.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIBarItems.xib; sourceTree = "<group>"; };
+		6C6F9E5825C996860068EA3E /* TableOfContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableOfContentViewModel.swift; sourceTree = "<group>"; };
+		6CB59FB725C8490B00C8E433 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		6CFBB59025124645003299A2 /* TimelinePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinePage.swift; sourceTree = "<group>"; };
 		6CFBB59125124645003299A2 /* TimelinePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelinePage.xib; sourceTree = "<group>"; };
 		6CFBB5952512468D003299A2 /* TimelinePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinePageViewModel.swift; sourceTree = "<group>"; };
@@ -504,6 +508,14 @@
 				6C3C21DF256966E800561A33 /* UIBarItems.xib */,
 			);
 			path = UIBarButton;
+			sourceTree = "<group>";
+		};
+		6C6F9E5725C9966B0068EA3E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6C6F9E5825C996860068EA3E /* TableOfContentViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6CFBB58F25124610003299A2 /* TimelinePage */ = {
@@ -829,6 +841,7 @@
 		9C74EB7B246D19B900A3CF1D /* MVVMExample */ = {
 			isa = PBXGroup;
 			children = (
+				6CB59FB725C8490B00C8E433 /* .swiftlint.yml */,
 				9CC01B6124DA58F700995A07 /* README.md */,
 				09BC282424C19BB400D874CE /* MVVM.podspec */,
 				6C3C21DC256966E800561A33 /* Common */,
@@ -888,6 +901,7 @@
 		9C74EBB0246D1A5F00A3CF1D /* TableOfContent */ = {
 			isa = PBXGroup;
 			children = (
+				6C6F9E5725C9966B0068EA3E /* ViewModel */,
 				9C74EBB8246D1AF000A3CF1D /* TableOfContentsPage.swift */,
 				9C74EBB9246D1AF000A3CF1D /* TableOfContentsPage.xib */,
 				9C74EBB6246D1AEF00A3CF1D /* MenuTableViewCell.swift */,
@@ -1661,6 +1675,7 @@
 				9C74EB76246D19B900A3CF1D /* Frameworks */,
 				9C74EB77246D19B900A3CF1D /* Resources */,
 				3B23F5C7F070AAC4714CD455 /* [CP] Embed Pods Frameworks */,
+				6CB59FF325C84A2C00C8E433 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1718,7 +1733,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Sun*";
 				TargetAttributes = {
 					9C74EB78246D19B900A3CF1D = {
@@ -1814,6 +1829,7 @@
 				9C74EC0D246D8BB900A3CF1D /* ServiceExamplesPage.xib in Resources */,
 				9C74EBBB246D1AF000A3CF1D /* MenuTableViewCell.xib in Resources */,
 				6CFBB59325124645003299A2 /* TimelinePage.xib in Resources */,
+				6CB59FB825C8490B00C8E433 /* .swiftlint.yml in Resources */,
 				9C74EBF8246D435400A3CF1D /* ListPageExamplePage.xib in Resources */,
 				9C74EBFD246D4E7C00A3CF1D /* MVVMExamplePage.xib in Resources */,
 				9C6504A32501DAD1004B4696 /* TabPage.xib in Resources */,
@@ -1922,6 +1938,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MVVMExampleTests/Pods-MVVMExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6CB59FF325C84A2C00C8E433 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		84F59577EE9FA08D1C28CC26 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2083,6 +2116,7 @@
 				9C79EE062470DE0200FEF5EC /* SimpleCollectionViewCell.swift in Sources */,
 				9C74EBD6246D206100A3CF1D /* AlertWebPage.swift in Sources */,
 				9CCBA65C247A7C7900D73A7B /* FlickrSearchModel.swift in Sources */,
+				6C6F9E5925C996860068EA3E /* TableOfContentViewModel.swift in Sources */,
 				9CD35C2324D837070087B8CF /* MailServiceExt.swift in Sources */,
 				9CAEA2812478C65300061B49 /* FlickrImageSearchPageViewModel.swift in Sources */,
 				9CF158D924712A55006A1CFB /* DynamicCollectionViewCell.swift in Sources */,
@@ -2186,6 +2220,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2247,6 +2282,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2285,7 +2321,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 747LG25T2M;
 				INFOPLIST_FILE = MVVMExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2308,7 +2344,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 747LG25T2M;
 				INFOPLIST_FILE = MVVMExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

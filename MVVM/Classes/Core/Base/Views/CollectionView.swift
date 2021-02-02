@@ -6,7 +6,6 @@
 import UIKit
 
 open class CollectionView<VM: IListViewModel>: View<VM>, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
     public typealias CVM = VM.CellViewModelElement
     
     public lazy var collectionView: UICollectionView = {
@@ -55,7 +54,7 @@ open class CollectionView<VM: IListViewModel>: View<VM>, UICollectionViewDataSou
     open override func bindViewAndViewModel() {
         collectionView.rx.itemSelected
             .asObservable()
-            .subscribe(onNext:{[weak self] indexPath in
+            .subscribe(onNext: {[weak self] indexPath in
                 self?.onItemSelected(indexPath)
             }) => disposeBag
         
@@ -67,7 +66,9 @@ open class CollectionView<VM: IListViewModel>: View<VM>, UICollectionViewDataSou
     }
     
     private func onItemSelected(_ indexPath: IndexPath) {
-        guard let viewModel = viewModel else { return }
+        guard let viewModel = viewModel else {
+            return
+        }
         let cellViewModel = viewModel.itemsSource[indexPath.row, indexPath.section]
         
         viewModel.rxSelectedItem.accept(cellViewModel)
@@ -152,7 +153,7 @@ open class CollectionView<VM: IListViewModel>: View<VM>, UICollectionViewDataSou
     /**
      Subclasses override this method to handle cell pressed action.
      */
-    open func selectedItemDidChange(_ cellViewModel: CVM,_ indexPath: IndexPath) { }
+    open func selectedItemDidChange(_ cellViewModel: CVM, _ indexPath: IndexPath) { }
     
     // MARK: - Collection view datasources
     

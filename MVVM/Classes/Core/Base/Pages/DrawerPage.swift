@@ -8,7 +8,6 @@ import RxSwift
 import Action
 
 class OverlayView: AbstractControlView {
-    
     public let tapGesture = UITapGestureRecognizer()
     
     override func setupView() {
@@ -34,8 +33,11 @@ public enum DrawerAnimation {
     
     var duration: TimeInterval {
         switch self {
-        case .slide: return 0.25
-        case .slideAndZoom: return 0.3
+        case .slide:
+            return 0.25
+            
+        case .slideAndZoom:
+            return 0.3
         }
     }
 }
@@ -50,7 +52,6 @@ public enum DrawerWidth {
 
 /// A navigation drawer page
 public class DrawerPage: UIViewController, IDestroyable {
-    
     public private(set) var detailPage: UIViewController?
     public private(set) var masterPage: UIViewController?
     
@@ -111,7 +112,7 @@ public class DrawerPage: UIViewController, IDestroyable {
     }
     
     /// Background color for overlay view
-    public var overlayColor: UIColor = UIColor(r: 0, g: 0, b: 0, a: 0.7) {
+    public var overlayColor = UIColor(r: 0, g: 0, b: 0, a: 0.7) {
         didSet { updateOverlayColor() }
     }
     
@@ -233,7 +234,9 @@ public class DrawerPage: UIViewController, IDestroyable {
     }
     
     public func openDrawer(_ animated: Bool = true) {
-        if isOpen { return }
+        if isOpen {
+            return
+        }
         
         let duration: TimeInterval = animated ? drawerAnimation.duration : 0
         
@@ -243,23 +246,25 @@ public class DrawerPage: UIViewController, IDestroyable {
         
         openDrawerAnimation(duration: duration) { _ in
             self.masterPage?.endAppearanceTransition()
-            self.isOpen = !self.isOpen
-            
+            self.isOpen.toggle()
             self.setNeedsStatusBarAppearanceUpdate()
         }
     }
     
-    private func openDrawerAnimation(duration: TimeInterval, completion: @escaping ((Bool) -> ())) {
+    private func openDrawerAnimation(duration: TimeInterval, completion: @escaping ((Bool) -> Void)) {
         switch drawerAnimation {
         case .slide:
             switch drawerLayout {
             case .over:
                 masterContentView.transform = CGAffineTransform(translationX: -masterContentView.frame.width, y: 0)
                 
-                UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-                    self.overlayView.alpha = 1
-                    self.masterContentView.transform = .identity
-                }, completion: completion)
+                UIView.animate(withDuration: duration,
+                               delay: 0,
+                               options: .curveEaseOut,
+                               animations: {
+                                self.overlayView.alpha = 1
+                                self.masterContentView.transform = .identity
+                               }, completion: completion)
                 
             case .under:
                 masterContentView.transform = CGAffineTransform(translationX: -(masterContentView.frame.width / 3), y: 0)
@@ -267,15 +272,21 @@ public class DrawerPage: UIViewController, IDestroyable {
                 
                 let translateX: CGFloat
                 switch drawerWidth {
-                case .fix(let width): translateX = width
-                case .ratio(let ratio): translateX = ratio * view.frame.width
+                case .fix(let width):
+                    translateX = width
+                    
+                case .ratio(let ratio):
+                    translateX = ratio * view.frame.width
                 }
                 
-                UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-                    self.overlayView.alpha = 1
-                    self.masterContentView.transform = .identity
-                    self.detailContentView.transform = CGAffineTransform(translationX: translateX, y: 0)
-                }, completion: completion)
+                UIView.animate(withDuration: duration,
+                               delay: 0,
+                               options: .curveEaseOut,
+                               animations: {
+                                self.overlayView.alpha = 1
+                                self.masterContentView.transform = .identity
+                                self.detailContentView.transform = CGAffineTransform(translationX: translateX, y: 0)
+                               }, completion: completion)
             }
             
         case .slideAndZoom:
@@ -292,54 +303,67 @@ public class DrawerPage: UIViewController, IDestroyable {
             let scale: CGFloat = 0.8
             let translateX: CGFloat
             switch drawerWidth {
-            case .fix(let width): translateX = width
-            case .ratio(let ratio): translateX = ratio * view.frame.width
+            case .fix(let width):
+                translateX = width
+                
+            case .ratio(let ratio):
+                translateX = ratio * view.frame.width
             }
             
-            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-                self.overlayView.alpha = 1
-                
-                var transform = CGAffineTransform(translationX: translateX, y: 0)
-                transform = transform.concatenating(CGAffineTransform(scaleX: scale, y: scale))
-                self.detailContentView.transform = transform
-            }, completion: completion)
+            UIView.animate(withDuration: duration,
+                           delay: 0,
+                           options: .curveEaseOut,
+                           animations: {
+                            self.overlayView.alpha = 1
+                            
+                            var transform = CGAffineTransform(translationX: translateX, y: 0)
+                            transform = transform.concatenating(CGAffineTransform(scaleX: scale, y: scale))
+                            self.detailContentView.transform = transform
+                           }, completion: completion)
         }
     }
     
     public func closeDrawer(_ animated: Bool = true) {
-        if !isOpen { return }
+        if !isOpen {
+            return
+        }
         
         let duration: TimeInterval = animated ? drawerAnimation.duration : 0
         
         masterPage?.beginAppearanceTransition(false, animated: animated)
         
-        closeDrawerAnimation(duration: duration) { (_) in
+        closeDrawerAnimation(duration: duration) { _ in
             self.overlayView.isHidden = true
             self.masterContentView.isHidden = true
-            
             self.masterPage?.endAppearanceTransition()
-            self.isOpen = !self.isOpen
-            
+            self.isOpen.toggle()
             self.setNeedsStatusBarAppearanceUpdate()
         }
     }
     
-    private func closeDrawerAnimation(duration: TimeInterval, completion: @escaping ((Bool) -> ())) {
+    private func closeDrawerAnimation(duration: TimeInterval,
+                                      completion: @escaping ((Bool) -> Void)) {
         switch drawerAnimation {
         case .slide:
             switch drawerLayout {
             case .over:
-                UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-                    self.overlayView.alpha = 0
-                    self.masterContentView.transform = CGAffineTransform(translationX: -self.masterContentView.frame.width, y: 0)
-                }, completion: completion)
+                UIView.animate(withDuration: duration,
+                               delay: 0,
+                               options: .curveEaseOut,
+                               animations: {
+                                self.overlayView.alpha = 0
+                                self.masterContentView.transform = CGAffineTransform(translationX: -self.masterContentView.frame.width, y: 0)
+                               }, completion: completion)
                 
             case .under:
-                UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-                    self.overlayView.alpha = 0
-                    self.masterContentView.transform = CGAffineTransform(translationX: -(self.masterContentView.frame.width / 3), y: 0)
-                    self.detailContentView.transform = .identity
-                }, completion: completion)
+                UIView.animate(withDuration: duration,
+                               delay: 0,
+                               options: .curveEaseOut,
+                               animations: {
+                                self.overlayView.alpha = 0
+                                self.masterContentView.transform = CGAffineTransform(translationX: -(self.masterContentView.frame.width / 3), y: 0)
+                                self.detailContentView.transform = .identity
+                               }, completion: completion)
             }
             
         case .slideAndZoom:
@@ -349,10 +373,13 @@ public class DrawerPage: UIViewController, IDestroyable {
                 })
             }
             
-            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
-                self.overlayView.alpha = 0
-                self.detailContentView.transform = .identity
-            }, completion: completion)
+            UIView.animate(withDuration: duration,
+                           delay: 0,
+                           options: .curveEaseOut,
+                           animations: {
+                            self.overlayView.alpha = 0
+                            self.detailContentView.transform = .identity
+                           }, completion: completion)
         }
     }
     
@@ -368,6 +395,7 @@ public class DrawerPage: UIViewController, IDestroyable {
             case .ratio(let ratio):
                 widthConstraint = masterContentView.autoMatch(.width, to: .width, of: view, withMultiplier: ratio)
             }
+            
         default:
             widthConstraint = masterContentView.autoMatch(.width, to: .width, of: view)
         }
@@ -403,8 +431,3 @@ public class DrawerPage: UIViewController, IDestroyable {
         }
     }
 }
-
-
-
-
-

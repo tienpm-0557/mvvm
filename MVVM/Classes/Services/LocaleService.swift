@@ -10,8 +10,8 @@ import RxSwift
 import RxCocoa
 
 public class LocalizeService {
-    private static let kCurrentLocale       = "CurrentLocale"
-    private static let kDefaultLocale               = "en"
+    private static let kCurrentLocale = "CurrentLocale"
+    private static let kDefaultLocale = "en"
 
     static let shared = LocalizeService()
     
@@ -40,7 +40,9 @@ public class LocalizeService {
     func localized(_ key: String) -> String {
         let locale = LocalizeService.shared.getCurrentLocale()
         let enBundlePath = Bundle.main.path(forResource: locale, ofType: "lproj")
-        guard let bundle = Bundle(path: enBundlePath!) else { return "" }
+        guard let bundle = Bundle(path: enBundlePath!) else {
+            return ""
+        }
         return NSLocalizedString(key, tableName: nil, bundle: bundle, value: key, comment: key)
     }
 }

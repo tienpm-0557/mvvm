@@ -6,8 +6,7 @@
 import UIKit
 
 open class AbstractView: UIView {
-    
-    public static func nibName() -> String{
+    public static func nibName() -> String {
         return String(describing: self)
     }
     
@@ -31,7 +30,6 @@ open class AbstractView: UIView {
 }
 
 open class AbstractControlView: UIControl {
-    
     public init() {
         super.init(frame: .zero)
         setupView()

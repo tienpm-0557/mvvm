@@ -46,8 +46,6 @@ class MoyaProviderServicePageViewModel: BaseViewModel {
     }
     
     func search(withText keyword: String, withPage page: Int) {
-        print("DEBUG: \(keyword)")
-        
         moyaService?.search(keyword: keyword, page: 0)
             .map(prepareSources)
             .subscribe(onSuccess: {[weak self] (response) in
@@ -58,6 +56,7 @@ class MoyaProviderServicePageViewModel: BaseViewModel {
         }, onError: {[weak self] (error) in
             self?.rxIsSearching.accept(false)
         })
+        => disposeBag
     }
     
     private func prepareSources(_ response: FlickrSearchResponse?) -> FlickrSearchResponse? {
