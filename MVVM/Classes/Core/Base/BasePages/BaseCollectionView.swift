@@ -11,6 +11,7 @@ open class BaseCollectionView: BaseView {
     @IBOutlet public weak var collectionView: UICollectionView!
     
     open var allowLoadmoreData: Bool = false
+    open var focusLeftCell: Bool = false
     open var state: ListState = .normal
     open var pageSize: Int = 10
     
@@ -189,7 +190,27 @@ extension BaseCollectionView: UICollectionViewDataSource {
     }
 }
 
-extension BaseCollectionView: UICollectionViewDelegate {}
+extension BaseCollectionView: UICollectionViewDelegate {
+    
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard focusLeftCell else {
+            return
+        }
+        
+        var indexes = self.collectionView.indexPathsForVisibleItems
+        indexes.sort()
+        var index = indexes.first!
+        let cell = self.collectionView.cellForItem(at: index)!
+        let position = self.collectionView.contentOffset.x - cell.frame.origin.x
+        if position > cell.frame.size.width/2{
+            index.row = index.row+1
+        }
+        
+        if index.row > 0 {
+            self.collectionView.scrollToItem(at: index, at: .left, animated: true )
+        }
+    }
+}
 
 extension BaseCollectionView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
