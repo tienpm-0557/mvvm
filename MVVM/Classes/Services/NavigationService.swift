@@ -222,7 +222,11 @@ extension INavigationService {
 }
 
 open class NavigationService: INavigationService {
-    private(set) public var rootPage: UIViewController? = nil
+    private(set) public var rootPage: UIViewController?
+        
+    public func getRootPage() -> UIViewController? {
+        return self.rootPage ?? self.topPage
+    }
     
     required public init(rootViewController: UIViewController? = nil) {
         rootPage = rootViewController
