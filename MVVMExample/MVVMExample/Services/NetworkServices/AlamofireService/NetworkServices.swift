@@ -50,7 +50,7 @@ class NetworkService {
                 resultKey = resultKey + "\(String(describing: objectDict[key]!))"
             }
         }
-        return  MTLAB_SECRET_KEY + resultKey
+        return  k_MTLAB_SECRET_KEY + resultKey
     }
     
     open func request(withService service: APIService,

@@ -12,6 +12,4 @@ import RxSwift
 import RxCocoa
 import Action
 
-class StoreKitPageViewModel: BaseViewModel {
-
-}
+class StoreKitPageViewModel: BaseViewModel {}

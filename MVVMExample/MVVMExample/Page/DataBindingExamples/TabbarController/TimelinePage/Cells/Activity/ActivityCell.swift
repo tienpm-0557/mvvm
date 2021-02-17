@@ -29,8 +29,7 @@ class ActivityCell: BaseTableCell {
         viewModel.rxTweets ~> tweetsLb.rx.text => disposeBag
         viewModel.rxFollowing ~> followingLb.rx.text => disposeBag
         viewModel.rxFollower ~> followerLb.rx.text => disposeBag
-        viewModel.rxLikes ~> likesLb.rx.text => disposeBag
-        
+        viewModel.rxLikes ~> likesLb.rx.text => disposeBag   
     }
     
     override func initialize() {

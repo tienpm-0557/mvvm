@@ -12,10 +12,10 @@ import MVVM
 import SwiftyJSON
 
 /*
-https://api.flickr.com/services/rest?method=flickr.photos.search&api_key=dc4c20e9d107a9adfa54917799e44650&format=json&nojsoncallback=1&page=0&per_page=10&text=oke
+ https://api.flickr.com/services/rest?method=flickr.photos.search&api_key=dc4c20e9d107a9adfa54917799e44650&format=json&nojsoncallback=1&page=0&per_page=10&text=oke
  */
 
-let MTLAB_SECRET_KEY: String = "#---demomvvm-xxxyyyzzzz@1231---#"
+let k_MTLAB_SECRET_KEY: String = "#---demomvvm-xxxyyyzzzz@1231---#"
 
 enum APIUrl {
     #if DEBUG
@@ -81,8 +81,10 @@ public enum APIService: URLRequestConvertible {
         switch self {
         case .flickrSearch(let parameter):
             return parameter
+            
         case .loadTimeline(let parameter):
             return parameter
+            
         default:
             return nil
         }
@@ -92,6 +94,7 @@ public enum APIService: URLRequestConvertible {
         switch self {
         case .flickrSearch:
             return .get
+            
         default:
             return .get
         }
@@ -104,7 +107,7 @@ public enum APIService: URLRequestConvertible {
             
         case .flickrSearch:
             return APIUrl.apiFlickrSearch
-
+            
         case .loadTimeline:
             return APIUrl.apiTimeline
         }
@@ -113,11 +116,14 @@ public enum APIService: URLRequestConvertible {
     var header: HTTPHeaders? {
         switch self {
         case .login:
-            return [HeaderKey.ContentType: HeaderValue.ApplicationJson,
-                    HeaderKey.Accept: HeaderValue.ApplicationJson,
-                    HeaderKey.Language: HeaderValue.LanguageEng,
-                    HeaderKey.TimeZone: TimeZone.current.identifier,
-                    HeaderKey.Platform: HeaderValue.PLatformIos]
+            return [
+                HeaderKey.ContentType: HeaderValue.ApplicationJson,
+                HeaderKey.Accept: HeaderValue.ApplicationJson,
+                HeaderKey.Language: HeaderValue.LanguageEng,
+                HeaderKey.TimeZone: TimeZone.current.identifier,
+                HeaderKey.Platform: HeaderValue.PLatformIos
+            ]
+            
         default:
             return [:]
         }
@@ -127,6 +133,7 @@ public enum APIService: URLRequestConvertible {
         switch self {
         case .login:
             return JSONEncoding.default
+            
         case .flickrSearch, .loadTimeline:
             return URLEncoding.default
         }
@@ -138,6 +145,7 @@ public enum APIService: URLRequestConvertible {
         switch self {
         case .loadTimeline:
             url = try APIUrl.mtlabRootURL.asURL()
+            
         default:
             break
         }
@@ -156,5 +164,4 @@ public enum APIService: URLRequestConvertible {
         print(response.cURLString())
         return response
     }
-
 }

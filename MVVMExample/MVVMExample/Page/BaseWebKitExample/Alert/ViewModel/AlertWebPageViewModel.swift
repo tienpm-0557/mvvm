@@ -21,12 +21,17 @@ class AlertWebPageViewModel: IntroductionPageViewModel {
     }
     
     override func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-        let alert = UIAlertController(title: "runJavaScriptAlertPanelWithMessage", message: message, preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            completionHandler()
-        }))
+        let alert = UIAlertController(title: "runJavaScriptAlertPanelWithMessage",
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: { _ in
+                                        completionHandler()
+                                      }))
+        
         navigationService.push(to: alert, options: .modal())
     }
-
+    
 }

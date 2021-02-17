@@ -191,7 +191,6 @@ extension BaseCollectionView: UICollectionViewDataSource {
 }
 
 extension BaseCollectionView: UICollectionViewDelegate {
-    
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard focusLeftCell else {
             return
@@ -202,8 +201,8 @@ extension BaseCollectionView: UICollectionViewDelegate {
         var index = indexes.first!
         let cell = self.collectionView.cellForItem(at: index)!
         let position = self.collectionView.contentOffset.x - cell.frame.origin.x
-        if position > cell.frame.size.width/2{
-            index.row = index.row+1
+        if position > cell.frame.size.width / 2 {
+            index.row = index.row + 1
         }
         
         if index.row > 0 {

@@ -31,7 +31,6 @@ class StoreKitPage: BasePage {
 
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        
     }
 
 }

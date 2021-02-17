@@ -103,7 +103,7 @@ excluded:
   - bin/strings.swift
   - bin/StringsScript/Sources/StringsScriptCore/Secrets.swift
   - vendor
-included:
-  - ../MVVM
+#included:
+#  - ../MVVM
 reporter: "xcode"
 
