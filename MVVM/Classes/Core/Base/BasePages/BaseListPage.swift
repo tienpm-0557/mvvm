@@ -62,7 +62,6 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
     open func setupTableView(_ tableView: UITableView) {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
     }
     

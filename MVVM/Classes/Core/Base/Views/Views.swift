@@ -51,8 +51,6 @@ open class View<VM: IGenericViewModel>: UIView, IView {
     deinit { destroy() }
     
     func setup() {
-        backgroundColor = .clear
-        
         initialize()
         viewModelChanged()
     }
@@ -112,7 +110,6 @@ open class CollectionCell<VM: IGenericViewModel>: UICollectionViewCell, IView {
     deinit { destroy() }
     
     private func setup() {
-        backgroundColor = .clear
         initialize()
     }
     
@@ -176,7 +173,6 @@ open class TableCell<VM: IGenericViewModel>: UITableViewCell, IView {
     deinit { destroy() }
     
     private func setup() {
-        backgroundColor = .clear
         separatorInset = .zero
         layoutMargins = .zero
         preservesSuperviewLayoutMargins = false

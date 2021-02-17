@@ -22,7 +22,6 @@ open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITabl
     override func setup() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .clear
         addSubview(tableView)
         super.setup()
     }

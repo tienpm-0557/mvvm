@@ -53,8 +53,6 @@ open class BaseView: UIView, IView {
     deinit { destroy() }
     
     func setup() {
-        backgroundColor = .clear
-        
         initialize()
         viewModelChanged()
     }

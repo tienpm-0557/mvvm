@@ -25,7 +25,6 @@ open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITabl
     override open func viewDidLoad() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .clear
         view.addSubview(tableView)
         
         super.viewDidLoad()
