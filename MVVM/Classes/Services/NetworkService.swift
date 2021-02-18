@@ -170,7 +170,6 @@ open class APIResponse {
                 self.statusCode = HttpStatusCode(statusCode: response.response?.statusCode)
                 switch response.result {
                 case .success(let result):
-                    print(result)
                     self.result = result as AnyObject
                     self._onComplete?(self.result, false)
                     
