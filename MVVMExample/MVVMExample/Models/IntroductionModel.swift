@@ -27,7 +27,6 @@ class IntroductionModel: Model {
     }
 }
 
-
 extension NSURL {
     func isAbleFormatImage() -> Bool {
         guard let pathExtension = self.pathExtension else {

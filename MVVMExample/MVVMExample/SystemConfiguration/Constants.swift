@@ -15,8 +15,8 @@ enum SystemConfiguration {
     static let buildIndex   = (Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) ?? "1") as! String
     static let bundleID     = Bundle.main.bundleIdentifier
     static let requestTimeOut = 60
-    static let NavigationBarHeight:CGFloat = DeviceManager.DeviceType.IS_IPHONE_X ? 80 : 60
-    static let TabbarHeight:CGFloat = DeviceManager.DeviceType.IS_IPHONE_X ? 85 : 50
+    static let NavigationBarHeight = CGFloat(DeviceManager.DeviceType.IS_IPHONE_X ? 80 : 60)
+    static let TabbarHeight = CGFloat(DeviceManager.DeviceType.IS_IPHONE_X ? 85 : 50)
 }
 
 func logD(_ message: String, function: String = #function) {

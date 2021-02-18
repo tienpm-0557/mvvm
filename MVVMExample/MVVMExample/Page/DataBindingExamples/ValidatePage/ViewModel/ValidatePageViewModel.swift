@@ -13,7 +13,6 @@ import RxCocoa
 import Action
 
 class ValidatePageViewModel: BaseViewModel {
-    
     let rxPageTitle = BehaviorRelay<String>(value: "")
     let rxHelloText = BehaviorRelay<String?>(value: nil)
     let rxEmail = BehaviorRelay<String?>(value: nil)
@@ -33,7 +32,9 @@ class ValidatePageViewModel: BaseViewModel {
     let alertService: IAlertService = DependencyManager.shared.getService()
     
     override func react() {
-        guard let model = self.model as? MenuModel else { return }
+        guard let model = self.model as? MenuModel else {
+            return
+        }
         rxPageTitle.accept(model.title)
         
         Observable.combineLatest(rxEmail, rxPass) { e, p -> Bool in
@@ -42,5 +43,4 @@ class ValidatePageViewModel: BaseViewModel {
         
         rxEmail.filter { $0 != nil }.map { "Hello, \($0!)" } ~> rxHelloText => disposeBag  // One-way binding is donated by ~>
     }
-
 }

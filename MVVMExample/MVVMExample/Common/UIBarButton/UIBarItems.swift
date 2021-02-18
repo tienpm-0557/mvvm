@@ -47,7 +47,7 @@ import RxCocoa
 
 //MARK: Custom View For NavigationBar UIBarButtonItem
 
-let UIBarItemsNibName:String = "UIBarItems"
+let kUIBarItemsNibName: String = "UIBarItems"
 
 struct UIBarButtonOption {
     var frame: CGRect
@@ -60,7 +60,7 @@ struct UIBarButtonOption {
     var titleColor: UIColor?
     var selectedTitleColor: UIColor?
     var hasBagde: Bool
-    var bagde:Observable<Int?>?
+    var bagde: Observable<Int?>?
     var cornerRadius: CGFloat
     var roundCorners: UIRectCorner
     
@@ -76,8 +76,7 @@ struct UIBarButtonOption {
          bagde: Observable<Int?>? = nil,
          cornerRadius: CGFloat = 0.0,
          roundCorners: UIRectCorner = .allCorners,
-         contentInset: UIEdgeInsets? = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-    {
+         contentInset: UIEdgeInsets? = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) {
         self.frame = frame
         self.title = title
         self.selectedTitle = selectedTitle
@@ -104,8 +103,8 @@ class UIBarButton: UIView {
     class func instanceFromNib(withOption option: UIBarButtonOption,
                                action: Action<AnyObject, Void>) -> UIBarButton {
         var view: UIBarButton?
-        let nib = UINib(nibName: UIBarItemsNibName, bundle: Bundle.main)
-        nib.instantiate(withOwner: nil, options: nil).forEach { (v) in
+        let nib = UINib(nibName: kUIBarItemsNibName, bundle: Bundle.main)
+        nib.instantiate(withOwner: nil, options: nil).forEach { v in
             if v is UIBarButton { view = v as? UIBarButton }
         }
         
@@ -130,7 +129,7 @@ class UIBarButton: UIView {
             barBtn.bagdeView.isHidden = true
         }
         
-        option.bagde?.subscribe(onNext: { (bagde) in
+        option.bagde?.subscribe(onNext: { bagde in
             if let bd = bagde, bd > 0 {
                 barBtn.bagdeView.isHidden = false
                 barBtn.bagdeLabel.text = "\(bd)"
@@ -142,7 +141,6 @@ class UIBarButton: UIView {
         barBtn.barButton.contentEdgeInsets = option.contentInset ?? UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         return barBtn
     }
-    
 }
 
 extension UIBarButtonItem {
@@ -172,7 +170,7 @@ extension UIBarButtonItem {
     static func titleButton(withFrame frame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 40),
                             withTitle title: String,
                             withAction action: Action<AnyObject, Void>) -> UIBarButtonItem {
-        let option = UIBarButtonOption(frame:frame, title: title, selectedTitle: title)
+        let option = UIBarButtonOption(frame: frame, title: title, selectedTitle: title)
         return UIBarButtonItem(withOption: option, withAction: action)
     }
     
@@ -218,8 +216,8 @@ class UIBarTitle: UIView {
                                dropdownIcon icon: String? = nil,
                                type: UIBarTitleType = .normal) -> UIBarTitle {
         var view: UIBarTitle?
-        let nib = UINib(nibName: UIBarItemsNibName, bundle: Bundle.main)
-        nib.instantiate(withOwner: nil, options: nil).forEach { (v) in
+        let nib = UINib(nibName: kUIBarItemsNibName, bundle: Bundle.main)
+        nib.instantiate(withOwner: nil, options: nil).forEach { v in
             if v is UIBarTitle { view = v as? UIBarTitle }
         }
         
@@ -233,12 +231,12 @@ class UIBarTitle: UIView {
         switch type {
         case .dropdown:
             titleView.setupDropView(image: icon)
+            
         default:
             ()
         }
         return titleView
     }
-    
     
     private func setupDropView(image: String?) {
         dropdownBtn.isHidden = false
@@ -246,7 +244,7 @@ class UIBarTitle: UIView {
     }
     
     private func setupView(withImage image: String?,
-                           withTitle title: String)  {
+                           withTitle title: String) {
         dropdownBtn.isHidden = true
         imageView.isHidden = image == nil
         imageView.image = UIImage(named: image ?? "")
@@ -283,4 +281,3 @@ class UIBarTitle: UIView {
         return titleView
     }
 }
-

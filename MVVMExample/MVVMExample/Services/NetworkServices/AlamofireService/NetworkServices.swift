@@ -54,12 +54,10 @@ class NetworkService {
     }
     
     open func request(withService service: APIService,
-                      withHash hash:Bool,
-                      usingCache cache:Bool,
+                      withHash hash: Bool,
+                      usingCache cache: Bool,
                       injectDefaulParameter defaultParamter: Bool = false) -> Single<APIResponse> {
-        
-        
-        var _params: [String:Any] = [:]
+        var _params: [String: Any] = [:]
         /// Consider inject default parameter.
         if defaultParamter {
             _params = self.getDefaultParams()
@@ -76,7 +74,11 @@ class NetworkService {
             _params["hash"] = inputHashString
         }
         
-        guard let urlString = service.urlRequest?.url?.absoluteString else { return Single.create { _ in Disposables.create { } } }
+        guard let urlString = service.urlRequest?.url?.absoluteString else {
+            return Single.create { _ in
+                Disposables.create { }
+            }
+        }
         
         return Single.create { [weak self] single in
             self?.state.accept(.requesting)
@@ -86,10 +88,10 @@ class NetworkService {
                                               parameterEncoding: service.encoding,
                                               additionalHeaders: service.header)
                 .map(service.prepareSources)
-                .subscribe(onSuccess: { [weak self](json) in
+                .subscribe(onSuccess: { [weak self] json in
                     self?.state.accept(.success)
                     single(.success(json))
-                }) { (error) in
+                }) { error in
                     self?.state.accept(.error)
                     single(.error(error))
                 } => self?.tmpBag
@@ -98,5 +100,4 @@ class NetworkService {
             }
         }
     }
-    
 }

@@ -11,12 +11,10 @@ import RxCocoa
 import WebKit
 
 //MARK: ViewModel For BaseWebView Examples
-class IntroductionPageViewModel: BaseWebViewModel {
-    
+class IntroductionPageViewModel: BaseWebViewModel {    
     let rxPageTitle = BehaviorRelay(value: "")
     let rxURL = BehaviorRelay<URL?>(value: nil)
-    
-    
+        
     override func react() {
         super.react()
         let title = (self.model as? IntroductionModel)?.title ?? "Table Of Contents"

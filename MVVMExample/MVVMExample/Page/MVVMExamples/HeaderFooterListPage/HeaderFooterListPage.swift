@@ -9,7 +9,6 @@
 import UIKit
 
 class HeaderFooterListPage: SectionListPage {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,20 +19,8 @@ class HeaderFooterListPage: SectionListPage {
         super.setupTableView(tableView)
         tableView.register(footerType: SectionFooterListView.self)
     }
-
     
     override func footerIdentifier(_ footerViewModel: Any, _ returnClassName: Bool = false) -> String? {
         return returnClassName ? SectionFooterListView.className : SectionFooterListView.identifier
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

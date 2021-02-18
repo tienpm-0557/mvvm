@@ -12,7 +12,6 @@ import RxSwift
 import RxCocoa
 
 class DynamicCollectionViewCell: BaseCollectionCell {
-
     @IBOutlet private weak var titleLbl: UILabel!
     @IBOutlet private weak var descLbl: UILabel!
     
@@ -27,11 +26,10 @@ class DynamicCollectionViewCell: BaseCollectionCell {
     }
     
     override func bindViewAndViewModel() {
-        guard let viewModel = viewModel as? DynamicCollectionCellModel else { return }
-
+        guard let viewModel = viewModel as? DynamicCollectionCellModel else {
+            return
+        }
         viewModel.rxTitle ~> titleLbl.rx.text => disposeBag
         viewModel.rxDesc ~> descLbl.rx.text => disposeBag
     }
-    
-
 }

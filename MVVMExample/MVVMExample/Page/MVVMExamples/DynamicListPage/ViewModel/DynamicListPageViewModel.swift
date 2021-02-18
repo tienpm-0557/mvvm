@@ -12,7 +12,6 @@ import RxCocoa
 import RxSwift
 
 class DynamicListPageViewModel: BaseListViewModel {
-    
     let rxPageTitle = BehaviorRelay(value: "")
     
     override func react() {
@@ -20,7 +19,7 @@ class DynamicListPageViewModel: BaseListViewModel {
         fetchData()
         let title = (self.model as? MenuModel)?.title ?? "Dynamic UITableView"
         rxPageTitle.accept(title)
-        rxState.subscribe(onNext: { (state) in
+        rxState.subscribe(onNext: { state in
             self.rxPageTitle.accept(title + " \(state)")
         }) => disposeBag
     }

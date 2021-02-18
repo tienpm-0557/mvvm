@@ -12,7 +12,6 @@ import RxCocoa
 import RxSwift
 
 class ImagePickerPage: BasePage {
-
     @IBOutlet private weak var titleTxt: UITextField!
     @IBOutlet private weak var descLb: UITextView!
     @IBOutlet private weak var photoImg: UIImageView!
@@ -36,13 +35,17 @@ class ImagePickerPage: BasePage {
 
     override func initialize() {
         super.initialize()
-        guard let model = self.viewModel?.model as? MenuModel else { return }
+        guard let model = self.viewModel?.model as? MenuModel else {
+            return
+        }
         self.rx.title.onNext(model.title)
     }
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? ImagePickerViewModel else { return }
+        guard let viewModel = self.viewModel as? ImagePickerViewModel else {
+            return
+        }
         addBtn.rx.bind(to: viewModel.postAction, input: ())
         
         viewModel.rxTitle <~> titleTxt.rx.text => disposeBag
@@ -53,7 +56,7 @@ class ImagePickerPage: BasePage {
         }) => disposeBag
         
         descLb.rx.didEndEditing.subscribe(onNext: {
-            if self.descLb.text == "" {
+            if self.descLb.text.isEmpty {
                 self.descLb.rx.text.onNext("What's on your mind?")
             }
         }) => disposeBag
@@ -80,9 +83,8 @@ class ImagePickerPage: BasePage {
             }
             .bind(to: viewModel.rxImage) => disposeBag
         
-        viewModel.rxCanPost.subscribe { (enable) in
+        viewModel.rxCanPost.subscribe { enable in
             print("rxCanPost: Enable \(enable)")
         } => disposeBag
-
     }
 }

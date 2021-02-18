@@ -11,7 +11,6 @@ import MVVM
 import RxSwift
 
 class FlickrImageSearchPage: BaseCollectionPage {
-
     let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 400, height: 30))
     let indicatorView = UIActivityIndicatorView(style: .gray)
     
@@ -19,7 +18,7 @@ class FlickrImageSearchPage: BaseCollectionPage {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
     override func initialize() {
         super.initialize()
         enableBackButton = true
@@ -36,7 +35,6 @@ class FlickrImageSearchPage: BaseCollectionPage {
         indicatorView.hidesWhenStopped = true
     }
     
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -52,11 +50,13 @@ class FlickrImageSearchPage: BaseCollectionPage {
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = viewModel as? FlickrImageSearchPageViewModel else { return }
+        guard let viewModel = viewModel as? FlickrImageSearchPageViewModel else {
+            return
+        }
         viewModel.rxSearchText <~> searchBar.rx.text => disposeBag
         
         // toggle show/hide indicator next to search bar
-        viewModel.rxState.subscribe(onNext: { (state) in
+        viewModel.rxState.subscribe(onNext: { state in
             if state == .loadingData {
                 self.indicatorView.startAnimating()
             } else if state == .loadingMore {
@@ -73,12 +73,13 @@ class FlickrImageSearchPage: BaseCollectionPage {
     }
     
     override func getItemSource() -> RxCollection? {
-        guard let viewModel = viewModel as? FlickrImageSearchPageViewModel else { return nil }
+        guard let viewModel = viewModel as? FlickrImageSearchPageViewModel else {
+            return nil
+        }
         return viewModel.itemsSource
     }
     
     override func cellIdentifier(_ cellViewModel: Any, _ isClass: Bool = false) -> String {
         return isClass ? FlickrImageCell.className : FlickrImageCell.identifier
     }
-
 }

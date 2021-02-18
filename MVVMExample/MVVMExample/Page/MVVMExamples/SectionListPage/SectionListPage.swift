@@ -12,10 +12,9 @@ import RxSwift
 import RxCocoa
 import Action
 
-
 class SectionListPage: BaseListPage {
     @IBOutlet private weak var addBtn: UIButton!
-    @IBOutlet private weak var sortBtn:UIButton!
+    @IBOutlet private weak var sortBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +30,8 @@ class SectionListPage: BaseListPage {
         }
         
         viewModel.rxPageTitle ~> self.rx.title => disposeBag
-        addBtn.rx.bind(to: viewModel.addAction, input:())
+        addBtn.rx.bind(to: viewModel.addAction, input: ())
         sortBtn.rx.bind(to: viewModel.sortAction, input: ())
-        
     }
     
     override func setupTableView(_ tableView: UITableView) {
@@ -44,7 +42,9 @@ class SectionListPage: BaseListPage {
     }
     
     override func getItemSource() -> RxCollection? {
-        guard let viewModel = viewModel as? SectionListPageViewModel else { return nil }
+        guard let viewModel = viewModel as? SectionListPageViewModel else {
+            return nil
+        }
         return viewModel.itemsSource
     }
     
@@ -52,6 +52,7 @@ class SectionListPage: BaseListPage {
         switch cellViewModel {
         case is SectionImageCellViewModel:
             return SectionImageCell.identifier(returnClassName)
+            
         default:
             return SectionTextCell.identifier(returnClassName)
         }

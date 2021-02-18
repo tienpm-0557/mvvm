@@ -16,9 +16,9 @@ class SectionImageCellViewModel: BaseCellViewModel {
     let rxImage = BehaviorRelay(value: NetworkImage())
     
     override func react() {
-        guard let model = model as? SectionImageModel else { return }
-        
+        guard let model = model as? SectionImageModel else {
+            return
+        }
         rxImage.accept(NetworkImage(withURL: model.imageUrl, placeholder: .from(color: .lightGray)))
     }
 }
-

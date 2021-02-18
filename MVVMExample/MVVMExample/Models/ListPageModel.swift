@@ -11,11 +11,10 @@ import ObjectMapper
 import MVVM
 
 class SimpleModel: Model {
-    
     var title = ""
     
     convenience init?(withTitle title: String) {
-        self.init(JSON:["title":title])
+        self.init(JSON: ["title": title])
     }
     
     override func mapping(map: Map) {
@@ -24,12 +23,10 @@ class SimpleModel: Model {
 }
 
 class NumberModel: Model {
-    
     var number = Int.random(in: 0..<200000)
 }
 
 class SectionTextModel: NumberModel {
-    
     var title = ""
     var desc = ""
     
@@ -44,7 +41,6 @@ class SectionTextModel: NumberModel {
 }
 
 class SectionImageModel: NumberModel {
-    
     var imageUrl: URL?
     
     convenience init?(withUrl url: String) {
@@ -57,7 +53,6 @@ class SectionImageModel: NumberModel {
 }
 
 class HeaderFooterModel: Model {
-    
     var title = ""
     var footer = ""
     var desc = ""
@@ -74,13 +69,12 @@ class HeaderFooterModel: Model {
 }
 
 class TabbarModel: Model {
-    
     private(set) var title = ""
     private(set) var index = 0
     private(set) var hex = ""
     
     convenience init?(withTitle title: String) {
-        self.init(JSON:["title":title])
+        self.init(JSON: ["title": title])
     }
     
     override func mapping(map: Map) {

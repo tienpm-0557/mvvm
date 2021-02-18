@@ -11,7 +11,6 @@ import ObjectMapper
 import MVVM
 
 class ContactModel: Model {
-    
     var name = ""
     var phone = ""
     
@@ -24,4 +23,3 @@ class ContactModel: Model {
         phone <- map["phone"]
     }
 }
-

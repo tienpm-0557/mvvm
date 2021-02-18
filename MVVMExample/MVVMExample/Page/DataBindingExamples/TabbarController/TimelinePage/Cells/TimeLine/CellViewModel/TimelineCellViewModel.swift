@@ -58,7 +58,9 @@ class TimelineCellViewModel: BaseCellViewModel {
     
     override func react() {
         super.react()
-        guard let model = self.model as? TimelineModel else { return }
+        guard let model = self.model as? TimelineModel else {
+            return
+        }
         
         rxTitle.accept(model.title)
         rxDescription.accept(model.desc)
@@ -78,7 +80,7 @@ class TimelineCellViewModel: BaseCellViewModel {
     
     fileprivate func like(_ sender: AnyObject) {
         if let btn = sender as? Button {
-            btn.isSelected = !btn.isSelected
+            btn.isSelected.toggle()
         }
         
         alertService.presentOkayAlert(title: "Like Action", message: "Coming soon!")

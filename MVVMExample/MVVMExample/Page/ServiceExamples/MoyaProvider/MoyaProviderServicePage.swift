@@ -59,8 +59,7 @@ class MoyaProviderServicePage: BasePage {
         viewModel.rxCurlText ~> self.cURLLb.rx.text => disposeBag
         viewModel.rxResponseText ~> self.responseTxt.rx.text => disposeBag
         
-        
-        viewModel.rxIsSearching.subscribe(onNext: {[weak self] (searching) in
+        viewModel.rxIsSearching.subscribe(onNext: {[weak self] searching in
             if searching {
                 self?.indicatorView.startAnimating()
             } else {
@@ -68,5 +67,4 @@ class MoyaProviderServicePage: BasePage {
             }
         }) => disposeBag
     }
-    
 }

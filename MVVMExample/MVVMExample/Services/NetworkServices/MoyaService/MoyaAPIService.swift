@@ -22,7 +22,7 @@ enum MoyaAPIService {
 }
 
 extension MoyaAPIService: TargetType {
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return nil
     }
     

@@ -11,7 +11,6 @@ import MVVM
 import RxSwift
 import RxCocoa
 
-
 class SectionFooterListView: BaseHeaderTableView {
     
     @IBOutlet private weak var titleLbl: UILabel!
@@ -33,16 +32,12 @@ class SectionFooterListView: BaseHeaderTableView {
         self.backgroundView?.backgroundColor = .groupTableViewBackground
     }
     
-    override func initialize() {
-        
-    }
-    
     override func bindViewAndViewModel() {
-        guard let viewModel = viewModel as? SectionHeaderViewViewModel else { return }
+        guard let viewModel = viewModel as? SectionHeaderViewViewModel else {
+            return
+        }
 
         viewModel.rxFooter ~> titleLbl.rx.text => disposeBag
         viewModel.rxDesc ~> descLbl.rx.text => disposeBag
     }
-
-
 }

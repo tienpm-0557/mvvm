@@ -19,16 +19,10 @@ class HeaderCollectionView: BaseHeaderCollectionView {
         return CGSize(width: screenSize.width, height: 50)
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func initialize() {
-        
-    }
-    
     override func bindViewAndViewModel() {
-        guard let viewModel = viewModel as? SectionHeaderViewViewModel else { return }
+        guard let viewModel = viewModel as? SectionHeaderViewViewModel else {
+            return
+        }
         viewModel.rxTitle ~> titleLbl.rx.text => disposeBag
     }
 }

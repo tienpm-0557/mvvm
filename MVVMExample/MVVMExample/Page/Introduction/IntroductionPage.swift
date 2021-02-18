@@ -26,7 +26,9 @@ class IntroductionPage: BaseWebView {
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = viewModel as? IntroductionPageViewModel else { return }
+        guard let viewModel = viewModel as? IntroductionPageViewModel else {
+            return
+        }
         btnBack.addTarget(self, action: #selector(self.goBack), for: UIControl.Event.touchUpInside)
         btnForward.addTarget(self, action: #selector(self.goForward), for: UIControl.Event.touchUpInside)
         
@@ -38,7 +40,7 @@ class IntroductionPage: BaseWebView {
         
         viewModel.rxCanGoBack ~> self.btnBack.rx.isEnabled => disposeBag
         viewModel.rxCanGoForward ~> self.btnForward.rx.isEnabled => disposeBag
-        viewModel.rxIsLoading.subscribe(onNext: { (value) in
+        viewModel.rxIsLoading.subscribe(onNext: { value in
             if value {
                 self.lbLoading.text = "Loading"
             } else {
@@ -47,24 +49,25 @@ class IntroductionPage: BaseWebView {
         }) => disposeBag
         
         //Subcribe estimated progress
-        viewModel.rxEstimatedProgress.subscribe(onNext: { (prgress) in
+        viewModel.rxEstimatedProgress.subscribe(onNext: { prgress in
             self.lbLoading.text = "Loading \(Int(prgress * 100))%"
         }) => disposeBag
     }
- 
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.bringSubviewToFront(btnBack)
         self.view.bringSubviewToFront(btnForward)
         self.view.bringSubviewToFront(lbLoading)
-        
     }
     
-    @objc func goBack() {
+    @objc
+    func goBack() {
         self.wkWebView.goBack()
-     }
-     
-     @objc func goForward() {
-         self.wkWebView.goForward()
-     }
+    }
+    
+    @objc
+    func goForward() {
+        self.wkWebView.goForward()
+    }
 }

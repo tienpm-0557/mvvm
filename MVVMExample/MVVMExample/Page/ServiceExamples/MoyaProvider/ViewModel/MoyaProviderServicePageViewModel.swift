@@ -16,9 +16,7 @@ import Moya
 import ObjectMapper
 
 class MoyaProviderServicePageViewModel: BaseViewModel {
-
     private var moyaService: MoyaService?
-    
     let rxPageTitle = BehaviorRelay(value: "")
     let rxSearchText = BehaviorRelay<String?>(value: nil)
     let rxCurlText = BehaviorRelay<String?>(value: "")
@@ -34,7 +32,7 @@ class MoyaProviderServicePageViewModel: BaseViewModel {
         
         self.moyaService?.curlString.bind(to: rxCurlText) => disposeBag
         
-        rxSearchText.do(onNext: {[weak self] text in
+        rxSearchText.do(onNext: {[weak self] _ in
             self?.rxIsSearching.accept(true)
         })
         .debounce(.milliseconds(500), scheduler: Scheduler.shared.mainScheduler)
@@ -48,12 +46,12 @@ class MoyaProviderServicePageViewModel: BaseViewModel {
     func search(withText keyword: String, withPage page: Int) {
         moyaService?.search(keyword: keyword, page: 0)
             .map(prepareSources)
-            .subscribe(onSuccess: {[weak self] (response) in
+            .subscribe(onSuccess: {[weak self] response in
                 if let flickSearch = response, let desc = flickSearch.response_description {
                     self?.rxResponseText.accept("Responsed: \n\(desc)")
                 }
                 self?.rxIsSearching.accept(false)
-        }, onError: {[weak self] (error) in
+        }, onError: {[weak self] _ in
             self?.rxIsSearching.accept(false)
         })
         => disposeBag
@@ -65,5 +63,3 @@ class MoyaProviderServicePageViewModel: BaseViewModel {
         return response
     }
 }
-
-

@@ -10,7 +10,6 @@ import UIKit
 import MVVM
 
 class AlertServicePage: BasePage {
-    
     @IBOutlet private weak var okayAlertBtn: UIButton!
     @IBOutlet private weak var submitAlertBtn: UIButton!
     @IBOutlet private weak var actionSheetAlertBtn: UIButton!
@@ -30,7 +29,9 @@ class AlertServicePage: BasePage {
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? AlertServiceViewModel else { return }
+        guard let viewModel = self.viewModel as? AlertServiceViewModel else {
+            return
+        }
         
         okayAlertBtn.rx.bind(to: viewModel.okayAlertAction, input: ())
         submitAlertBtn.rx.bind(to: viewModel.submitAlertAction, input: ())

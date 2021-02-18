@@ -14,9 +14,8 @@ import SystemConfiguration
 import LocalAuthentication
 import SwiftyJSON
 
-
 class DeviceManager {
-    static let shared:DeviceManager = DeviceManager()
+    static let shared = DeviceManager()
     var modeOffline = false
     private var device_token: String?
     
@@ -54,7 +53,7 @@ class DeviceManager {
     class func getWinFrame() -> CGRect {
         let screenRect = UIScreen.main.bounds
         let screenFrame = screenRect
-        return screenFrame;
+        return screenFrame
     }
     
     class func isIphone() -> Bool {
@@ -68,7 +67,7 @@ class DeviceManager {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return true
         }
-        return false;
+        return false
     }
     
     struct ScreenSize {
@@ -113,7 +112,8 @@ class DeviceManager {
     }
     
     class func getDirectPath() -> String {
-        let directoryURLs = FileManager.default.urls(for:  FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
+        let directoryURLs = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory,
+                                                     in: FileManager.SearchPathDomainMask.userDomainMask)
         
         if !directoryURLs.isEmpty {
             return directoryURLs[0].absoluteString
@@ -127,9 +127,9 @@ class DeviceManager {
         let dataFolder = documentOfFile.appendingPathComponent("data")
         
         let fileManager = FileManager.default
-        var isDir : ObjCBool = false
+        var isDir: ObjCBool = false
         var checkExistFolder = false
-        if fileManager.fileExists(atPath: documentOfFile.path, isDirectory:&isDir) {
+        if fileManager.fileExists(atPath: documentOfFile.path, isDirectory: &isDir) {
             if isDir.boolValue {
                 // Folder exists and is a directory
                 checkExistFolder = true
@@ -159,7 +159,7 @@ class DeviceManager {
     class func isFirstLaunch() -> Bool {
         let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
         let isFirstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunchedBeforeFlag)
-        if (isFirstLaunch) {
+        if isFirstLaunch {
             UserDefaults.standard.set(true, forKey: hasBeenLaunchedBeforeFlag)
             UserDefaults.standard.synchronize()
         }
@@ -199,8 +199,7 @@ class DeviceManager {
         let directory = DeviceManager.getPathDataFolder()
         if let urlArray = try? FileManager.default.contentsOfDirectory(at: directory,
                                                                        includingPropertiesForKeys: [.contentModificationDateKey],
-                                                                       options:.skipsHiddenFiles) {
-            
+                                                                       options: .skipsHiddenFiles) {
             return urlArray.map { url in
                 (url.path, (try? url.resourceValues(forKeys: [.contentModificationDateKey]))?.contentModificationDate ?? Date.distantPast)
                 }
@@ -226,5 +225,4 @@ class DeviceManager {
         }
         return 0
     }
-    
 }

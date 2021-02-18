@@ -29,25 +29,31 @@ class DatabindingExamplesPageViewModel: TableOfContentViewModel {
     }
     
     override func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
-        guard let indexPath = rxSelectedIndex.value else { return nil }
+        guard let indexPath = rxSelectedIndex.value else {
+            return nil
+        }
         var page: UIViewController?
         switch indexPath.row {
         case 0:
             let vm = ValidatePageViewModel(model: cellViewModel.model)
             let vc = ValidatePage(viewModel: vm)
             page = vc
+            
         case 1:
             let vm = CustomControlViewPageModel(model: cellViewModel.model)
             let vc = CustomControlPage(viewModel: vm)
             page = vc
+            
         case 2:
             let vm = UIPageExampleViewModel(model: cellViewModel.model)
             let vc = UIPageExample(viewModel: vm, withOption: nil)
             page = vc
+            
         case 3:
             let vm = TabbarControllerViewModel(model: cellViewModel.model)
             let vc = TabbarViewController(viewModel: vm)
             page = vc
+            
         default: ()
         }
         

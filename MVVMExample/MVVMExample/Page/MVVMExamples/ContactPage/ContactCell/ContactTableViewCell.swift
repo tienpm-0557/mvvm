@@ -13,7 +13,6 @@ import RxCocoa
 import RxSwift
 
 class ContactTableViewCell: BaseTableCell {
-
     @IBOutlet private weak var avatarIv: UIImageView!
     @IBOutlet private weak var nameLbl: UILabel!
     @IBOutlet private weak var phoneLbl: UILabel!
@@ -34,12 +33,14 @@ class ContactTableViewCell: BaseTableCell {
         super.initialize()
     }
     
-    open override class func height(withItem _item: BaseViewModel) -> CGFloat{
+    open override class func height(withItem _item: BaseViewModel) -> CGFloat {
         return 70.0
     }
     
     override func bindViewAndViewModel() {
-        guard let viewModel = viewModel as? ContactCellViewModel else { return }
+        guard let viewModel = viewModel as? ContactCellViewModel else {
+            return
+        }
         
         viewModel.rxName ~> nameLbl.rx.text => disposeBag
         viewModel.rxPhone ~> phoneLbl.rx.text => disposeBag

@@ -33,8 +33,8 @@ class CoreDataManager: NSObject {
         return data as Data
     }
     
-    class func unarchiveNSData(withData data : Data,
-                               withKey key : String) -> Any? {
+    class func unarchiveNSData(withData data: Data,
+                               withKey key: String) -> Any? {
         do {
             let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
             let jsonData = unarchiver.decodeObject(forKey: key)

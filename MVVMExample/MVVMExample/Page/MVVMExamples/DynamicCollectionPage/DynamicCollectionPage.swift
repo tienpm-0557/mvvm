@@ -13,7 +13,6 @@ import RxCocoa
 import Action
 
 class DynamicCollectionPage: BaseCollectionPage {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -42,13 +41,14 @@ class DynamicCollectionPage: BaseCollectionPage {
     }
     
     override func getItemSource() -> RxCollection? {
-        guard let viewModel = viewModel as? DynamicCollectionPageViewModel else { return nil }
+        guard let viewModel = viewModel as? DynamicCollectionPageViewModel else {
+            return nil
+        }
         return viewModel.itemsSource
     }
     
     override func destroy() {
         super.destroy()
         viewModel?.destroy()
-    }
-    
+    }    
 }

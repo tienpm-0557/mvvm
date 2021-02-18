@@ -42,6 +42,5 @@ class SectionTextCell: BaseTableCell {
         }
         viewModel.rxTitle ~> titleLbl.rx.text => disposeBag
         viewModel.rxDesc ~> descLbl.rx.text => disposeBag
-    }
-    
+    }    
 }

@@ -9,8 +9,7 @@
 import UIKit
 import MVVM
 
-class NetworkServicePage: BasePage {
-    
+class NetworkServicePage: BasePage {    
     @IBOutlet private var cURLLb: UILabel!
     @IBOutlet private var responseTxt: UITextView!
     
@@ -66,10 +65,11 @@ class NetworkServicePage: BasePage {
         viewModel.rxCurlText ~> self.cURLLb.rx.text => disposeBag
         viewModel.rxResponseText ~> self.responseTxt.rx.text => disposeBag
         
-        viewModel.rxSearchState.subscribe(onNext: { [weak self](state) in
+        viewModel.rxSearchState.subscribe(onNext: { [weak self] state in
             switch state {
             case .requesting:
                 self?.indicatorView.startAnimating()
+                
             default:
                 self?.indicatorView.stopAnimating()
             }

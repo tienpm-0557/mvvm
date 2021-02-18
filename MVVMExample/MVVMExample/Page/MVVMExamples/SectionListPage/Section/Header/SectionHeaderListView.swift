@@ -11,9 +11,7 @@ import MVVM
 import RxSwift
 import RxCocoa
 
-
 class SectionHeaderListView: BaseHeaderTableView {
-
     @IBOutlet private weak var titleLbl: UILabel!
     @IBOutlet private weak var addBtn: UIButton!
     
@@ -26,15 +24,11 @@ class SectionHeaderListView: BaseHeaderTableView {
         self.backgroundView?.backgroundColor = .groupTableViewBackground
     }
     
-    override func initialize() {
-        
-    }
-    
     override func bindViewAndViewModel() {
-        guard let viewModel = viewModel as? SectionHeaderViewViewModel else { return }
-
+        guard let viewModel = viewModel as? SectionHeaderViewViewModel else {
+            return
+        }
         viewModel.rxTitle ~> titleLbl.rx.text => disposeBag
         addBtn.rx.bind(to: viewModel.addAction, input: ())
     }
-
 }

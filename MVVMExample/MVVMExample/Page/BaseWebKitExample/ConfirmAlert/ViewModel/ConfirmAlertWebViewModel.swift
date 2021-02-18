@@ -22,13 +22,18 @@ class ConfirmAlertWebViewModel: IntroductionPageViewModel {
     
     override func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         let alert = UIAlertController(title: "JavaScriptConfirm", message: message, preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
-            completionHandler(false)
-        }))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            completionHandler(true)
-        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel",
+                                      style: .cancel,
+                                      handler: { _ in
+                                        completionHandler(false)
+                                      }))
+        
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: { _ in
+                                        completionHandler(true)
+                                      }))
         navigationService.push(to: alert, options: .modal())
     }
 }

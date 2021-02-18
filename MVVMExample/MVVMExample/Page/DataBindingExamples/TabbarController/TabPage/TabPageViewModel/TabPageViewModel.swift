@@ -28,7 +28,6 @@ class TabPageViewModel: BaseViewModel {
         rxName.accept(model.title)
         if  !model.hex.isEmpty {
             rxBackgroundHex.accept(model.hex)
-        }
-        
+        }        
     }
 }

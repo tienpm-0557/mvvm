@@ -13,7 +13,6 @@ import RxSwift
 import Action
 
 class ListPageExampleViewModel: BaseListViewModel {
-
     let rxPageTitle = BehaviorRelay(value: "")
     
     lazy var addAction: Action<Void, Void> = {
@@ -39,6 +38,4 @@ class ListPageExampleViewModel: BaseListViewModel {
         /// In case View is Root. Navigation service will present viewcontroller.
         print("DEBUG: selectedItemDidChange \(cellViewModel.indexPath?.row ?? -1)")
     }
-    
 }
-

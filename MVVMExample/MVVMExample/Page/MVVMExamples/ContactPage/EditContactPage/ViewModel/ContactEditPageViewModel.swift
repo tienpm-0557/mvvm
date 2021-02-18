@@ -13,7 +13,6 @@ import RxSwift
 import RxCocoa
 
 class ContactEditPageViewModel: BaseViewModel {
-    
     lazy var cancelAction: Action<Void, Void> = {
         return Action() {
             .just(self.navigationService.pop(with: PopOptions(popType: .dismissPopup)))
@@ -44,13 +43,14 @@ class ContactEditPageViewModel: BaseViewModel {
         } ~> rxSaveEnabled => disposeBag
         
         /// For Edit contact
-        guard let model = self.model as? ContactModel else { return }
+        guard let model = self.model as? ContactModel else {
+            return
+        }
         rxName.accept(model.name)
         rxPhone.accept(model.phone)
     }
     
     func save() -> Observable<ContactModel> {
-        
         let contact = ContactModel()
         contact.name = rxName.value ?? ""
         contact.phone = rxPhone.value ?? ""
@@ -58,5 +58,4 @@ class ContactEditPageViewModel: BaseViewModel {
         
         return .just(contact)
     }
-    
 }

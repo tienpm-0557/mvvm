@@ -15,11 +15,10 @@ import MVVM
 
 @testable import MVVMExample
 class ContactPageTests: XCTestCase {
-
     private var contactViewModdel: ContactEditPageViewModel?
     private var disposeBag: DisposeBag?
     private var queueScheduler = ConcurrentDispatchQueueScheduler(qos: .default)
-    private let scheduler: TestScheduler = TestScheduler(initialClock: 0)
+    private let scheduler = TestScheduler(initialClock: 0)
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -34,7 +33,9 @@ class ContactPageTests: XCTestCase {
         let nameInput = scheduler.createObserver(String?.self)
         let phoneInput = scheduler.createObserver(String?.self)
         
-        guard let viewModel = self.contactViewModdel else { return }
+        guard let viewModel = self.contactViewModdel else {
+            return
+        }
         
         viewModel.rxSaveEnabled.bind(to: saveBtnstate) => disposeBag
         viewModel.rxName.bind(to: nameInput) => disposeBag
@@ -61,8 +62,11 @@ class ContactPageTests: XCTestCase {
     func testContactViewModelCorrectData() {
         testSaveBtnState("M.Tien", "000-111-222", true, message: "Test Contact View Model with case: Input data correct")
     }
-
-    private func testSaveBtnState(_ name: String?,_ phone: String?,_ expect: Bool, message: String) {
+    
+    private func testSaveBtnState(_ name: String?,
+                                  _ phone: String?,
+                                  _ expect: Bool,
+                                  message: String) {
         guard let viewModel = contactViewModdel else {
             XCTAssertTrue(false)
             return
@@ -81,16 +85,20 @@ class ContactPageTests: XCTestCase {
         /// Tạo một TestableObserver để ghi lại các event trong bối cảnh test.
         let numerator = scheduler.createObserver(String?.self)
         /// Lấy viewmodel ra để tiến hành test
-        guard let viewModel = self.contactViewModdel else { return }
+        guard let viewModel = self.contactViewModdel else {
+            return
+        }
         /// Binding TestableObserver với rxPhone là một BehaviorRelay trên viewmodel.
         viewModel.rxPhone
             .asDriver()
             .drive(numerator) => disposeBag
         /// Tạo một kịch bản test tại thời điểm nextTime 10, 15 emit value "3", "1"
-        scheduler.createColdObservable([.next(10, "3"),
-                                        .next(15, "1")])
-               .bind(to: viewModel.rxPhone) => disposeBag
-
+        scheduler.createColdObservable([
+            .next(10, "3"),
+            .next(15, "1")
+        ])
+        .bind(to: viewModel.rxPhone) => disposeBag
+        
         scheduler.start()
         /// Với BehaviorRelay events nhận thêm một latest event nữa.
         /// Tiến hành so sánh kết quả nhận được với giá trị mong đợi
@@ -101,9 +109,7 @@ class ContactPageTests: XCTestCase {
         ])
     }
     
-    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
 }

@@ -64,7 +64,11 @@ class SectionListPageViewModel: BaseListViewModel {
                 itemsSource.append(SectionImageCellViewModel(model: model), to: sectionIndex)
             } else {
                 itemsSource.append(SectionTextCellViewModel(model: SectionTextModel(withTitle: "Just a text cell title",
-                                                                                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")), to: sectionIndex)
+                                                                                    desc: """
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        """)), to: sectionIndex)
             }
         }
     }
@@ -72,18 +76,20 @@ class SectionListPageViewModel: BaseListViewModel {
     // add section
     private func addSection() {
         let headerVM = HeaderFooterModel(withTitle: "Section title #\(itemsSource.count + 1)",
-            desc: "List page examples",
-            footer: "Footer #\(itemsSource.count + 1)")
+                                         desc: "List page examples",
+                                         footer: "Footer #\(itemsSource.count + 1)")
         
         let vm = SectionHeaderViewViewModel(model: headerVM)
         itemsSource.appendSectionViewModel(vm)
     }
     
     private func sort() {
-        guard itemsSource.count > 0 else { return }
+        guard itemsSource.count > 0 else {
+            return
+        }
         
         let section = Int.random(in: 0..<itemsSource.count)
-        itemsSource.sort(by: { (cvm1, cvm2) -> Bool in
+        itemsSource.sort(by: { cvm1, cvm2 -> Bool in
             if let m1 = cvm1.model as? NumberModel, let m2 = cvm2.model as? NumberModel {
                 return m1.number < m2.number
             }
@@ -91,4 +97,3 @@ class SectionListPageViewModel: BaseListViewModel {
         }, at: section)
     }
 }
-

@@ -19,7 +19,9 @@ class CustomControlViewPageModel: BaseViewModel {
     let rxSelectedText = BehaviorRelay<String?>(value: nil)
     
     override func react() {
-        guard let model = self.model as? MenuModel else { return }
+        guard let model = self.model as? MenuModel else {
+            return
+        }
         rxPageTitle.accept(model.title)
         rxSelectedIndex.map { "You have selected Tab \($0 + 1)" } ~> rxSelectedText => disposeBag
     }

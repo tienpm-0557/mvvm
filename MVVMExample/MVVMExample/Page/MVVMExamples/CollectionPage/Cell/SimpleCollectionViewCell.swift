@@ -9,9 +9,7 @@
 import UIKit
 import MVVM
 
-
 class SimpleCollectionViewCell: BaseCollectionCell {
-
     let titleLbl = UILabel()
     
     override func initialize() {
@@ -27,12 +25,13 @@ class SimpleCollectionViewCell: BaseCollectionCell {
         ])
         contentView.addSubview(layout)
         layout.autoPinEdgesToSuperviewEdges(with: .all(5))
-
     }
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = viewModel as? SimpleCollectionViewDellModel  else { return }
+        guard let viewModel = viewModel as? SimpleCollectionViewDellModel  else {
+            return
+        }
         viewModel.rxTitle ~> titleLbl.rx.text => disposeBag
     }
     

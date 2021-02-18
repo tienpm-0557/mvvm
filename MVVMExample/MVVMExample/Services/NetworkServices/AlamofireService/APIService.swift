@@ -72,6 +72,7 @@ public enum APIService: URLRequestConvertible {
         switch self {
         case .flickrSearch:
             return false
+            
         default:
             return false
         }

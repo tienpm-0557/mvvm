@@ -12,7 +12,6 @@ import MVVM
 import RxSwift
 
 class StoreKitPage: BasePage {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,11 +25,9 @@ class StoreKitPage: BasePage {
         }
         
         self.rx.title.onNext(cellModel.title)
-        
     }
 
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
     }
-
 }

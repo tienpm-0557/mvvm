@@ -16,7 +16,6 @@ class ServiceExamplesPage: TableOfContentsPage {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -25,5 +24,4 @@ class ServiceExamplesPage: TableOfContentsPage {
         DependencyManager.shared.registerService(Factory<MailService> { MailService() })
         DependencyManager.shared.registerService(Factory<ShareService> { ShareService() })
     }
-    
 }

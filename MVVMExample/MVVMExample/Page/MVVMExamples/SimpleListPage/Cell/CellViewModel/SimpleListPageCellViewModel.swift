@@ -11,7 +11,6 @@ import RxCocoa
 import MVVM
 
 class SimpleListPageCellViewModel: BaseCellViewModel {
-    
     let rxTitle = BehaviorRelay<String?>(value: nil)
     
     override func react() {
@@ -21,4 +20,3 @@ class SimpleListPageCellViewModel: BaseCellViewModel {
         rxTitle.accept(viewModel.title)
     }
 }
-

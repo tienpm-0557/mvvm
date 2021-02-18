@@ -24,7 +24,9 @@ class ActivityCell: BaseTableCell {
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? ActivityCellViewModel else { return }
+        guard let viewModel = self.viewModel as? ActivityCellViewModel else {
+            return
+        }
         
         viewModel.rxTweets ~> tweetsLb.rx.text => disposeBag
         viewModel.rxFollowing ~> followingLb.rx.text => disposeBag

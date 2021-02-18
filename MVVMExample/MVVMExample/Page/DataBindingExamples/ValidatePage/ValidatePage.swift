@@ -9,9 +9,7 @@
 import UIKit
 import MVVM
 
-
 class ValidatePage: BasePage {
-
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var helloLbl: UILabel!
     @IBOutlet private weak var emailTxt: UITextField!
@@ -49,11 +47,12 @@ class ValidatePage: BasePage {
         submitBtn.setBackgroundImage(UIImage.from(color: .gray), for: .disabled)
         submitBtn.contentEdgeInsets = .symmetric(horizontal: 10, vertical: 5)
         submitBtn.cornerRadius = 5
-
     }
     
     override func bindViewAndViewModel() {
-        guard let viewModel = viewModel as? ValidatePageViewModel else { return }
+        guard let viewModel = viewModel as? ValidatePageViewModel else {
+            return
+        }
         
         viewModel.rxPageTitle ~> rx.title => disposeBag // One-way binding is donated by ~>
         viewModel.rxHelloText ~> helloLbl.rx.text => disposeBag // One-way binding is donated by ~>
@@ -61,6 +60,4 @@ class ValidatePage: BasePage {
         viewModel.rxPass <~> passTxt.rx.text => disposeBag // Two-way binding is donated by <~>
         submitBtn.rx.bind(to: viewModel.submitAction, input: ()) // action binding
     }
-    
-
 }

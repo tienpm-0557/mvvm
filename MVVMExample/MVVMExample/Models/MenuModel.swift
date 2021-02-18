@@ -8,7 +8,6 @@ import MVVM
 import ObjectMapper
 
 class MenuModel: Model {
-    
     var title = ""
     var desc = ""
     

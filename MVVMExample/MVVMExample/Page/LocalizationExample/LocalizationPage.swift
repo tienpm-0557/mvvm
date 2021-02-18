@@ -12,28 +12,23 @@ import RxSwift
 import RxCocoa
 
 class LocalizationPage: BasePage {
-
     @IBOutlet private var localizeLb: UILabel!
     @IBOutlet private var englishBtn: UIButton!
     @IBOutlet private var japaneseBtn: UIButton!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
     override func initialize() {
         super.initialize()
         self.enableBackButton = true
         localizeLb.text = LocalizedStringMessage.strTestMessage.localized
-       
     }
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
         
-        guard let viewModel = self.viewModel as? LocalizationPageViewModel else { return }
+        guard let viewModel = self.viewModel as? LocalizationPageViewModel else {
+            return
+        }
+        
         viewModel.rxPageTitle ~> rx.title => disposeBag
         englishBtn.rx.bind(to: viewModel.rxEnglishAction, input: ())
         japaneseBtn.rx.bind(to: viewModel.rxJPAction, input: ())
@@ -45,5 +40,4 @@ class LocalizationPage: BasePage {
         localizeLb.text = LocalizedStringMessage.strTestMessage.localized
          self.navigationItem.backBarButtonItem?.title = ""
     }
-
 }

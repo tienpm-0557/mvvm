@@ -21,7 +21,9 @@ class TimelinePage: BaseListPage {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        guard let viewModel = self.viewModel as? TimelinePageViewModel else { return }
+        guard let viewModel = self.viewModel as? TimelinePageViewModel else {
+            return
+        }
         viewModel.getDataAction.execute()
     }
     
@@ -46,7 +48,9 @@ class TimelinePage: BaseListPage {
        
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? TimelinePageViewModel else { return }
+        guard let viewModel = self.viewModel as? TimelinePageViewModel else {
+            return
+        }
         
         viewModel.rxTille ~> self.rx.title => disposeBag
         
@@ -64,7 +68,9 @@ class TimelinePage: BaseListPage {
     }
     
     override func getItemSource() -> RxCollection? {
-        guard let viewModel = viewModel as? TimelinePageViewModel else { return nil }
+        guard let viewModel = viewModel as? TimelinePageViewModel else {
+            return nil
+        }
         return viewModel.itemsSource
     }
     
@@ -72,8 +78,10 @@ class TimelinePage: BaseListPage {
         switch cellViewModel {
         case is ActivityCellViewModel:
             return ActivityCell.identifier(returnClassName)
+            
         case is TimelineCellViewModel:
             return TimeLineCell.identifier(returnClassName)
+            
         default:
             return TimeLineCell.identifier(returnClassName)
         }
@@ -86,6 +94,5 @@ class TimelinePage: BaseListPage {
     override func destroy() {
         super.destroy()
         viewModel?.destroy()
-    }
-    
+    }    
 }

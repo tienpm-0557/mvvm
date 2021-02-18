@@ -32,6 +32,5 @@ class AlertWebPageViewModel: IntroductionPageViewModel {
                                       }))
         
         navigationService.push(to: alert, options: .modal())
-    }
-    
+    }    
 }

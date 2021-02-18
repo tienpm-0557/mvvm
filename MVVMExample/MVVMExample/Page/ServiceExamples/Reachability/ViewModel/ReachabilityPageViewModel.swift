@@ -13,17 +13,13 @@ import Reachability
 import Action
 import UIKit
 import RxSwift
-import RxCocoa
-
 
 //MARK: ViewModel For Transition Examples
 class ReachabilityPageViewModel: BaseViewModel {
-    
     var reachibilityService: ReachabilityService?
     let rxPageTitle = PublishSubject<String>()
     let rxAlertLabelContent = PublishSubject<String?>()
-    
-    let rxReachbilityState = PublishSubject<(connection:Reachability.Connection, alertType: AlertType)>()
+    let rxReachbilityState = PublishSubject<(connection: Reachability.Connection, alertType: AlertType)>()
     
     private var alertType = AlertType.disposableAlert
     
@@ -49,16 +45,21 @@ class ReachabilityPageViewModel: BaseViewModel {
         rxPageTitle.onNext(title)
         reachibilityService = DependencyManager.shared.getService()
         reachibilityService?.startReachability()
-        reachibilityService?.connectState.subscribe(onNext: { (state) in
-            guard let state = state else { return }
+        reachibilityService?.connectState.subscribe(onNext: { state in
+            guard let state = state else {
+                return
+            }
             switch state.description {
             case Reachability.Connection.wifi.description:
                 self.rxReachbilityState.onNext((Reachability.Connection.wifi, self.alertType))
+                
             case Reachability.Connection.cellular.description:
                 self.rxReachbilityState.onNext((Reachability.Connection.cellular, self.alertType))
+                
             case Reachability.Connection.unavailable.description:
                 self.rxReachbilityState.onNext((Reachability.Connection.unavailable, self.alertType))
                 self.rxAlertLabelContent.onNext("No internet connection")
+                
             default:
                 self.rxReachbilityState.onNext((Reachability.Connection.unavailable, self.alertType))
                 self.rxAlertLabelContent.onNext("No internet connection")
@@ -81,5 +82,4 @@ class ReachabilityPageViewModel: BaseViewModel {
         }
         self.rxReachbilityState.onNext((reachibilityService.connectState.value ?? Reachability.Connection.unavailable, self.alertType))
     }
-    
 }

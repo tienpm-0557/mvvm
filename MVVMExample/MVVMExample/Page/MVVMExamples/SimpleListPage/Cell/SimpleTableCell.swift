@@ -11,7 +11,6 @@ import RxCocoa
 import MVVM
 
 class SimpleTableCell: BaseTableCell {
-
     @IBOutlet private weak var titleLbl: UILabel!
     
     override func awakeFromNib() {
@@ -27,7 +26,9 @@ class SimpleTableCell: BaseTableCell {
     }
     
     override func bindViewAndViewModel() {
-        guard let viewModel = viewModel as? SimpleListPageCellViewModel else { return }
+        guard let viewModel = viewModel as? SimpleListPageCellViewModel else {
+            return
+        }
         viewModel.rxTitle ~> titleLbl.rx.text => disposeBag
     }
 }

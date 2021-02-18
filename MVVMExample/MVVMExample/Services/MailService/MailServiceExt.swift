@@ -13,7 +13,4 @@ import RxCocoa
 import Action
 
 /// Implement more public function for mail service
-extension MailService {
-    
-}
-
+extension MailService {}

@@ -10,7 +10,6 @@ import UIKit
 import MVVM
 
 class UIPageExample: BaseUIPage {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,14 +23,17 @@ class UIPageExample: BaseUIPage {
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? UIPageExampleViewModel else { return }
+        guard let viewModel = self.viewModel as? UIPageExampleViewModel else {
+            return
+        }
         
         viewModel.rxPageTitle ~> self.rx.title => disposeBag
     }
     
     override func getItemSource() -> ReactiveCollection<UIPageItem>? {
-        guard let viewModel = viewModel as? UIPageExampleViewModel else { return nil }
+        guard let viewModel = viewModel as? UIPageExampleViewModel else {
+            return nil
+        }
         return viewModel.itemsSource
     }
-
 }

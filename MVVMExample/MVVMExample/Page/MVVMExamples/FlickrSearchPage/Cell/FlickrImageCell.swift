@@ -27,10 +27,11 @@ class FlickrImageCell: BaseCollectionCell {
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? FlickrCellViewModel else { return }
+        guard let viewModel = self.viewModel as? FlickrCellViewModel else {
+            return
+        }
         
         viewModel.rxImage ~> contentImage.rx.networkImage => disposeBag
         viewModel.rxTitle ~> titleLb.rx.text => disposeBag
     }
-
 }

@@ -17,7 +17,6 @@ enum FlickrStatus: String {
 }
 
 class FlickrSearchResponse: Model {
-    
     var stat: FlickrStatus = .fail
     var page = 1
     var pages = 1
@@ -41,7 +40,6 @@ class FlickrSearchResponse: Model {
 }
 
 class FlickrPhotoModel: Model {
-    
     var imageUrl: URL {
         let url = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret)_q.jpg"
         return URL(string: url)!

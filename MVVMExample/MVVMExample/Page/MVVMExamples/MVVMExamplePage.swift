@@ -9,10 +9,8 @@
 import UIKit
 
 class MVVMExamplePage: TableOfContentsPage {
-    
     override func initialize() {
         super.initialize()
-        
     }
     
     override func viewDidLoad() {

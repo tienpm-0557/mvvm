@@ -11,7 +11,7 @@ import MVVM
 import SwiftyJSON
 
 class TabbarViewController: BaseTabBarPage {
-
+    
     var _tabBarView: TabbarView?
     
     override func initialize() {
@@ -23,15 +23,15 @@ class TabbarViewController: BaseTabBarPage {
         let tab0 = TimelinePage(viewModel: timelineViewModel)
         let nv0 = NavigationPage(rootViewController: tab0)
         
-        let vm1 = TabPageViewModel(model: TabbarModel(JSON: ["title":"Messages", "index":1]))
+        let vm1 = TabPageViewModel(model: TabbarModel(JSON: ["title": "Messages", "index":1]))
         let tab1 = TabPage(viewModel: vm1)
         let nv1 = NavigationPage(rootViewController: tab1)
         
-        let vm2 = TabPageViewModel(model: TabbarModel(JSON: ["title":"Notifications", "index":2]))
+        let vm2 = TabPageViewModel(model: TabbarModel(JSON: ["title": "Notifications", "index":2]))
         let tab2 = TabPage(viewModel: vm2)
         let nv2 = NavigationPage(rootViewController: tab2)
         
-        let vm3 = TabPageViewModel(model: TabbarModel(JSON: ["title":"Profile", "index":3]))
+        let vm3 = TabPageViewModel(model: TabbarModel(JSON: ["title": "Profile", "index":3]))
         let tab3 = TabPage(viewModel: vm3)
         let nv3 = NavigationPage(rootViewController: tab3)
         
@@ -40,7 +40,7 @@ class TabbarViewController: BaseTabBarPage {
         self.addTabBarView()
         self.addCloseBtn()
     }
-
+    
     fileprivate func addTabBarView() {
         _tabBarView = TabbarView.newTabbarView()
         if #available(iOS 12.0, *) {
@@ -77,7 +77,8 @@ class TabbarViewController: BaseTabBarPage {
         self.view.addSubview(button)
     }
     
-    @objc func popView() {
+    @objc
+    func popView() {
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -93,11 +94,15 @@ class TabbarViewController: BaseTabBarPage {
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? TabbarControllerViewModel else { return }
-        guard let tabbarView = self._tabBarView else { return }
+        guard let viewModel = self.viewModel as? TabbarControllerViewModel else {
+            return
+        }
+        guard let tabbarView = self._tabBarView else {
+            return
+        }
         viewModel.rxSelectedIndex ~> tabbarView.rxSelectedIndex => disposeBag
         
-        tabbarView.rxSelectedIndex.subscribe(onNext: { (index) in
+        tabbarView.rxSelectedIndex.subscribe(onNext: { index in
             self.selectedIndex = index
         }) => disposeBag
         
@@ -106,7 +111,7 @@ class TabbarViewController: BaseTabBarPage {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-
+        
         guard UIApplication.shared.applicationState == .inactive else {
             return
         }
@@ -118,5 +123,4 @@ class TabbarViewController: BaseTabBarPage {
             self._tabBarView?.updateDarkmode(false)
         }
     }
-
 }

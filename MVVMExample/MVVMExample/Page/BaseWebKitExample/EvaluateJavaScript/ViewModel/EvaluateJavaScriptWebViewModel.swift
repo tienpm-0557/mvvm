@@ -40,7 +40,6 @@ class EvaluateJavaScriptWebViewModel: IntroductionPageViewModel {
         rxPageTitle.accept(title)
         rxSourceType.accept(WebViewSuorceType.html.rawValue)
         rxSource.accept(html)
-        
     }
     
     override func webView(_ webView: WKWebView, evaluateJavaScript: (event: Any?, error: Error?)?) {
@@ -51,4 +50,3 @@ class EvaluateJavaScriptWebViewModel: IntroductionPageViewModel {
         }
     }
 }
-

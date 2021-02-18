@@ -65,7 +65,7 @@ class AlertServiceViewModel: BaseViewModel {
                                                        message: "You have just clicked on action sheet button.? Do you want continue?",
                                                        actionTitles: ["OK"],
                                                        cancelTitle: "Cancel")
-            .subscribe(onSuccess: { (result) in
+            .subscribe(onSuccess: { result in
                 self.rxActionSheetAction.accept(result)
             }) => disposeBag
     }

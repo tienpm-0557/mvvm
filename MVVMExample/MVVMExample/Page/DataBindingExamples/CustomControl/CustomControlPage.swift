@@ -39,5 +39,4 @@ class CustomControlPage: BasePage {
         viewModel.rxSelectedIndex <~> segmentedView.rx.selectedIndex => disposeBag
         viewModel.rxSelectedText ~> label.rx.text => disposeBag
     }
-
 }

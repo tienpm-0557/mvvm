@@ -9,13 +9,10 @@
 import Foundation
 
 struct LocalizedStringConfigs {
-    //MARK:
-    static let strLocalizePageTitle                 = "strLocalizePageTitle"
-    static let strTableOfContents                   = "strTableOfContents"
-    
+    static let strLocalizePageTitle = "strLocalizePageTitle"
+    static let strTableOfContents = "strTableOfContents"
 }
 
 struct LocalizedStringMessage {
-    //MARK:
-    static let strTestMessage                     = "strTestMessage"
+    static let strTestMessage = "strTestMessage"
 }

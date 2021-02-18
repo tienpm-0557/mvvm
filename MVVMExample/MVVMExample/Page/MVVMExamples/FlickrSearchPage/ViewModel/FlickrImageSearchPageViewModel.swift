@@ -16,7 +16,6 @@ import Moya
 import ObjectMapper
 
 class FlickrImageSearchPageViewModel: BaseListViewModel {
-
     let alertService: IAlertService = DependencyManager.shared.getService()
     var networkService: NetworkService?
     let rxSearchText = BehaviorRelay<String?>(value: nil)
@@ -54,20 +53,22 @@ class FlickrImageSearchPageViewModel: BaseListViewModel {
         let bag = isLoadMore ? tmpBag : disposeBag
         self.networkService?.search(withKeyword: keyword, page: page)
             .map(prepareSources)
-            .subscribe(onSuccess: { [weak self](results) in
+            .subscribe(onSuccess: { [weak self] results in
                 if isLoadMore {
                     self?.itemsSource.append(results, animated: false)
                 } else {
                     self?.itemsSource.reset([results])
                 }
                 self?.rxState.accept(.normal)
-            }, onError: { (error) in
-                    
+            }, onError: { error in
+                debugPrint(error.localizedDescription)
             }) => bag
     }
     
     private func loadMore() {
-        if itemsSource.countElements() <= 0 || finishedSearching || self.rxState.value == .loadingMore { return }
+        if itemsSource.countElements() <= 0 || finishedSearching || self.rxState.value == .loadingMore {
+            return
+        }
 
         tmpBag = DisposeBag()
         self.rxState.accept(.loadingMore)
@@ -91,5 +92,4 @@ class FlickrImageSearchPageViewModel: BaseListViewModel {
         
         return response.photos.toBaseCellViewModels() as [FlickrCellViewModel]
     }
-    
 }

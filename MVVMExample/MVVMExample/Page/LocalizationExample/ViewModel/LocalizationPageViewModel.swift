@@ -43,5 +43,4 @@ class LocalizationPageViewModel: BaseViewModel {
         print("DEBUG: PageModel onUpdateLocalize")
         rxPageTitle.accept(LocalizedStringConfigs.strLocalizePageTitle.localized)
     }
-    
 }

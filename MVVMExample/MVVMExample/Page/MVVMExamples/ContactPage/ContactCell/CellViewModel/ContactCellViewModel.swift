@@ -12,7 +12,6 @@ import RxCocoa
 import RxSwift
 
 class ContactCellViewModel: BaseCellViewModel {
-    
     let rxName = BehaviorRelay<String?>(value: nil)
     let rxPhone = BehaviorRelay<String?>(value: nil)
     
@@ -23,7 +22,9 @@ class ContactCellViewModel: BaseCellViewModel {
     
     override func modelChanged() {
         super.modelChanged()
-        guard let model = self.model as? ContactModel else { return }
+        guard let model = self.model as? ContactModel else {
+            return
+        }
         rxName.accept(model.name)
         rxPhone.accept(model.phone)
     }

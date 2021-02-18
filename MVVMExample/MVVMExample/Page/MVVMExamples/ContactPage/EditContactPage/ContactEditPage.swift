@@ -9,17 +9,13 @@
 import UIKit
 import MVVM
 
-
 class ContactEditPage: BasePage {
-
     let scrollView = ScrollLayout()
     let containerView = UIView()
-    
     let nameTxt = UITextField()
     let phoneTxt = UITextField()
     let submitBtn = UIButton(type: .custom)
     let cancelBtn = UIButton(type: .custom)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +23,6 @@ class ContactEditPage: BasePage {
         // Do any additional setup after loading the view.
     }
 
-    
-    
     override func initialize() {
         title = "Add/Edit Contact"
         
@@ -84,7 +78,9 @@ class ContactEditPage: BasePage {
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? ContactEditPageViewModel else { return }
+        guard let viewModel = self.viewModel as? ContactEditPageViewModel else {
+            return
+        }
         
         viewModel.rxName <~> nameTxt.rx.text => disposeBag
         viewModel.rxPhone <~> phoneTxt.rx.text => disposeBag
@@ -96,5 +92,4 @@ class ContactEditPage: BasePage {
     override func onBack(_ sender: AnyObject) {
         navigationService.pop(with: PopOptions(popType: .dismissPopup))
     }
-
 }

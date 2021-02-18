@@ -33,10 +33,11 @@ class ListPageExamplePage: BaseListPage {
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
         
-        guard let viewModel = viewModel as? ListPageExampleViewModel else { return }
+        guard let viewModel = viewModel as? ListPageExampleViewModel else {
+            return
+        }
         viewModel.rxPageTitle ~> rx.title => disposeBag
         addBtn.rx.bind(to: viewModel.addAction, input: ())
-           
     }
 
     override func cellIdentifier(_ cellViewModel: Any, _ returnClassName: Bool = false) -> String {
@@ -44,7 +45,9 @@ class ListPageExamplePage: BaseListPage {
     }
     
     override func getItemSource() -> RxCollection? {
-        guard let viewModel = viewModel as? ListPageExampleViewModel else { return nil }
+        guard let viewModel = viewModel as? ListPageExampleViewModel else {
+            return nil
+        }
         return viewModel.itemsSource
     }
     

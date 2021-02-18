@@ -10,7 +10,6 @@ import UIKit
 import MVVM
 
 class ContactListPage: BaseListPage {
-    
     let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     
     override func viewDidLoad() {
@@ -25,14 +24,14 @@ class ContactListPage: BaseListPage {
         super.setupTableView(tableView)
         tableView.separatorStyle = .singleLine
         tableView.estimatedRowHeight = 70
-        tableView.register(cellType: ContactTableViewCell.self)
-        
+        tableView.register(cellType: ContactTableViewCell.self)   
     }
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? ContactListPageViewModel else { return }
-        
+        guard let viewModel = self.viewModel as? ContactListPageViewModel else {
+            return
+        }
         addBtn.rx.bind(to: viewModel.addAction, input: ())
     }
 
@@ -41,7 +40,9 @@ class ContactListPage: BaseListPage {
     }
     
     override func getItemSource() -> RxCollection? {
-        guard let viewModel = viewModel as? ContactListPageViewModel else { return nil }
+        guard let viewModel = viewModel as? ContactListPageViewModel else {
+            return nil
+        }
         return viewModel.itemsSource
     }
         
@@ -49,5 +50,4 @@ class ContactListPage: BaseListPage {
         super.destroy()
         viewModel?.destroy()
     }
-
 }

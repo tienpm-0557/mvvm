@@ -12,19 +12,15 @@ import Action
 import RxSwift
 import RxCocoa
 
-
-class WrapperPage: NavigationPage, IPopupView {
-    
+class WrapperPage: NavigationPage, IPopupView {    
     var widthConstraint: NSLayoutConstraint!
     var heightConstraint: NSLayoutConstraint!
     
     override func viewWillTransition(to size: CGSize,
                                      with coordinator: UIViewControllerTransitionCoordinator) {
-        
-        coordinator.animate(alongsideTransition: { (_) in
+        coordinator.animate(alongsideTransition: { _ in
             self.adjustPopupSize()
         }, completion: nil)
-        
     }
     
     func popupLayout() {
@@ -46,30 +42,29 @@ class WrapperPage: NavigationPage, IPopupView {
                        initialSpringVelocity: 0.8,
                        options: .curveEaseOut,
                        animations: {
-                        
             overlayView.alpha = 1
             self.view.transform = .identity
-                        
         }, completion: nil)
     }
     
-    func hide(overlayView: UIView, completion: @escaping (() -> ())) {
+    func hide(overlayView: UIView,
+              completion: @escaping (() -> Void)) {
         UIView.animate(withDuration: 0.25,
                        delay: 0,
                        options: .curveEaseOut,
                        animations: {
-                        
             overlayView.alpha = 0
             self.view.alpha = 0
-            self.view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-                        
+            self.view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)         
         }) { _ in
             completion()
         }
     }
     
     private func adjustPopupSize() {
-        guard let superview = view.superview else { return }
+        guard let superview = view.superview else {
+            return
+        }
         if superview.bounds.height < heightConstraint.constant {
             heightConstraint.constant = superview.bounds.height - 20
         } else {
@@ -87,9 +82,10 @@ class WrapperPage: NavigationPage, IPopupView {
 }
 
 class ContactListPageViewModel: BaseListViewModel {
-
     lazy var addAction: Action<Void, Void> = {
-        return Action() { .just(self.add())}
+        return Action() {
+            .just(self.add())
+        }
     }()
     
     private func add() {

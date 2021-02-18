@@ -22,36 +22,37 @@ class WebViewExamplesPageViewModel: TableOfContentViewModel {
                                                                         desc: "Run java scription comfirm alert panel with message"))
         
         let authentication = MenuTableCellViewModel(model: MenuModel(withTitle: "Authentication",
-                                                                        desc: "Handle Authentication use URLCredential"))
-        
+                                                                     desc: "Handle Authentication use URLCredential"))
         
         let handleLinkError = MenuTableCellViewModel(model: MenuModel(withTitle: "Fail Provisional Navigation",
                                                                       desc: "Handle delegate method `didFailProvisionalNavigation`."))
-        let evaluateJavaScript =  MenuTableCellViewModel(model: MenuModel(withTitle: "Evaluate JavaScript",
-                                                                             desc: "Reactive wrapper for `evaluateJavaScript(_:completionHandler:)` method."))
+        let evaluateJavaScript = MenuTableCellViewModel(model: MenuModel(withTitle: "Evaluate JavaScript",
+                                                                         desc: "Reactive wrapper for `evaluateJavaScript(_:completionHandler:)` method."))
         
         itemsSource.reset([[alertPanel, confirmAlertPanel, authentication, handleLinkError, evaluateJavaScript]])
     }
     
     override func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
-        guard let indexPath = rxSelectedIndex.value else { return nil }
+        guard let indexPath = rxSelectedIndex.value else {
+            return nil
+        }
         var page: UIViewController?
         switch indexPath.row {
         case 0:
             page = AlertWebPage(viewModel: AlertWebPageViewModel(model: cellViewModel.model))
-            break
+            
         case 1:
             page = ConfirmAlertWebPage(viewModel: ConfirmAlertWebViewModel(model: cellViewModel.model))
-            break
+            
         case 2:
             page = AuthenticationWebPage(viewModel: AuthenticationWebViewModel(model: cellViewModel.model))
-            break
+            
         case 3:
             page = FailNavigationWebPage(viewModel: FailNavigationWebViewModel(model: cellViewModel.model))
-            break
+            
         case 4:
             page = EvaluateJavaScriptWebPage(viewModel: EvaluateJavaScriptWebViewModel(model: cellViewModel.model))
-            break
+            
         default: ()
         }
         
