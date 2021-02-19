@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-//MARK: - Based UIView that support BasePage
+// MARK: - Based UIView that support BasePage
 open class BaseView: UIView, IView {
     public var disposeBag: DisposeBag? = DisposeBag()
     
@@ -71,7 +71,7 @@ open class BaseView: UIView, IView {
     open func bindViewAndViewModel() {}
 }
 
-//MARK: Based Header TableView for list page
+// MARK: Based Header TableView for list page
 open class BaseHeaderTableView: UITableViewHeaderFooterView {
     open class var identifier: String {
         return String(describing: self)
@@ -135,7 +135,7 @@ open class BaseHeaderTableView: UITableViewHeaderFooterView {
     }
 }
 
-//MARK: Based Header TableView for list page
+// MARK: Based Header TableView for list page
 open class BaseHeaderCollectionView: UICollectionReusableView {
     open class var identifier: String {
         return String(describing: self)
@@ -198,7 +198,7 @@ open class BaseHeaderCollectionView: UICollectionReusableView {
     }
 }
 
-//MARK: Based collection view cell for BaseCollectionPage
+// MARK: Based collection view cell for BaseCollectionPage
 open class BaseCollectionCell: UICollectionViewCell, IView {
     open class var identifier: String {
         return String(describing: self)
@@ -263,7 +263,7 @@ open class BaseCollectionCell: UICollectionViewCell, IView {
     }
 }
 
-//MARK: Base table view cell for BaseListPage
+// MARK: Base table view cell for BaseListPage
 open class BaseTableCell: UITableViewCell, IView {
     open class var identifier: String {
         return String(describing: self)

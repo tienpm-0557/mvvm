@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import WebKit
 
-//MARK: Nongeneric Type
+// MARK: Nongeneric Type
 // Base view model sẽ đi với View tương ứng.
 // Mỗi View model sẽ đi với một Base Model tưng ứng.
 

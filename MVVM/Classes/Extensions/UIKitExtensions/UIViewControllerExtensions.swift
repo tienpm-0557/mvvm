@@ -15,7 +15,10 @@ extension UIViewController {
         if #available(iOS 11.0, *) {
             return self.view.safeAreaInsets 
         }
-        return UIEdgeInsets(top: self.topLayoutGuide.length, left: 0, bottom: self.bottomLayoutGuide.length, right: 0)
+        return UIEdgeInsets(top: self.topLayoutGuide.length,
+                            left: 0,
+                            bottom: self.bottomLayoutGuide.length,
+                            right: 0)
     }
 }
 

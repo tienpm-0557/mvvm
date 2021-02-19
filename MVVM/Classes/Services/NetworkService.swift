@@ -47,11 +47,11 @@ open class BaseNetworkService: SessionDelegate {
                                                       headers: headers)
             
             request.responseString { response in
-                //set status code
-                //Check result
+                /// set status code
+                /// Check result
                 switch response.result {
                 case .success(let result):
-                    //Implement the completion block with parameters
+                    /// Implement the completion block with parameters
                     single(.success(result))
                     
                 case .failure(let error):
@@ -76,7 +76,7 @@ open class BaseNetworkService: SessionDelegate {
                                                          parameters: params,
                                                          encoding: encoding,
                                                          headers: headers)
-            result.completeBlock { response, cache in
+            result.completeBlock { _, _ in
                 single(.success(result))
             }
 

@@ -308,7 +308,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         self.rightMenuViewController = rightMenuViewController
     }
     
-    //MARK : Present / Hide Menu ViewControllers
+    // MARK : Present / Hide Menu ViewControllers
     public func _presentLeftMenuViewController() {
         presentMenuViewContainerWithMenuViewController(leftMenuViewController)
         showLeftMenuViewController()
@@ -574,7 +574,7 @@ open class SideMenu: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    //MARK : Helper Functions
+    // MARK : Helper Functions
     fileprivate func resetContentViewScale() {
         let t: CGAffineTransform = contentViewContainer.transform
         let scale: CGFloat = sqrt(t.a * t.a + t.c * t.c)

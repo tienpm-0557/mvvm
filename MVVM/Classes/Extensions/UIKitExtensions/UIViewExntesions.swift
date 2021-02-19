@@ -117,7 +117,7 @@ public extension UIView {
         get {
             return layer.shadowRadius
         }
-        set {
+        set { _ = newValue 
             layer.shadowOffset = CGSize(width: 0, height: 0.5)
             layer.shadowOpacity = 1.0
             layer.shadowRadius = shadowRadius

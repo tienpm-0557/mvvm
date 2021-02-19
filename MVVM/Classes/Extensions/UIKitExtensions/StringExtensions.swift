@@ -33,6 +33,7 @@ public extension String {
         data.withUnsafeBytes { dataBytes in
             _ = CC_SHA1(dataBytes, CC_LONG(data.count), &digest)
         }
+        
         let hexBytes = digest.map { String(format: "%02hhx", $0) }
         return hexBytes.joined()
     }
