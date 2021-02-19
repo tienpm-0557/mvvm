@@ -11,10 +11,9 @@ import MVVM
 import RxCocoa
 import RxSwift
 
-
 class MenuTableViewCell: BaseTableCell {
-    @IBOutlet private weak var titleLbl:UILabel!
-    @IBOutlet private weak var descLbl:UILabel!
+    @IBOutlet private weak var titleLbl: UILabel!
+    @IBOutlet private weak var descLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,16 +27,15 @@ class MenuTableViewCell: BaseTableCell {
     }
     
     override func bindViewAndViewModel() {
-        guard let viewModel = viewModel as? MenuTableCellViewModel else { return }
+        guard let viewModel = viewModel as? MenuTableCellViewModel else {
+            return
+        }
         viewModel.rxTitle ~> titleLbl.rx.text => disposeBag
         viewModel.rxDesc ~> descLbl.rx.text => disposeBag
     }
-    
 }
 
-
 class MenuTableCellViewModel: BaseCellViewModel {
-    
     let rxTitle = BehaviorRelay<String?>(value: nil)
     let rxDesc = BehaviorRelay<String?>(value: nil)
     
@@ -47,7 +45,7 @@ class MenuTableCellViewModel: BaseCellViewModel {
         if let introModel = model as? IntroductionModel {
             title = introModel.title
             desc = introModel.desc
-        } else if let menuModel = model as? MenuModel  {
+        } else if let menuModel = model as? MenuModel {
             title = menuModel.title
             desc = menuModel.desc
         }

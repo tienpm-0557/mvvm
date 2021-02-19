@@ -11,7 +11,6 @@ import MVVM
 import ObjectMapper
 
 class IntroductionModel: Model {
-    
     var title = ""
     var desc = ""
     var url = ""

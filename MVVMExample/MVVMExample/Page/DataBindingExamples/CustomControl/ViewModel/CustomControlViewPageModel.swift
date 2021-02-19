@@ -13,7 +13,6 @@ import RxCocoa
 import Action
 
 class CustomControlViewPageModel: BaseViewModel {
-    
     let rxPageTitle = BehaviorRelay<String>(value: "")
     let rxSelectedIndex = BehaviorRelay(value: 0)
     let rxSelectedText = BehaviorRelay<String?>(value: nil)

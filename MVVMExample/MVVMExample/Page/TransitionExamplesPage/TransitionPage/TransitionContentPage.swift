@@ -39,7 +39,6 @@ class TransitionContentPage: BasePage {
         }
         
         label.text = model.desc
-        //label.autoCenterInSuperview()
     }
     
     override func onBack(_ sender: AnyObject) {
@@ -49,5 +48,4 @@ class TransitionContentPage: BasePage {
             super.onBack(sender)
         }
     }
-
 }

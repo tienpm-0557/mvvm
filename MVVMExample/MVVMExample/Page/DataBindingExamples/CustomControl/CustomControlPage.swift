@@ -10,7 +10,6 @@ import UIKit
 import MVVM
 
 class CustomControlPage: BasePage {
-
     let segmentedView = SegmentedView(withTitles: ["Tab 1", "Tab 2", "Tab 3"])
     let label = UILabel()
     
@@ -33,7 +32,9 @@ class CustomControlPage: BasePage {
     }
     
     override func bindViewAndViewModel() {
-        guard let viewModel = viewModel as? CustomControlViewPageModel else { return }
+        guard let viewModel = viewModel as? CustomControlViewPageModel else {
+            return
+        }
         
         viewModel.rxPageTitle ~> rx.title => disposeBag
         viewModel.rxSelectedIndex <~> segmentedView.rx.selectedIndex => disposeBag

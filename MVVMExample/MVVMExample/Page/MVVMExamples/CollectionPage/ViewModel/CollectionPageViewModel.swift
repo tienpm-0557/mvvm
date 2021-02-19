@@ -13,7 +13,6 @@ import RxSwift
 import RxCocoa
 
 class CollectionPageViewModel: BaseListViewModel {
-    
     let rxPageTitle = BehaviorRelay(value: "")
     
     lazy var addAction: Action<Void, Void> = {

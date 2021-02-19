@@ -13,9 +13,9 @@ import RxSwift
 import RxCocoa
 import SwiftyJSON
 
-//MARK: Guideline
-///- Setting request header(authentication, contentType,....)  in MoyaAPIService.
-///- Setting Enpoint In MoyaAPIService
+// MARK: Guideline
+/// - Setting request header(authentication, contentType,....)  in MoyaAPIService.
+/// - Setting Enpoint In MoyaAPIService
 
 class MoyaService {
     var tmpBag: DisposeBag?
@@ -45,7 +45,7 @@ class MoyaService {
                     }
                     return nil
                 })
-                .subscribe(onSuccess: { (flickrSearchResponse) in
+                .subscribe(onSuccess: { flickrSearchResponse in
                     if let response = flickrSearchResponse {
                         single(.success(response))
                     } else {

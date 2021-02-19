@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class TimeLineCell: BaseTableCell {
-    ///User info
+    /// User info
     @IBOutlet private weak var avatarImg: UIImageView!
     @IBOutlet private weak var userDisplayNameLb: UILabel!
     

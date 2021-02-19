@@ -48,7 +48,7 @@ class IntroductionPage: BaseWebView {
             }
         }) => disposeBag
         
-        //Subcribe estimated progress
+        /// Subcribe estimated progress
         viewModel.rxEstimatedProgress.subscribe(onNext: { prgress in
             self.lbLoading.text = "Loading \(Int(prgress * 100))%"
         }) => disposeBag

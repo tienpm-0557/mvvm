@@ -44,7 +44,7 @@ class DynamicCollectionPageViewModel: BaseListViewModel {
         }
     }
     
-    ///Dummy data: Append data when did loadmore 10 item per page
+    /// Dummy data: Append data when did loadmore 10 item per page
     private func add() {
         var reuslt = [DynamicCollectionCellModel]()
         for _ in 1...10 {

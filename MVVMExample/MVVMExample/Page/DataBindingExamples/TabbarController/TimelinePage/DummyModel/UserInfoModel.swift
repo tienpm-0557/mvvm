@@ -11,7 +11,6 @@ import MVVM
 import ObjectMapper
 
 class UserInfoModel: Model {
-    
     var displayName: String = ""
     var user_id: Int = 0
     var avatar: String = ""

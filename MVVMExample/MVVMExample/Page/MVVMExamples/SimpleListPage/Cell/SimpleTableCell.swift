@@ -21,7 +21,7 @@ class SimpleTableCell: BaseTableCell {
 
     override func initialize() {
         /// Avoid use outlet property here. The function is called before load lib.
-        ///Update outlet into awakeFromNib
+        /// Update outlet into awakeFromNib
         selectionStyle = .none
     }
     

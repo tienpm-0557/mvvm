@@ -16,7 +16,9 @@ class SimpleCollectionViewDellModel: BaseCellViewModel {
     let rxDesc = BehaviorRelay<String?>(value: nil)
     
     override func react() {
-        guard let model = model as? SectionTextModel else { return }
+        guard let model = model as? SectionTextModel else {
+            return
+        }
         rxTitle.accept(model.title)
         rxDesc.accept(model.desc)
     }

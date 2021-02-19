@@ -152,7 +152,7 @@ public enum APIService: URLRequestConvertible {
         }
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        ///Common configuration
+        /// Common configuration
         urlRequest.httpMethod = method.rawValue
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.timeoutInterval = TimeInterval(30)

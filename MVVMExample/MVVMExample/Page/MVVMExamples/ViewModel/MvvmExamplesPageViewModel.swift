@@ -11,7 +11,7 @@ import RxCocoa
 import WebKit
 import Action
 
-//MARK: ViewModel For MVVM Examples
+// MARK: ViewModel For MVVM Examples
 class MvvmExamplesPageViewModel: TableOfContentViewModel {
     override func fetchData() {
         let listPage = MenuTableCellViewModel(model: MenuModel(withTitle: "Simple UITableView Page",

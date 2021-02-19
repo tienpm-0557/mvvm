@@ -12,7 +12,6 @@ import RxCocoa
 import RxSwift
 
 class SimpleCollectionPage: BaseCollectionPage {
-    
     let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     
     override func viewDidLoad() {

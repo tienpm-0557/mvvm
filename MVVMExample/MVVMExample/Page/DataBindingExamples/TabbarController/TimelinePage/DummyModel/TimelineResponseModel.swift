@@ -12,7 +12,6 @@ import SwiftyJSON
 import RxSwift
 
 class TimelineResponseModel: Model {
-    
     var stat: HttpStatusCode = .badRequest
     var timelines: [BaseCellViewModel] = []
     var message = ""
@@ -23,7 +22,6 @@ class TimelineResponseModel: Model {
         message <- map["message"]
         timelines <- (map["data"], DataTransform())
     }
-    
 }
 
 class HttpStatusCodeTransform: TransformType {
@@ -43,15 +41,13 @@ class HttpStatusCodeTransform: TransformType {
 }
 
 class DataTransform: TransformType {
-    
     typealias Object = [BaseCellViewModel]
     typealias JSON = String
     
     func transformFromJSON(_ value: Any?) -> Object? {
         if let items = value as? [[String: Any]] {
-            
-            var result:[AnyObject] = []
-            items.forEach { (item) in
+            var result: [AnyObject] = []
+            items.forEach { item in
                 if let type = item["type"] as? String, type == "activity" {
                     if let timeline = ActivityModel(JSON: item) {
                         let cellViewModel = ActivityCellViewModel(model: timeline)

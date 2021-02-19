@@ -12,7 +12,6 @@ import RxSwift
 import RxCocoa
 
 class SectionFooterListView: BaseHeaderTableView {
-    
     @IBOutlet private weak var titleLbl: UILabel!
     @IBOutlet private weak var descLbl: UILabel!
     

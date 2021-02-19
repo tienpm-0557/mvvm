@@ -10,7 +10,6 @@ import UIKit
 import MagicalRecord
 
 class CoreDataManager: NSObject {
-
     class func setupCoreDataStack() {
         MagicalRecord.setupCoreDataStack()
         MagicalRecord.setupAutoMigratingCoreDataStack()

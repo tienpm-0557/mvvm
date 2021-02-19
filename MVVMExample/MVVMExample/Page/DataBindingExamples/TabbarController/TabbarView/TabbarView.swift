@@ -13,8 +13,7 @@ import RxCocoa
 import Action
 
 class TabbarView: AbstractView {
-    
-    @IBOutlet private var buttons: Array<UIButton>!
+    @IBOutlet private var buttons: [UIButton]!
     @IBOutlet private var topLineHeight: NSLayoutConstraint!
     private var prevButton: UIButton?
     let rxSelectedIndex = BehaviorRelay(value: 0)
@@ -22,12 +21,12 @@ class TabbarView: AbstractView {
     private var darkmode: Bool = false {
         didSet {
             if darkmode {
-                buttons.forEach { (btn) in
+                buttons.forEach { btn in
                     btn.backgroundColor = UIColor.black
                 }
                 self.backgroundColor = UIColor.black
             } else {
-                buttons.forEach { (btn) in
+                buttons.forEach { btn in
                     btn.backgroundColor = UIColor.tabbarBackgroundColor
                 }
                 self.backgroundColor = UIColor.tabbarBackgroundColor
@@ -36,7 +35,7 @@ class TabbarView: AbstractView {
     }
     
     lazy var testAction: Action<AnyObject, Void> = {
-        return Action<AnyObject, Void> { input in
+        return Action<AnyObject, Void> { _ in
             return .just(())
         }
     }()
@@ -54,7 +53,7 @@ class TabbarView: AbstractView {
         super.setupView()
         /// Setup tab items
         self.backgroundColor = UIColor.tabbarBackgroundColor
-        buttons.forEach { (btn) in
+        buttons.forEach { btn in
             btn.setTitleColor(.tabbarTitleColor, for: .normal)
             btn.setTitleColor(.tabbarTitleSelectedColor, for: .selected)
             if self.darkmode {
@@ -63,7 +62,6 @@ class TabbarView: AbstractView {
                 btn.backgroundColor = UIColor.tabbarBackgroundColor
             }
             
-            
             btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         
@@ -71,7 +69,9 @@ class TabbarView: AbstractView {
         /// Top line
         topLineHeight.constant = 1 / UIScreen.main.scale
         /// Update selected button
-        guard let selectBtn = self.prevButton else { return }
+        guard let selectBtn = self.prevButton else {
+            return
+        }
         self.setSelectedTab(selectBtn)
     }
     
@@ -102,10 +102,9 @@ class TabbarView: AbstractView {
         } else {
             selectedBtn.backgroundColor = .tabbarBackgroundSelectedColor
         }
-        
     }
     
-    func updateDarkmode(_ darkmode:Bool) {
+    func updateDarkmode(_ darkmode: Bool) {
         self.darkmode = darkmode
     }
 }

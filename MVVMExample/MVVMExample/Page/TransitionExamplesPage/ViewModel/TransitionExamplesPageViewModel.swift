@@ -11,9 +11,8 @@ import RxCocoa
 import WebKit
 import Action
 
-//MARK: ViewModel For Transition Examples
+// MARK: ViewModel For Transition Examples
 class TransitionExamplesPageViewModel: BaseViewModel {
-    
     let rxPageTitle = BehaviorRelay<String>(value: "")
     
     lazy var flipAction: Action<Void, Void> = {
@@ -49,7 +48,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     }()
     
     lazy var imageRepeatingAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithImageRepeatingAnimation())}
+        return Action() { .just(self.pushWithImageRepeatingAnimation()) }
     }()
     
     lazy var multiFlipAction: Action<Void, Void> = {
@@ -57,7 +56,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     }()
     
     lazy var angleLineAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithAngleLineAnimation())}
+        return Action() { .just(self.pushWithAngleLineAnimation()) }
     }()
     
     lazy var straightLineAction: Action<Void, Void> = {
@@ -93,13 +92,12 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         rxPageTitle.accept(title)
     }
     
-    
     private func pushAndFlip() {
-        ///Create flip page model
+        /// Create flip page model
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Flip Animation",
                                                                 desc: "Example transition page with Flip animation.",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
-        ///Create flip animator
+        /// Create flip animator
         let animator = FlipAnimator(withDuration: 0.5, isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
@@ -110,7 +108,6 @@ class TransitionExamplesPageViewModel: BaseViewModel {
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = ZoomAnimator(withDuration: 2.0, isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
-        
     }
     
     private func pushWithClockAnimation() {
@@ -201,7 +198,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
     
     private func pushWithCollidingDiamondsAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Colliding Diamonds Animation",
-                                                                desc:"Example transition page with Colliding Diamonds Animation",
+                                                                desc: "Example transition page with Colliding Diamonds Animation",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = CollidingDiamondsAnimator(withDuration: TimeInterval(0.25), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
@@ -231,7 +228,6 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         self.pushWithAnimator(animator, model: model)
     }
     
-    
     private func pushWithAnimator(_ animator: Animator, model: BaseViewModel) {
         let page = TransitionContentPage(viewModel: model)
         if usingShowModal {
@@ -243,7 +239,4 @@ class TransitionExamplesPageViewModel: BaseViewModel {
             navigationService.push(to: page, options: .push(with: animator))
         }
     }
-    
 }
-
-

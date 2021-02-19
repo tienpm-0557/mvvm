@@ -10,7 +10,6 @@ import UIKit
 import MVVM
 
 class TransitionExamplesPage: BasePage {
-
     @IBOutlet private weak var flipBtn: UIButton!
     @IBOutlet private weak var zoomBtn: UIButton!
     @IBOutlet private weak var clockBtn: UIButton!
@@ -64,15 +63,4 @@ class TransitionExamplesPage: BasePage {
         splitFromCenterBtn.rx.bind(to: viewModel.splitFromCenterAction, input: ())
         swingInRetroBtn.rx.bind(to: viewModel.swingInAction, input: ())
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

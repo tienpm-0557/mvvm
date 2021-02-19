@@ -11,15 +11,12 @@ import ObjectMapper
 import SwiftyJSON
 
 class TimelineModel: Model {
-    
     var title = ""
     var desc = ""
     var thumbnail = ""
     var createDate = ""
-    var reaction:Int = 0
-    
+    var reaction: Int = 0
     var user: UserInfoModel?
-    
     var type: TimelineModelType = .normal
     var json: JSON = []
     
@@ -36,9 +33,7 @@ class TimelineModel: Model {
         type <- (map["type"], TimelineModelTypeTransform())
         user <- (map["user"], UserInfoTransform())
     }
-
 }
-
 
 class UserInfoTransform: TransformType {
     typealias Object = UserInfoModel

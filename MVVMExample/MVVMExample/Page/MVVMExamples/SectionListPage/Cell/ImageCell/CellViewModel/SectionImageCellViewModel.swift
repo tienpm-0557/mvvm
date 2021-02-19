@@ -12,7 +12,6 @@ import RxSwift
 import RxCocoa
 
 class SectionImageCellViewModel: BaseCellViewModel {
-    
     let rxImage = BehaviorRelay(value: NetworkImage())
     
     override func react() {

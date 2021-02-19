@@ -13,7 +13,6 @@ import RxCocoa
 import Action
 
 class ActivityCellViewModel: BaseCellViewModel {
-    
     let rxTweets = BehaviorRelay<String?>(value: "")
     let rxFollowing = BehaviorRelay<String?>(value: "")
     let rxFollower = BehaviorRelay<String?>(value: "")

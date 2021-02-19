@@ -11,7 +11,6 @@ import ObjectMapper
 import SwiftyJSON
 
 class ActivityModel: Model {
-    
     var title = ""
     var tweets: Int = 0
     var following: Int = 0

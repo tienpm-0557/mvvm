@@ -11,6 +11,4 @@ import MVVM
 import RxCocoa
 import RxSwift
 
-class TabbarViewModel: BaseViewModel {
-
-}
+class TabbarViewModel: BaseViewModel {}

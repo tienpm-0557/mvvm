@@ -12,7 +12,6 @@ import RxSwift
 import SwiftyJSON
 
 extension NetworkService {
-    
     func loadTimeline(withPage page: Int, withLimit limit: Int) -> Single<TimelineResponseModel> {
         let parameters: [String: Any] = [
             "page": page,

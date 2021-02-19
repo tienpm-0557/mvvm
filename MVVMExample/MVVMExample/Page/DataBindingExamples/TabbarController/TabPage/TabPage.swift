@@ -10,7 +10,6 @@ import UIKit
 import MVVM
 
 class TabPage: BasePage {
-    
     @IBOutlet private weak var hexLb: UILabel!
     @IBOutlet private weak var nameLb: UILabel!
 
@@ -23,16 +22,16 @@ class TabPage: BasePage {
     override func initialize() {
         super.initialize()
         enableBackButton = true
-        
     }
     
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? TabPageViewModel else { return }
+        guard let viewModel = self.viewModel as? TabPageViewModel else {
+            return
+        }
         
         viewModel.rxTitle ~> self.rx.title => disposeBag
-        
-        viewModel.rxBackgroundHex.subscribe(onNext: { (value) in
+        viewModel.rxBackgroundHex.subscribe(onNext: { value in
             if let hex = value {
                 self.view.backgroundColor = UIColor(hexString: hex)
             }
@@ -41,6 +40,4 @@ class TabPage: BasePage {
         viewModel.rxName ~> nameLb.rx.text => disposeBag
         viewModel.rxBackgroundHex ~> hexLb.rx.text => disposeBag
     }
-    
-
 }

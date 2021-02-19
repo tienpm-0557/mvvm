@@ -14,16 +14,15 @@ public enum AlertType {
     case disposableAlert, dialogAlert
 }
 
-
 class ReachabilityPage: BasePage {
-
     @IBOutlet weak var btnDialogAlert: UIButton!
     @IBOutlet weak var btnDisposableAlert: UIButton!
     @IBOutlet weak var alertLabel: UILabel!
     @IBOutlet weak var alertViewHeightConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -33,7 +32,7 @@ class ReachabilityPage: BasePage {
             ReachabilityService.share
         })
     }
-
+    
     override func bindViewAndViewModel() {
         btnDisposableAlert.setTitleColor(.white, for: .selected)
         btnDialogAlert.setTitleColor(.white, for: .selected)
@@ -48,15 +47,18 @@ class ReachabilityPage: BasePage {
         self.btnDisposableAlert.rx.bind(to: viewModel.rxDisposableAlertAction, input: ())
         self.btnDialogAlert.rx.bind(to: viewModel.rxDialogAlertAction, input: ())
         
-        viewModel.rxReachbilityState.subscribe(onNext: { (state) in
+        viewModel.rxReachbilityState.subscribe(onNext: { state in
             if state.alertType == .disposableAlert {
                 switch state.connection {
                 case .cellular:
                     self.layoutDisposableMessage(0)
+                    
                 case .unavailable:
                     self.layoutDisposableMessage(20)
+                    
                 case .wifi:
                     self.layoutDisposableMessage(0)
+                    
                 default:
                     self.layoutDisposableMessage(20)
                 }
@@ -65,17 +67,18 @@ class ReachabilityPage: BasePage {
                 switch state.connection {
                 case .cellular:
                     self.displayDialogMessage("Cellular data connected")
+                    
                 case .unavailable:
                     self.displayDialogMessage("No internet connection")
+                    
                 case .wifi:
                     self.displayDialogMessage("Wifi connected")
+                    
                 default:
                     self.displayDialogMessage("No internet connection")
                 }
             }
         }) => disposeBag
-        
-        
     }
     
     @IBAction func disposableAlertTapped(_ sender: Any) {
@@ -95,23 +98,24 @@ class ReachabilityPage: BasePage {
         })
     }
     
-    private func displayDialogMessage(_ message: String){
+    private func displayDialogMessage(_ message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-              switch action.style{
-              case .default:
-                    print("default")
-
-              case .cancel:
-                    print("cancel")
-
-              case .destructive:
-                    print("destructive")
-
-
-              @unknown default:
-                fatalError()
-            }}))
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: { action in
+                                        switch action.style {
+                                        case .default:
+                                            print("default")
+                                            
+                                        case .cancel:
+                                            print("cancel")
+                                            
+                                        case .destructive:
+                                            print("destructive")
+                                            
+                                        @unknown default:
+                                            fatalError()
+                                        }}))
         self.present(alert, animated: true, completion: nil)
     }
 }

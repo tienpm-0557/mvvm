@@ -11,7 +11,6 @@ import MVVM
 import SwiftyJSON
 
 class TabbarViewController: BaseTabBarPage {
-    
     var _tabBarView: TabbarView?
     
     override func initialize() {
@@ -23,15 +22,15 @@ class TabbarViewController: BaseTabBarPage {
         let tab0 = TimelinePage(viewModel: timelineViewModel)
         let nv0 = NavigationPage(rootViewController: tab0)
         
-        let vm1 = TabPageViewModel(model: TabbarModel(JSON: ["title": "Messages", "index":1]))
+        let vm1 = TabPageViewModel(model: TabbarModel(JSON: ["title": "Messages", "index": 1]))
         let tab1 = TabPage(viewModel: vm1)
         let nv1 = NavigationPage(rootViewController: tab1)
         
-        let vm2 = TabPageViewModel(model: TabbarModel(JSON: ["title": "Notifications", "index":2]))
+        let vm2 = TabPageViewModel(model: TabbarModel(JSON: ["title": "Notifications", "index": 2]))
         let tab2 = TabPage(viewModel: vm2)
         let nv2 = NavigationPage(rootViewController: tab2)
         
-        let vm3 = TabPageViewModel(model: TabbarModel(JSON: ["title": "Profile", "index":3]))
+        let vm3 = TabPageViewModel(model: TabbarModel(JSON: ["title": "Profile", "index": 3]))
         let tab3 = TabPage(viewModel: vm3)
         let nv3 = NavigationPage(rootViewController: tab3)
         

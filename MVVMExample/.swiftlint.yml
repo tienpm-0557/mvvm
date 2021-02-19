@@ -93,8 +93,8 @@ opt_in_rules:
 line_length: 200
 #force_unwrapping:
 #  severity: error
-force_cast:
-  severity: warning
+#force_cast:
+#  severity: warning
 excluded:
   - Pods/
   - MVVMExampleTests/

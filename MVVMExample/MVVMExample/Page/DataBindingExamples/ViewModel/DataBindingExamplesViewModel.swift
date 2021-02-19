@@ -10,7 +10,7 @@ import MVVM
 import RxCocoa
 import WebKit
 
-//MARK: ViewModel For Collection Examples
+/// MARK: ViewModel For Collection Examples
 class DatabindingExamplesPageViewModel: TableOfContentViewModel {
     override func fetchData() {
         let segmentBar = MenuTableCellViewModel(model: MenuModel(withTitle: "One-way, Two-way and Action Binding",

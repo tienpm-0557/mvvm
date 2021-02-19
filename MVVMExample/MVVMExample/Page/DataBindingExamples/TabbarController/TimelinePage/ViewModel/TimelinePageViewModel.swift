@@ -13,12 +13,9 @@ import RxSwift
 import Action
 
 class TimelinePageViewModel: BaseListViewModel {
-    
     let alertService: IAlertService = DependencyManager.shared.getService()
     var networkService: NetworkService?
-    
     var tmpBag: DisposeBag?
-    
     let rxTille = BehaviorRelay<String>(value: "")
     
     lazy var getDataAction: Action<Void, Void> = {
@@ -32,7 +29,9 @@ class TimelinePageViewModel: BaseListViewModel {
     override func react() {
         super.react()
         
-        guard let model = self.model as? TabbarModel else { return }
+        guard let model = self.model as? TabbarModel else {
+            return
+        }
         rxTille.accept(model.title)
         
         networkService = DependencyManager.shared.getService()
@@ -40,13 +39,12 @@ class TimelinePageViewModel: BaseListViewModel {
     
     private func getData() {
         self.networkService?.loadTimeline(withPage: self.page, withLimit: self.limit)
-            .map(prepareSources).subscribe(onSuccess: {[weak self] (results) in
+            .map(prepareSources)
+            .subscribe(onSuccess: {[weak self] results in
                 if let data = results {
                     self?.itemsSource.append(data, animated: false)
                 }
-                
-            }, onError: { (error) in
-                
+            }, onError: { _ in
             }) => tmpBag
     }
     
@@ -55,12 +53,13 @@ class TimelinePageViewModel: BaseListViewModel {
     }
     
     private func prepareSources(_ response: TimelineResponseModel?) -> [BaseCellViewModel]? {
-        guard let response = response else { return [] }
+        guard let response = response else {
+            return []
+        }
         if response.stat == .badRequest {
             alertService.presentOkayAlert(title: "Error",
                                           message: "\(response.message)\nPlease be sure to provide your own SECRET key from MTLAB.")
         }
         return response.timelines
     }
-    
 }

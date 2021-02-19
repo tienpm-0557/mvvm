@@ -27,7 +27,7 @@ class NetworkService {
     let state = PublishRelay<NetworkServiceState>()
     
     /// Define default parameter
-    func getDefaultParams() -> [String:Any] {
+    func getDefaultParams() -> [String: Any] {
         var params: [String: Any] = [String: Any]()
         params["version"] = SystemConfiguration.version
         params["build"] = SystemConfiguration.buildIndex

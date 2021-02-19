@@ -45,7 +45,7 @@ import RxCocoa
  */
 ///
 
-//MARK: Custom View For NavigationBar UIBarButtonItem
+// MARK: Custom View For NavigationBar UIBarButtonItem
 
 let kUIBarItemsNibName: String = "UIBarItems"
 
@@ -196,7 +196,7 @@ extension UIBarButtonItem {
     }
 }
 
-//MARK: - NavigationBar Title View
+// MARK: - NavigationBar Title View
 enum UIBarTitleType {
     case normal
     case image

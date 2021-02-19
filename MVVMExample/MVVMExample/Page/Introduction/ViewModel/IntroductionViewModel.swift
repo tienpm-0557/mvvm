@@ -10,7 +10,7 @@ import MVVM
 import RxCocoa
 import WebKit
 
-//MARK: ViewModel For BaseWebView Examples
+// MARK: ViewModel For BaseWebView Examples
 class IntroductionPageViewModel: BaseWebViewModel {    
     let rxPageTitle = BehaviorRelay(value: "")
     let rxURL = BehaviorRelay<URL?>(value: nil)

@@ -12,24 +12,21 @@ import RxSwift
 import RxCocoa
 import Action
 
-
 extension Reactive where Base: SegmentedView {
-    
     var selectedIndex: ControlProperty<Int> {
-        
-        return UIControl.toProperty(control: self.base, getter: { (segmentedView) in
-            segmentedView.selectedIndex
-        }, setter: { (segmentedView, value) in
-            if value != segmentedView.selectedIndex {
-                segmentedView.selectedIndex = value
-            }
-        })
+        return UIControl.toProperty(control: self.base,
+                                    getter: { segmentedView in
+                                        segmentedView.selectedIndex
+                                    },
+                                    setter: { segmentedView, value in
+                                        if value != segmentedView.selectedIndex {
+                                            segmentedView.selectedIndex = value
+                                        }
+                                    })
     }
-    
 }
 
 class SegmentedView: AbstractControlView {
-    
     let titles: [String]
     var apportionsSegmentWidthsByContent: Bool {
         didSet { updateDistribution() }
@@ -38,7 +35,6 @@ class SegmentedView: AbstractControlView {
     private var shadowView: UIView!
     private var stackView: UIStackView!
     private var indicatorView: UIView!
-    
     private var verticalConstraint: NSLayoutConstraint!
     
     var selectedIndex = 0 {
@@ -121,7 +117,8 @@ class SegmentedView: AbstractControlView {
         shadowView.setShadow(offset: CGSize(width: 0, height: 3), color: .gray, opacity: 0.4, radius: 3)
     }
     
-    @objc func buttonPressed(_ sender: UIButton) {
+    @objc
+    func buttonPressed(_ sender: UIButton) {
         if let index = buttons.firstIndex(of: sender) {
             selectedIndex = index
         }
@@ -129,12 +126,14 @@ class SegmentedView: AbstractControlView {
     
     private func moveIndicator(relativeTo selectedBtn: UIButton, animated: Bool = true) {
         let center = selectedBtn.center
-        let moveCenter = CGPoint(x: center.x, y: center.y + 15 + indicatorView.frame.height/2)
+        let moveCenter = CGPoint(x: center.x,
+                                 y: center.y + 15 + indicatorView.frame.height / 2)
         
         if animated {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.indicatorView.center = moveCenter
-            }) { _ in
+            UIView.animate(withDuration: 0.25,
+                           animations: {
+                            self.indicatorView.center = moveCenter
+                           }) { _ in
                 self.updateVerticalConstraint(to: selectedBtn)
             }
         } else {

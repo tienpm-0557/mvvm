@@ -12,7 +12,6 @@ import RxSwift
 import RxCocoa
 
 class TimelinePage: BaseListPage {
-    
     @IBOutlet private weak var bottomPadding: NSLayoutConstraint!
     
     let indicatorView = UIActivityIndicatorView(style: .gray)

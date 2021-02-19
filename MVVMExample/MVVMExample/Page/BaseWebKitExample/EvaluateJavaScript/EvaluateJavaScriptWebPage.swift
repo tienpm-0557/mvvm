@@ -9,7 +9,6 @@
 import UIKit
 
 class EvaluateJavaScriptWebPage: IntroductionPage {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,5 +25,4 @@ class EvaluateJavaScriptWebPage: IntroductionPage {
             }
         }
     }
-
 }

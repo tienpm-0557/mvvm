@@ -11,10 +11,9 @@ import MVVM
 import RxCocoa
 import WebKit
 
-//MARK: WebView Examples
+// MARK: WebView Examples
 class WebViewExamplesPageViewModel: TableOfContentViewModel {
     override func fetchData() {
-        
         let alertPanel = MenuTableCellViewModel(model: MenuModel(withTitle: "Alert Panel With Message",
                                                                  desc: "Run java scription alert panel with message"))
         

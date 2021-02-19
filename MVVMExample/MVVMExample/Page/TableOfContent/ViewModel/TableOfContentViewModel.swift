@@ -13,7 +13,6 @@ import RxSwift
 
 /// Menu for home page
 class TableOfContentViewModel: BaseListViewModel {
-    
     let rxPageTitle = BehaviorRelay(value: "")
 
     override func react() {
@@ -30,7 +29,9 @@ class TableOfContentViewModel: BaseListViewModel {
     }
     
     func fetchData() {
-        let intro = MenuTableCellViewModel(model: IntroductionModel(withTitle: "Introduction", desc: "MVVM is a library for who wants to start writing iOS application using MVVM (Model-View-ViewModel), written in Swift.", url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
+        let intro = MenuTableCellViewModel(model: IntroductionModel(withTitle: "Introduction",
+                                                                    desc: "MVVM is a library for who wants to start writing iOS application using MVVM (Model-View-ViewModel), written in Swift.",
+                                                                    url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let mvvm = MenuTableCellViewModel(model: MenuModel(withTitle: "MVVM Examples",
                                                            desc: "Examples about different ways to use base classes Page, ListPage and CollectionPage."))
         let dataBinding = MenuTableCellViewModel(model: MenuModel(withTitle: "Data Binding Examples",
@@ -49,24 +50,33 @@ class TableOfContentViewModel: BaseListViewModel {
     }
     
     func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
-        guard let indexPath = rxSelectedIndex.value else { return nil }
+        guard let indexPath = rxSelectedIndex.value else {
+            return nil
+        }
         
         var page: UIViewController?
         switch indexPath.row {
         case 0:
             page = IntroductionPage(viewModel: IntroductionPageViewModel(model: cellViewModel.model))
+            
         case 1:
             page = MVVMExamplePage(viewModel: MvvmExamplesPageViewModel(model: cellViewModel.model))
+            
         case 2:
             page = ServiceExamplesPage(viewModel: ServiceExamplesPageViewModel(model: cellViewModel.model))
+            
         case 3:
             page = TransitionExamplesPage(viewModel: TransitionExamplesPageViewModel(model: cellViewModel.model, usingShowModal: true))
+            
         case 4:
             page = DataBindingExamplesPage(viewModel: DatabindingExamplesPageViewModel(model: cellViewModel.model))
+            
         case 5:
             page = StoreKitPage(viewModel: StoreKitPageViewModel(model: cellViewModel.model))
+            
         case 6:
             page = LocalizationPage(viewModel: LocalizationPageViewModel(model: cellViewModel.model))
+            
         default: ()
         }
         return page

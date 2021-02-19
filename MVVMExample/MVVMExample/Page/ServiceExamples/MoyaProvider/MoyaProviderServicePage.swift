@@ -10,7 +10,6 @@ import UIKit
 import MVVM
 
 class MoyaProviderServicePage: BasePage {
-    
     @IBOutlet private var cURLLb: UILabel!
     @IBOutlet private var responseTxt: UITextView!
     

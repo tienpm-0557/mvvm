@@ -12,9 +12,8 @@ import Action
 import RxSwift
 import RxCocoa
 
-//MARK: ViewModel For Service Examples
+// MARK: ViewModel For Service Examples
 class ServiceExamplesPageViewModel: TableOfContentViewModel {
-    
     var alertService: IAlertService = DependencyManager.shared.getService()
     
     private var mailService: MailService?
@@ -76,7 +75,7 @@ class ServiceExamplesPageViewModel: TableOfContentViewModel {
             page = vc
             
         case 4:
-            ///Provide your emails, subjects, and message for mail detail.
+            /// Provide your emails, subjects, and message for mail detail.
             mailService?.sendMailTo(listEmail: ["phamminhtien305@gmail.com", "dinh.tung@sun-asterisk.com"],
                                     withSubject: "[Enter your subject]",
                                     withMessage: "[Enter your message]")

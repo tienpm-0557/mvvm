@@ -13,7 +13,6 @@ import RxCocoa
 import Action
 
 class SectionListPageViewModel: BaseListViewModel {
-    
     let rxPageTitle = BehaviorRelay(value: "")
     
     let imageUrls = [

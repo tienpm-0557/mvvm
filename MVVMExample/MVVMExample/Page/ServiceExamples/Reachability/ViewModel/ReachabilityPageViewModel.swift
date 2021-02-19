@@ -14,7 +14,7 @@ import Action
 import UIKit
 import RxSwift
 
-//MARK: ViewModel For Transition Examples
+/// MARK: ViewModel For Transition Examples
 class ReachabilityPageViewModel: BaseViewModel {
     var reachibilityService: ReachabilityService?
     let rxPageTitle = PublishSubject<String>()

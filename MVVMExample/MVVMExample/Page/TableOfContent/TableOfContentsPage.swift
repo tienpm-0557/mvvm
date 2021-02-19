@@ -13,7 +13,6 @@ import RxSwift
 import Action
 
 class TableOfContentsPage: BaseListPage {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,13 +23,15 @@ class TableOfContentsPage: BaseListPage {
         super.setupTableView(tableView)
         tableView.estimatedRowHeight = 200
         tableView.separatorStyle = .singleLine
-        tableView.register(cellType:MenuTableViewCell.self)
+        tableView.register(cellType: MenuTableViewCell.self)
     }
     
     // Register event: Connect view to ViewModel.
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = viewModel as? TableOfContentViewModel else { return }
+        guard let viewModel = viewModel as? TableOfContentViewModel else {
+            return
+        }
         viewModel.rxPageTitle ~> rx.title => disposeBag
     }
     
@@ -44,11 +45,12 @@ class TableOfContentsPage: BaseListPage {
     }
     
     override func getItemSource() -> RxCollection? {
-        guard let viewModel = viewModel as? TableOfContentViewModel else { return nil }
+        guard let viewModel = viewModel as? TableOfContentViewModel else {
+            return nil
+        }
         return viewModel.itemsSource
     }
     
     // Not recommended for use. override selectedItemDidChange on ViewModel.
     override func selectedItemDidChange(_ cellViewModel: Any, _ indexPath: IndexPath) {}
-
 }

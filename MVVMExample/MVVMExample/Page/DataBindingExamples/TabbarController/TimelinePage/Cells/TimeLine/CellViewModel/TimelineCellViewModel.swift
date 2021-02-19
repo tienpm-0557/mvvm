@@ -13,7 +13,6 @@ import RxSwift
 import Action
 
 class TimelineCellViewModel: BaseCellViewModel {
-    
     var alertService: IAlertService = DependencyManager.shared.getService()
     var shareService: ShareService = DependencyManager.shared.getService()
     
