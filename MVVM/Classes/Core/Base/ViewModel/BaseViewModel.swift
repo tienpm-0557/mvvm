@@ -151,6 +151,7 @@ open class BaseCellViewModel: NSObject, IGenericViewModel, IIndexable, IReactabl
          guard !isReacted else { return }
          isReacted = true
          */
+        disposeBag = DisposeBag()
         react()
     }
     

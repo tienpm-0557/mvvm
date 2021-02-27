@@ -325,6 +325,7 @@ open class BaseTableCell: UITableViewCell, IView {
     
     open override func prepareForReuse() {
         super.prepareForReuse()
+        destroy()
         _viewModel = nil
     }
     
