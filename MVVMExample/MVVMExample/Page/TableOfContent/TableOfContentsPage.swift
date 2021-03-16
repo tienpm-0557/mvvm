@@ -29,10 +29,10 @@ class TableOfContentsPage: BaseListPage {
     // Register event: Connect view to ViewModel.
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = viewModel as? TableOfContentViewModel else {
+        guard let viewModel = viewModel as? TableOfContentViewModelType else {
             return
         }
-        viewModel.rxPageTitle ~> rx.title => disposeBag
+        viewModel.inputs.rxPageTitle ~> rx.title => disposeBag
     }
     
     override func destroy() {
@@ -45,10 +45,10 @@ class TableOfContentsPage: BaseListPage {
     }
     
     override func getItemSource() -> RxCollection? {
-        guard let viewModel = viewModel as? TableOfContentViewModel else {
+        guard let viewModel = viewModel as? TableOfContentViewModelType else {
             return nil
         }
-        return viewModel.itemsSource
+        return viewModel.outputs.itemsSource
     }
     
     // Not recommended for use. override selectedItemDidChange on ViewModel.

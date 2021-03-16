@@ -11,8 +11,29 @@ import MVVM
 import RxCocoa
 import RxSwift
 
+protocol TableOfContentViewModelInputs {
+    var rxPageTitle: BehaviorRelay<String> { get }
+}
+
+protocol TableOfContentViewModelOutputs {
+    var itemsSource: ReactiveCollection<BaseCellViewModel> { get }
+}
+
+protocol TableOfContentViewModelType {
+    var inputs: TableOfContentViewModelInputs { get }
+    var outputs: TableOfContentViewModelOutputs { get }
+}
+
 /// Menu for home page
-class TableOfContentViewModel: BaseListViewModel {
+class TableOfContentViewModel: BaseListViewModel, TableOfContentViewModelType, TableOfContentViewModelInputs, TableOfContentViewModelOutputs {
+    
+    var inputs: TableOfContentViewModelInputs {
+        return self
+    }
+    
+    var outputs: TableOfContentViewModelOutputs {
+        return self
+    }
     let rxPageTitle = BehaviorRelay(value: "")
 
     override func react() {

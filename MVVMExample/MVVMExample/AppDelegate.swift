@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         // Create Roote page
-        let page = TableOfContentsPage(viewModel: TableOfContentViewModel())
+        let viewVM: TableOfContentViewModelType = TableOfContentViewModel()
+        let page = TableOfContentsPage(viewModel: viewVM as! TableOfContentViewModel)
         let rootPage = NavigationPage(rootViewController: page)
         rootPage.statusBarStyle = .default
         // Set new root Viewcontroller
