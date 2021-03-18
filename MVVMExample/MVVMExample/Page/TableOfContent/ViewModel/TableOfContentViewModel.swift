@@ -12,7 +12,7 @@ import RxCocoa
 import RxSwift
 
 protocol TableOfContentViewModelInputs {
-    var rxPageTitle: BehaviorRelay<String> { get }
+    var rxPageTitle: BehaviorRelay<String?> { get }
 }
 
 protocol TableOfContentViewModelOutputs {
@@ -34,7 +34,7 @@ class TableOfContentViewModel: BaseListViewModel, TableOfContentViewModelType, T
     var outputs: TableOfContentViewModelOutputs {
         return self
     }
-    let rxPageTitle = BehaviorRelay(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
 
     override func react() {
         super.react()

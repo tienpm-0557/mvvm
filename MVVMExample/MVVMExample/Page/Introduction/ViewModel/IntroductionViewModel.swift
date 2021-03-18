@@ -12,7 +12,7 @@ import WebKit
 
 // MARK: ViewModel For BaseWebView Examples
 class IntroductionPageViewModel: BaseWebViewModel {    
-    let rxPageTitle = BehaviorRelay(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
     let rxURL = BehaviorRelay<URL?>(value: nil)
         
     override func react() {

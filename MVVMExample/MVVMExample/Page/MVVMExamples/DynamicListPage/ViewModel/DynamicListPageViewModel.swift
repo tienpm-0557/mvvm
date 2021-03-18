@@ -12,7 +12,7 @@ import RxCocoa
 import RxSwift
 
 class DynamicListPageViewModel: BaseListViewModel {
-    let rxPageTitle = BehaviorRelay(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
     
     override func react() {
         super.react()

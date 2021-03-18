@@ -14,7 +14,7 @@ import RxCocoa
 class NetworkServicePageViewModel: BaseViewModel {
     var networkService: NetworkService?
     
-    let rxPageTitle = BehaviorRelay<String>(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
     let rxSearchText = BehaviorRelay<String?>(value: nil)
     let rxCurlText = BehaviorRelay<String?>(value: "")
     let rxResponseText = BehaviorRelay<String?>(value: "")

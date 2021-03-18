@@ -44,10 +44,10 @@ extension NetworkService {
                         single(.success(response))
                     } else {
                         let err = NSError(domain: "", code: 404, userInfo: ["message": "Data not fount"])
-                        single(.error(err))
+                        single(.failure(err))
                     }
                 }) { error in
-                    single(.error(error))
+                    single(.failure(error))
                 }
             
             return result

@@ -13,7 +13,7 @@ import RxCocoa
 import Action
 
 class TabPageViewModel: BaseViewModel {
-    let rxTitle = BehaviorRelay<String>(value: "")
+    let rxTitle = BehaviorRelay<String?>(value: "")
     let rxName = BehaviorRelay<String?>(value: nil)
     let rxBackgroundHex = BehaviorRelay<String?>(value: "89DDF7")
     

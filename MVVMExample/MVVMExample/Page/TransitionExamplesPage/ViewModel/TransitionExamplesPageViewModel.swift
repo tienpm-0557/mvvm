@@ -13,7 +13,7 @@ import Action
 
 // MARK: ViewModel For Transition Examples
 class TransitionExamplesPageViewModel: BaseViewModel {
-    let rxPageTitle = BehaviorRelay<String>(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
     
     lazy var flipAction: Action<Void, Void> = {
         return Action() { .just(self.pushAndFlip()) }

@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class UIPageExampleViewModel: BaseUIPageViewModel {
-    let rxPageTitle = BehaviorRelay<String>(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
     
     override func react() {
         super.react()

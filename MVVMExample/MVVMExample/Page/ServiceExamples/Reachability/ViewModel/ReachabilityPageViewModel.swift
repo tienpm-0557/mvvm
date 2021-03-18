@@ -17,7 +17,7 @@ import RxSwift
 /// MARK: ViewModel For Transition Examples
 class ReachabilityPageViewModel: BaseViewModel {
     var reachibilityService: ReachabilityService?
-    let rxPageTitle = PublishSubject<String>()
+    let rxPageTitle = PublishSubject<String?>()
     let rxAlertLabelContent = PublishSubject<String?>()
     let rxReachbilityState = PublishSubject<(connection: Reachability.Connection, alertType: AlertType)>()
     

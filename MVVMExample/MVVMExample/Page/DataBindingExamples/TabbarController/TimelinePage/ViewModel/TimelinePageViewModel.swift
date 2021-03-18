@@ -16,7 +16,7 @@ class TimelinePageViewModel: BaseListViewModel {
     let alertService: IAlertService = DependencyManager.shared.getService()
     var networkService: NetworkService?
     var tmpBag: DisposeBag?
-    let rxTille = BehaviorRelay<String>(value: "")
+    let rxTille = BehaviorRelay<String?>(value: "")
     
     lazy var getDataAction: Action<Void, Void> = {
         return Action() { .just(self.getData()) }
