@@ -80,7 +80,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
             }) => disposeBag
         
         getItemSource()?.collectionChanged
-            .observeOn(Scheduler.shared.mainScheduler)
+            .observe(on: Scheduler.shared.mainScheduler)
             .subscribe(onNext: { [weak self] indexPath in
                 self?.onDataSourceChanged(indexPath)
             }) => disposeBag

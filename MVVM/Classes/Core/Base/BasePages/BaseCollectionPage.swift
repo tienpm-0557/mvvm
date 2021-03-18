@@ -96,7 +96,7 @@ open class BaseCollectionPage: BasePage {
         }
 
         getItemSource()?.collectionChanged
-            .observeOn(Scheduler.shared.mainScheduler)
+            .observe(on: Scheduler.shared.mainScheduler)
             .subscribe(onNext: onDataSourceChanged) => disposeBag
     }
     

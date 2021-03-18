@@ -79,7 +79,7 @@ open class BaseCollectionView: BaseView {
         }
         
         getItemSource()?.collectionChanged
-            .observeOn(Scheduler.shared.mainScheduler)
+            .observe(on: Scheduler.shared.mainScheduler)
             .subscribe(onNext: onDataSourceChanged) => disposeBag
     }
     

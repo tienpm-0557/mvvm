@@ -44,7 +44,7 @@ open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITabl
             }) => disposeBag
         
         viewModel?.itemsSource.collectionChanged
-            .observeOn(Scheduler.shared.mainScheduler)
+            .observe(on: Scheduler.shared.mainScheduler)
             .subscribe(onNext: {[weak self] indexPath in
                 self?.onDataSourceChanged(indexPath)
             }) => disposeBag

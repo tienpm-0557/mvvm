@@ -65,28 +65,28 @@ open class BaseWebView: BasePage {
                               completionHandler: handler)
         }) => disposeBag
         // Subcribe java did fail provisional navigation
-        wkWebView.rx.didFailProvisionalNavigation.observeOn(MainScheduler.instance).subscribe(onNext: { webView, navigation, error in
+        wkWebView.rx.didFailProvisionalNavigation.observe(on: MainScheduler.instance).subscribe(onNext: { webView, navigation, error in
             viewModel.webView(webView,
                               didFailProvisionalNavigation: navigation,
                               withError: error)
         }) => disposeBag
         
         // Subcribe java did receive policy navigation action
-        wkWebView.rx.decidePolicyNavigationAction.observeOn(MainScheduler.instance).subscribe(onNext: { webview, navigation, handler in
+        wkWebView.rx.decidePolicyNavigationAction.observe(on: MainScheduler.instance).subscribe(onNext: { webview, navigation, handler in
             viewModel.webView(webview,
                               decidePolicyFor: navigation,
                               decisionHandler: handler)
         }) => disposeBag
         
         // Subcribe java did receive policy navigation response
-        wkWebView.rx.decidePolicyNavigationResponse.observeOn(MainScheduler.instance).subscribe(onNext: { webview, response, handler in
+        wkWebView.rx.decidePolicyNavigationResponse.observe(on: MainScheduler.instance).subscribe(onNext: { webview, response, handler in
             viewModel.webView(webview,
                               decidePolicyFor: response,
                               decisionHandler: handler)
         }) => disposeBag
         
         // Subcribe did finish navigation
-        wkWebView.rx.didFinishNavigation.observeOn(MainScheduler.instance).subscribe(onNext: { webView, navigation in
+        wkWebView.rx.didFinishNavigation.observe(on: MainScheduler.instance).subscribe(onNext: { webView, navigation in
             viewModel.webView(webView,
                               didFinish: navigation)
         }) => disposeBag

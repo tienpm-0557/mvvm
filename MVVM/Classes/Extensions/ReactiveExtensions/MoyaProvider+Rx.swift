@@ -24,7 +24,7 @@ public extension Reactive where Base: MoyaProviderType {
                     single(.success(response))
                     
                 case let .failure(error):
-                    single(.error(error))
+                    single(.failure(error))
                 }
             }
             

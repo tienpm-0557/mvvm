@@ -105,7 +105,7 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
      */
     open func bindViewAndViewModel() {
         getItemSource()?.collectionChanged
-            .observeOn(Scheduler.shared.mainScheduler)
+            .observe(on: Scheduler.shared.mainScheduler)
             .subscribe(onNext: { [weak self] indexPath in
                 self?.onDataSourceChanged(indexPath)
             }) => disposeBag

@@ -55,7 +55,7 @@ open class BaseNetworkService: SessionDelegate {
                     single(.success(result))
                     
                 case .failure(let error):
-                    single(.error(error))
+                    single(.failure(error))
                 }
             }
             return Disposables.create { request.cancel() }
@@ -81,7 +81,7 @@ open class BaseNetworkService: SessionDelegate {
             }
 
             result.errorBlock { error in
-                single(.error(error))
+                single(.failure(error))
             }
             
             return Disposables.create {}
