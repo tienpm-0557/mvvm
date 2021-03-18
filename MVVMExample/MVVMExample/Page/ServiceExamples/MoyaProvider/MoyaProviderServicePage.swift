@@ -14,7 +14,7 @@ class MoyaProviderServicePage: BasePage {
     @IBOutlet private var responseTxt: UITextView!
     
     let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 400, height: 30))
-    let indicatorView = UIActivityIndicatorView(style: .gray)
+    let indicatorView = UIActivityIndicatorView(style: .medium)
     
     override func initialize() {
         super.initialize()

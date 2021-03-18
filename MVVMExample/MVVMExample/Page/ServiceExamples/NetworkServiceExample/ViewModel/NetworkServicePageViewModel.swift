@@ -61,7 +61,7 @@ class NetworkServicePageViewModel: BaseViewModel {
                     self?.rxSearchState.accept(.success)
                 }
                 self?.rxDidSearchState.accept(.success)
-            }, onError: { error in
+            }, onFailure: { error in
                 self.rxResponseText.accept("Responsed: \n\(error)")
                 self.rxSearchState.accept(.error)
                 self.rxDidSearchState.accept(.error)

@@ -44,7 +44,7 @@ class TimelinePageViewModel: BaseListViewModel {
                 if let data = results {
                     self?.itemsSource.append(data, animated: false)
                 }
-            }, onError: { _ in
+            }, onFailure: { _ in
             }) => tmpBag
     }
     
