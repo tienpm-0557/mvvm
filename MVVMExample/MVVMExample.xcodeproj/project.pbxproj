@@ -192,6 +192,7 @@
 		9CD35C1C24D7C6320087B8CF /* TransitionContentPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD35C1A24D7C6320087B8CF /* TransitionContentPage.xib */; };
 		9CD35C1E24D7C7E40087B8CF /* TransitionContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD35C1D24D7C7E40087B8CF /* TransitionContentModel.swift */; };
 		9CD35C2324D837070087B8CF /* MailServiceExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD35C2224D837070087B8CF /* MailServiceExt.swift */; };
+		9CDA9C05260458E6007003CA /* CI.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9CDA9C04260458E6007003CA /* CI.yml */; };
 		9CE8BA0624FCD1F9001EA3A3 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8BA0424FCD1F8001EA3A3 /* TabbarViewController.swift */; };
 		9CE8BA0A24FCD2A5001EA3A3 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8BA0924FCD2A5001EA3A3 /* TabbarView.swift */; };
 		9CE8BA0C24FCD2AD001EA3A3 /* TabbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE8BA0B24FCD2AD001EA3A3 /* TabbarView.xib */; };
@@ -421,6 +422,7 @@
 		9CD35C1A24D7C6320087B8CF /* TransitionContentPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitionContentPage.xib; sourceTree = "<group>"; };
 		9CD35C1D24D7C7E40087B8CF /* TransitionContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionContentModel.swift; sourceTree = "<group>"; };
 		9CD35C2224D837070087B8CF /* MailServiceExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailServiceExt.swift; sourceTree = "<group>"; };
+		9CDA9C04260458E6007003CA /* CI.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = CI.yml; path = ../.github/workflows/CI.yml; sourceTree = "<group>"; };
 		9CE8BA0424FCD1F8001EA3A3 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		9CE8BA0924FCD2A5001EA3A3 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
 		9CE8BA0B24FCD2AD001EA3A3 /* TabbarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabbarView.xib; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 		9C74EB70246D19B900A3CF1D = {
 			isa = PBXGroup;
 			children = (
+				9CDA9C04260458E6007003CA /* CI.yml */,
 				9C7C5CE6251C454700C8CEF7 /* fastlane */,
 				9C74EB7B246D19B900A3CF1D /* MVVMExample */,
 				9C74EB95246D19BD00A3CF1D /* MVVMExampleTests */,
@@ -1804,6 +1807,7 @@
 				9C74B1802477C1220061F2BF /* ContactEditPage.xib in Resources */,
 				9C5D019B248550D600AF87F9 /* AuthenticationPage.xib in Resources */,
 				9C74EBBD246D1AF000A3CF1D /* TableOfContentsPage.xib in Resources */,
+				9CDA9C05260458E6007003CA /* CI.yml in Resources */,
 				9CE8BA0E24FCD564001EA3A3 /* 8957173.png in Resources */,
 				9C7C5CF8251C454800C8CEF7 /* report.xml in Resources */,
 				9C7C5CF1251C454800C8CEF7 /* content.txt in Resources */,
