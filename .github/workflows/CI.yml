@@ -9,8 +9,6 @@ on:
     branches:
         - master
     paths:
-      - '.github/workflows/swiftlint.yml'
-      - '.swiftlint.yml'
       - './MVVM'
 
 jobs:
@@ -18,16 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: GitHub Action for SwiftLint with --strict
+      - name: GitHub Action for SwiftLint with 
         uses: norio-nomura/action-swiftlint@3.2.1
         with:
            args: --force-exclude
-          
-      - name: GitHub Action for SwiftLint
-        uses: norio-nomura/action-swiftlint@3.2.1
         env:
-          DIFF_BASE: ${{ github.base_ref }}
-        
+           DIFF_BASE: ${{ github.base_ref }}
           
   Test:
     runs-on: macOS-latest
