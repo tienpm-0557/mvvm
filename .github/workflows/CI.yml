@@ -20,6 +20,10 @@ jobs:
         uses: norio-nomura/action-swiftlint@3.2.1
         env:
            DIFF_BASE: ${{ github.base_ref }}
+      - name: GitHub Action for SwiftLint (Different working directory)
+        uses: norio-nomura/action-swiftlint@3.2.1
+        env:
+          WORKING_DIRECTORY: Source
           
   Test:
     runs-on: macOS-latest
