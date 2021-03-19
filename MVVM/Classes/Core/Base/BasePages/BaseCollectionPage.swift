@@ -73,12 +73,7 @@ open class BaseCollectionPage: BasePage {
     */
     open func selectedItemDidChange(_ cellViewModel: Any, _ indexPath: IndexPath) { }
     
-    open func itemAtIndexPath(_ indexPath:IndexPath) -> Any? {
-        
-        
-        
-        
-        
+    open func itemAtIndexPath(_ indexPath: IndexPath) -> Any? {
         if let itemsSource = getItemSource(),
             let cellViewModel = itemsSource.element(atSection: indexPath.section, row: indexPath.row) {
             return cellViewModel
