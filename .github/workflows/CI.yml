@@ -11,6 +11,7 @@ on:
     paths:
       - '.github/workflows/swiftlint.yml'
       - '.swiftlint.yml'
+      - '../MVVM'
 
 jobs:
   SwiftLint:
