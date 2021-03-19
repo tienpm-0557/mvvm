@@ -16,11 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: GitHub Action for SwiftLint with 
-        uses: norio-nomura/action-swiftlint@3.2.1
-        env:
-           DIFF_BASE: ${{ github.base_ref }}
-      - name: GitHub Action for SwiftLint (Different working directory)
+
+      - name: GitHub Action for SwiftLint
         uses: norio-nomura/action-swiftlint@3.2.1
         env:
           WORKING_DIRECTORY: Source
