@@ -32,8 +32,13 @@ jobs:
         run: sudo xcode-select -switch
             /Applications/Xcode_12.4.app &&
             /usr/bin/xcodebuild -version
+      - name: Install Dependencies
+        working-directory: ./MVVMExample
+        run: pod install
       - name: Run unit tests
-        run: xcodebuild clean test -project 'GithubAction/GithubAction.xcodeproj' -scheme 'GithubAction' -destination 'platform=iOS Simulator,name=iPhone 12 Pro Max,OS=latest'
-            | xcpretty && exit ${PIPESTATUS[0]}
+        run: xcodebuild clean test -workspace 'MVVMExample/MVVMExample.xcworkspace' 
+            -scheme 'MVVMExample' -destination 'platform=iOS Simulator,name=iPhone 12 Pro Max,OS=latest'
+            -only-testing "MVVMExample/MVVMExampleTests"
+            test-without-building | xcpretty && exit ${PIPESTATUS[0]}
 
 
