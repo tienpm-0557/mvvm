@@ -14,10 +14,39 @@ class ConfirmAlertWebViewModel: IntroductionPageViewModel {
     override func react() {
         super.react()
         let title = (self.model as? IntroductionModel)?.title ?? "Confirm Alert"
-        let url = URL(string: "https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_confirm2")!
+        
+        let html = """
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <br><br><br><br><br><br><br>
+        <h1>Click the button bellow to display a confirm box.</h1>
+
+        <button onclick="yourFunction()">Try it</button>
+
+        <p id="demo"></p>
+            
+        <script>
+        function yourFunction() {
+          var txt;
+          var r = confirm("Press a button!");
+          if (r == true) {
+            txt = "You pressed OK!";
+          } else {
+            txt = "You pressed Cancel!";
+          }
+          document.getElementById("demo").innerHTML = txt;
+        }
+
+        </script>
+
+        </body>
+        </html>
+        """
         
         rxPageTitle.accept(title)
-        rxURL.accept(url)
+        rxSourceType.accept(WebViewSuorceType.html.rawValue)
+        rxSource.accept(html)
     }
     
     override func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {

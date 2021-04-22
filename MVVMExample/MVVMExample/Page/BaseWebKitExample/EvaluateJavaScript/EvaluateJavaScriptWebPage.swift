@@ -7,22 +7,30 @@
 //
 
 import UIKit
+import Action
+import RxSwift
+import RxCocoa
 
 class EvaluateJavaScriptWebPage: IntroductionPage {
+    let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+    lazy var addAction: Action<Void, Void> = {
+        return Action() { .just(self.add()) }
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        enableBackButton = true
         // Do any additional setup after loading the view.
+        navigationItem.rightBarButtonItem = addBtn
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    
+    override func bindViewAndViewModel() {
+        super.bindViewAndViewModel()
         
-        // In Case: EvaluateJavaScriptWebViewModel
-        if viewModel is EvaluateJavaScriptWebViewModel {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.evaluateJavaScript("presentAlert()")
-            }
-        }
+        addBtn.rx.bind(to: self.addAction, input: ())
+    }
+    
+    func add() {
+        self.evaluateJavaScript("presentAlert()")
     }
 }

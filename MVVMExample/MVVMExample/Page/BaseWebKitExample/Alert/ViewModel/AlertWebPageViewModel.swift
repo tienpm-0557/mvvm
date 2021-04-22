@@ -14,10 +14,29 @@ class AlertWebPageViewModel: IntroductionPageViewModel {
     override func react() {
         super.react()
         let title = (self.model as? IntroductionModel)?.title ?? "Alert Panel With message"
-        let url = URL(string: "https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_alert")!
+        let html = """
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <br><br><br><br><br><br><br>
+
+        <h1><p>Click the button bellow to display an alert box.</p></h1>
+
+        <button onclick="yourFunction()">Click Here</button>
+
+        <script>
+        function yourFunction() {
+            alert("Hello! I am an alert box!");
+        }
+        </script>
+
+        </body>
+        </html>
+        """
         
         rxPageTitle.accept(title)
-        rxURL.accept(url)
+        rxSourceType.accept(WebViewSuorceType.html.rawValue)
+        rxSource.accept(html)
     }
     
     override func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {

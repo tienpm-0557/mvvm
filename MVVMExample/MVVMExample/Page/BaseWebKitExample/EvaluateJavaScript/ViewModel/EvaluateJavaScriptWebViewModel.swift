@@ -24,12 +24,12 @@ class EvaluateJavaScriptWebViewModel: IntroductionPageViewModel {
         <body>
 
         <h1>Invoke Javascript function</h1>
-        <h1>Just Press 'Invoke' at top right corner.</h1>
+        <h1>Just Press 'Add' at top right corner.</h1>
         <h1>After that, pay attention to your console.</h1>
 
         <script>
         function presentAlert() {
-            return "🎊🎊🎊Hey! you just invoke me🎉🎉🎉"
+            return "🎊Hi! you just invoke add a new item 🎉"
         }
         </script>
 

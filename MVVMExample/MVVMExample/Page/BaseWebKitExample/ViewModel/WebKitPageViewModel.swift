@@ -27,8 +27,9 @@ class WebViewExamplesPageViewModel: TableOfContentViewModel {
                                                                       desc: "Handle delegate method `didFailProvisionalNavigation`."))
         let evaluateJavaScript = MenuTableCellViewModel(model: MenuModel(withTitle: "Evaluate JavaScript",
                                                                          desc: "Reactive wrapper for `evaluateJavaScript(_:completionHandler:)` method."))
-        
-        itemsSource.reset([[alertPanel, confirmAlertPanel, authentication, handleLinkError, evaluateJavaScript]])
+        let handleUserContentController = MenuTableCellViewModel(model: MenuModel(withTitle: "User Content Message JavaScript",
+                                                                         desc: "Handle WKScriptMessageHandler javascript. "))
+        itemsSource.reset([[alertPanel, confirmAlertPanel, authentication, handleLinkError, evaluateJavaScript, handleUserContentController]])
     }
     
     override func pageToNavigate(_ cellViewModel: BaseCellViewModel) -> UIViewController? {
@@ -51,6 +52,9 @@ class WebViewExamplesPageViewModel: TableOfContentViewModel {
             
         case 4:
             page = EvaluateJavaScriptWebPage(viewModel: EvaluateJavaScriptWebViewModel(model: cellViewModel.model))
+            
+        case 5:
+            page = HandleUserContentControllerWebPage(viewModel: HandleUserContentControllerWebPageViewModel(model: cellViewModel.model))
             
         default: ()
         }
