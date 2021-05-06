@@ -304,6 +304,18 @@ public class ReactiveCollection<T>: RxCollection where T: Equatable {
         return element
     }
     
+    @discardableResult
+    public func removeAllItemsOfSection(at index: Int) -> SectionList<T>? {
+        guard index < innerSources.count, index >= 0 else {
+            return nil
+        }
+        innerSources[index].removeAll()
+        rxInnerSources.accept(innerSources)
+        publisher.onNext(ModifySection(type: .delete, section: index, animated: false))
+        
+        return innerSources[index]
+    }
+    
     public func removeAll(animated: Bool = true) {
         innerSources.removeAll()
         rxInnerSources.accept(innerSources)

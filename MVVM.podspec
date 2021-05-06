@@ -1,4 +1,4 @@
-#
+activityIndicatorHub#
 # Be sure to run `pod lib lint MVVM.podspec' to ensure this is a
 # valid spec before submitting.
 #
