@@ -58,7 +58,9 @@ open class BaseViewModel: NSObject, IViewModel, IReactable {
     /**
      Everytime model changed, this method will get called. Good place to update our viewModel
      */
-    open func modelChanged() {}
+    open func modelChanged() {
+        self.reactIfNeeded()
+    }
     
     /**
      This method will be called once. Good place to initialize our viewModel (listen, subscribe...) to any signals

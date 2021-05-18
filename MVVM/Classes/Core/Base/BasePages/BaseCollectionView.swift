@@ -275,7 +275,7 @@ extension BaseCollectionView: UICollectionViewDelegateFlowLayout {
         }
         
         if let headerFooterClass = NSClassFromString(_headerFooterClassName) as? BaseHeaderCollectionView.Type {
-            return headerFooterClass.headerSize(withItem: viewModel)
+            return headerFooterClass.headerSize(withItem: headerViewModel)
         }
         
         return CGSize.zero

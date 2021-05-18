@@ -21,6 +21,12 @@ public class AlertPage: UIAlertController {
         guard let rootViewContorller = window?.rootViewController else {
             return
         }
+        
+        if let popoverController = self.popoverPresentationController {
+            popoverController.sourceView = rootViewContorller.view
+            popoverController.sourceRect = rootViewContorller.view.bounds
+        }
+        
         if rootViewContorller.presentedViewController == nil {
             rootViewContorller.present(self, animated: true)
         } else {
@@ -120,7 +126,7 @@ public class AlertService: IAlertService {
                                             actionTitles: [String] = ["OK"],
                                             cancelTitle: String = "Cancel") -> Single<String> {
         return Single.create { single in
-            let alertPage = AlertPage(title: title, message: message, preferredStyle: .actionSheet)
+            let alertPage = AlertPage(title: title, message: message, preferredStyle: UIDevice.current.userInterfaceIdiom == .pad ? .alert : .actionSheet)
             
             for title in actionTitles {
                 let action = UIAlertAction(title: title, style: .default) { _ in
