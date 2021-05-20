@@ -68,10 +68,11 @@ open class ViewModel<M>: NSObject, IViewModel, IReactable {
     open func react() {}
     
     func reactIfNeeded() {
-        /*
-         guard !isReacted else { return }
-         isReacted = true
-         */
+        guard !isReacted else {
+            return
+        }
+        isReacted = true
+        disposeBag = DisposeBag()
         react()
     }
 }
@@ -128,6 +129,7 @@ open class CellViewModel<M>: NSObject, IGenericViewModel, IIndexable, IReactable
         get { return _model }
         set {
             _model = newValue
+            isReacted = false
             modelChanged()
         }
     }
@@ -135,7 +137,7 @@ open class CellViewModel<M>: NSObject, IGenericViewModel, IIndexable, IReactable
     /// Each cell will keep its own index path
     /// In some cases, each cell needs to use this index to create some customizations
     public internal(set) var indexPath: IndexPath?
-    public internal(set) var  isLastRow: Bool = false
+    public internal(set) var  isLastRow = false
     /// Bag for databindings
     public var disposeBag: DisposeBag? = DisposeBag()
     
@@ -153,10 +155,11 @@ open class CellViewModel<M>: NSObject, IGenericViewModel, IIndexable, IReactable
     open func react() {}
     
     func reactIfNeeded() {
-        /*
-         guard !isReacted else { return }
-         isReacted = true
-         */
+        guard !isReacted else {
+            return
+        }
+        isReacted = true
+        disposeBag = DisposeBag()
         react()
     }
 }

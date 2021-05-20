@@ -26,6 +26,7 @@ open class BaseCollectionPage: BasePage {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel?.viewDidLoad = true
     }
        
     open override func initialize() {

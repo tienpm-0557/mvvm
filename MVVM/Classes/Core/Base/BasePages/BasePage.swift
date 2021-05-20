@@ -51,12 +51,24 @@ open class BasePage: UIViewController, ITransitionView {
         destroy()
     }
     
-    public private(set) var viewModel: BaseViewModel?
+    private var _viewModel: BaseViewModel?
+    public private(set) var viewModel: BaseViewModel? {
+        get { return _viewModel }
+        set {
+            if _viewModel != newValue {
+                disposeBag = DisposeBag()
+                _viewModel = newValue
+                viewModelChanged()
+            }
+        }
+    }
     
     public convenience init(viewModel vm: BaseViewModel) {
         self.init()
         self.viewModel = vm
     }
+    
+    private var readyToBind = false
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,7 +168,12 @@ open class BasePage: UIViewController, ITransitionView {
      Subclasses override this method to do more action when `viewModel` changed.
      */
     open func viewModelChanged() {
-        viewModel?.reactIfNeeded()
+        if readyToBind {
+            /// Re-bind view and view model
+            bindViewAndViewModel()
+            /// React in case init viewmodel without Model. So, model changed not call.
+            viewModel?.reactIfNeeded()
+        }
     }
     
     private func cleanUp() {
@@ -165,13 +182,18 @@ open class BasePage: UIViewController, ITransitionView {
     }
     
     func updateAfterViewModelChanged() {
+        /// Call when view did load
+        /// Outlet property created
+        /// Bind view and view model
         bindViewAndViewModel()
+        /// Start React view model
+        viewModel?.viewDidLoad = true
+        viewModel?.reactIfNeeded()
         
+        readyToBind = true
         localeService.rxLocaleState.subscribe(onNext: {[weak self] _ in
             self?.onUpdateLocalize()
             self?.viewModel?.onUpdateLocalize()
         }) => disposeBag
-        
-        viewModelChanged()
     }
 }

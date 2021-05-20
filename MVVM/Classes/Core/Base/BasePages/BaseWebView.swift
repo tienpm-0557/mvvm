@@ -16,6 +16,7 @@ open class BaseWebView: BasePage {
     open override func viewDidLoad() {
         super.viewDidLoad()
         wkWebView.clipsToBounds = true
+        self.viewModel?.viewDidLoad = true
     }
     
     override open func viewDidLayoutSubviews() {

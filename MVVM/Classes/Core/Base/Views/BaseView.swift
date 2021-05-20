@@ -19,8 +19,9 @@ open class BaseView: UIView, IView {
         set {
             if newValue != _viewModel {
                 disposeBag = DisposeBag()
-                
                 _viewModel = newValue
+                _viewModel?.viewDidLoad = true
+                _viewModel?.isReacted = false
                 viewModelChanged()
             }
         }
@@ -50,11 +51,8 @@ open class BaseView: UIView, IView {
         setup()
     }
     
-    deinit { destroy() }
-    
     func setup() {
         initialize()
-        viewModelChanged()
     }
     
     private func viewModelChanged() {
@@ -69,6 +67,8 @@ open class BaseView: UIView, IView {
     
     open func initialize() {}
     open func bindViewAndViewModel() {}
+    
+    deinit { destroy() }
 }
 
 // MARK: Based Header TableView for list page
@@ -89,8 +89,9 @@ open class BaseHeaderTableView: UITableViewHeaderFooterView {
         set {
             if newValue != _viewModel {
                 disposeBag = DisposeBag()
-                
                 _viewModel = newValue
+                _viewModel?.viewDidLoad = true
+                _viewModel?.isReacted = false
                 viewModelChanged()
             }
         }
@@ -153,8 +154,9 @@ open class BaseHeaderCollectionView: UICollectionReusableView {
         set {
             if newValue != _viewModel {
                 disposeBag = DisposeBag()
-                
                 _viewModel = newValue
+                _viewModel?.viewDidLoad = true
+                _viewModel?.isReacted = false
                 viewModelChanged()
             }
         }

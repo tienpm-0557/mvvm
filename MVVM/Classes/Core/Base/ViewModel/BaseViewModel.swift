@@ -22,10 +22,13 @@ open class BaseViewModel: NSObject, IViewModel, IReactable {
         get { return _model }
         set {
             _model = newValue
-            modelChanged()
+            if viewDidLoad {
+                isReacted = false
+                modelChanged()
+            }
         }
     }
-    
+    var viewDidLoad = false
     public var disposeBag: DisposeBag? = DisposeBag()
     
     public let rxViewState = BehaviorRelay<ViewState>(value: .none)
@@ -70,10 +73,11 @@ open class BaseViewModel: NSObject, IViewModel, IReactable {
     open func onUpdateLocalize() {}
     
     func reactIfNeeded() {
-        /*
-         guard !isReacted else { return }
-         isReacted = true
-         */
+        guard !isReacted, viewDidLoad else {
+            return
+        }
+        isReacted = true
+        disposeBag = DisposeBag()
         react()
     }
 }
@@ -128,6 +132,7 @@ open class BaseCellViewModel: NSObject, IGenericViewModel, IIndexable, IReactabl
         get { return _model }
         set {
             _model = newValue
+            isReacted = false
             modelChanged()
         }
     }
@@ -145,14 +150,16 @@ open class BaseCellViewModel: NSObject, IGenericViewModel, IIndexable, IReactabl
         _model = model
     }
     
-    open func modelChanged() {}
+    open func modelChanged() {
+        reactIfNeeded()
+    }
     open func react() {}
     
     func reactIfNeeded() {
-        /*
-         guard !isReacted else { return }
-         isReacted = true
-         */
+        guard !isReacted else {
+            return
+        }
+        isReacted = true
         disposeBag = DisposeBag()
         react()
     }

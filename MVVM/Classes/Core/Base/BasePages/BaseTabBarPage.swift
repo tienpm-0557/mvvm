@@ -42,13 +42,30 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
         destroy()
     }
     
-    public private(set) var viewModel: BaseViewModel?
+    private var _viewModel: BaseViewModel?
+    public private(set) var viewModel: BaseViewModel? {
+        get { return _viewModel }
+        set {
+            if _viewModel != newValue {
+                disposeBag = DisposeBag()
+                _viewModel = newValue
+                viewModelChanged()
+            }
+        }
+    }
+    
+    private var readyToBind = false
     
     public convenience init(viewModel vm: BaseViewModel) {
         self.init()
         self.viewModel = vm
         initialize()
         updateAfterViewModelChanged()
+    }
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        self.viewModel?.viewDidLoad = true
     }
     
     open override func viewDidDisappear(_ animated: Bool) {
@@ -100,7 +117,13 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
      Subclasses override this method to do more action when `viewModel` changed.
      */
     open func viewModelChanged() {
+        /// React in case init viewmodel without Model. So, model changed not call.
         viewModel?.reactIfNeeded()
+        
+        if readyToBind {
+            /// In case view change view model we need rebind view and view model
+            self.bindViewAndViewModel()
+        }
     }
     
     private func cleanUp() {
@@ -109,12 +132,12 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
     
     func updateAfterViewModelChanged() {
         bindViewAndViewModel()
+        viewModelChanged()
         
+        readyToBind = true
         localeService.rxLocaleState.subscribe(onNext: {[weak self] _ in
             self?.onUpdateLocalize()
             self?.viewModel?.onUpdateLocalize()
         }) => disposeBag
-        
-        viewModelChanged()
     }
 }

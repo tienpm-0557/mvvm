@@ -10,13 +10,14 @@ import UIKit
 open class BaseCollectionView: BaseView {
     @IBOutlet public weak var collectionView: UICollectionView!
     
-    open var allowLoadmoreData: Bool = false
-    open var focusLeftCell: Bool = false
+    open var allowLoadmoreData = false
+    open var focusLeftCell = false
     open var state: ListState = .normal
     open var pageSize: Int = 10
     
     open override func initialize() {
         super.initialize()
+        self.viewModel?.viewDidLoad = true
         setupCollectionView()
     }
     

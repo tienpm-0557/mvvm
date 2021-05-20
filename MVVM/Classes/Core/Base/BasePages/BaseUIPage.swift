@@ -42,7 +42,17 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
         destroy()
     }
     
-    public private(set) var viewModel: BaseUIPageViewModel?
+    private var _viewModel: BaseUIPageViewModel?
+    public private(set) var viewModel: BaseUIPageViewModel? {
+        get { return _viewModel }
+        set {
+            if _viewModel != newValue {
+                disposeBag = DisposeBag()
+                _viewModel = newValue
+                viewModelChanged()
+            }
+        }
+    }
     
     public convenience init(viewModel vm: BaseUIPageViewModel, withOption option: PageOption?) {
         self.init()
@@ -86,6 +96,7 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
         guard let itemsSource = getItemSource() else {
             return
         }
+        self.viewModel?.viewDidLoad = true
         if let first = itemsSource.first?.allElements.first,
            let viewcontroller = first.vc {
             setViewControllers([viewcontroller],
@@ -128,7 +139,9 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
      Subclasses override this method to do more action when `viewModel` changed.
      */
     open func viewModelChanged() {
+        /// React in case init viewmodel without Model. So, model changed not call.
         viewModel?.reactIfNeeded()
+        bindViewAndViewModel()
     }
     
     private func cleanUp() {
@@ -136,8 +149,6 @@ open class BaseUIPage: UIPageViewController, ITransitionView, UIPageViewControll
     }
     
     func updateAfterViewModelChanged() {
-        bindViewAndViewModel()
-        
         localeService.rxLocaleState.subscribe(onNext: {[weak self] _ in
             self?.onUpdateLocalize()
             self?.viewModel?.onUpdateLocalize()
