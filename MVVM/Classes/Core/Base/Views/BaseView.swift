@@ -130,7 +130,7 @@ open class BaseHeaderTableView: UITableViewHeaderFooterView {
     
     open func initialize() {}
     open func bindViewAndViewModel() {}
-    
+    open func prepareForDisplay() {}
     open class func getSize(withItem data: Any?) -> CGSize? {
         return nil
     }
@@ -194,6 +194,7 @@ open class BaseHeaderCollectionView: UICollectionReusableView {
     
     open func initialize() {}
     open func bindViewAndViewModel() {}
+    open func prepareForDisplay() {}
     
     open class func getSize(withItem data: Any?) -> CGSize? {
         return nil
@@ -259,7 +260,7 @@ open class BaseCollectionCell: UICollectionViewCell, IView {
     
     open func initialize() {}
     open func bindViewAndViewModel() {}
-    
+    open func prepareForDisplay() {}
     open class func getSize(withItem data: Any?) -> CGSize? {
         return nil
     }
@@ -338,4 +339,5 @@ open class BaseTableCell: UITableViewCell, IView {
     
     open func initialize() {}
     open func bindViewAndViewModel() {}
+    open func prepareForDisplay() {}
 }

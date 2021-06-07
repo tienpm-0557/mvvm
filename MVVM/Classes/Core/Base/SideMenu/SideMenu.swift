@@ -943,4 +943,16 @@ public extension UIViewController {
     @IBAction func presentRightMenuViewController() {
         sideMenuViewController?._presentRightMenuViewController()
     }
+    
+    class func keyWindow() -> UIWindow? {
+        var foundWindow: UIWindow? = nil
+        let windows = UIApplication.shared.windows
+        for window in windows {
+            if window.isKeyWindow {
+                foundWindow = window
+                break;
+            }
+        }
+        return foundWindow
+    }
 }

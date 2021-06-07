@@ -201,6 +201,11 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
         if let cell = cell as? IAnyView {
             cell.anyViewModel = cellViewModel
         }
+        
+        if let cell = cell as? BaseCollectionCell {
+            cell.prepareForDisplay()
+        }
+        
         return cell
     }
     

@@ -228,6 +228,9 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
             }
         }
         
+        if let cell = cell as? BaseTableCell {
+            cell.prepareForDisplay()
+        }
         return cell
     }
     
@@ -273,6 +276,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
         
         if let headerFooterView = tableView.dequeueReusableHeaderFooterView(withIdentifier: _identifier) as? BaseHeaderTableView {
             headerFooterView.viewModel = cellViewModel
+            headerFooterView.prepareForDisplay()
             return headerFooterView
         }
         

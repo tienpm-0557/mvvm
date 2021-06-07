@@ -182,6 +182,10 @@ open class ListPage<VM: IListViewModel>: Page<VM>, UITableViewDataSource, UITabl
             cell.anyViewModel = cellViewModel
         }
         
+        if let cell = cell as? BaseTableCell {
+            cell.prepareForDisplay()
+        }
+        
         return cell
     }
     

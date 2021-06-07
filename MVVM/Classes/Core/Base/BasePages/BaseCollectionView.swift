@@ -254,6 +254,7 @@ extension BaseCollectionView: UICollectionViewDelegateFlowLayout {
         
         if let headerFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: _identifier, for: indexPath) as? BaseHeaderCollectionView {
             headerFooterView.viewModel = cellViewModel
+            headerFooterView.prepareForDisplay()
             return headerFooterView
         }
         
