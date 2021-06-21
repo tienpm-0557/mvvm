@@ -161,11 +161,12 @@ open class BaseCollectionPage: BasePage {
             return
         }
         if let cellViewModel = itemsSource.element(atIndexPath: indexPath) {
-            selectedItemDidChange(cellViewModel, indexPath)
-            
-            if let viewModel = self.viewModel as? BaseListViewModel,
-                let cvm = cellViewModel as? BaseCellViewModel {
-                viewModel.selectedItemDidChange(cvm, indexPath)
+            DispatchQueue.main.async {
+                self.selectedItemDidChange(cellViewModel, indexPath)
+                if let viewModel = self.viewModel as? BaseListViewModel,
+                    let cvm = cellViewModel as? BaseCellViewModel {
+                        viewModel.selectedItemDidChange(cvm, indexPath)
+                }
             }
         }
     }

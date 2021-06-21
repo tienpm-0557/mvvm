@@ -57,8 +57,10 @@ open class ListView<VM: IListViewModel>: View<VM>, UITableViewDataSource, UITabl
         let cellViewModel = viewModel.itemsSource[indexPath.row, indexPath.section]
         viewModel.rxSelectedItem.accept(cellViewModel)
         viewModel.rxSelectedIndex.accept(indexPath)
-        viewModel.selectedItemDidChange(cellViewModel, indexPath)
-        selectedItemDidChange(cellViewModel, indexPath)
+        DispatchQueue.main.async {
+            viewModel.selectedItemDidChange(cellViewModel, indexPath)
+            self.selectedItemDidChange(cellViewModel, indexPath)
+        }
     }
     
     private func onDataSourceChanged(_ changeSet: ChangeSet) {

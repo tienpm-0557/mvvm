@@ -95,13 +95,15 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
             return
         }
         if let cellViewModel = itemsSource.element(atIndexPath: indexPath) as? BaseCellViewModel {
-            selectedItemDidChange(cellViewModel, indexPath)
-            guard let viewModel = self.viewModel as? BaseListViewModel else {
-                return
+            DispatchQueue.main.async {
+                self.selectedItemDidChange(cellViewModel, indexPath)
+                guard let viewModel = self.viewModel as? BaseListViewModel else {
+                    return
+                }
+                viewModel.rxSelectedItem.accept(cellViewModel)
+                viewModel.rxSelectedIndex.accept(indexPath)
+                viewModel.selectedItemDidChange(cellViewModel, indexPath)
             }
-            viewModel.rxSelectedItem.accept(cellViewModel)
-            viewModel.rxSelectedIndex.accept(indexPath)
-            viewModel.selectedItemDidChange(cellViewModel, indexPath)
         }
     }
     

@@ -94,9 +94,10 @@ open class CollectionPage<VM: IListViewModel>: Page<VM>, UICollectionViewDataSou
         
         viewModel.rxSelectedItem.accept(cellViewModel)
         viewModel.rxSelectedIndex.accept(indexPath)
-        
-        viewModel.selectedItemDidChange(cellViewModel, indexPath)
-        selectedItemDidChange(cellViewModel, indexPath)
+        DispatchQueue.main.async {
+            viewModel.selectedItemDidChange(cellViewModel, indexPath)
+            self.selectedItemDidChange(cellViewModel, indexPath)
+        }
     }
     
     private func onDataSourceChanged(_ changeSet: ChangeSet) {
