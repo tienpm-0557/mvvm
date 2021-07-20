@@ -276,7 +276,7 @@ open class BaseTableCell: UITableViewCell, IView {
         return (returnClass ? NSStringFromClass(self.self) : String(describing: self))
     }
     
-    open class func height(withItem _item: BaseViewModel) -> CGFloat {
+    open class func height(withItem _item: BaseCellViewModel) -> CGFloat {
         return 30.0
     }
     

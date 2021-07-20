@@ -313,7 +313,7 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
             return UITableView.automaticDimension
         }
         /// Get cell view model
-        guard let itemsSource = getItemSource(), let cellViewModel = itemsSource.element(atIndexPath: indexPath) as? BaseViewModel else {
+        guard let itemsSource = getItemSource(), let cellViewModel = itemsSource.element(atIndexPath: indexPath) as? BaseCellViewModel else {
             return UITableView.automaticDimension
         }
         /// get cell class with identifier
@@ -322,6 +322,10 @@ open class BaseListPage: BasePage, UITableViewDataSource, UITableViewDelegate {
         }
         /// return cell height
         return cell.height(withItem: cellViewModel)
+    }
+    
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

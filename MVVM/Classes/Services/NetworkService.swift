@@ -62,6 +62,7 @@ open class BaseNetworkService: SessionDelegate {
         }
     }
     
+    @discardableResult
     public func request(urlString: String,
                             method: HTTPMethod,
                             params: [String: Any]? = nil,
@@ -77,14 +78,20 @@ open class BaseNetworkService: SessionDelegate {
                                                          encoding: encoding,
                                                          headers: headers)
             result.completeBlock { _, _ in
+                debugPrint(result.request)
                 single(.success(result))
             }
 
             result.errorBlock { error in
-                single(.failure(error))
+                debugPrint(result.request)
+                debugPrint(error.localizedDescription)
+                /// Handle with result.statusCode
+                single(.success(result))
             }
             
-            return Disposables.create {}
+            return Disposables.create {
+                result.request.cancel()
+            }
         }
     }
     
