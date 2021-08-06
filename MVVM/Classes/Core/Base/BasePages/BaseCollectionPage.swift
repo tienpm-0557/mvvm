@@ -55,16 +55,16 @@ open class BaseCollectionPage: BasePage {
         assert(false, "This is an abstract method and should be overridden.")
     }
     
-    open func cellIdentifier(_ cellViewModel: Any, _ isClass: Bool = false) -> String {
+    open func cellIdentifier(_ cellViewModel: Any, _ isClassName: Bool = false) -> String {
         fatalError("This is an abstract method and should be overridden.")
     }
     
-    open func headerIdentifier(_ headerViewModel: Any, _ returnClassName: Bool = false) -> String? {
+    open func headerIdentifier(_ headerViewModel: Any, _ isClassName: Bool = false) -> String? {
         assert(true, "Subclasses have to implement this method.")
         return nil
     }
     
-    open func footerIdentifier(_ footerViewModel: Any, _ returnClassName: Bool = false) -> String? {
+    open func footerIdentifier(_ footerViewModel: Any, _ isClassName: Bool = false) -> String? {
         assert(true, "Subclasses have to implement this method.")
         return nil
     }

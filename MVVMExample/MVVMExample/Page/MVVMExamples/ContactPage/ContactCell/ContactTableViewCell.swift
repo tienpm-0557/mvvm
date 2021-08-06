@@ -33,7 +33,7 @@ class ContactTableViewCell: BaseTableCell {
         super.initialize()
     }
     
-    open override class func height(withItem _item: BaseViewModel) -> CGFloat {
+    open override class func height(withItem _item: BaseCellViewModel) -> CGFloat {
         return 70.0
     }
     
