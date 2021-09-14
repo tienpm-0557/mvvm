@@ -63,7 +63,7 @@ jobs:
           
       - name: Archive
         working-directory: ./MVVMExample
-         env:
+        env:
           EXPORT_SCHEME: 'MVVMExample'
           EXPORT_DIR: './output'
           EXPORT_OPTIONS_PLIST_DIR: './config/export-config-debug.plist'
