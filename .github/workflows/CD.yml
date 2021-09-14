@@ -1,13 +1,15 @@
 name: CD
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches:[
-      develop
-    ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    branches:
+        - master
+  
+  pull_request:
+    branches:
+        - master
+    paths:
+      - './MVVMExample'
+      
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -16,7 +18,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-11]
-        swift: ["5.0"]
+        swift: ["5.2"]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
         
@@ -55,5 +57,5 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
         
       - name: Build
-        run: swift build
+        run: swift build -v
   
