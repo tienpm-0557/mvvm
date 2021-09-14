@@ -3,24 +3,21 @@ name: CI
 on:
   push:
     branches:
-        - master
-  
-  pull_request:
-    branches:
-        - master
+        - develop
+
     paths:
       - './MVVM'
 
 jobs:
-  SwiftLint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+#   SwiftLint:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
 
-      - name: GitHub Action for SwiftLint
-        uses: norio-nomura/action-swiftlint@3.2.1
-        env:
-          WORKING_DIRECTORY: Source
+#       - name: GitHub Action for SwiftLint
+#         uses: norio-nomura/action-swiftlint@3.2.1
+#         env:
+#           WORKING_DIRECTORY: Source
           
   Test:
     runs-on: macOS-latest
