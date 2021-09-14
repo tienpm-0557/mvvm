@@ -28,6 +28,7 @@ DerivedData
 Carthage/
 Carthage/Build
 
+
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
@@ -36,4 +37,6 @@ Carthage/Build
 # `pod install` in .travis.yml
 #
 MVVMExample/Pods/
+MVVMExample/output/
 MVVMExample/Podfile.lock
+*.xcarchive
