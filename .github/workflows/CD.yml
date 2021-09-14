@@ -33,6 +33,10 @@ jobs:
           P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
           BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+          WORKSPACE_DIR: './MVVMExample'
+          EXPORT_SCHEME: 'MVVMExample'
+          EXPORT_DIR: './output'
+          EXPORT_OPTIONS_PLIST_DIR: './config/export-config-debug.plist'
         run: |
           # create variables
           CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
@@ -55,7 +59,13 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-        
-      - name: Build
-        run: swift build -v
+      - name: Install Dependency
+        working-directory: ./MVVMExample
+        run: |
+          pod install
+          
+      - name: Archive
+        run: |
+          set -o pipefail && xcodebuild -workspace "${WORKSPACE_DIR}/MVVMExample.xcworkspacee" -scheme "${EXPORT_SCHEME}" -destination 'generic/platform=iOS' -archivePath "${SCRIPT_DIR}/MVVMExample.xcarchive" archive;
+          arch -x86_64 xcodebuild -exportArchive -archivePath ${SCRIPT_DIR}/MVVMExample.xcarchive -exportPath "${EXPORT_DIR}" -exportOptionsPlist "${EXPORT_OPTIONS_PLIST_DIR}";
   
