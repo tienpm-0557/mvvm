@@ -3,21 +3,27 @@ name: CI
 on:
   push:
     branches:
-        - develop
-
+        - master
+  
+  pull_request:
+    branches:
+        - master
     paths:
       - './MVVM'
 
 jobs:
-#   SwiftLint:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-
-#       - name: GitHub Action for SwiftLint
-#         uses: norio-nomura/action-swiftlint@3.2.1
-#         env:
-#           WORKING_DIRECTORY: Source
+  SwiftLint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: GitHub Action for SwiftLint with 
+        uses: norio-nomura/action-swiftlint@3.2.1
+        env:
+           DIFF_BASE: ${{ github.base_ref }}
+      - name: GitHub Action for SwiftLint (Different working directory)
+        uses: norio-nomura/action-swiftlint@3.2.1
+        env:
+          WORKING_DIRECTORY: Source
           
   Test:
     runs-on: macOS-latest
@@ -38,5 +44,3 @@ jobs:
         run: xcodebuild clean test -workspace 'MVVMExample/MVVMExample.xcworkspace' 
             -scheme 'MVVMExample' -destination 'platform=iOS Simulator,name=iPhone 12 Pro Max,OS=latest'
             test-without-building | xcpretty && exit ${PIPESTATUS[0]}
-
-
