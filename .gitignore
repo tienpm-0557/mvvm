@@ -37,6 +37,5 @@ Carthage/Build
 # `pod install` in .travis.yml
 #
 MVVMExample/Pods/
-MVVMExample/output/
 MVVMExample/Podfile.lock
 *.xcarchive

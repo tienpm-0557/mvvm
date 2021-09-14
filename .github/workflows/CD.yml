@@ -69,6 +69,7 @@ jobs:
           EXPORT_OPTIONS_PLIST_DIR: './config/export-config-debug.plist'
           
         run: |
+          rm -rf "$EXPORT_DIR"
           set -o pipefail && xcodebuild -workspace "./MVVMExample.xcworkspace" -scheme "$EXPORT_SCHEME" -destination 'generic/platform=iOS' -archivePath "./MVVMExample.xcarchive" archive;
           arch -x86_64 xcodebuild -exportArchive -archivePath "./MVVMExample.xcarchive" -exportPath "$EXPORT_DIR" -exportOptionsPlist "$EXPORT_OPTIONS_PLIST_DIR";
           rm -rf "./MVVMExample.xcarchive"
