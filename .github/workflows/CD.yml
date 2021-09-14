@@ -57,5 +57,5 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
         
       - name: Build
-        run: swift build
+        run: swift build -v
   
