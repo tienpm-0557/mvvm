@@ -88,4 +88,5 @@ jobs:
             echo "MVVMExample.ipa not found!"
           else
             echo "Uploading to TestFlight..."
+          fi
   
