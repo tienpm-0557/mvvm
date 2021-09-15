@@ -71,11 +71,11 @@ jobs:
           
           APP_CONNECT_USER_ID: ${{ secrets.APP_CONNECT_USER_ID }}
           
-          PRODUCT_NAME=<YOUR_PRODUCT_NAME>
-          API_TOKEN=<YOUR_TESTFLIGHT_API_TOKEN>
-          TEAM_TOKEN=<YOUR_TESTFLIGHT_TEAM_TOKEN>
-          NOTIFY="True"
-          NOTES="Build uploaded via Github Action"
+          PRODUCT_NAME: ''
+          API_TOKEN: ''
+          TEAM_TOKEN: ''
+          NOTIFY: 'True'
+          NOTES: 'Build uploaded via Github Action'
           
         run: |
           rm -rf "$EXPORT_DIR"
