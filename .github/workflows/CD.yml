@@ -36,8 +36,8 @@ jobs:
           
         run: |
           # create variables
-          CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
-          PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
+          CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate_dist.p12
+          PP_PATH=$RUNNER_TEMP/build_pp_dist.mobileprovision
           KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
           # import certificate and provisioning profile from secrets
@@ -60,7 +60,7 @@ jobs:
           echo "****** LIST CERTIFICATE******"
           security find-identity -p codesigning -v
           
-      - name: Install Dependency
+      - name: Update Dependency
         working-directory: ./MVVMExample
         run: |
           pod install
