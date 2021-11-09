@@ -14,7 +14,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: macos-latest
+    runs-on: macos-11
     timeout-minutes: 20
         
     steps:
@@ -70,7 +70,7 @@ jobs:
           rm -rf "$EXPORT_DIR"
           set -o pipefail && xcodebuild -workspace "./MVVMExample.xcworkspace" -scheme "$EXPORT_SCHEME" -destination 'generic/platform=iOS' -archivePath "./MVVMExample.xcarchive" archive;
 
-          xcodebuild -exportArchive -archivePath "./MVVMExample.xcarchive" -exportPath "$EXPORT_DIR" -exportOptionsPlist "$EXPORT_OPTIONS_PLIST_DIR";
+          xcodebuild -exportArchive -archivePath "./MVVMExample.xcarchive" -exportPath "$EXPORT_DIR" -exportOptionsPlist "$EXPORT_OPTIONS_PLIST_DIR" -allowProvisioningUpdates;
           rm -rf "./MVVMExample.xcarchive"
 
           if [ ! -f "$EXPORT_DIR/MVVMExample.ipa" ]
