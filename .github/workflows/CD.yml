@@ -69,6 +69,7 @@ jobs:
           EXPORT_OPTIONS_PLIST_DIR: './config/export-config-debug.plist'
           
           APP_CONNECT_USER_ID: ${{ secrets.APP_CONNECT_USER_ID }}
+          APP_CONNECT_KEY_ID: ${{ secrets.APP_CONNECT_PRIVATE_KEY }}
           APP_CONNECT_PRIVATE_KEY: ${{ secrets.APP_CONNECT_PRIVATE_KEY }}
           
         run: |
@@ -81,7 +82,8 @@ jobs:
           then
             echo "MVVMExample.ipa not found!"
           else
-            echo "$APP_CONNECT_PRIVATE_KEY" >> Authen_Private_Key.p8
-            xcrun altool --upload-app -f $EXPORT_DIR -t ios --apiKey "./Authen_Private_Key.p8" --apiIssuer $APP_CONNECT_USER_ID
+            echo "$APP_CONNECT_PRIVATE_KEY" >> AuthKey_.$APP_CONNECT_KEY_ID.p8
+            echo "Start upload ipa to TestFlight!"
+            xcrun altool --upload-app -f $EXPORT_DIR -t ios --apiKey $APP_CONNECT_KEY_ID  --apiIssuer $APP_CONNECT_USER_ID
           fi
   
