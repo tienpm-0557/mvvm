@@ -82,6 +82,6 @@ jobs:
           then
             echo "MVVMExample.ipa not found!"
           else
-            xcrun altool --upload-app --type ios --file $EXPORT_DIR --apiKey $APP_CONNECT_PRIVATE_KEY --apiIssuer $APP_CONNECT_USER_ID
+            xcrun altool --upload-app -f $EXPORT_DIR -t ios --apiKey $APP_CONNECT_PRIVATE_KEY --apiIssuer $APP_CONNECT_USER_ID
           fi
   
