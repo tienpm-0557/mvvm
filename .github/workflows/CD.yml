@@ -70,6 +70,7 @@ jobs:
           
           
           APP_CONNECT_USER_ID: ${{ secrets.APP_CONNECT_USER_ID }}
+          APP_CONNECT_PRIVATE_KEY=${{ secrets.APP_CONNECT_PRIVATE_KEY }}
           
           PRODUCT_NAME=<YOUR_PRODUCT_NAME>
           API_TOKEN=<YOUR_TESTFLIGHT_API_TOKEN>
@@ -87,5 +88,5 @@ jobs:
           then
             echo "MVVMExample.ipa not found!"
           else
-            echo "Uploading to TestFlight..."
+            xcrun altool --upload-app --type ios --file $EXPORT_DIR --apiKey $APP_CONNECT_PRIVATE_KEY --apiIssuer $APP_CONNECT_USER_ID
   

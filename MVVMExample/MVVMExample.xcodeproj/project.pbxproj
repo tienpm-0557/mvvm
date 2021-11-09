@@ -49,6 +49,7 @@
 		9C5D0195248542BA00AF87F9 /* ValidatePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */; };
 		9C5D019A248550D600AF87F9 /* AuthenticationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0198248550D600AF87F9 /* AuthenticationPage.swift */; };
 		9C5D019B248550D600AF87F9 /* AuthenticationPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */; };
+		9C5E7DFF273A296F00A83261 /* CD.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E7DFE273A296E00A83261 /* CD.yml */; };
 		9C6504A22501DAD1004B4696 /* TabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A02501DAD1004B4696 /* TabPage.swift */; };
 		9C6504A32501DAD1004B4696 /* TabPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C6504A12501DAD1004B4696 /* TabPage.xib */; };
 		9C6504A62501DB0B004B4696 /* TabPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */; };
@@ -276,6 +277,7 @@
 		9C5D0194248542BA00AF87F9 /* ValidatePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePageViewModel.swift; sourceTree = "<group>"; };
 		9C5D0198248550D600AF87F9 /* AuthenticationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPage.swift; sourceTree = "<group>"; };
 		9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationPage.xib; sourceTree = "<group>"; };
+		9C5E7DFE273A296E00A83261 /* CD.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = CD.yml; path = ../.github/workflows/CD.yml; sourceTree = "<group>"; };
 		9C6504A02501DAD1004B4696 /* TabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPage.swift; sourceTree = "<group>"; };
 		9C6504A12501DAD1004B4696 /* TabPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabPage.xib; sourceTree = "<group>"; };
 		9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPageViewModel.swift; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 			isa = PBXGroup;
 			children = (
 				9CDA9C04260458E6007003CA /* CI.yml */,
+				9C5E7DFE273A296E00A83261 /* CD.yml */,
 				9C7C5CE6251C454700C8CEF7 /* fastlane */,
 				9C74EB7B246D19B900A3CF1D /* MVVMExample */,
 				9C74EB95246D19BD00A3CF1D /* MVVMExampleTests */,
@@ -1810,6 +1813,7 @@
 				9CAEA27E2478C21C00061B49 /* FlickrImageSearchPage.xib in Resources */,
 				9C2D3BF72513097500F412DD /* ActivityCell.xib in Resources */,
 				9C79EE0B2470E0C500FEF5EC /* SimpleCollectionPage.xib in Resources */,
+				9C5E7DFF273A296F00A83261 /* CD.yml in Resources */,
 				9C74EC50246E51CF00A3CF1D /* SectionHeaderListView.xib in Resources */,
 				9C74EC23246D905F00A3CF1D /* WebKitExamplesPage.xib in Resources */,
 				9C74EC16246D8F8000A3CF1D /* TransitionExamplesPage.xib in Resources */,
