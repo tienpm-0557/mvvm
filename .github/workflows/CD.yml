@@ -19,7 +19,8 @@ jobs:
       matrix:
         os: [macos-11]
         swift: ["5.2", "5.3"]
-    runs-on: ${{ matrix.os }}
+#    runs-on: ${{ matrix.os }}
+    runs-on: macos-latest
     timeout-minutes: 20
         
     steps:
