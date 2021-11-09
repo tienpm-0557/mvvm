@@ -56,6 +56,10 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+          
+          echo "****** LIST CERTIFICATE******"
+          security find-identity -p codesigning -v
+          
       - name: Install Dependency
         working-directory: ./MVVMExample
         run: |
@@ -75,6 +79,10 @@ jobs:
         run: |
           rm -rf "$EXPORT_DIR"
           set -o pipefail && xcodebuild -workspace "./MVVMExample.xcworkspace" -scheme "$EXPORT_SCHEME" -destination 'generic/platform=iOS' -archivePath "./MVVMExample.xcarchive" archive;
+        
+          echo "****** LIST CERTIFICATE******"
+          security find-identity -p codesigning -v
+                    
           arch -x86_64 xcodebuild -exportArchive -archivePath "./MVVMExample.xcarchive" -exportPath "$EXPORT_DIR" -exportOptionsPlist "$EXPORT_OPTIONS_PLIST_DIR";
           rm -rf "./MVVMExample.xcarchive"
           
