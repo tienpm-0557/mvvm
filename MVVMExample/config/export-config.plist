@@ -9,8 +9,6 @@
 	</dict>
 	<key>teamID</key>
 	<string>747LG25T2M</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
 	<key>method</key>
 	<string>app-store</string>
 </dict>
