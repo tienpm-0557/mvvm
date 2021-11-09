@@ -12,6 +12,6 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>method</key>
-	<string>development</string>
+	<string>app-store</string>
 </dict>
 </plist>

@@ -51,6 +51,7 @@
 		9C5D019B248550D600AF87F9 /* AuthenticationPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */; };
 		9C5E7DFF273A296F00A83261 /* CD.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E7DFE273A296E00A83261 /* CD.yml */; };
 		9C5E7E02273A753C00A83261 /* export-config-debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E7E01273A753B00A83261 /* export-config-debug.plist */; };
+		9C5E7E04273A7AF000A83261 /* export-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E7E03273A7AF000A83261 /* export-config.plist */; };
 		9C6504A22501DAD1004B4696 /* TabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A02501DAD1004B4696 /* TabPage.swift */; };
 		9C6504A32501DAD1004B4696 /* TabPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C6504A12501DAD1004B4696 /* TabPage.xib */; };
 		9C6504A62501DB0B004B4696 /* TabPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */; };
@@ -280,6 +281,7 @@
 		9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationPage.xib; sourceTree = "<group>"; };
 		9C5E7DFE273A296E00A83261 /* CD.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = CD.yml; path = ../.github/workflows/CD.yml; sourceTree = "<group>"; };
 		9C5E7E01273A753B00A83261 /* export-config-debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "export-config-debug.plist"; sourceTree = "<group>"; };
+		9C5E7E03273A7AF000A83261 /* export-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "export-config.plist"; sourceTree = "<group>"; };
 		9C6504A02501DAD1004B4696 /* TabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPage.swift; sourceTree = "<group>"; };
 		9C6504A12501DAD1004B4696 /* TabPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabPage.xib; sourceTree = "<group>"; };
 		9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPageViewModel.swift; sourceTree = "<group>"; };
@@ -768,6 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				9C5E7E01273A753B00A83261 /* export-config-debug.plist */,
+				9C5E7E03273A7AF000A83261 /* export-config.plist */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -1878,6 +1881,7 @@
 				9CAEA2862478C90F00061B49 /* FlickrImageCell.xib in Resources */,
 				9C79EE072470DE0200FEF5EC /* SimpleCollectionViewCell.xib in Resources */,
 				9C92957C247CB63400AC7E8E /* NetworkServicePage.xib in Resources */,
+				9C5E7E04273A7AF000A83261 /* export-config.plist in Resources */,
 				9C7C5CF5251C454800C8CEF7 /* Appfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
