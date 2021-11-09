@@ -55,9 +55,8 @@ jobs:
 
           # apply provisioning profile
           mkdir -pv ~/Library/MobileDevice/Provisioning\ Profiles/
+          echo $PP_PATH
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles/
-          cd ~/Library/MobileDevice/Provisioning\ Profiles/
-          ls
           echo "****** LIST CERTIFICATE******"
           security find-identity -p codesigning -v
           
