@@ -29,7 +29,7 @@ jobs:
         run: |
           # create variables
           CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate_dist.p12
-          PP_PATH=$RUNNER_TEMP/build_pp_dist.mobileprovision
+          PP_PATH=$RUNNER_TEMP/Template_Dist.mobileprovision
           KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
           # import certificate and provisioning profile from secrets
@@ -87,5 +87,5 @@ jobs:
         if: ${{ always() }}
         run: |
           security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
-          rm ~/Library/MobileDevice/Provisioning\ Profiles/build_pp_dist.mobileprovision
+          rm ~/Library/MobileDevice/Provisioning\ Profiles/Template_Dist.mobileprovision
   
