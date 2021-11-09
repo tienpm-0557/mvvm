@@ -71,7 +71,7 @@ jobs:
           
           APP_CONNECT_USER_ID: ${{ secrets.APP_CONNECT_USER_ID }}
           APP_CONNECT_PRIVATE_KEY: ${{ secrets.APP_CONNECT_PRIVATE_KEY }}
-
+          echo APP_CONNECT_PRIVATE_KEY >> Authen_Private_Key.p8
         run: |
           rm -rf "$EXPORT_DIR"
           set -o pipefail && xcodebuild -workspace "./MVVMExample.xcworkspace" -scheme "$EXPORT_SCHEME" -destination 'generic/platform=iOS' -archivePath "./MVVMExample.xcarchive" archive;
@@ -82,6 +82,6 @@ jobs:
           then
             echo "MVVMExample.ipa not found!"
           else
-            xcrun altool --upload-app -f $EXPORT_DIR -t ios --apiKey $APP_CONNECT_PRIVATE_KEY --apiIssuer $APP_CONNECT_USER_ID
+            xcrun altool --upload-app -f $EXPORT_DIR -t ios --apiKey "./Authen_Private_Key.p8" --apiIssuer $APP_CONNECT_USER_ID
           fi
   
