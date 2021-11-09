@@ -68,15 +68,9 @@ jobs:
           EXPORT_DIR: './output'
           EXPORT_OPTIONS_PLIST_DIR: './config/export-config-debug.plist'
           
-          
           APP_CONNECT_USER_ID: ${{ secrets.APP_CONNECT_USER_ID }}
           APP_CONNECT_PRIVATE_KEY=${{ secrets.APP_CONNECT_PRIVATE_KEY }}
-          
-          PRODUCT_NAME=<YOUR_PRODUCT_NAME>
-          API_TOKEN=<YOUR_TESTFLIGHT_API_TOKEN>
-          TEAM_TOKEN=<YOUR_TESTFLIGHT_TEAM_TOKEN>
-          NOTIFY="True"
-          NOTES="Build uploaded via Github Action"
+          NOTES: 'Build uploaded via Github Action'
           
         run: |
           rm -rf "$EXPORT_DIR"
@@ -89,4 +83,5 @@ jobs:
             echo "MVVMExample.ipa not found!"
           else
             xcrun altool --upload-app --type ios --file $EXPORT_DIR --apiKey $APP_CONNECT_PRIVATE_KEY --apiIssuer $APP_CONNECT_USER_ID
+          fi
   
