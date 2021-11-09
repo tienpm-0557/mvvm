@@ -66,7 +66,7 @@ jobs:
         env:
           EXPORT_SCHEME: 'MVVMExample'
           EXPORT_DIR: './output'
-          EXPORT_OPTIONS_PLIST_DIR: './config/export-config-debug.plist'
+          EXPORT_OPTIONS_PLIST_DIR: './config/export-config.plist'
           
           APP_CONNECT_USER_ID: ${{ secrets.APP_CONNECT_USER_ID }}
           APP_CONNECT_KEY_ID: ${{ secrets.APP_CONNECT_KEY_ID }}
