@@ -83,4 +83,9 @@ jobs:
             echo "Start upload ipa to TestFlight!"
             xcrun altool --upload-app -f $EXPORT_DIR -t ios --apiKey $APP_CONNECT_KEY_ID  --apiIssuer $APP_CONNECT_USER_ID
           fi
+      - name: Clean up keychain and provisioning profile
+        if: ${{ always() }}
+        run: |
+          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
+          rm ~/Library/MobileDevice/Provisioning\ Profiles/build_pp_dist.mobileprovision
   
