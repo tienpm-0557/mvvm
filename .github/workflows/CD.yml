@@ -70,7 +70,6 @@ jobs:
           
           APP_CONNECT_USER_ID: ${{ secrets.APP_CONNECT_USER_ID }}
           APP_CONNECT_PRIVATE_KEY=${{ secrets.APP_CONNECT_PRIVATE_KEY }}
-          NOTES: 'Build uploaded via Github Action'
           
         run: |
           rm -rf "$EXPORT_DIR"
