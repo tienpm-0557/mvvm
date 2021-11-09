@@ -50,6 +50,7 @@
 		9C5D019A248550D600AF87F9 /* AuthenticationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0198248550D600AF87F9 /* AuthenticationPage.swift */; };
 		9C5D019B248550D600AF87F9 /* AuthenticationPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */; };
 		9C5E7DFF273A296F00A83261 /* CD.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E7DFE273A296E00A83261 /* CD.yml */; };
+		9C5E7E02273A753C00A83261 /* export-config-debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E7E01273A753B00A83261 /* export-config-debug.plist */; };
 		9C6504A22501DAD1004B4696 /* TabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A02501DAD1004B4696 /* TabPage.swift */; };
 		9C6504A32501DAD1004B4696 /* TabPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C6504A12501DAD1004B4696 /* TabPage.xib */; };
 		9C6504A62501DB0B004B4696 /* TabPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */; };
@@ -278,6 +279,7 @@
 		9C5D0198248550D600AF87F9 /* AuthenticationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPage.swift; sourceTree = "<group>"; };
 		9C5D0199248550D600AF87F9 /* AuthenticationPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationPage.xib; sourceTree = "<group>"; };
 		9C5E7DFE273A296E00A83261 /* CD.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = CD.yml; path = ../.github/workflows/CD.yml; sourceTree = "<group>"; };
+		9C5E7E01273A753B00A83261 /* export-config-debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "export-config-debug.plist"; sourceTree = "<group>"; };
 		9C6504A02501DAD1004B4696 /* TabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPage.swift; sourceTree = "<group>"; };
 		9C6504A12501DAD1004B4696 /* TabPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabPage.xib; sourceTree = "<group>"; };
 		9C6504A52501DB0B004B4696 /* TabPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPageViewModel.swift; sourceTree = "<group>"; };
@@ -762,6 +764,14 @@
 			path = AuthenticationView;
 			sourceTree = "<group>";
 		};
+		9C5E7E00273A753B00A83261 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				9C5E7E01273A753B00A83261 /* export-config-debug.plist */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
 		9C65049F2501DAB7004B4696 /* TabPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -827,6 +837,7 @@
 		9C74EB70246D19B900A3CF1D = {
 			isa = PBXGroup;
 			children = (
+				9C5E7E00273A753B00A83261 /* config */,
 				9CDA9C04260458E6007003CA /* CI.yml */,
 				9C5E7DFE273A296E00A83261 /* CD.yml */,
 				9C7C5CE6251C454700C8CEF7 /* fastlane */,
@@ -1832,6 +1843,7 @@
 				9C74EC5E2470069500A3CF1D /* HeaderFooterListPage.xib in Resources */,
 				9C8268EF24BEE343008497A6 /* AlertServicePage.xib in Resources */,
 				9C74EB8C246D19BC00A3CF1D /* LaunchScreen.storyboard in Resources */,
+				9C5E7E02273A753C00A83261 /* export-config-debug.plist in Resources */,
 				9CE8BA0C24FCD2AD001EA3A3 /* TabbarView.xib in Resources */,
 				9C74EBDF246D22CD00A3CF1D /* AuthenticationWebPage.xib in Resources */,
 				9C74B1802477C1220061F2BF /* ContactEditPage.xib in Resources */,
@@ -2368,7 +2380,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 747LG25T2M;
 				INFOPLIST_FILE = MVVMExample/Info.plist;
