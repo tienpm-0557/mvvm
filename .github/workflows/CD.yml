@@ -90,9 +90,9 @@ jobs:
             
           rm -rf "$EXPORT_ARCHIVE_DIR"
 
-          if [ ! -f $EXPORT_DIR_IPA ]
+          if [ ! -f "./output/MVVMExample.ipa" ]
           then
-            echo "IPA not found!"
+            echo "!!!! WARNING: IPA not found!"
           else
             mkdir "$EXPORT_PRIVATE_KEYS_DIR"
             echo "$APP_CONNECT_PRIVATE_KEY" >> "$EXPORT_PRIVATE_KEYS_DIR/AuthKey_${APP_CONNECT_KEY_ID}.p8"
