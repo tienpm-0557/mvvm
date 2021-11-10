@@ -63,8 +63,8 @@ jobs:
           EXPORT_OPTIONS_PLIST_DIR: './config/export-config.plist'
 
           APP_CONNECT_USER_ID: ${{ secrets.APP_CONNECT_USER_ID }}
-          APP_CONNECT_KEY_ID: ${{ secrets.APP_CONNECT_KEY_ID }}
-          APP_CONNECT_PRIVATE_KEY: ${{ secrets.APP_CONNECT_PRIVATE_KEY }}
+          APP_CONNECT_KEY_ID: ${{ secrets.APP_CONNECT_KEY_ID_ADMIN }}
+          APP_CONNECT_PRIVATE_KEY: ${{ secrets.APP_CONNECT_PRIVATE_KEY_ADMIN }}
 
         run: |
           rm -rf "$EXPORT_DIR"
@@ -82,7 +82,7 @@ jobs:
             mkdir "./private_keys"
             echo "$APP_CONNECT_PRIVATE_KEY" >> "./private_keys/AuthKey_${APP_CONNECT_KEY_ID}.p8"
             echo "Start upload ipa to TestFlight!"
-            xcrun altool --upload-app --type ios --file $EXPORT_DIR --apiKey $APP_CONNECT_KEY_ID  --apiIssuer $APP_CONNECT_USER_ID
+            xcrun altool --upload-app --type ios --file "$EXPORT_DIR/MVVMExample.ipa" --apiKey $APP_CONNECT_KEY_ID  --apiIssuer $APP_CONNECT_USER_ID
           fi
           
       - name: Clean up keychain and provisioning profile
