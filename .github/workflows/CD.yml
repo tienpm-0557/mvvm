@@ -90,7 +90,7 @@ jobs:
             
           rm -rf "$EXPORT_ARCHIVE_DIR"
 
-          if [ ! -f "$EXPORT_DIR_IPA" ]
+          if [ ! -f $EXPORT_DIR_IPA ]
           then
             echo "IPA not found!"
           else
