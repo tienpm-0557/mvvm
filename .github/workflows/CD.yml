@@ -72,20 +72,20 @@ jobs:
 
         run: |
           # Remove previous export folder
-          rm -rf "$EXPORT_DIR"
+          rm -rf "${EXPORT_DIR}"
           # Start archive project
           set -o pipefail && xcodebuild \
-            -workspace "./$EXPORT_WORKSPACE" \
-            -scheme "$EXPORT_SCHEME" \
-            -destination "$EXPORT_DESTINATION" \
-            -archivePath "$EXPORT_ARCHIVE_DIR" \
+            -workspace "./${EXPORT_WORKSPACE}" \
+            -scheme "${EXPORT_SCHEME}" \
+            -destination "${EXPORT_DESTINATION}" \
+            -archivePath "${EXPORT_ARCHIVE_DIR}" \
             archive;
           
           # Export IPA
           xcodebuild -exportArchive \
-            -archivePath "$EXPORT_ARCHIVE_DIR" \
-            -exportPath "$EXPORT_DIR" \
-            -exportOptionsPlist "$EXPORT_OPTIONS_PLIST_DIR" \
+            -archivePath "${EXPORT_ARCHIVE_DIR}" \
+            -exportPath "${EXPORT_DIR}" \
+            -exportOptionsPlist "${EXPORT_OPTIONS_PLIST_DIR}" \
             -allowProvisioningUpdates;
             
           rm -rf "${EXPORT_ARCHIVE_DIR}"
@@ -94,8 +94,8 @@ jobs:
           then
             echo "!!!! WARNING: IPA not found!"
           else
-            mkdir "$EXPORT_PRIVATE_KEYS_DIR"
-            echo "$APP_CONNECT_PRIVATE_KEY" >> "${EXPORT_PRIVATE_KEYS_DIR}/AuthKey_${APP_CONNECT_KEY_ID}.p8"
+            mkdir "${EXPORT_PRIVATE_KEYS_DIR}"
+            echo "${APP_CONNECT_PRIVATE_KEY}" >> "${EXPORT_PRIVATE_KEYS_DIR}/AuthKey_${APP_CONNECT_KEY_ID}.p8"
             echo "Start upload ipa to TestFlight!"
             xcrun altool --upload-app --type ios --file $EXPORT_DIR_IPA --apiKey $APP_CONNECT_KEY_ID  --apiIssuer $APP_CONNECT_USER_ID
           fi
