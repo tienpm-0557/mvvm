@@ -61,8 +61,8 @@ jobs:
           EXPORT_WORKSPACE: "MVVMExample.xcworkspace"
           EXPORT_DIR: "./output"
           EXPORT_PRIVATE_KEYS_DIR: "./private_keys"
-          EXPORT_DIR_IPA: "${EXPORT_DIR}/MVVMExample.ipa"
-          EXPORT_ARCHIVE_DIR: "${EXPORT_DIR}/MVVMExample.xcarchive"
+          EXPORT_DIR_IPA: "./output/MVVMExample.ipa"
+          EXPORT_ARCHIVE_DIR: "./output/MVVMExample.xcarchive"
           EXPORT_DESTINATION: "generic/platform=iOS"
           EXPORT_OPTIONS_PLIST_DIR: "./config/export-config.plist"
 
@@ -97,7 +97,7 @@ jobs:
             mkdir "$EXPORT_PRIVATE_KEYS_DIR"
             echo "$APP_CONNECT_PRIVATE_KEY" >> "${EXPORT_PRIVATE_KEYS_DIR}/AuthKey_${APP_CONNECT_KEY_ID}.p8"
             echo "Start upload ipa to TestFlight!"
-            xcrun altool --upload-app --type ios --file "$EXPORT_DIR_IPA" --apiKey $APP_CONNECT_KEY_ID  --apiIssuer $APP_CONNECT_USER_ID
+            xcrun altool --upload-app --type ios --file $EXPORT_DIR_IPA --apiKey $APP_CONNECT_KEY_ID  --apiIssuer $APP_CONNECT_USER_ID
           fi
           
       - name: Clean up keychain and provisioning profile
