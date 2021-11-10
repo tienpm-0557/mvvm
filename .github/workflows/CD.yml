@@ -61,8 +61,8 @@ jobs:
           EXPORT_WORKSPACE: "MVVMExample.xcworkspace"
           EXPORT_DIR: "./output"
           EXPORT_PRIVATE_KEYS_DIR: "./private_keys"
-          EXPORT_DIR_IPA: "$EXPORT_DIR/MVVMExample.ipa"
-          EXPORT_ARCHIVE_DIR: "$EXPORT_DIR/MVVMExample.xcarchive"
+          EXPORT_DIR_IPA: "${EXPORT_DIR}/MVVMExample.ipa"
+          EXPORT_ARCHIVE_DIR: "${EXPORT_DIR}/MVVMExample.xcarchive"
           EXPORT_DESTINATION: "generic/platform=iOS"
           EXPORT_OPTIONS_PLIST_DIR: "./config/export-config.plist"
 
