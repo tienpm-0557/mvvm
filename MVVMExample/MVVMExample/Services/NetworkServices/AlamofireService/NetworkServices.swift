@@ -90,7 +90,7 @@ class NetworkService {
                     single(.success(json))
                 }) { (error) in
                     self?.state.accept(.error)
-                    single(.error(error))
+                    single(.failure(error))
                 } => self?.tmpBag
             return Disposables.create {
                 self?.tmpBag = DisposeBag()

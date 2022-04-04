@@ -19,7 +19,7 @@ class MoyaProviderServicePageViewModel: BaseViewModel {
 
     private var moyaService: MoyaService?
     
-    let rxPageTitle = BehaviorRelay(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
     let rxSearchText = BehaviorRelay<String?>(value: nil)
     let rxCurlText = BehaviorRelay<String?>(value: "")
     

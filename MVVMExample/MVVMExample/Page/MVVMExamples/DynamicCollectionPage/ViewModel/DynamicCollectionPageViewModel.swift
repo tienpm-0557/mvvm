@@ -13,7 +13,7 @@ import RxCocoa
 import Action
 
 class DynamicCollectionPageViewModel: BaseListViewModel {
-    let rxPageTitle = BehaviorRelay(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
     
     override func react() {
         super.react()

@@ -14,7 +14,7 @@ import Action
 
 class ListPageExampleViewModel: BaseListViewModel {
 
-    let rxPageTitle = BehaviorRelay(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
     
     lazy var addAction: Action<Void, Void> = {
         return Action() { .just(self.add()) }

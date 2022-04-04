@@ -56,7 +56,7 @@ class TableOfContentsPage: BaseListPage {
 /// Menu for home page
 class TableOfContentViewModel: BaseListViewModel {
     
-    let rxPageTitle = BehaviorRelay(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
 
     override func react() {
         super.react()

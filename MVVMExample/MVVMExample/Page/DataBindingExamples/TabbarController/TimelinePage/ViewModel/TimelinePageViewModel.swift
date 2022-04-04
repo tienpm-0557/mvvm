@@ -21,7 +21,7 @@ class TimelinePageViewModel: BaseListViewModel {
     var tmpBag: DisposeBag?
     var finishedSearching = false
       
-    let rxTille = BehaviorRelay<String>(value: "")
+    let rxTille = BehaviorRelay<String?>(value: "")
     
     lazy var getDataAction: Action<Void, Void> = {
         return Action() { .just(self.getData()) }

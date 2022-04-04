@@ -14,7 +14,7 @@ import Action
 
 class SectionListPageViewModel: BaseListViewModel {
     
-    let rxPageTitle = BehaviorRelay(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
     
     let imageUrls = [
         "https://images.pexels.com/photos/371633/pexels-photo-371633.jpeg?auto=compress&cs=tinysrgb&h=350",

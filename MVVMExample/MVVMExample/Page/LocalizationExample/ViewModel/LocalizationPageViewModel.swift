@@ -14,7 +14,7 @@ import RxCocoa
 class LocalizationPageViewModel: BaseViewModel {
     private var localizationService: LocalizeService?
     
-    var rxPageTitle = BehaviorRelay<String>(value: "")
+    var rxPageTitle = BehaviorRelay<String?>(value: "")
     
     lazy var rxJPAction: Action<Void, Void> = {
         return Action() { .just(self.selectJPLocale()) }

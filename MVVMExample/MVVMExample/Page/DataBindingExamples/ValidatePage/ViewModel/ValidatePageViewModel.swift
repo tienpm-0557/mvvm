@@ -14,7 +14,7 @@ import Action
 
 class ValidatePageViewModel: BaseViewModel {
     
-    let rxPageTitle = BehaviorRelay<String>(value: "")
+    let rxPageTitle = BehaviorRelay<String?>(value: "")
     let rxHelloText = BehaviorRelay<String?>(value: nil)
     let rxEmail = BehaviorRelay<String?>(value: nil)
     let rxPass = BehaviorRelay<String?>(value: nil)

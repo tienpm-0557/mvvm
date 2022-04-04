@@ -14,7 +14,7 @@ import Action
 
 class TabPageViewModel: BaseViewModel {
     
-    let rxTille = BehaviorRelay<String>(value: "")
+    let rxTille = BehaviorRelay<String?>(value: "")
     
     override func react() {
         super.react()
