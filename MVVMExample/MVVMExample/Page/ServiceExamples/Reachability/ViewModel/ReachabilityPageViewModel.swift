@@ -14,31 +14,30 @@ import Action
 import UIKit
 import RxSwift
 
-/// MARK: ViewModel For Transition Examples
+// MARK: ViewModel For Transition Examples
 class ReachabilityPageViewModel: BaseViewModel {
     var reachibilityService: ReachabilityService?
     let rxPageTitle = PublishSubject<String?>()
     let rxAlertLabelContent = PublishSubject<String?>()
     let rxReachbilityState = PublishSubject<(connection: Reachability.Connection, alertType: AlertType)>()
-    
     private var alertType = AlertType.disposableAlert
-    
+
     lazy var rxDisposableAlertAction: Action<Void, Void> = {
-        return Action() {_ in
+        return Action {_ in
             return .just(
                 self.disposableAlert()
             )
         }
     }()
-    
+
     lazy var rxDialogAlertAction: Action<Void, Void> = {
-        return Action() {_ in
+        return Action {_ in
             return .just(
                 self.dialogAlert()
             )
         }
     }()
-    
+
     override func react() {
         super.react()
         let title = "Reachability Examples"
@@ -52,21 +51,21 @@ class ReachabilityPageViewModel: BaseViewModel {
             switch state.description {
             case Reachability.Connection.wifi.description:
                 self.rxReachbilityState.onNext((Reachability.Connection.wifi, self.alertType))
-                
+
             case Reachability.Connection.cellular.description:
                 self.rxReachbilityState.onNext((Reachability.Connection.cellular, self.alertType))
-                
+
             case Reachability.Connection.unavailable.description:
                 self.rxReachbilityState.onNext((Reachability.Connection.unavailable, self.alertType))
                 self.rxAlertLabelContent.onNext("No internet connection")
-                
+
             default:
                 self.rxReachbilityState.onNext((Reachability.Connection.unavailable, self.alertType))
                 self.rxAlertLabelContent.onNext("No internet connection")
             }
         }) => disposeBag
     }
-    
+
     func disposableAlert() {
         self.alertType = AlertType.disposableAlert
         guard let reachibilityService = self.reachibilityService  else {
@@ -74,7 +73,7 @@ class ReachabilityPageViewModel: BaseViewModel {
         }
         self.rxReachbilityState.onNext((reachibilityService.connectState.value ?? Reachability.Connection.unavailable, self.alertType))
     }
-    
+
     func dialogAlert() {
         self.alertType = AlertType.dialogAlert
         guard let reachibilityService = self.reachibilityService  else {

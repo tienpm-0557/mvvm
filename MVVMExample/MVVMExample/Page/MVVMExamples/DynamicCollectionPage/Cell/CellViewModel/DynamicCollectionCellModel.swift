@@ -10,16 +10,14 @@ import UIKit
 import MVVM
 import RxCocoa
 import RxSwift
-
-class DynamicCollectionCellModel: BaseCellViewModel {    
+class DynamicCollectionCellModel: BaseCellViewModel {
     let rxTitle = BehaviorRelay<String?>(value: nil)
     let rxDesc = BehaviorRelay<String?>(value: nil)
-    
+
     override func react() {
         guard let model = model as? SectionTextModel else {
             return
         }
-        
         rxTitle.accept(model.title)
         rxDesc.accept(model.desc)
     }

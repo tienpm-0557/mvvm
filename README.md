@@ -213,11 +213,11 @@ class TimelinePageViewModel: BaseListViewModel {
     let rxTille = BehaviorRelay<String>(value: "")
     
     lazy var getDataAction: Action<Void, Void> = {
-        return Action() { .just(self.getData()) }
+        return Action { .just(self.getData()) }
     }()
     
     lazy var loadMoreAction: Action<Void, Void> = {
-        return Action() { .just(self.loadMore()) }
+        return Action { .just(self.loadMore()) }
     }()
     
     let rxState = PublishRelay<NetworkServiceState>()

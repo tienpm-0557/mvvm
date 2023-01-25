@@ -15,7 +15,7 @@ import SwiftyJSON
  https://api.flickr.com/services/rest?method=flickr.photos.search&api_key=dc4c20e9d107a9adfa54917799e44650&format=json&nojsoncallback=1&page=0&per_page=10&text=oke
  */
 
-let k_MTLAB_SECRET_KEY: String = "#---demomvvm-xxxyyyzzzz@1231---#"
+let kMTLABSecretKey: String = "#---demomvvm-xxxyyyzzzz@1231---#"
 
 enum APIUrl {
     #if DEBUG
@@ -58,7 +58,7 @@ public enum APIService: URLRequestConvertible {
     case login(parameters: Parameters?)
     case flickrSearch(parameters: Parameters?)
     case loadTimeline(parameters: Parameters?)
-    
+
     var name: String {
         switch self {
         case .flickrSearch:
@@ -67,53 +67,53 @@ public enum APIService: URLRequestConvertible {
             return ""
         }
     }
-    
+
     var usingCache: Bool {
         switch self {
         case .flickrSearch:
             return false
-            
+
         default:
             return false
         }
     }
-    
+
     var parameters: Parameters? {
         switch self {
         case .flickrSearch(let parameter):
             return parameter
-            
+
         case .loadTimeline(let parameter):
             return parameter
-            
+
         default:
             return nil
         }
     }
-    
+
     var method: HTTPMethod {
         switch self {
         case .flickrSearch:
             return .get
-            
+
         default:
             return .get
         }
     }
-    
+
     var path: String {
         switch self {
         case .login:
             return APIUrl.login
-            
+
         case .flickrSearch:
             return APIUrl.apiFlickrSearch
-            
+
         case .loadTimeline:
             return APIUrl.apiTimeline
         }
     }
-    
+
     var header: HTTPHeaders? {
         switch self {
         case .login:
@@ -124,43 +124,41 @@ public enum APIService: URLRequestConvertible {
                 HeaderKey.TimeZone: TimeZone.current.identifier,
                 HeaderKey.Platform: HeaderValue.PLatformIos
             ]
-            
+
         default:
             return [:]
         }
     }
-    
+
     var encoding: ParameterEncoding {
         switch self {
         case .login:
             return JSONEncoding.default
-            
+
         case .flickrSearch, .loadTimeline:
             return URLEncoding.default
         }
     }
-    
+
     // MARK: URLRequestConvertible
     public func asURLRequest() throws -> URLRequest {
         var url = try APIUrl.rootURL.asURL()
         switch self {
         case .loadTimeline:
             url = try APIUrl.mtlabRootURL.asURL()
-            
+
         default:
             break
         }
-        
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         /// Common configuration
         urlRequest.httpMethod = method.rawValue
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.timeoutInterval = TimeInterval(30)
         urlRequest.httpMethod = method.rawValue
-        
         return urlRequest
     }
-    
+
     func prepareSources(response: APIResponse) -> APIResponse {
         print(response.cURLString())
         return response

@@ -12,7 +12,7 @@ import MVVM
 
 class SimpleTableCell: BaseTableCell {
     @IBOutlet private weak var titleLbl: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,7 +24,7 @@ class SimpleTableCell: BaseTableCell {
         /// Update outlet into awakeFromNib
         selectionStyle = .none
     }
-    
+
     override func bindViewAndViewModel() {
         guard let viewModel = viewModel as? SimpleListPageCellViewModel else {
             return

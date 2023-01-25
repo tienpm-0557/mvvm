@@ -9,17 +9,16 @@
 import UIKit
 import MVVM
 
-class HandleUserContentControllerWebPage: BaseWebView {
+class WebKitExamplePage: BaseWebView {
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? HandleUserContentControllerWebPageViewModel else {
+        guard let viewModel = self.viewModel as? WebKitExamplePageViewModel else {
             return
         }
         viewModel.rxSource ~> self.wkWebView.rx.sourceHtml => disposeBag
         viewModel.rxPageTitle ~> rx.title => disposeBag
         /// Simple solution is Adopt a WKScriptMessageHandler in View Model
         self.wkWebView.configuration.userContentController.add(viewModel, name: "RxWebKitScriptMessageHandler")
-        
         /// You can user `configuration.userContentController.rx.scriptMessage(forName:)` instead WKScriptMessageHandler
         /// You can received your message with `subcriptMessage(forName: )`.
         /*

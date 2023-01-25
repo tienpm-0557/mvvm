@@ -12,7 +12,8 @@ import RxCocoa
 import RxSwift
 import Action
 
-class DynamicListPage: BaseListPage {    
+class DynamicListPage: BaseListPage {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +29,7 @@ class DynamicListPage: BaseListPage {
         tableView.register(cellType: SimpleTableCell.self)
         allowLoadmoreData = true
     }
-    
+
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
         guard let viewModel = self.viewModel as? DynamicListPageViewModel else {
@@ -37,7 +38,7 @@ class DynamicListPage: BaseListPage {
         viewModel.rxPageTitle ~> rx.title => disposeBag
         viewModel.rxState ~> self.rx.state => disposeBag
     }
-    
+
     override func cellIdentifier(_ cellViewModel: Any, _ returnClassName: Bool = false) -> String {
         return returnClassName ? SimpleTableCell.className : SimpleTableCell.identifier
     }
@@ -48,7 +49,7 @@ class DynamicListPage: BaseListPage {
         }
         return viewModel.itemsSource
     }
-    
+
     override func destroy() {
         super.destroy()
         viewModel?.destroy()

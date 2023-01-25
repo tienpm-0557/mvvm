@@ -33,23 +33,20 @@ class AlertWebPageViewModel: IntroductionPageViewModel {
         </body>
         </html>
         """
-        
         rxPageTitle.accept(title)
         rxSourceType.accept(WebViewSuorceType.html.rawValue)
         rxSource.accept(html)
     }
-    
+
     override func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         let alert = UIAlertController(title: "runJavaScriptAlertPanelWithMessage",
                                       message: message,
                                       preferredStyle: .alert)
-        
         alert.addAction(UIAlertAction(title: "OK",
                                       style: .default,
                                       handler: { _ in
                                         completionHandler()
                                       }))
-        
         navigationService.push(to: alert, options: .modal())
-    }    
+    }
 }

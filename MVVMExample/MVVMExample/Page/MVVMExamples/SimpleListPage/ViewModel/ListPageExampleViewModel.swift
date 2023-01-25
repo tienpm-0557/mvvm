@@ -14,9 +14,11 @@ import Action
 
 class ListPageExampleViewModel: BaseListViewModel {
     let rxPageTitle = BehaviorRelay<String?>(value: "")
-    
+
     lazy var addAction: Action<Void, Void> = {
-        return Action() { .just(self.add()) }
+        return Action {
+            .just(self.add())
+        }
     }()
 
     override func react() {
@@ -24,14 +26,14 @@ class ListPageExampleViewModel: BaseListViewModel {
         let title = (self.model as? MenuModel)?.title ?? "Simple UITableView"
         rxPageTitle.accept(title)
     }
-    
+
     private func add() {
         let number = Int.random(in: 1000...10000)
         let title = "This is your random number: \(number)"
         let cvm = SimpleListPageCellViewModel(model: SimpleModel(withTitle: title))
         itemsSource.append(cvm)
     }
-        
+
     override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) {
         /// navigationService
         /// Use navigation service for push view controller into Navigation.

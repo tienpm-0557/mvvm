@@ -23,21 +23,19 @@ class TabPage: BasePage {
         super.initialize()
         enableBackButton = true
     }
-    
+
     override func bindViewAndViewModel() {
-        super.bindViewAndViewModel()
-        guard let viewModel = self.viewModel as? TabPageViewModel else {
-            return
-        }
-        
-        viewModel.rxTitle ~> self.rx.title => disposeBag
-        viewModel.rxBackgroundHex.subscribe(onNext: { value in
-            if let hex = value {
-                self.view.backgroundColor = UIColor(hexString: hex)
-            }
-        }) => disposeBag
-        
-        viewModel.rxName ~> nameLb.rx.text => disposeBag
-        viewModel.rxBackgroundHex ~> hexLb.rx.text => disposeBag
+    super.bindViewAndViewModel()
+    guard let viewModel = self.viewModel as? TabPageViewModel else {
+        return
     }
+    viewModel.rxTitle ~> self.rx.title => disposeBag
+    viewModel.rxBackgroundHex.subscribe(onNext: { value in
+        if let hex = value {
+            self.view.backgroundColor = UIColor(hexString: hex)
+        }
+    }) => disposeBag
+    viewModel.rxName ~> nameLb.rx.text => disposeBag
+    viewModel.rxBackgroundHex ~> hexLb.rx.text => disposeBag
+}
 }

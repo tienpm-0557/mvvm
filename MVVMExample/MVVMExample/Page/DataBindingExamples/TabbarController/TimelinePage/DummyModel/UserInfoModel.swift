@@ -12,13 +12,13 @@ import ObjectMapper
 
 class UserInfoModel: Model {
     var displayName: String = ""
-    var user_id: Int = 0
+    var userId: Int = 0
     var avatar: String = ""
     var username: Int = 0
 
     override func mapping(map: Map) {
         username <- map["username"]
-        user_id <- map["id"]
+        userId <- map["id"]
         displayName <- map["displayName"]
         avatar <- map["avatar"]
     }

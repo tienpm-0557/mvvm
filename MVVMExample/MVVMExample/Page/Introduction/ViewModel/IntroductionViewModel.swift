@@ -9,12 +9,10 @@
 import MVVM
 import RxCocoa
 import WebKit
-
-// MARK: ViewModel For BaseWebView Examples
-class IntroductionPageViewModel: BaseWebViewModel {    
+class IntroductionPageViewModel: BaseWebViewModel {
     let rxPageTitle = BehaviorRelay<String?>(value: "")
     let rxURL = BehaviorRelay<URL?>(value: nil)
-        
+
     override func react() {
         super.react()
         let title = (self.model as? IntroductionModel)?.title ?? "Table Of Contents"
@@ -23,7 +21,7 @@ class IntroductionPageViewModel: BaseWebViewModel {
         rxPageTitle.accept(title)
         rxURL.accept(url)
     }
-    
+
     override func webView(_ webView: WKWebView, estimatedProgress: Double) {
         self.rxEstimatedProgress.accept(estimatedProgress)
         print("DEBUG: estimatedProgress \(estimatedProgress)")

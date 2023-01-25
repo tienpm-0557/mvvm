@@ -47,7 +47,7 @@ public class ShareService {
         
         /// Present activity View Controller
         let window = UIApplication.shared.keyWindow
-        guard let rootViewContorller = window?.rootViewController else {
+        guard let _ = window?.rootViewController else {
             return
         }
         

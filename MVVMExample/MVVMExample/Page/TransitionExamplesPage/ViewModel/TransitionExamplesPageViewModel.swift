@@ -14,84 +14,83 @@ import Action
 // MARK: ViewModel For Transition Examples
 class TransitionExamplesPageViewModel: BaseViewModel {
     let rxPageTitle = BehaviorRelay<String?>(value: "")
-    
+
     lazy var flipAction: Action<Void, Void> = {
-        return Action() { .just(self.pushAndFlip()) }
+        return Action { .just(self.pushAndFlip()) }
     }()
-    
+
     lazy var zoomAction: Action<Void, Void> = {
-        return Action() { .just(self.pushAndZoom()) }
+        return Action { .just(self.pushAndZoom()) }
     }()
-    
+
     lazy var clockAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithClockAnimation()) }
+        return Action { .just(self.pushWithClockAnimation()) }
     }()
-    
+
     lazy var circleAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithCircleAnimation()) }
+        return Action { .just(self.pushWithCircleAnimation()) }
     }()
-    
+
     lazy var crossAndFadeAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithCrossAndFadeAnimation()) }
+        return Action { .just(self.pushWithCrossAndFadeAnimation()) }
     }()
-    
+
     lazy var rectangularAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithRectangularAnimation()) }
+        return Action { .just(self.pushWithRectangularAnimation()) }
     }()
-    
+
     lazy var multiCircleAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithMultiCircleAnimation()) }
+        return Action { .just(self.pushWithMultiCircleAnimation()) }
     }()
-    
+
     lazy var tiledFlipAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithTileFlipAnimation()) }
+        return Action { .just(self.pushWithTileFlipAnimation()) }
     }()
-    
     lazy var imageRepeatingAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithImageRepeatingAnimation()) }
+        return Action { .just(self.pushWithImageRepeatingAnimation()) }
     }()
-    
+
     lazy var multiFlipAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithMultiFlipAnimation()) }
+        return Action { .just(self.pushWithMultiFlipAnimation()) }
     }()
-    
+
     lazy var angleLineAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithAngleLineAnimation()) }
+        return Action { .just(self.pushWithAngleLineAnimation()) }
     }()
-    
+
     lazy var straightLineAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithStraightLineAnimation()) }
+        return Action { .just(self.pushWithStraightLineAnimation()) }
     }()
-    
+
     lazy var collidingDiamondsAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithCollidingDiamondsAnimation()) }
+        return Action { .just(self.pushWithCollidingDiamondsAnimation()) }
     }()
-    
+
     lazy var shrinkingGrowingAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithShrinkingGrowingAnimation()) }
+        return Action { .just(self.pushWithShrinkingGrowingAnimation()) }
     }()
-    
+
     lazy var splitFromCenterAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithSplitFromCenterAnimation()) }
+        return Action { .just(self.pushWithSplitFromCenterAnimation()) }
     }()
-    
+
     lazy var swingInAction: Action<Void, Void> = {
-        return Action() { .just(self.pushWithSwingInAnimation()) }
+        return Action { .just(self.pushWithSwingInAnimation()) }
     }()
-    
+
     var usingShowModal: Bool = false
-    
+
     convenience init(model: Model?, usingShowModal: Bool) {
         self.init(model: model)
         self.usingShowModal = usingShowModal
     }
-    
+
     override func react() {
         super.react()
         let title = (self.model as? IntroductionModel)?.title ?? "Transition Examples"
         rxPageTitle.accept(title)
     }
-    
+
     private func pushAndFlip() {
         /// Create flip page model
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Flip Animation",
@@ -101,7 +100,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = FlipAnimator(withDuration: 0.5, isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushAndZoom() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Zoom Animation",
                                                                 desc: "Example transition page with Zoom animation.",
@@ -109,17 +108,16 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = ZoomAnimator(withDuration: 2.0, isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithClockAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Zoom Animation",
                                                                 desc: "Example transition page with Clock animation.",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md",
                                                                 withBGColor: "#F2F2F7"))
-        
         let animator = ClockAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithCircleAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Circle Animation",
                                                                 desc: "Example transition page with Circle animation.",
@@ -128,7 +126,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = CircleAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithCrossAndFadeAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Cross And Fade",
                                                                 desc: "Example transition page with Cross And Fade animation",
@@ -136,7 +134,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = CrossFadeAnimator(withDuration: TimeInterval(0.75), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithRectangularAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Rectangular Animation",
                                                                 desc: "Example transition page with Rectangular animation",
@@ -144,7 +142,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = RectanglerAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithMultiCircleAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Multi Circle",
                                                                 desc: "Example transition page with Multi Circle animation",
@@ -152,7 +150,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = MultiCircleAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithTileFlipAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Tiled Flip Animation",
                                                                 desc: "Example transition page with Tiled Flip animation",
@@ -166,28 +164,25 @@ class TransitionExamplesPageViewModel: BaseViewModel {
                                                                 desc: "Example transition page with Image Repeating animation",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = ImageRepeatingAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
-        
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithMultiFlipAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Multi Flip Animation",
                                                                 desc: "Example transition page with Multi Flip animation",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = MultiFlipRetroAnimator(withDuration: TimeInterval(0.75), isPresenting: self.usingShowModal)
-        
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithAngleLineAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Angle Line Animation",
                                                                 desc: "Example transition page with Angle Line animation",
                                                                 url: "https://github.com/tienpm-0557/mvvm/blob/master/README.md"))
         let animator = AngleLineAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
-        
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithStraightLineAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Straight Line Animation",
                                                                 desc: "Example transition page with Straight Line Animation",
@@ -195,7 +190,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = StraightLineAnimator(withDuration: TimeInterval(0.25), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithCollidingDiamondsAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Colliding Diamonds Animation",
                                                                 desc: "Example transition page with Colliding Diamonds Animation",
@@ -203,7 +198,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = CollidingDiamondsAnimator(withDuration: TimeInterval(0.25), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithShrinkingGrowingAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Shrinking Growing Diamonds Animation",
                                                                 desc: "Example transition page with Shrinking Growing Diamonds Animation",
@@ -211,7 +206,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = ShrinkingGrowingDiamondsAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithSplitFromCenterAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Split from center Animation",
                                                                 desc: "Example transition page with Split From Center Animation",
@@ -219,7 +214,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = SplitFromCenterAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithSwingInAnimation() {
         let model = BaseViewModel(model: TransitionContentModel(withTitle: "Split from center Animation",
                                                                 desc: "Example transition page with Swing In Animation",
@@ -227,7 +222,7 @@ class TransitionExamplesPageViewModel: BaseViewModel {
         let animator = SwingInAnimator(withDuration: TimeInterval(0.5), isPresenting: self.usingShowModal)
         self.pushWithAnimator(animator, model: model)
     }
-    
+
     private func pushWithAnimator(_ animator: Animator, model: BaseViewModel) {
         let page = TransitionContentPage(viewModel: model)
         if usingShowModal {

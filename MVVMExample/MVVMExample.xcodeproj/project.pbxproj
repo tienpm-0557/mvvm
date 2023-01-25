@@ -195,9 +195,9 @@
 		9CD35C1C24D7C6320087B8CF /* TransitionContentPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD35C1A24D7C6320087B8CF /* TransitionContentPage.xib */; };
 		9CD35C1E24D7C7E40087B8CF /* TransitionContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD35C1D24D7C7E40087B8CF /* TransitionContentModel.swift */; };
 		9CD35C2324D837070087B8CF /* MailServiceExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD35C2224D837070087B8CF /* MailServiceExt.swift */; };
-		9CD4C7AC263129F4009BE86E /* HandleUserContentControllerWebPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4C7AA263129F4009BE86E /* HandleUserContentControllerWebPage.swift */; };
-		9CD4C7AD263129F4009BE86E /* HandleUserContentControllerWebPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD4C7AB263129F4009BE86E /* HandleUserContentControllerWebPage.xib */; };
-		9CD4C7B326312A1F009BE86E /* HandleUserContentControllerWebPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4C7B226312A1F009BE86E /* HandleUserContentControllerWebPageViewModel.swift */; };
+		9CD4C7AC263129F4009BE86E /* WebKitExamplePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4C7AA263129F4009BE86E /* WebKitExamplePage.swift */; };
+		9CD4C7AD263129F4009BE86E /* WebKitExamplePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD4C7AB263129F4009BE86E /* WebKitExamplePage.xib */; };
+		9CD4C7B326312A1F009BE86E /* WebKitExamplePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4C7B226312A1F009BE86E /* WebKitExamplePageViewModel.swift */; };
 		9CDA9C05260458E6007003CA /* CI.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9CDA9C04260458E6007003CA /* CI.yml */; };
 		9CE8BA0624FCD1F9001EA3A3 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8BA0424FCD1F8001EA3A3 /* TabbarViewController.swift */; };
 		9CE8BA0A24FCD2A5001EA3A3 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8BA0924FCD2A5001EA3A3 /* TabbarView.swift */; };
@@ -431,9 +431,9 @@
 		9CD35C1A24D7C6320087B8CF /* TransitionContentPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitionContentPage.xib; sourceTree = "<group>"; };
 		9CD35C1D24D7C7E40087B8CF /* TransitionContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionContentModel.swift; sourceTree = "<group>"; };
 		9CD35C2224D837070087B8CF /* MailServiceExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailServiceExt.swift; sourceTree = "<group>"; };
-		9CD4C7AA263129F4009BE86E /* HandleUserContentControllerWebPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleUserContentControllerWebPage.swift; sourceTree = "<group>"; };
-		9CD4C7AB263129F4009BE86E /* HandleUserContentControllerWebPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HandleUserContentControllerWebPage.xib; sourceTree = "<group>"; };
-		9CD4C7B226312A1F009BE86E /* HandleUserContentControllerWebPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleUserContentControllerWebPageViewModel.swift; sourceTree = "<group>"; };
+		9CD4C7AA263129F4009BE86E /* WebKitExamplePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitExamplePage.swift; sourceTree = "<group>"; };
+		9CD4C7AB263129F4009BE86E /* WebKitExamplePage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebKitExamplePage.xib; sourceTree = "<group>"; };
+		9CD4C7B226312A1F009BE86E /* WebKitExamplePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitExamplePageViewModel.swift; sourceTree = "<group>"; };
 		9CDA9C04260458E6007003CA /* CI.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = CI.yml; path = ../.github/workflows/CI.yml; sourceTree = "<group>"; };
 		9CE8BA0424FCD1F8001EA3A3 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		9CE8BA0924FCD2A5001EA3A3 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
@@ -1617,8 +1617,8 @@
 			isa = PBXGroup;
 			children = (
 				9CD4C7B1263129F7009BE86E /* ViewModel */,
-				9CD4C7AA263129F4009BE86E /* HandleUserContentControllerWebPage.swift */,
-				9CD4C7AB263129F4009BE86E /* HandleUserContentControllerWebPage.xib */,
+				9CD4C7AA263129F4009BE86E /* WebKitExamplePage.swift */,
+				9CD4C7AB263129F4009BE86E /* WebKitExamplePage.xib */,
 			);
 			path = UserContentController;
 			sourceTree = "<group>";
@@ -1626,7 +1626,7 @@
 		9CD4C7B1263129F7009BE86E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				9CD4C7B226312A1F009BE86E /* HandleUserContentControllerWebPageViewModel.swift */,
+				9CD4C7B226312A1F009BE86E /* WebKitExamplePageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1833,7 +1833,7 @@
 				9C74EC16246D8F8000A3CF1D /* TransitionExamplesPage.xib in Resources */,
 				9CB0D8862513656D009826B2 /* TimeLineCell.xib in Resources */,
 				6C3C21E1256966E800561A33 /* UIBarItems.xib in Resources */,
-				9CD4C7AD263129F4009BE86E /* HandleUserContentControllerWebPage.xib in Resources */,
+				9CD4C7AD263129F4009BE86E /* WebKitExamplePage.xib in Resources */,
 				9C74EC592470038300A3CF1D /* SectionFooterListView.xib in Resources */,
 				9C74EBE7246D23F000A3CF1D /* FailNavigationWebPage.xib in Resources */,
 				9C6504B325022C7C004B4696 /* UIPageExample.xib in Resources */,
@@ -2070,7 +2070,7 @@
 				9C74EBEE246D246F00A3CF1D /* EvaluateJavaScriptWebPage.swift in Sources */,
 				9C74EC6224700A2200A3CF1D /* DynamicListPage.swift in Sources */,
 				9C74EC00246D4EE500A3CF1D /* MvvmExamplesPageViewModel.swift in Sources */,
-				9CD4C7B326312A1F009BE86E /* HandleUserContentControllerWebPageViewModel.swift in Sources */,
+				9CD4C7B326312A1F009BE86E /* WebKitExamplePageViewModel.swift in Sources */,
 				9C74EB81246D19B900A3CF1D /* ViewController.swift in Sources */,
 				9C2D3BF62513097500F412DD /* ActivityCell.swift in Sources */,
 				9C74EBF2246D24E600A3CF1D /* EvaluateJavaScriptWebViewModel.swift in Sources */,
@@ -2121,7 +2121,7 @@
 				9CF158E224713B1F006A1CFB /* HeaderCollectionView.swift in Sources */,
 				9CCBA663247AC21E00D73A7B /* APIService.swift in Sources */,
 				9C74EC3F246E49C800A3CF1D /* SectionTextCellViewModel.swift in Sources */,
-				9CD4C7AC263129F4009BE86E /* HandleUserContentControllerWebPage.swift in Sources */,
+				9CD4C7AC263129F4009BE86E /* WebKitExamplePage.swift in Sources */,
 				9C59388424D95E6500AB6F1E /* StoreKitPage.swift in Sources */,
 				9C74EC53246E9CDA00A3CF1D /* SectionHeaderViewViewModel.swift in Sources */,
 				9C74EBD2246D1FE400A3CF1D /* ConfirmAlertWebViewModel.swift in Sources */,

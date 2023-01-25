@@ -118,10 +118,10 @@ public enum HttpStatusCode: Int {
     case requestTimeOut = 408
     
     init?(statusCode: Int?) {
-        guard let _statusCode = statusCode else {
+        guard let stCode = statusCode else {
             return nil
         }
-        self.init(rawValue: _statusCode)
+        self.init(rawValue: stCode)
     }
     
     var message: String {
@@ -148,29 +148,29 @@ typealias CompletionBlock = (_ result: AnyObject?, _ usingCache: Bool) -> Void
 typealias ErrorBlock = (_ error: Error) -> Void
 
 open class APIResponse {
-    var rq: DataRequest?
     public var result: AnyObject?
     public var statusCode: HttpStatusCode?
-    public var _usingCache: Bool = false
+    public var usingCache: Bool = false
     public var params: [String: Any]?
-    
-    var _onComplete: CompletionBlock?
-    var _onError: ErrorBlock?
-    
+
+    private var requestData: DataRequest?
+    private var onComplete: CompletionBlock?
+    private var onError: ErrorBlock?
+
     func completeBlock(onComplete:@escaping CompletionBlock) {
-        _onComplete = onComplete
-        if self._usingCache {
+        self.onComplete = onComplete
+        if self.usingCache {
             self.getDataFromCache()
         }
     }
     
     func errorBlock(onError:@escaping ErrorBlock) {
-        _onError = onError
+        self.onError = onError
     }
-    
+
     var request: DataRequest {
         get {
-            return rq!
+            return requestData!
         }
         set (newVal) {
             newVal.responseJSON { response in
@@ -178,23 +178,23 @@ open class APIResponse {
                 switch response.result {
                 case .success(let result):
                     self.result = result as AnyObject
-                    self._onComplete?(self.result, false)
-                    
+                    self.onComplete?(self.result, false)
+
                 case .failure(let error):
-                    self._onError?(error)
+                    self.onError?(error)
                 }
             }
-            rq = newVal
+            requestData = newVal
         }
     }
-    
+
     public func cURLString() -> String {
-        if let request = self.rq {
+        if let request = self.requestData {
             return request.cURLDescription()
         }
         return ""
     }
-    
+
     func cacheAPI(_ object: AnyObject) {}
 
     func getDataFromCache() {}

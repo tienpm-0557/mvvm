@@ -23,7 +23,6 @@ class StoreKitPage: BasePage {
         guard let cellModel = viewModel?.model as? MenuModel else {
             return
         }
-        
         self.rx.title.onNext(cellModel.title)
     }
 

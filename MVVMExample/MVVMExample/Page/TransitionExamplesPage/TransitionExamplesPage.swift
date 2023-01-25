@@ -22,12 +22,11 @@ class TransitionExamplesPage: BasePage {
     @IBOutlet private weak var multiFlipBtn: UIButton!
     @IBOutlet private weak var angleLineBtn: UIButton!
     @IBOutlet private weak var straightLineBtn: UIButton!
-    
     @IBOutlet private weak var collidingDiamondsBtn: UIButton!
     @IBOutlet private weak var shrinkingGrowingBtn: UIButton!
     @IBOutlet private weak var splitFromCenterBtn: UIButton!
     @IBOutlet private weak var swingInRetroBtn: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,13 +37,12 @@ class TransitionExamplesPage: BasePage {
         super.initialize()
         self.enableBackButton = true
     }
-    
+
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
         guard let viewModel = viewModel as? TransitionExamplesPageViewModel else {
             return
         }
-        
         viewModel.rxPageTitle ~> self.rx.title => disposeBag
         flipBtn.rx.bind(to: viewModel.flipAction, input: ())
         zoomBtn.rx.bind(to: viewModel.zoomAction, input: ())

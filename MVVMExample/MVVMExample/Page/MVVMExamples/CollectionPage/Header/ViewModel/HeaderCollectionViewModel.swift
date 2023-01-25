@@ -15,7 +15,7 @@ class HeaderCollectionViewModel: BaseViewModel {
     let rxTitle = BehaviorRelay<String?>(value: nil)
     let rxFooter = BehaviorRelay<String?>(value: nil)
     let rxDesc = BehaviorRelay<String?>(value: nil)
-        
+
     override func react() {
         guard let model = model as? HeaderFooterModel else {
             return

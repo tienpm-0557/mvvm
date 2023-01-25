@@ -9,14 +9,12 @@ import RxCocoa
 
 protocol IReactable {
     var isReacted: Bool { get set }
-    
     func reactIfNeeded()
     func react()
 }
 
 extension Reactive where Base: IGenericViewModel {
     public typealias ModelElement = Base.ModelElement
-    
     public var model: Binder<ModelElement?> {
         return Binder(base) { $0.model = $1 }
     }
@@ -25,7 +23,6 @@ extension Reactive where Base: IGenericViewModel {
 /// A master based ViewModel for all
 open class ViewModel<M>: NSObject, IViewModel, IReactable {
     public typealias ModelElement = M
-    
     private var _model: M?
     public var model: M? {
         get { return _model }
@@ -34,39 +31,37 @@ open class ViewModel<M>: NSObject, IViewModel, IReactable {
             modelChanged()
         }
     }
-    
+
     public var disposeBag: DisposeBag? = DisposeBag()
-    
     public let rxViewState = BehaviorRelay<ViewState>(value: .none)
     public let rxShowLocalActivityIndicatorHud = BehaviorRelay(value: false)
     public let rxIndicator = ActivityIndicator()
-    
     public let navigationService: NavigationService = DependencyManager.shared.getService()
-    
+
     var isReacted = false
-    
+
     required public init(model: M? = nil) {
         _model = model
     }
-    
+
     open func destroy() {
         disposeBag = DisposeBag()
     }
-    
+
     deinit {
         destroy()
     }
-    
+
     /**
      Everytime model changed, this method will get called. Good place to update our viewModel
      */
     open func modelChanged() {}
-    
+
     /**
      This method will be called once. Good place to initialize our viewModel (listen, subscribe...) to any signals
      */
     open func react() {}
-    
+
     func reactIfNeeded() {
         guard !isReacted else {
             return
@@ -85,27 +80,26 @@ open class ViewModel<M>: NSObject, IViewModel, IReactable {
  */
 open class ListViewModel<M, CVM: IGenericViewModel>: ViewModel<M>, IListViewModel {
     public typealias CellViewModelElement = CVM
-    
     public typealias ItemsSourceType = [SectionList<CVM>]
-    
+
     public let itemsSource = ReactiveCollection<CVM>()
     public let rxSelectedItem = BehaviorRelay<CVM?>(value: nil)
     public let rxSelectedIndex = BehaviorRelay<IndexPath?>(value: nil)
-    
+
     required public init(model: M? = nil) {
         super.init(model: model)
     }
-    
+
     open override func destroy() {
         super.destroy()
-        
+
         itemsSource.forEach { _, sectionList in
             sectionList.forEach { _, cvm in
                 cvm.destroy()
             }
         }
     }
-    
+
     open func selectedItemDidChange(_ cellViewModel: CVM, _ indexPath: IndexPath) { }
 }
 
@@ -123,7 +117,6 @@ protocol IIndexable: AnyObject {
 
 open class CellViewModel<M>: NSObject, IGenericViewModel, IIndexable, IReactable {
     public typealias ModelElement = M
-    
     private var _model: M?
     public var model: M? {
         get { return _model }
@@ -133,27 +126,25 @@ open class CellViewModel<M>: NSObject, IGenericViewModel, IIndexable, IReactable
             modelChanged()
         }
     }
-    
+
     /// Each cell will keep its own index path
     /// In some cases, each cell needs to use this index to create some customizations
     public internal(set) var indexPath: IndexPath?
     public internal(set) var  isLastRow = false
     /// Bag for databindings
     public var disposeBag: DisposeBag? = DisposeBag()
-    
     var isReacted = false
-    
     public required init(model: M? = nil) {
         _model = model
     }
-    
+
     open func destroy() {
         disposeBag = DisposeBag()
     }
-    
+
     open func modelChanged() {}
     open func react() {}
-    
+
     func reactIfNeeded() {
         guard !isReacted else {
             return

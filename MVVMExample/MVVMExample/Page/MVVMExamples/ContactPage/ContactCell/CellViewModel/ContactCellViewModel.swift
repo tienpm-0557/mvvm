@@ -14,12 +14,12 @@ import RxSwift
 class ContactCellViewModel: BaseCellViewModel {
     let rxName = BehaviorRelay<String?>(value: nil)
     let rxPhone = BehaviorRelay<String?>(value: nil)
-    
+
     override func react() {
         super.react()
         modelChanged()
     }
-    
+
     override func modelChanged() {
         super.modelChanged()
         guard let model = self.model as? ContactModel else {

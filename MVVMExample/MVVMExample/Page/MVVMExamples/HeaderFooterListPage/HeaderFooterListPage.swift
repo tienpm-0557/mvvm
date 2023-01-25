@@ -19,7 +19,7 @@ class HeaderFooterListPage: SectionListPage {
         super.setupTableView(tableView)
         tableView.register(footerType: SectionFooterListView.self)
     }
-    
+
     override func footerIdentifier(_ footerViewModel: Any, _ returnClassName: Bool = false) -> String? {
         return returnClassName ? SectionFooterListView.className : SectionFooterListView.identifier
     }

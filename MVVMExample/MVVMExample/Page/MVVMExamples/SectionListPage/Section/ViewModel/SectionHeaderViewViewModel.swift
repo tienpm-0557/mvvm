@@ -13,13 +13,13 @@ import Action
 
 class SectionHeaderViewViewModel: BaseViewModel {
     lazy var addAction: Action<Void, SectionHeaderViewViewModel> = {
-        return Action() { .just(self) }
+        return Action { .just(self) }
     }()
-    
+
     let rxTitle = BehaviorRelay<String?>(value: nil)
     let rxFooter = BehaviorRelay<String?>(value: nil)
     let rxDesc = BehaviorRelay<String?>(value: nil)
-    
+
     override func react() {
         guard let model = model as? HeaderFooterModel else {
             return

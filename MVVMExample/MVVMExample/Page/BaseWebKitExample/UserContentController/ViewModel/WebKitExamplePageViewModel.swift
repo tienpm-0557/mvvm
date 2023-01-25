@@ -1,5 +1,5 @@
 //
-//  HandleUserContentControllerWebPageViewModel.swift
+//  WebKitExamplePageViewModel.swift
 //  MVVMExample
 //
 //  Created by pham.minh.tien on 22/04/2021.
@@ -11,13 +11,12 @@ import MVVM
 import RxCocoa
 import WebKit
 
-class HandleUserContentControllerWebPageViewModel: BaseWebViewModel, WKScriptMessageHandler {
+class WebKitExamplePageViewModel: BaseWebViewModel, WKScriptMessageHandler {
     let rxPageTitle = BehaviorRelay<String?>(value: "")
-    
     override func react() {
         super.react()
         let title = (self.model as? MenuModel)?.title ?? "Confirm Alert"
-        
+
         let html = """
         <!DOCTYPE html>
         <html>
@@ -39,17 +38,16 @@ class HandleUserContentControllerWebPageViewModel: BaseWebViewModel, WKScriptMes
         </body>
         </html>
         """
-        
         rxPageTitle.accept(title)
         rxSourceType.accept(WebViewSuorceType.html.rawValue)
         rxSource.accept(html)
     }
-    
+
     override func webView(_ webView: WKWebView, estimatedProgress: Double) {
         self.rxEstimatedProgress.accept(estimatedProgress)
         print("DEBUG: estimatedProgress \(estimatedProgress)")
     }
-    
+
     func userContentController(_: WKUserContentController, didReceive message: WKScriptMessage) {
         let alert = UIAlertController(title: "Evaluate Java Script",
                                       message: (message.body as? String) ?? "",
@@ -62,5 +60,3 @@ class HandleUserContentControllerWebPageViewModel: BaseWebViewModel, WKScriptMes
         navigationService.push(to: alert, options: .modal())
     }
 }
-
-

@@ -13,7 +13,7 @@ import RxCocoa
 
 class SectionImageCellViewModel: BaseCellViewModel {
     let rxImage = BehaviorRelay(value: NetworkImage())
-    
+
     override func react() {
         guard let model = model as? SectionImageModel else {
             return

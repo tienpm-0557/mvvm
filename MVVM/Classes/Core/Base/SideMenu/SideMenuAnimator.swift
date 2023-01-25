@@ -14,7 +14,6 @@ public extension SideMenu {
         var offset = CGSize.zero
         var opacity: Float = 0.4
         var radius: Float = 8.0
-        
         public init(enabled: Bool = true,
                     color: UIColor = UIColor.black,
                     offset: CGSize = CGSize.zero,
@@ -27,7 +26,7 @@ public extension SideMenu {
             self.radius = radius
         }
     }
-    
+
     struct MenuViewEffect {
         var fade: Bool = true
         var scale: Bool = true
@@ -35,7 +34,7 @@ public extension SideMenu {
         var parallaxEnabled: Bool = false
         var bouncesHorizontally: Bool = true
         var statusBarStyle: MTAStatusBarStyle = .black
-        
+
         public init(fade: Bool = true,
                     scale: Bool = true,
                     scaleBackground: Bool = true,
@@ -50,21 +49,20 @@ public extension SideMenu {
             self.statusBarStyle = statusBarStyle
         }
     }
-    
+
     struct ContentViewEffect {
         var alpha: Float = 1.0
         var scale: Float = 0.7
-        
-        var landscapeOffsetX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(400 - max(k_ss.width, k_ss.height) / 2) : 100
-        var portraitOffsetX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(400 - min(k_ss.width, k_ss.height) / 2) : 100
+        var landscapeOffsetX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(400 - max(kSS.width, kSS.height) / 2) : 100
+        var portraitOffsetX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(400 - min(kSS.width, kSS.height) / 2) : 100
         var minParallaxContentRelativeValue: Float = -25.0
         var maxParallaxContentRelativeValue: Float = 25.0
         var interactivePopGestureRecognizerEnabled: Bool = true
-        
+
         public init(alpha: Float = 1.0,
                     scale: Float = 0.7,
-                    landscapeOffsetX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(400 - max(k_ss.width, k_ss.height) / 2) : 30,
-                    portraitOffsetX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(min(k_ss.width, k_ss.height) / 2 - 400) : Float(k_ss.width / 2 - 100),
+                    landscapeOffsetX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(400 - max(kSS.width, kSS.height) / 2) : 30,
+                    portraitOffsetX: Float = (UIDevice.current.userInterfaceIdiom == .pad) ? Float(min(kSS.width, kSS.height) / 2 - 400) : Float(kSS.width / 2 - 100),
                     minParallaxContentRelativeValue: Float = -25.0,
                     maxParallaxContentRelativeValue: Float = 25.0,
                     interactivePopGestureRecognizerEnabled: Bool = true) {

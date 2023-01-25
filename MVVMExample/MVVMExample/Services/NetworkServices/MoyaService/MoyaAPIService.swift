@@ -25,31 +25,30 @@ extension MoyaAPIService: TargetType {
     var headers: [String: String]? {
         return nil
     }
-    
+
     var baseURL: URL { return URL(string: "https://api.flickr.com/services/rest")! }
-    
     var path: String {
         switch self {
         case .flickrSearch:
             return ""
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
         case .flickrSearch:
             return .get
         }
     }
-    
+
     var parameterEncoding: ParameterEncoding {
         return JSONEncoding.default
     }
-    
+
     var sampleData: Data {
         return Data()
     }
-    
+
     var task: Task {
         switch self {
         case .flickrSearch(let keyword, let page):

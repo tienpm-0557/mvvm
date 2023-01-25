@@ -15,11 +15,10 @@ class FailNavigationWebViewModel: IntroductionPageViewModel {
         super.react()
         let title = (self.model as? IntroductionModel)?.title ?? "Fail Provisional Navigation"
         let url = URL(string: "https://thiswebsiteisnotexisting.com")!
-        
         rxPageTitle.accept(title)
         rxURL.accept(url)
     }
-    
+
     override func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         let alert = UIAlertController(title: "FailProvisionalNavigation", message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

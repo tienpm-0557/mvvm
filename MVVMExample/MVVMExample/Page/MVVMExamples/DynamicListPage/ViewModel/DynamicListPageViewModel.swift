@@ -13,7 +13,7 @@ import RxSwift
 
 class DynamicListPageViewModel: BaseListViewModel {
     let rxPageTitle = BehaviorRelay<String?>(value: "")
-    
+
     override func react() {
         super.react()
         fetchData()
@@ -23,23 +23,23 @@ class DynamicListPageViewModel: BaseListViewModel {
             self.rxPageTitle.accept(title + " \(state)")
         }) => disposeBag
     }
-    
+
     func fetchData() {
         self.rxState.accept(.loadingData)
         add()
         self.rxState.accept(.normal)
     }
-    
+
     override func loadMoreContent() {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.rxState.accept(.loadingMore)        
+            self.rxState.accept(.loadingMore)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.add()
                 self.rxState.accept(.normal)
             }
         }
     }
-    
+
     private func add() {
         var reuslt = [SimpleListPageCellViewModel]()
         for _ in 1...10 {
@@ -50,7 +50,7 @@ class DynamicListPageViewModel: BaseListViewModel {
         }
         itemsSource.append(reuslt, animated: false)
     }
-    
+
     override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) {
         /// navigationService
         /// Use navigation service for push view controller into Navigation.

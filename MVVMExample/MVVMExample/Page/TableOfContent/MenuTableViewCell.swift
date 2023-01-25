@@ -14,18 +14,18 @@ import RxSwift
 class MenuTableViewCell: BaseTableCell {
     @IBOutlet private weak var titleLbl: UILabel!
     @IBOutlet private weak var descLbl: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         accessoryType = .disclosureIndicator
     }
-    
+
     override func initialize() {
         accessoryType = .disclosureIndicator
         selectionStyle = .none
     }
-    
+
     override func bindViewAndViewModel() {
         guard let viewModel = viewModel as? MenuTableCellViewModel else {
             return
@@ -38,7 +38,7 @@ class MenuTableViewCell: BaseTableCell {
 class MenuTableCellViewModel: BaseCellViewModel {
     let rxTitle = BehaviorRelay<String?>(value: nil)
     let rxDesc = BehaviorRelay<String?>(value: nil)
-    
+
     override func react() {
         var title = ""
         var desc = ""
@@ -49,7 +49,7 @@ class MenuTableCellViewModel: BaseCellViewModel {
             title = menuModel.title
             desc = menuModel.desc
         }
-        
+
         rxTitle.accept(title)
         rxDesc.accept(desc)
     }

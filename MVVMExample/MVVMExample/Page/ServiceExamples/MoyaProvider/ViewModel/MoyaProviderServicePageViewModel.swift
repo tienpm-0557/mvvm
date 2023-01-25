@@ -20,18 +20,14 @@ class MoyaProviderServicePageViewModel: BaseViewModel {
     let rxPageTitle = BehaviorRelay<String?>(value: "")
     let rxSearchText = BehaviorRelay<String?>(value: nil)
     let rxCurlText = BehaviorRelay<String?>(value: "")
-    
     let rxResponseText = BehaviorRelay<String?>(value: "")
     let rxIsSearching = BehaviorRelay<Bool>(value: false)
-    
     var page: Int = 0
 
     override func react() {
         super.react()
         moyaService = DependencyManager.shared.getService()
-        
         self.moyaService?.curlString.bind(to: rxCurlText) => disposeBag
-        
         rxSearchText.do(onNext: {[weak self] _ in
             self?.rxIsSearching.accept(true)
         })
@@ -42,12 +38,12 @@ class MoyaProviderServicePageViewModel: BaseViewModel {
             }
         }) => disposeBag
     }
-    
+
     func search(withText keyword: String, withPage page: Int) {
         moyaService?.search(keyword: keyword, page: 0)
             .map(prepareSources)
             .subscribe(onSuccess: {[weak self] response in
-                if let flickSearch = response, let desc = flickSearch.response_description {
+                if let flickSearch = response, let desc = flickSearch.responseDescription {
                     self?.rxResponseText.accept("Responsed: \n\(desc)")
                 }
                 self?.rxIsSearching.accept(false)
@@ -56,7 +52,7 @@ class MoyaProviderServicePageViewModel: BaseViewModel {
         })
         => disposeBag
     }
-    
+
     private func prepareSources(_ response: FlickrSearchResponse?) -> FlickrSearchResponse? {
         /// Mapping data if need.
         /// Create model

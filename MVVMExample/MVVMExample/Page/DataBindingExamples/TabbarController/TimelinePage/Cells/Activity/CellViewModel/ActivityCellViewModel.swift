@@ -17,13 +17,12 @@ class ActivityCellViewModel: BaseCellViewModel {
     let rxFollowing = BehaviorRelay<String?>(value: "")
     let rxFollower = BehaviorRelay<String?>(value: "")
     let rxLikes = BehaviorRelay<String?>(value: "")
-    
+
     override func react() {
         super.react()
         guard let model = self.model as? ActivityModel else {
             return
         }
-        
         rxTweets.accept("\(model.tweets)")
         rxFollowing.accept("\(model.following)")
         rxFollower.accept("\(model.follower)")

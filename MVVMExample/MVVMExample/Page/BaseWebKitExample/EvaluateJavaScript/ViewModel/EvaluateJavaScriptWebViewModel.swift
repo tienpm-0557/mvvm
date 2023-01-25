@@ -13,7 +13,6 @@ import WebKit
 class EvaluateJavaScriptWebViewModel: IntroductionPageViewModel {
     override func react() {
         super.react()
-        
         let title = (self.model as? IntroductionModel)?.title ?? "Evaluate JavaScript"
         let html = """
         <!DOCTYPE html>
@@ -36,12 +35,11 @@ class EvaluateJavaScriptWebViewModel: IntroductionPageViewModel {
         </body>
         </html>
         """
-
         rxPageTitle.accept(title)
         rxSourceType.accept(WebViewSuorceType.html.rawValue)
         rxSource.accept(html)
     }
-    
+
     override func webView(_ webView: WKWebView, evaluateJavaScript: (event: Any?, error: Error?)?) {
         if let event = evaluateJavaScript?.event as? String {
             let alert = UIAlertController(title: "Evaluate Java Script", message: event, preferredStyle: .alert)

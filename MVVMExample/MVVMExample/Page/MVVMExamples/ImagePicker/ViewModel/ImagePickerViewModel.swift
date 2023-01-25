@@ -12,7 +12,7 @@ import RxCocoa
 import RxSwift
 import Action
 
-class ImagePickerViewModel: BaseViewModel {    
+class ImagePickerViewModel: BaseViewModel {
     let rxTitle = BehaviorRelay<String?>(value: "")
     let rxDescription = BehaviorRelay<String?>(value: "What's on your mind?")
     let rxImage = BehaviorRelay<UIImage?>(value: nil)
@@ -23,16 +23,16 @@ class ImagePickerViewModel: BaseViewModel {
             return .just(self.post())
         }
     }()
-    
+
     override func react() {
         super.react()
         rxImage.subscribe(onNext: { _ in
         }) => disposeBag
-        
+
         Observable.combineLatest(rxTitle, rxDescription, rxImage) { title, desc, image in
             return !(title?.isEmpty ?? false) && !(desc?.isEmpty ?? false) && (image != nil)
         } ~> rxCanPost => disposeBag
     }
-    
+
     private func post() {}
 }

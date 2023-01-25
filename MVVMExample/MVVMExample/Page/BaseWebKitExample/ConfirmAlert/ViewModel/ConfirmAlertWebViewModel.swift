@@ -14,7 +14,6 @@ class ConfirmAlertWebViewModel: IntroductionPageViewModel {
     override func react() {
         super.react()
         let title = (self.model as? IntroductionModel)?.title ?? "Confirm Alert"
-        
         let html = """
         <!DOCTYPE html>
         <html>
@@ -25,7 +24,6 @@ class ConfirmAlertWebViewModel: IntroductionPageViewModel {
         <button onclick="yourFunction()">Try it</button>
 
         <p id="demo"></p>
-            
         <script>
         function yourFunction() {
           var txt;
@@ -43,21 +41,20 @@ class ConfirmAlertWebViewModel: IntroductionPageViewModel {
         </body>
         </html>
         """
-        
         rxPageTitle.accept(title)
         rxSourceType.accept(WebViewSuorceType.html.rawValue)
         rxSource.accept(html)
     }
-    
+
     override func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         let alert = UIAlertController(title: "JavaScriptConfirm", message: message, preferredStyle: .alert)
-        
+
         alert.addAction(UIAlertAction(title: "Cancel",
                                       style: .cancel,
                                       handler: { _ in
                                         completionHandler(false)
                                       }))
-        
+
         alert.addAction(UIAlertAction(title: "OK",
                                       style: .default,
                                       handler: { _ in

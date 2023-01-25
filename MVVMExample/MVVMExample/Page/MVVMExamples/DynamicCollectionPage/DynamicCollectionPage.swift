@@ -17,7 +17,7 @@ class DynamicCollectionPage: BaseCollectionPage {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
+
     override func initialize() {
         super.initialize()
         allowLoadmoreData = true
@@ -31,24 +31,24 @@ class DynamicCollectionPage: BaseCollectionPage {
         viewModel.rxPageTitle ~> rx.title => disposeBag
         viewModel.rxState ~> self.rx.state => disposeBag
     }
-    
+
     override func registerNibWithColletion(_ collectionView: UICollectionView) {
         collectionView.register(collectionViewCell: DynamicCollectionViewCell.self)
     }
-    
+
     override func cellIdentifier(_ cellViewModel: Any, _ isClass: Bool = false) -> String {
         return isClass ? DynamicCollectionViewCell.className : DynamicCollectionViewCell.identifier
     }
-    
+
     override func getItemSource() -> RxCollection? {
         guard let viewModel = viewModel as? DynamicCollectionPageViewModel else {
             return nil
         }
         return viewModel.itemsSource
     }
-    
+
     override func destroy() {
         super.destroy()
         viewModel?.destroy()
-    }    
+    }
 }

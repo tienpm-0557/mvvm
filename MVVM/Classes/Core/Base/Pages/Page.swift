@@ -24,37 +24,35 @@ extension Reactive where Base: IView {
 open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
     public var disposeBag: DisposeBag? = DisposeBag()
     private var activityBag: DisposeBag? = DisposeBag()
-    
     public var animatorDelegate: AnimatorDelegate?
     public let navigationService: NavigationService = DependencyManager.shared.getService()
-    
+
     private var _viewModel: VM?
     public var viewModel: VM? {
         get { return _viewModel }
         set {
             if _viewModel != newValue {
                 disposeBag = DisposeBag()
-                
                 _viewModel = newValue
                 viewModelChanged()
             }
         }
     }
-    
+
     public var anyViewModel: Any? {
         get { return _viewModel }
         set { viewModel = newValue as? VM }
     }
-    
+
     public private(set) var backButton: UIBarButtonItem?
     public private(set) var activityIndicatorHub: LocalHud? {
         didSet { bindLocalHud() }
     }
-    
+
     private lazy var backAction: Action<Void, Void> = {
-        return Action() { .just(self.onBack()) }
+        return Action { .just(self.onBack()) }
     }()
-    
+
     public var enableBackButton: Bool = false {
         didSet {
             if enableBackButton {
@@ -67,47 +65,45 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
             }
         }
     }
-    
+
     public init(viewModel: VM? = nil) {
         _viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     open override func viewDidLoad() {
         super.viewDidLoad()
-    
         initialize()
         viewModelChanged()
     }
-    
+
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel?.rxViewState.accept(.willAppear)
     }
-    
+
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel?.rxViewState.accept(.didAppear)
     }
-    
+
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewModel?.rxViewState.accept(.willDisappear)
     }
-    
+
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         viewModel?.rxViewState.accept(.didDisappear)
-        
         if isMovingFromParent {
             destroy()
         }
     }
-    
+
     open func setupActivityIndicator() {
         /// Setup Activity indicator
         let localHud = localActivityIndicatorFactory().create()
@@ -115,7 +111,7 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
         localHud.setupView()
         self.activityIndicatorHub = localHud
     }
-    
+
     /**
      Subclasses override this method to create its own hud loader.
      
@@ -124,7 +120,6 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
     open func localActivityIndicatorFactory() -> Factory<LocalHud> {
         return DDConfigurations.activityIndicatorFactory
     }
-    
     /**
      Subclasses override this method to create its own back button on navigation bar.
      
@@ -133,7 +128,6 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
     open func backButtonFactory() -> Factory<UIBarButtonItem> {
         return DDConfigurations.backButtonFactory
     }
-    
     /**
      Subclasses override this method to initialize UIs.
      
@@ -141,7 +135,6 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
      not sure about it
      */
     open func initialize() {}
-    
     /**
      Subclasses override this method to create data binding between view and viewModel.
      
@@ -151,12 +144,10 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
      ```
      */
     open func bindViewAndViewModel() {}
-    
     /**
      Subclasses override this method to do custom actions when hud loader view is toggle (hidden/shown).
      */
     open func localActivityIndicatorHudToggled(_ value: Bool) {}
-    
     /**
      Subclasses override this method to remove all things related to `DisposeBag`.
      */
@@ -165,7 +156,6 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
         activityBag = DisposeBag()
         viewModel?.destroy()
     }
-    
     /**
      Subclasses override this method to create custom back action for back button.
      
@@ -175,7 +165,7 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
     open func onBack() {
         navigationService.pop()
     }
-    
+
     private func bindLocalHud() {
         activityBag = DisposeBag()
         /// Bind Activity hub 
@@ -190,7 +180,7 @@ open class Page<VM: IViewModel>: UIViewController, IView, ITransitionView {
             shared.subscribe(onNext: localActivityIndicatorHudToggled) => activityBag
         }
     }
-    
+
     private func viewModelChanged() {
         bindLocalHud()
         bindViewAndViewModel()

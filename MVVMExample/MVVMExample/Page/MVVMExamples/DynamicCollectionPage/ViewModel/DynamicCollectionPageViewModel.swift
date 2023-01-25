@@ -14,7 +14,7 @@ import Action
 
 class DynamicCollectionPageViewModel: BaseListViewModel {
     let rxPageTitle = BehaviorRelay<String?>(value: "")
-    
+
     override func react() {
         super.react()
         fetchData()
@@ -24,13 +24,13 @@ class DynamicCollectionPageViewModel: BaseListViewModel {
             self.rxPageTitle.accept(title + " \(state)")
         }) => disposeBag
     }
-    
-    func fetchData() {        
+
+    func fetchData() {
         self.rxState.accept(.loadingData)
         add()
         self.rxState.accept(.normal)
     }
-    
+
     override func loadMoreContent() {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             if self.rxState.value == .normal {
@@ -43,7 +43,7 @@ class DynamicCollectionPageViewModel: BaseListViewModel {
             }
         }
     }
-    
+
     /// Dummy data: Append data when did loadmore 10 item per page
     private func add() {
         var reuslt = [DynamicCollectionCellModel]()
@@ -61,7 +61,7 @@ class DynamicCollectionPageViewModel: BaseListViewModel {
         }
         itemsSource.append(reuslt, animated: false)
     }
-    
+
     override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) {
         /// navigationService
         /// Use navigation service for push view controller into Navigation.

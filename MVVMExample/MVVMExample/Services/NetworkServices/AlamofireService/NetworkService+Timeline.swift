@@ -17,7 +17,7 @@ extension NetworkService {
             "page": page,
             "limie": limit
         ]
-        
+
         return Single.create { single in
             let result = self.request(withService: APIService.loadTimeline(parameters: parameters),
                                       withHash: true,
@@ -41,10 +41,10 @@ extension NetworkService {
                         let err = NSError(domain: "", code: 404, userInfo: ["message": "Data not fount"])
                         single(.failure(err))
                     }
-                }) { error in
+                }, onError: { error in
                     single(.failure(error))
-                }
-            
+                })
+
             return result
         }
     }

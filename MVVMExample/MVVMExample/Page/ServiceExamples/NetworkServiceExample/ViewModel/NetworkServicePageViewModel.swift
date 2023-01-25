@@ -13,25 +13,21 @@ import RxCocoa
 
 class NetworkServicePageViewModel: BaseViewModel {
     var networkService: NetworkService?
-    
     let rxPageTitle = BehaviorRelay<String?>(value: "")
     let rxSearchText = BehaviorRelay<String?>(value: nil)
     let rxCurlText = BehaviorRelay<String?>(value: "")
     let rxResponseText = BehaviorRelay<String?>(value: "")
-    
     let rxSearchState = BehaviorRelay<NetworkServiceState>(value: .none)
     let rxDidSearchState = PublishRelay<NetworkServiceState>()
-    
     var page: Int = 0
-    
+
     override func react() {
         super.react()
         rxPageTitle.accept("Network service")
         // Get service
         self.networkService = DependencyManager.shared.getService()
-        
         self.networkService?.curlString.bind(to: rxCurlText) => disposeBag
-        
+
         rxSearchText.do(onNext: {[weak self] text in
             self?.page = 1
             if let keyword = text {
@@ -51,12 +47,12 @@ class NetworkServicePageViewModel: BaseViewModel {
             }
         }) => disposeBag
     }
-    
+
     func search(withText keyword: String, withPage page: Int) {
         _ = networkService?.search(withKeyword: keyword, page: page)
             .map(prepareSources)
             .subscribe(onSuccess: { [weak self] results in
-                if let flickSearch = results, let desc = flickSearch.response_description {
+                if let flickSearch = results, let desc = flickSearch.responseDescription {
                     self?.rxResponseText.accept("Responsed: \n\(desc)")
                     self?.rxSearchState.accept(.success)
                 }
@@ -67,7 +63,7 @@ class NetworkServicePageViewModel: BaseViewModel {
                 self.rxDidSearchState.accept(.error)
             })
     }
-    
+
     private func prepareSources(_ response: FlickrSearchResponse?) -> FlickrSearchResponse? {
         /// Mapping data if need.
         /// Create model

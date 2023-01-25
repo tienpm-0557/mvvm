@@ -13,11 +13,11 @@ import MVVM
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         DependencyManager.shared.registerDefaults()
-        
+
         window = UIWindow(frame: UIScreen.main.bounds)
         // Create Roote page
         let viewVM = TableOfContentViewModel()
@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         return true
     }
-    
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
         /*
@@ -43,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -57,9 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
-    
+
     // MARK: - Core Data Saving support
-    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {

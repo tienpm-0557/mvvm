@@ -12,30 +12,28 @@ import Action
 import RxSwift
 import RxCocoa
 
-class WrapperPage: NavigationPage, IPopupView {    
+class WrapperPage: NavigationPage, IPopupView {
     var widthConstraint: NSLayoutConstraint!
     var heightConstraint: NSLayoutConstraint!
-    
+
     override func viewWillTransition(to size: CGSize,
                                      with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: { _ in
             self.adjustPopupSize()
         }, completion: nil)
     }
-    
+
     func popupLayout() {
         view.cornerRadius = 7
         view.autoCenterInSuperview()
         widthConstraint = view.autoSetDimension(.width, toSize: 320)
         heightConstraint = view.autoSetDimension(.height, toSize: 480)
     }
-    
+
     func show(overlayView: UIView) {
         adjustPopupSize()
-        
         view.transform = CGAffineTransform(scaleX: 0, y: 0)
         view.isHidden = false
-        
         UIView.animate(withDuration: 0.8,
                        delay: 0,
                        usingSpringWithDamping: 0.6,
@@ -46,7 +44,7 @@ class WrapperPage: NavigationPage, IPopupView {
             self.view.transform = .identity
         }, completion: nil)
     }
-    
+
     func hide(overlayView: UIView,
               completion: @escaping (() -> Void)) {
         UIView.animate(withDuration: 0.25,
@@ -55,12 +53,12 @@ class WrapperPage: NavigationPage, IPopupView {
                        animations: {
             overlayView.alpha = 0
             self.view.alpha = 0
-            self.view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)         
-        }) { _ in
+            self.view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        }, completion: { _ in
             completion()
-        }
+        })
     }
-    
+
     private func adjustPopupSize() {
         guard let superview = view.superview else {
             return
@@ -70,39 +68,37 @@ class WrapperPage: NavigationPage, IPopupView {
         } else {
             heightConstraint.constant = 480
         }
-        
+
         if superview.bounds.width < widthConstraint.constant {
             widthConstraint.constant = superview.bounds.width - 20
         } else {
             widthConstraint.constant = 320
         }
-        
+
         view.layoutIfNeeded()
     }
 }
 
 class ContactListPageViewModel: BaseListViewModel {
     lazy var addAction: Action<Void, Void> = {
-        return Action() {
-            .just(self.add())
-        }
+        return Action { .just(self.add())}
     }()
-    
+
     private func add() {
         handleContactModification()
     }
-    
+
     override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) {
         guard let model = cellViewModel.model as? ContactModel else {
             return
         }
         handleContactModification(model)
     }
-    
+
     private func handleContactModification(_ model: ContactModel? = nil) {
         let vm = ContactEditPageViewModel(model: model)
         let page = ContactEditPage(viewModel: vm)
-        
+
         // as you are controlling the ViewModel of edit page,
         // so we can get the result out without using any Delegates
         vm.saveAction.executionObservables.switchLatest().subscribe(onNext: { contactModel in
@@ -113,7 +109,6 @@ class ContactListPageViewModel: BaseListViewModel {
                 cvm.model = contactModel
             }
         }) => disposeBag
-        
         let navPage = WrapperPage(rootViewController: page)
         navigationService.push(to: navPage, options: PushOptions(pushType: .popup(.defaultOptions)))
     }

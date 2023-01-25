@@ -12,7 +12,7 @@ class MVVMExamplePage: TableOfContentsPage {
     override func initialize() {
         super.initialize()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         /// Custom your UIBarButtonItem

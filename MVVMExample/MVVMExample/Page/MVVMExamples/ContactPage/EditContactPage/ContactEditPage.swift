@@ -16,7 +16,7 @@ class ContactEditPage: BasePage {
     let phoneTxt = UITextField()
     let submitBtn = UIButton(type: .custom)
     let cancelBtn = UIButton(type: .custom)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,24 +25,22 @@ class ContactEditPage: BasePage {
 
     override func initialize() {
         title = "Add/Edit Contact"
-        
         enableBackButton = true
-        
         view.addSubview(scrollView)
         scrollView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        
+
         nameTxt.borderStyle = .roundedRect
         nameTxt.placeholder = "Enter your name"
-        
+
         phoneTxt.borderStyle = .roundedRect
         phoneTxt.placeholder = "Enter your phone number"
-        
+
         cancelBtn.setTitle("Cancel", for: .normal)
         cancelBtn.setTitleColor(.white, for: .normal)
         cancelBtn.setBackgroundImage(UIImage.from(color: .red), for: .normal)
         cancelBtn.contentEdgeInsets = .symmetric(horizontal: 10, vertical: 5)
         cancelBtn.cornerRadius = 5
-        
+
         submitBtn.setTitle("Save", for: .normal)
         submitBtn.setTitleColor(.white, for: .normal)
         submitBtn.setTitleColor(.lightGray, for: .disabled)
@@ -50,12 +48,12 @@ class ContactEditPage: BasePage {
         submitBtn.setBackgroundImage(UIImage.from(color: .gray), for: .disabled)
         submitBtn.contentEdgeInsets = .symmetric(horizontal: 10, vertical: 5)
         submitBtn.cornerRadius = 5
-        
+
         let buttonLayout = StackLayout().justifyContent(.fillEqually).spacing(10).children([
             cancelBtn,
             submitBtn
         ])
-        
+
         scrollView.paddings(.all(20)).appendChildren([
             StackSpaceItem(height: 40),
             nameTxt,
@@ -64,7 +62,7 @@ class ContactEditPage: BasePage {
             StackSpaceItem(height: 40),
             buttonLayout
         ])
-        
+
         /*
          Adding custom space between items can be replaced with belows
          
@@ -75,20 +73,18 @@ class ContactEditPage: BasePage {
         ])
          */
     }
-    
+
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
         guard let viewModel = self.viewModel as? ContactEditPageViewModel else {
             return
         }
-        
         viewModel.rxName <~> nameTxt.rx.text => disposeBag
         viewModel.rxPhone <~> phoneTxt.rx.text => disposeBag
-        
+
         cancelBtn.rx.bind(to: viewModel.cancelAction, input: ())
         submitBtn.rx.bind(to: viewModel.saveAction, input: ())
     }
-    
     override func onBack(_ sender: AnyObject) {
         navigationService.pop(with: PopOptions(popType: .dismissPopup))
     }

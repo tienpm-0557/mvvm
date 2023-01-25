@@ -32,7 +32,6 @@ class ListPageExamplePage: BaseListPage {
 
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
-        
         guard let viewModel = viewModel as? ListPageExampleViewModel else {
             return
         }
@@ -43,14 +42,14 @@ class ListPageExamplePage: BaseListPage {
     override func cellIdentifier(_ cellViewModel: Any, _ returnClassName: Bool = false) -> String {
         return returnClassName ? SimpleTableCell.className : SimpleTableCell.identifier
     }
-    
+
     override func getItemSource() -> RxCollection? {
         guard let viewModel = viewModel as? ListPageExampleViewModel else {
             return nil
         }
         return viewModel.itemsSource
     }
-    
+
     override func destroy() {
         super.destroy()
         viewModel?.destroy()

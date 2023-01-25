@@ -18,7 +18,6 @@ class ValidatePageViewModel: BaseViewModel {
     let rxEmail = BehaviorRelay<String?>(value: nil)
     let rxPass = BehaviorRelay<String?>(value: nil)
     let rxSubmitButtonEnabled = BehaviorRelay(value: false)
-    
     lazy var submitAction: Action<Void, Void> = {
         return Action(enabledIf: self.rxSubmitButtonEnabled.asObservable()) {
             let email = self.rxEmail.value ?? ""
@@ -28,19 +27,17 @@ class ValidatePageViewModel: BaseViewModel {
             return .just(())
         }
     }()
-    
+
     let alertService: IAlertService = DependencyManager.shared.getService()
-    
+
     override func react() {
         guard let model = self.model as? MenuModel else {
             return
         }
         rxPageTitle.accept(model.title)
-        
-        Observable.combineLatest(rxEmail, rxPass) { e, p -> Bool in
-            return !e.isNilOrEmpty && !p.isNilOrEmpty
+        Observable.combineLatest(rxEmail, rxPass) { email, pass -> Bool in
+            return !email.isNilOrEmpty && !pass.isNilOrEmpty
         } ~> rxSubmitButtonEnabled => disposeBag // One-way binding is donated by ~>
-        
         rxEmail.filter { $0 != nil }.map { "Hello, \($0!)" } ~> rxHelloText => disposeBag  // One-way binding is donated by ~>
     }
 }

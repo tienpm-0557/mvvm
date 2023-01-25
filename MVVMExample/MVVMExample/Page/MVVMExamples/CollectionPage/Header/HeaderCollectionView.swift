@@ -13,12 +13,12 @@ import RxCocoa
 
 class HeaderCollectionView: BaseHeaderCollectionView {
     @IBOutlet private weak var titleLbl: UILabel!
-    
-    override class func headerSize(withItem _item: BaseViewModel) -> CGSize {
+
+    override class func headerSize(withItem item: BaseViewModel) -> CGSize {
         let screenSize = UIScreen.main.bounds
         return CGSize(width: screenSize.width, height: 50)
     }
-    
+
     override func bindViewAndViewModel() {
         guard let viewModel = viewModel as? SectionHeaderViewViewModel else {
             return

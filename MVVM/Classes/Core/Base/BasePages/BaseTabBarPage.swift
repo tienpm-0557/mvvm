@@ -14,7 +14,7 @@ import PureLayout
 open class BaseTabBarPage: UITabBarController, ITransitionView {
     public var disposeBag: DisposeBag? = DisposeBag()
     public private(set) var backButton: UIBarButtonItem?
-    
+
     public var enableBackButton: Bool = false {
         didSet {
             if enableBackButton {
@@ -27,22 +27,19 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
             }
         }
     }
-    
+
     private lazy var backAction: Action<Void, Void> = {
-        return Action() { .just(self.onBack()) }
+        return Action { .just(self.onBack()) }
     }()
-    
+
     public var animatorDelegate: AnimatorDelegate?
-    
     public let alertService: IAlertService = DependencyManager.shared.getService()
     public let localeService: LocalizeService = DependencyManager.shared.getService()
     public let navigationService: NavigationService = DependencyManager.shared.getService()
-    
-    deinit {
-        destroy()
-    }
-    
+
     private var _viewModel: BaseViewModel?
+    private var readyToBind = false
+
     public private(set) var viewModel: BaseViewModel? {
         get { return _viewModel }
         set {
@@ -53,28 +50,25 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
             }
         }
     }
-    
-    private var readyToBind = false
-    
-    public convenience init(viewModel vm: BaseViewModel) {
+
+    public convenience init(viewModel: BaseViewModel) {
         self.init()
-        self.viewModel = vm
+        self.viewModel = viewModel
         initialize()
         updateAfterViewModelChanged()
     }
-    
+
     open override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel?.viewDidLoad = true
     }
-    
+
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         if isMovingFromParent {
             destroy()
         }
     }
-    
     /**
      Subclasses override this method to create its own back button on navigation bar.
      
@@ -83,7 +77,6 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
     open func backButtonFactory() -> Factory<UIBarButtonItem> {
         return DDConfigurations.backButtonFactory
     }
-    
     /**
      Subclasses override this method to initialize UIs.
      
@@ -91,7 +84,6 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
      not sure about it
      */
     open func initialize() {}
-    
     /**
      Subclasses override this method to create data binding between view and viewModel.
      
@@ -101,43 +93,43 @@ open class BaseTabBarPage: UITabBarController, ITransitionView {
      ```
      */
     open func bindViewAndViewModel() {}
-    
+
     open func onBack() {
         navigationService.pop()
     }
-    
     /**
      Subclasses override this method to remove all things related to `DisposeBag`.
      */
     open func destroy() {
         cleanUp()
     }
-    
     /**
      Subclasses override this method to do more action when `viewModel` changed.
      */
     open func viewModelChanged() {
         /// React in case init viewmodel without Model. So, model changed not call.
         viewModel?.reactIfNeeded()
-        
         if readyToBind {
             /// In case view change view model we need rebind view and view model
             self.bindViewAndViewModel()
         }
     }
-    
+
     private func cleanUp() {
         disposeBag = nil
     }
-    
+
     func updateAfterViewModelChanged() {
         bindViewAndViewModel()
         viewModelChanged()
-        
         readyToBind = true
         localeService.rxLocaleState.subscribe(onNext: {[weak self] _ in
             self?.onUpdateLocalize()
             self?.viewModel?.onUpdateLocalize()
         }) => disposeBag
+    }
+
+    deinit {
+        destroy()
     }
 }

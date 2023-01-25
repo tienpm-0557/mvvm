@@ -14,7 +14,6 @@ import RxCocoa
 class SectionFooterListView: BaseHeaderTableView {
     @IBOutlet private weak var titleLbl: UILabel!
     @IBOutlet private weak var descLbl: UILabel!
-    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -22,15 +21,15 @@ class SectionFooterListView: BaseHeaderTableView {
         // Drawing code
     }
     */
-    override class func height(withItem _item: BaseViewModel) -> CGFloat {
+    override class func height(withItem item: BaseViewModel) -> CGFloat {
         return 60
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundView?.backgroundColor = .groupTableViewBackground
     }
-    
+
     override func bindViewAndViewModel() {
         guard let viewModel = viewModel as? SectionHeaderViewViewModel else {
             return

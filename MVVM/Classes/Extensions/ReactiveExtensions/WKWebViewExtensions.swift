@@ -110,8 +110,8 @@ extension Reactive where Base: WKWebView {
                 mutableArgs.withUnsafeMutableBufferPointer { ptr in
                     closureObject = ptr[3] as AnyObject
                 }
-                let __completionBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
-                let handler = unsafeBitCast(__completionBlockPtr, to: WKCompletionHandler.self)
+                let completionBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
+                let handler = unsafeBitCast(completionBlockPtr, to: WKCompletionHandler.self)
                 return (view, message, frame, handler)
         }
         
@@ -132,8 +132,8 @@ extension Reactive where Base: WKWebView {
                 mutableArgs.withUnsafeMutableBufferPointer { ptr in
                     closureObject = ptr[3] as AnyObject
                 }
-                let __confirmBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
-                let handler = unsafeBitCast(__confirmBlockPtr, to: WKConfirmHandler.self)
+                let confirmBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
+                let handler = unsafeBitCast(confirmBlockPtr, to: WKConfirmHandler.self)
                 return (view, message, frame, handler)
         }
         
@@ -351,11 +351,11 @@ extension Reactive where Base: WKWebView {
                     closureObject = ptr[2] as AnyObject
                 }
                 /// 4. instantiate an opaque pointer to referenc the value of the `unspecified type`
-                let __challengeBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
+                let challengeBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
                 /// 5. Here the magic happen we forcefully tell the compiler that anything
                 /// found at this memory address that is refrenced should be a type of
                 /// `__ChallengeHandler`!
-                let handler = unsafeBitCast(__challengeBlockPtr, to: WKChallengeHandler.self)
+                let handler = unsafeBitCast(challengeBlockPtr, to: WKChallengeHandler.self)
                 return (view, challenge, handler)
         }
         
@@ -386,8 +386,8 @@ extension Reactive where Base: WKWebView {
                 mutableArgs.withUnsafeMutableBufferPointer { ptr in
                     closureObject = ptr[2] as AnyObject
                 }
-                let __decisionBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
-                let handler = unsafeBitCast(__decisionBlockPtr, to: WKDecisionHandler.self)
+                let decisionBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
+                let handler = unsafeBitCast(decisionBlockPtr, to: WKDecisionHandler.self)
                 return (view, response, handler)
         }
         
@@ -406,8 +406,8 @@ extension Reactive where Base: WKWebView {
                 mutableArgs.withUnsafeMutableBufferPointer { ptr in
                     closureObject = ptr[2] as AnyObject
                 }
-                let __actionBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
-                let handler = unsafeBitCast(__actionBlockPtr, to: WKActionHandler.self)
+                let actionBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject as AnyObject).toOpaque())
+                let handler = unsafeBitCast(actionBlockPtr, to: WKActionHandler.self)
                 return (view, action, handler)
         }
         

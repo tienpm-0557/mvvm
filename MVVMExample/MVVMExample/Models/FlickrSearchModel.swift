@@ -22,13 +22,13 @@ class FlickrSearchResponse: Model {
     var pages = 1
     var photos = [FlickrPhotoModel]()
     var message = ""
-    var response_description: JSON?
-    
+    var responseDescription: JSON?
+
     convenience init() {
         self.init(JSON: [String: Any]())!
         self.stat = .ok
     }
-    
+
     override func mapping(map: Map) {
         stat <- (map["stat"], FlickrStatusTransform())
         page <- map["photos.page"]
@@ -44,14 +44,14 @@ class FlickrPhotoModel: Model {
         let url = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret)_q.jpg"
         return URL(string: url)!
     }
-    
+
     var id = ""
     var owner = ""
     var secret = ""
     var server = ""
     var farm = 0
     var title = ""
-    
+
     /*
      if you don't want to use these properties, just remove them, I just want
      to show how to deserialize from json using ObjectMapper
@@ -59,7 +59,7 @@ class FlickrPhotoModel: Model {
     var isPublic = true
     var isFriend = false
     var isFamily = false
-    
+
     override func mapping(map: Map) {
         id <- map["id"]
         owner <- map["owner"]
@@ -76,14 +76,14 @@ class FlickrPhotoModel: Model {
 class IntToBoolTransform: TransformType {
     typealias Object = Bool
     typealias JSON = Int
-    
+
     func transformFromJSON(_ value: Any?) -> Object? {
         if let type = value as? Int {
             return type != 0
         }
         return nil
     }
-    
+
     func transformToJSON(_ value: Object?) -> JSON? {
         if let value = value {
             return value ? 1 : 0
@@ -95,14 +95,14 @@ class IntToBoolTransform: TransformType {
 class FlickrStatusTransform: TransformType {
     typealias Object = FlickrStatus
     typealias JSON = String
-    
+
     func transformFromJSON(_ value: Any?) -> Object? {
         if let type = value as? String {
             return FlickrStatus(rawValue: type)
         }
         return nil
     }
-    
+
     func transformToJSON(_ value: Object?) -> JSON? {
         return value?.rawValue
     }

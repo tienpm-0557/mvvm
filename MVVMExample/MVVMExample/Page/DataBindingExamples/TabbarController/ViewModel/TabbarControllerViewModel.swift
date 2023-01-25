@@ -13,7 +13,6 @@ import RxSwift
 
 class TabbarControllerViewModel: BaseViewModel {
     let rxSelectedIndex = BehaviorRelay(value: 0)
-    
     override func react() {
         super.react()
     }

@@ -54,12 +54,12 @@ open class StackLayout: UIStackView {
         super.init(frame: .zero)
         setupView()
     }
-    
+
     required public init(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
     }
-    
+
     /// Subclasses use this for customizations
     open func setupView() {}
 }
@@ -71,28 +71,28 @@ public extension StackLayout {
         self.axis = axis
         return self
     }
-    
+
     /// Define how stack layout aligns its children
     @discardableResult
     func alignItems(_ alignment: Alignment) -> StackLayout {
         self.alignment = alignment
         return self
     }
-    
+
     /// Define how stack layout distributes its children
     @discardableResult
     func justifyContent(_ distribution: Distribution) -> StackLayout {
         self.distribution = distribution
         return self
     }
-    
+
     /// Spacing between stack items
     @discardableResult
     func spacing(_ value: CGFloat) -> StackLayout {
         spacing = value
         return self
     }
-    
+
     /// Add children into stack layout, accept only UIView or StackItem type,
     /// otherwise will be ignore
     @discardableResult
@@ -104,7 +104,6 @@ public extension StackLayout {
         }
         return self
     }
-    
     /// Insert a child at specific index, accept only UIView or StackItem type,
     /// otherwise will be ignore
     @discardableResult
@@ -112,28 +111,25 @@ public extension StackLayout {
         guard index >= 0 && index < arrangedSubviews.count else {
             return self
         }
-        
         if let view = getView(for: child) {
             insertArrangedSubview(view, at: index)
         }
-        
         return self
     }
-    
+
     /// Remove a specific child at index
     @discardableResult
     func removeChild(at index: Int) -> StackLayout {
         guard index >= 0 && index < arrangedSubviews.count else {
             return self
         }
-        
+
         let child = arrangedSubviews[index]
         removeArrangedSubview(child)
         child.removeFromSuperview()
-        
         return self
     }
-    
+
     /// Get the view for a child, only accept UIView or StackItem type
     private func getView(for child: Any) -> UIView? {
         if let stackItem = child as? StackItem {
@@ -141,7 +137,7 @@ public extension StackLayout {
         } else if let view = child as? UIView {
             return view
         }
-        
+
         return nil
     }
 }
@@ -173,32 +169,25 @@ public struct StackViewItem: StackItem {
     public enum Attribute {
         /// Align left with insets
         case leading(insets: UIEdgeInsets)
-        
         /// Align right with insets
         case trailing(insets: UIEdgeInsets)
-        
         /// Align top with insets
         case top(insets: UIEdgeInsets)
-        
         /// Align bottom with insets
         case bottom(insets: UIEdgeInsets)
-        
         /// Center the view
         case center(insets: UIEdgeInsets)
-        
         /// Fill the content with insets
         case fill(insets: UIEdgeInsets)
     }
-    
+
     private let originalView: UIView
     private let constraintsDefinition: ((UIView) -> Void)
-    
     /// Constructor that takes a custom constraints definition
     public init(view: UIView, constraintsDefinition: @escaping ((UIView) -> Void)) {
         self.originalView = view
         self.constraintsDefinition = constraintsDefinition
     }
-    
     /// Constructor with custom attribute
     public init(view: UIView, attribute: Attribute) {
         self.init(view: view) { view in
@@ -206,37 +195,36 @@ public struct StackViewItem: StackItem {
             case .leading(let insets):
                 view.autoPinEdgesToSuperviewEdges(with: insets, excludingEdge: .trailing)
                 view.autoPinEdge(toSuperviewEdge: .trailing, withInset: insets.right, relation: .greaterThanOrEqual)
-                
+
             case .trailing(let insets):
                 view.autoPinEdgesToSuperviewEdges(with: insets, excludingEdge: .leading)
                 view.autoPinEdge(toSuperviewEdge: .leading, withInset: insets.left, relation: .greaterThanOrEqual)
-                
+
             case .top(let insets):
                 view.autoPinEdgesToSuperviewEdges(with: insets, excludingEdge: .bottom)
                 view.autoPinEdge(toSuperviewEdge: .bottom, withInset: insets.bottom, relation: .greaterThanOrEqual)
-                
+
             case .bottom(let insets):
                 view.autoPinEdgesToSuperviewEdges(with: insets, excludingEdge: .top)
                 view.autoPinEdge(toSuperviewEdge: .top, withInset: insets.top, relation: .greaterThanOrEqual)
-                
+
             case .center(let insets):
                 view.autoCenterInSuperview()
                 view.autoPinEdge(toSuperviewEdge: .top, withInset: insets.top, relation: .greaterThanOrEqual)
                 view.autoPinEdge(toSuperviewEdge: .leading, withInset: insets.left, relation: .greaterThanOrEqual)
                 view.autoPinEdge(toSuperviewEdge: .bottom, withInset: insets.bottom, relation: .greaterThanOrEqual)
                 view.autoPinEdge(toSuperviewEdge: .trailing, withInset: insets.right, relation: .greaterThanOrEqual)
-                
+
             case .fill(let insets):
                 view.autoPinEdgesToSuperviewEdges(with: insets)
             }
         }
     }
-    
+
     public func build(with layout: StackLayout) -> UIView {
         let wrapperView = UIView()
         wrapperView.addSubview(originalView)
         constraintsDefinition(originalView)
-        
         return wrapperView
     }
 }
@@ -245,29 +233,28 @@ public struct StackViewItem: StackItem {
 public struct StackSpaceItem: StackItem {
     private let width: CGFloat
     private let height: CGFloat
-    
+
     /// Constructor with both width and height the same size
     public init(size: CGFloat) {
         width = size
         height = size
     }
-    
+
     /// Constructor with width only, mostly use in horizontal stack layout
     public init(width: CGFloat) {
         self.width = width
         self.height = 0
     }
-    
+
     /// Construtor with height only, mostly use in vertical stack layout
     public init(height: CGFloat) {
         self.width = 0
         self.height = height
     }
-    
+
     public func build(with layout: StackLayout) -> UIView {
         let view = UIView()
         view.autoSetDimensions(to: CGSize(width: width, height: height))
-        
         return view
     }
 }

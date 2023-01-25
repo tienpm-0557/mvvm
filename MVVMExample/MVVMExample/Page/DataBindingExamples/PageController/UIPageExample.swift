@@ -15,21 +15,20 @@ class UIPageExample: BaseUIPage {
 
         // Do any additional setup after loading the view.
     }
-    
+
     override func initialize() {
         super.initialize()
         enableBackButton = true
     }
-    
+
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
         guard let viewModel = self.viewModel as? UIPageExampleViewModel else {
             return
         }
-        
         viewModel.rxPageTitle ~> self.rx.title => disposeBag
     }
-    
+
     override func getItemSource() -> ReactiveCollection<UIPageItem>? {
         guard let viewModel = viewModel as? UIPageExampleViewModel else {
             return nil

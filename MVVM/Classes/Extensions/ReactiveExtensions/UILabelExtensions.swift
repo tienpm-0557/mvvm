@@ -45,19 +45,22 @@ public extension UILabel {
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle,
                                       value: paragraphStyle,
                                       range: NSRange(location: 0, length: attributedString.length))
-        
         self.attributedText = attributedString
     }
     
     func setHTMLFromString(htmlText: String, withTextHexColor hex: String = "929292") {
         let modifiedFont = String(format: "<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(self.font!.pointSize)\">%@</span>", htmlText)
-        
-        let attrStr = try! NSAttributedString(
-            data: modifiedFont.data(using: .unicode, allowLossyConversion: true)!,
-            options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue],
-            documentAttributes: nil)
-        self.attributedText = attrStr
-        self.textColor = UIColor(hexString: hex)
+
+        do {
+            let attrStr = try NSAttributedString(
+                data: modifiedFont.data(using: .unicode, allowLossyConversion: true)!,
+                options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue],
+                documentAttributes: nil)
+            self.attributedText = attrStr
+            self.textColor = UIColor(hexString: hex)
+        } catch {
+            debugPrint(error.localizedDescription)
+        }
     }
     
     func setHTMLFromStringWithSettingFontSize(htmlText: String, withTextHexColor hex: String = "929292") {
@@ -66,13 +69,16 @@ public extension UILabel {
             font = fontSize
         }
         let modifiedFont = String(format: "<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(font)\">%@</span>", htmlText)
-        
-        let attrStr = try! NSAttributedString(
-            data: modifiedFont.data(using: .unicode, allowLossyConversion: true)!,
-            options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue],
-            documentAttributes: nil)
-        self.attributedText = attrStr
-        self.textColor = UIColor(hexString: hex)
+        do {
+            let attrStr = try NSAttributedString(
+                data: modifiedFont.data(using: .unicode, allowLossyConversion: true)!,
+                options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue],
+                documentAttributes: nil)
+            self.attributedText = attrStr
+            self.textColor = UIColor(hexString: hex)
+        } catch {
+            debugPrint(error.localizedDescription)
+        }
     }
 }
 

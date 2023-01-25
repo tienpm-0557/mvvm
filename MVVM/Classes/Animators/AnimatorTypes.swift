@@ -5,6 +5,7 @@
 //  Created by pham.minh.tien on 9/25/20.
 //
 
+// swiftlint:disable file_length
 public func delay(_ delay: Double, closure: @escaping () -> Void) {
     DispatchQueue.main.asyncAfter(
         deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC),
@@ -14,16 +15,16 @@ public func delay(_ delay: Double, closure: @escaping () -> Void) {
 
 public class BasicAnimation: CABasicAnimation, CAAnimationDelegate {
     public var onFinish : (() -> Void)?
-    
+
     override init() {
         super.init()
         self.delegate = self
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let onFinish = onFinish {
             onFinish()
@@ -40,16 +41,15 @@ public class FlipAnimator: Animator {
     override public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return self.duration
     }
-    
+
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let toVC = transitionContext.viewController(forKey: .to)!
         let fromVC = transitionContext.viewController(forKey: .from)!
         let duration = transitionDuration(using: transitionContext)
-        
         containerView.addSubview(toVC.view)
         containerView.addSubview(fromVC.view)
-        
+
         if isPresenting {
             delay(0) { // don't know why, iOS bug?
                 UIView.transition(from: fromVC.view,
@@ -74,14 +74,12 @@ public class ZoomAnimator: Animator {
     override public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return self.duration
     }
-    
+    // swiftlint:disable function_body_length
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let toVC = transitionContext.viewController(forKey: .to)!
         let fromVC = transitionContext.viewController(forKey: .from)!
-        
         let size = containerView.frame.size
-        
         let zoomView = UIView(frame: CGRect(x: 0,
                                             y: 0,
                                             width: 2 * size.width,
@@ -89,84 +87,75 @@ public class ZoomAnimator: Animator {
         containerView.addSubview(zoomView)
         zoomView.addSubview(fromVC.view)
         zoomView.addSubview(toVC.view)
-        
         if isPresenting {
             toVC.view.frame = CGRect(x: size.width,
                                      y: 0,
                                      width: size.width,
                                      height: size.height)
-            
             UIView.animate(withDuration: 0.8) {
                 fromVC.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                 toVC.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
             }
-            
             UIView.animate(withDuration: 0.5,
                            delay: 0.7,
                            options: .beginFromCurrentState,
                            animations: {
                             zoomView.transform = CGAffineTransform(translationX: -2 * fromVC.view.frame.width, y: 0)
                            })
-            
             UIView.animate(withDuration: 0.8,
                            delay: 1.2,
                            options: .beginFromCurrentState,
                            animations: {
                             fromVC.view.transform = .identity
                             toVC.view.transform = .identity
-                           }) { _ in
+                           }, completion: { _ in
                 toVC.view.frame = containerView.bounds
                 containerView.addSubview(toVC.view)
                 zoomView.removeFromSuperview()
                 transitionContext.completeTransition(true)
-            }
+            })
         } else {
             fromVC.view.frame = CGRect(x: size.width, y: 0, width: size.width, height: size.height)
             zoomView.transform = CGAffineTransform(translationX: -size.width, y: 0)
-            
             UIView.animate(withDuration: 0.8) {
                 fromVC.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                 toVC.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
             }
-            
             UIView.animate(withDuration: 0.5,
                            delay: 0.7,
                            options: .beginFromCurrentState,
                            animations: {
                 zoomView.transform = .identity
             })
-            
             UIView.animate(withDuration: 0.8,
                            delay: 1.2,
                            options: .beginFromCurrentState,
                            animations: {
                 fromVC.view.transform = .identity
                 toVC.view.transform = .identity
-            }) { _ in
+            }, completion: { _ in
                 toVC.view.frame = containerView.bounds
                 containerView.addSubview(toVC.view)
                 zoomView.removeFromSuperview()
                 transitionContext.completeTransition(true)
-            }
+            })
         }
     }
 }
 
 public class ClockAnimator: Animator {
+    // swiftlint:disable function_body_length
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to)
         else {
             return
         }
-        
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         containerView.addSubview(fromVC.view)
-        
         let radius = 2 * sqrt(pow(fromVC.view.bounds.size.height / 2, 2) + pow(fromVC.view.bounds.size.width / 2, 2))
         let circleCenter = CGPoint(x: radius, y: radius)
-        
         let circleFromToAngle: ((Double) -> (CGPath)) = { endAngle in
             let path = UIBezierPath()
             path.move(to: circleCenter)
@@ -176,23 +165,21 @@ public class ClockAnimator: Animator {
                         startAngle: CGFloat(0),
                         endAngle: CGFloat(endAngle),
                         clockwise: true)
-            
             return path.cgPath
         }
-        
+
         let shapeLayer = CAShapeLayer()
         shapeLayer.bounds = CGRect(x: 0, y: 0, width: radius, height: radius)
         shapeLayer.position = CGPoint(x: (fromVC.view.frame.size.width / 2) - (radius / 2), y: (fromVC.view.frame.size.height / 2) - (radius / 2))
         shapeLayer.path = circleFromToAngle(2.0 * Double.pi)
-        
         fromVC.view.layer.mask = shapeLayer
-        
+
         let cleanup : (() -> Void) = {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             fromVC.view.layer.mask = nil
             fromVC.view.removeFromSuperview()
         }
-        
+
         let runAnimationToPathWithCompletion: ((CGPath, CGPath, @escaping () -> Void) -> Void) = { pathStart, pathEnd, completion in
             let animation = BasicAnimation()
             animation.keyPath = "path"
@@ -207,7 +194,6 @@ public class ClockAnimator: Animator {
             }
             shapeLayer.add(animation, forKey: "path")
         }
-        
         runAnimationToPathWithCompletion(circleFromToAngle(Double.pi * 2.0), circleFromToAngle(Double.pi * 1.50001), {
             runAnimationToPathWithCompletion(circleFromToAngle(Double.pi * 1.5), circleFromToAngle(Double.pi * 1.00001), {
                 runAnimationToPathWithCompletion(circleFromToAngle(Double.pi * 1.0), circleFromToAngle(Double.pi * 0.50001), {
@@ -227,11 +213,9 @@ public class CircleAnimator: Animator {
         else {
             return
         }
-        
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         containerView.addSubview(fromVC.view)
-        
         let radius = sqrt(pow(fromVC.view.bounds.size.height / 2, 2) + pow(fromVC.view.bounds.size.width / 2, 2))
         let circlePathStart = UIBezierPath(arcCenter: CGPoint(x: fromVC.view.bounds.size.width / 2, y: fromVC.view.bounds.size.height / 2),
                                            radius: CGFloat(radius),
@@ -243,19 +227,16 @@ public class CircleAnimator: Animator {
                                          startAngle: CGFloat(0),
                                          endAngle: CGFloat(Double.pi * 2),
                                          clockwise: true)
-        
+
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePathStart.cgPath
         shapeLayer.bounds = CGRect(x: 0,
                                         y: 0,
                                         width: fromVC.view.bounds.size.width,
                                         height: fromVC.view.bounds.size.height)
-        
         shapeLayer.position = CGPoint(x: fromVC.view.bounds.size.width / 2,
                                       y: fromVC.view.bounds.size.height / 2)
-        
         fromVC.view.layer.mask = shapeLayer
-        
         let animation = BasicAnimation()
         animation.keyPath = "path"
         animation.fillMode = .forwards
@@ -279,39 +260,35 @@ public class CrossFadeAnimator: Animator {
         else {
             return
         }
-        
         fromVC.view.alpha = 1.0
         toVC.view.alpha = 0.0
-        
         let containerView = transitionContext.containerView
         containerView.addSubview(fromVC.view)
         containerView.addSubview(toVC.view)
-        
         UIView.animate(withDuration: self.duration,
                        animations: {
             fromVC.view.alpha = 0.0
             toVC.view.alpha = 1.0
-        }) { _ in
+        }, completion: { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             fromVC.view.alpha = 1.0
-        }
+        })
     }
 }
 
 public class RectanglerAnimator: Animator {
     var rectangleGrowthDistance: CGFloat = 60
-    
+    // swiftlint:disable function_body_length
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to)
         else {
             return
         }
-        
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         containerView.addSubview(fromVC.view)
-        
+
         func createRectOutlinePath(_ outerRect: CGRect, completion: (() -> Void)? = nil) -> CAShapeLayer? {
             let magnitude = (self.rectangleGrowthDistance * 0.2)
             if self.rectangleGrowthDistance >= outerRect.size.width
@@ -323,15 +300,12 @@ public class RectanglerAnimator: Animator {
                     || self.rectangleGrowthDistance >= innerRect.size.height {
                 return nil
             }
-            
             let path = UIBezierPath(rect: outerRect)
             path.append(UIBezierPath(rect: innerRect))
             path.usesEvenOddFillRule = true
-            
             let finalPath = UIBezierPath(rect: outerRect)
             finalPath.append(UIBezierPath(rect: RectanglerAnimator.rectMovedIn(innerRect, magnitude: self.rectangleGrowthDistance)))
             finalPath.usesEvenOddFillRule = true
-            
             let runAnimationToPathWithCompletion: ((CGPath, CAShapeLayer, (() -> Void)?) -> Void) = { pathEnd, layer, completion in
                 let animation = BasicAnimation()
                 animation.keyPath = "path"
@@ -347,7 +321,6 @@ public class RectanglerAnimator: Animator {
                 }
                 layer.add(animation, forKey: "path")
             }
-            
             let shapeLayer = CAShapeLayer()
             shapeLayer.bounds = CGRect(x: 0, y: 0, width: outerRect.size.width, height: outerRect.size.height)
             shapeLayer.position = CGPoint(x: outerRect.size.width / 2, y: outerRect.size.height / 2)
@@ -356,24 +329,20 @@ public class RectanglerAnimator: Animator {
             runAnimationToPathWithCompletion(finalPath.cgPath, shapeLayer, completion)
             return shapeLayer
         }
-        
         let cleanup : (() -> Void) = {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             fromVC.view.alpha = 1
             fromVC.view.layer.mask = nil
         }
-        
         let maskLayer = CALayer()
         maskLayer.bounds = CGRect(x: 0,
                                   y: 0,
                                   width: fromVC.view.bounds.size.width,
                                   height: fromVC.view.bounds.size.height)
-        
         maskLayer.position = CGPoint(x: fromVC.view.bounds.size.width / 2,
                                      y: fromVC.view.bounds.size.height / 2)
-        
-        for i in (0..<8) {
-            let magnitude = CGFloat(i) * self.rectangleGrowthDistance
+        for index in (0..<8) {
+            let magnitude = CGFloat(index) * self.rectangleGrowthDistance
             if magnitude <= fromVC.view.bounds.width && magnitude <= fromVC.view.bounds.height {
                 let startRect = RectanglerAnimator.rectMovedIn(fromVC.view.bounds, magnitude: magnitude)
                 if let sublayer = createRectOutlinePath(startRect, completion: nil) {
@@ -381,12 +350,10 @@ public class RectanglerAnimator: Animator {
                 }
             }
         }
-        
         fromVC.view.layer.mask = maskLayer
         UIView.animate(withDuration: self.duration) {
             fromVC.view.alpha = 0.0
         }
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(self.duration), execute: {
             cleanup()
         })
@@ -394,23 +361,22 @@ public class RectanglerAnimator: Animator {
 }
 
 public class MultiCircleAnimator: Animator {
+    // swiftlint:disable function_body_length
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to)
         else {
             return
         }
-        
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         containerView.addSubview(fromVC.view)
-        
         let cleanup = {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             fromVC.view.removeFromSuperview()
             fromVC.view.layer.mask = nil
         }
-        
+
         let createRectOutlinePath: ((CGPoint, CGSize, CGFloat, (() -> Void)?) -> (CAShapeLayer)) = { circleCenter, circleSize, circleRadius, completion in
             let pathStart = UIBezierPath()
             pathStart.addArc(withCenter: circleCenter,
@@ -418,29 +384,24 @@ public class MultiCircleAnimator: Animator {
                              startAngle: CGFloat(0),
                              endAngle: CGFloat(Double.pi * 2),
                              clockwise: true)
-            
             let pathEnd = UIBezierPath()
             pathEnd.addArc(withCenter: circleCenter,
                            radius: circleSize.width,
                            startAngle: CGFloat(0),
                            endAngle: CGFloat(Double.pi * 2),
                            clockwise: true)
-            
             let rect = CGRect(x: circleCenter.x - (circleSize.width / 2),
                               y: circleCenter.y - (circleSize.height / 2),
                               width: circleSize.width,
                               height: circleSize.height)
-            
             let shapeLayer = CAShapeLayer()
             shapeLayer.bounds = CGRect(x: 0,
                                        y: 0,
                                        width: circleSize.width,
                                        height: circleSize.height)
-            
             shapeLayer.position = CGPoint(x: (rect.origin.x + rect.size.width) - (circleSize.width / 2),
                                           y: (rect.origin.y + rect.size.height) - (circleSize.height / 2))
             shapeLayer.path = pathStart.cgPath
-            
             let animation = BasicAnimation()
             animation.keyPath = "path"
             animation.duration = self.duration
@@ -455,34 +416,30 @@ public class MultiCircleAnimator: Animator {
             shapeLayer.add(animation, forKey: "path")
             return shapeLayer
         }
-        
         guard let view = fromVC.view else {
             transitionContext.completeTransition(false)
             return
         }
-        
         let maskLayer = CALayer()
         maskLayer.bounds = CGRect(x: 0,
                                   y: 0,
                                   width: view.frame.size.width,
                                   height: view.frame.size.height)
         maskLayer.position = CGPoint(x: (view.frame.size.width / 2), y: (view.frame.size.height / 2))
-        
         let circleSize = CGSize(width: 20, height: 20)
         for rowIndex in (0..<Int(1 + ceilf(Float(view.bounds.size.height / circleSize.height)))) {
             for colIndex in (0..<Int(2 + ceilf(Float(view.bounds.size.width / circleSize.width)))) {
                 let circleCenter = CGPoint(x: (circleSize.width / 2) + (CGFloat(colIndex) * circleSize.width),
                                            y: (circleSize.height / 2) + (CGFloat(rowIndex) * circleSize.height))
-                
                 maskLayer.addSublayer(createRectOutlinePath(circleCenter, circleSize, 1, rowIndex == 0 && colIndex == 0 ? cleanup : nil))
             }
         }
-        
         fromVC.view.layer.mask = maskLayer
     }
 }
 
 public class TiledFlipAnimator: Animator {
+    // swiftlint:disable function_parameter_count
     private func flipSegment(toViewImage: UIImage,
                              fromViewImage: UIImage,
                              delay: TimeInterval,
@@ -501,29 +458,29 @@ public class TiledFlipAnimator: Animator {
                                                                  height: fromViewImage.scale * rect.size.height)) else {
             return
         }
-        
+
         let toImage = UIImage(cgImage: toImageRef)
         let toImageView = UIImageView()
         toImageView.clipsToBounds = true
         toImageView.frame = rect
         toImageView.image = toImage
-        
+
         let fromImage = UIImage(cgImage: fromImageRef)
         let fromImageView = UIImageView()
         fromImageView.clipsToBounds = true
         fromImageView.frame = rect
         fromImageView.image = fromImage
-        
+
         let containerView = UIView()
         containerView.frame = fromImageView.frame
         containerView.backgroundColor = UIColor.clear
-        
+
         fromImageView.frame.origin = CGPoint.zero
         toImageView.frame.origin = CGPoint.zero
-        
+
         containerView.addSubview(fromImageView)
         parentView.addSubview(containerView)
-        
+
         let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .curveEaseInOut]
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
             UIView.transition(with: containerView, duration: TimeInterval(animationTime), options: transitionOptions, animations: {
@@ -532,7 +489,7 @@ public class TiledFlipAnimator: Animator {
             })
         })
     }
-    
+
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to),
@@ -541,40 +498,37 @@ public class TiledFlipAnimator: Animator {
         else {
             return
         }
-        
+
         let containerView = transitionContext.containerView
         fromVC.view.removeFromSuperview()
-        
+
         let parentView = UIView()
         parentView.backgroundColor = UIColor.clear
         parentView.frame = fromVC.view.frame
         containerView.addSubview(parentView)
-        
+
         let cleanup = {
             containerView.addSubview(toVC.view)
             parentView.removeFromSuperview()
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
-        
+
         let squareSizeWidth: CGFloat = fromVC.view.bounds.size.width / 5
         let squareSizeHeight: CGFloat = fromVC.view.bounds.size.height / 10
-        
+
         let numRows = 1 + Int(toVC.view.bounds.size.width / squareSizeWidth)
         let numCols = 1 + Int(toVC.view.bounds.size.height / squareSizeWidth)
-        for x in (0...numRows) {
-            for y in (0...numCols) {
-                let rect = CGRect(x: (CGFloat(x) * squareSizeWidth),
-                                  y: (CGFloat(y) * squareSizeHeight),
+        for numX in (0...numRows) {
+            for numY in (0...numCols) {
+                let rect = CGRect(x: (CGFloat(numX) * squareSizeWidth),
+                                  y: (CGFloat(numY) * squareSizeHeight),
                                   width: squareSizeWidth,
                                   height: squareSizeHeight)
-                
                 let randomPercent = Float(arc4random()) / Float(UINT32_MAX)
                 let delay = TimeInterval(Float(self.duration * 0.5) * randomPercent)
-                
                 flipSegment(toViewImage: snapshotToVc, fromViewImage: snapshotFromVc, delay: delay, rect: rect, animationTime: CGFloat(self.duration / 2), parentView: parentView)
             }
         }
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(self.duration), execute: {
             cleanup()
         })
@@ -584,37 +538,34 @@ public class TiledFlipAnimator: Animator {
 public class ImageRepeatingAnimator: Animator {
     var imageStepPercent: CGFloat = 0.05
     var imageViews: [UIImageView] = []
-    
+
     override public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         let numberOfImageViews = Int(0.5 / imageStepPercent)
         return (self.duration / 10) * TimeInterval(numberOfImageViews * 2)
     }
-    
+
     private func removeImageView(transitionContext: UIViewControllerContextTransitioning) {
         let imageView = imageViews.first
         imageView?.removeFromSuperview()
         self.imageViews = Array(imageViews.dropFirst())
-        
+
         if imageViews.count == 0 {
             transitionContext.completeTransition(true)
             return
         }
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + (self.duration / 10), execute: { [weak self] in
             self?.removeImageView(transitionContext: transitionContext)
         })
     }
-    
+
     private func addImageView(transitionContext: UIViewControllerContextTransitioning, fromViewImage: UIImage, imageViewRect: CGRect) {
         let imageView = UIImageView(frame: imageViewRect)
         imageView.clipsToBounds = true
         imageView.image = fromViewImage
         transitionContext.containerView.addSubview(imageView)
         imageViews.append(imageView)
-        
         let widthStep = transitionContext.containerView.bounds.size.width * imageStepPercent
         let heightStep = transitionContext.containerView.bounds.size.height * imageStepPercent
-        
         if imageViewRect.size.width - (widthStep * 2) <= 0
             || imageViewRect.size.height - (heightStep * 2) <= 0 {
             DispatchQueue.main.asyncAfter(deadline: .now() + (self.duration / 10), execute: { [weak self] in
@@ -622,19 +573,19 @@ public class ImageRepeatingAnimator: Animator {
             })
             return
         }
-        
+
         let nextImageViewRect = CGRect(x: imageViewRect.origin.x + widthStep,
                                        y: imageViewRect.origin.y + heightStep,
                                        width: imageViewRect.size.width - (widthStep * 2),
                                        height: imageViewRect.size.height - (heightStep * 2))
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + (self.duration / 10), execute: { [weak self] in
             if let self = self {
                 self.addImageView(transitionContext: transitionContext, fromViewImage: fromViewImage, imageViewRect: nextImageViewRect)
             }
         })
     }
-    
+
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to),
@@ -642,10 +593,9 @@ public class ImageRepeatingAnimator: Animator {
         else {
             return
         }
-        
+
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
-        
         addImageView(transitionContext: transitionContext, fromViewImage: fromViewControllerImage, imageViewRect: containerView.bounds)
     }
 }
@@ -653,22 +603,18 @@ public class ImageRepeatingAnimator: Animator {
 public class MultiFlipRetroAnimator: Animator {
     var stepDistance: CGFloat = 0.333
     private var fromContainer: UIView?
-    
     private func flipTo(transitionContext: UIViewControllerContextTransitioning, view: UIView, scale: CGFloat) {
         var transform = view.layer.transform
         view.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        
         transform = CATransform3DRotate(transform, CGFloat(Double.pi), 0.0, 1.0, 0.0)
         transform = CATransform3DScale(transform, scale, scale, 1.0)
-        
         let nextScale = scale - stepDistance
-        
         UIView.animate(withDuration: self.duration / 3,
                        delay: 0.0,
                        options: [.curveEaseInOut],
                        animations: {
             view.layer.transform = transform
-        }) { [weak self] _ in
+        }, completion: { [weak self] _ in
             if nextScale > 0 {
                 self?.flipTo(transitionContext: transitionContext, view: view, scale: nextScale)
             } else {
@@ -678,58 +624,50 @@ public class MultiFlipRetroAnimator: Animator {
                     fromContainer.removeFromSuperview()
                 }
             }
-        }
+        })
     }
-    
+
     override public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return self.duration
     }
-    
+
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to)
         else {
             return
         }
-        
+
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
-        
         fromContainer = UIView()
         fromContainer?.frame = fromVC.view.bounds
         containerView.addSubview(fromContainer!)
-        
         fromContainer?.addSubview(fromVC.view)
-        
         flipTo(transitionContext: transitionContext, view: fromVC.view, scale: 1.0 - stepDistance)
     }
 }
 
 public class AngleLineAnimator: Animator {
     var cornerToSlideFrom: UIRectCorner = .topLeft
-
+    // swiftlint:disable function_body_length
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to)
         else {
             return
         }
-        
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         containerView.addSubview(fromVC.view)
-        
         let size: CGSize = fromVC.view.frame.size
-        
         let toPath = UIBezierPath()
         let fromPath = UIBezierPath()
-        
         if cornerToSlideFrom == .topRight {
             toPath.move(to: CGPoint(x: -size.width, y: 0))
             toPath.addLine(to: CGPoint(x: size.width, y: size.height * 2))
             toPath.addLine(to: CGPoint(x: -size.width, y: size.height * 2))
             toPath.close()
-            
             fromPath.move(to: CGPoint(x: 0, y: -size.height))
             fromPath.addLine(to: CGPoint(x: size.width * 2, y: size.height))
             fromPath.addLine(to: CGPoint(x: 0, y: size.height))
@@ -739,7 +677,6 @@ public class AngleLineAnimator: Animator {
             toPath.addLine(to: CGPoint(x: 0, y: -size.height))
             toPath.addLine(to: CGPoint(x: size.width * 2, y: -size.height))
             toPath.close()
-            
             fromPath.move(to: CGPoint(x: size.width, y: size.height * 2))
             fromPath.addLine(to: CGPoint(x: -size.width, y: 0))
             fromPath.addLine(to: CGPoint(x: size.width, y: 0))
@@ -749,7 +686,6 @@ public class AngleLineAnimator: Animator {
             toPath.addLine(to: CGPoint(x: size.width, y: -size.height))
             toPath.addLine(to: CGPoint(x: -size.width, y: -size.height))
             toPath.close()
-            
             fromPath.move(to: CGPoint(x: 0, y: size.height * 2))
             fromPath.addLine(to: CGPoint(x: size.width * 2, y: 0))
             fromPath.addLine(to: CGPoint.zero)
@@ -759,20 +695,18 @@ public class AngleLineAnimator: Animator {
             toPath.addLine(to: CGPoint(x: 0, y: size.height * 2))
             toPath.addLine(to: CGPoint(x: size.width * 2, y: size.height * 2))
             toPath.close()
-            
             fromPath.move(to: CGPoint(x: size.width, y: size.height * -2))
             fromPath.addLine(to: CGPoint(x: -size.width, y: size.height))
             fromPath.addLine(to: CGPoint(x: size.width, y: size.height))
             fromPath.close()
         }
-        
+
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = fromPath.cgPath
         shapeLayer.bounds = CGRect(x: 0, y: 0, width: fromVC.view.bounds.size.width, height: fromVC.view.bounds.size.height)
         shapeLayer.position = CGPoint(x: fromVC.view.bounds.size.width / 2, y: fromVC.view.bounds.size.height / 2)
-        
         fromVC.view.layer.mask = shapeLayer
-        
+
         let animation = BasicAnimation()
         animation.keyPath = "path"
         animation.fillMode = .forwards
@@ -791,23 +725,20 @@ public class AngleLineAnimator: Animator {
 
 public class StraightLineAnimator: Animator {
     var sideToSlideFrom: UIRectEdge = .left
-    
+
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to)
         else {
             return
         }
-        
+
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         containerView.addSubview(fromVC.view)
-        
         let size: CGSize = fromVC.view.frame.size
-        
         var toPath = UIBezierPath()
         let fromPath = UIBezierPath(rect: fromVC.view.bounds)
-        
         if sideToSlideFrom == .top {
             toPath = UIBezierPath(rect: CGRect(x: 0, y: size.height, width: size.width, height: 0))
         } else if sideToSlideFrom == .left {
@@ -817,14 +748,11 @@ public class StraightLineAnimator: Animator {
         } else if sideToSlideFrom == .bottom {
             toPath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: size.width, height: 0))
         }
-        
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = fromPath.cgPath
         shapeLayer.bounds = CGRect(x: 0, y: 0, width: fromVC.view.bounds.size.width, height: fromVC.view.bounds.size.height)
         shapeLayer.position = CGPoint(x: fromVC.view.bounds.size.width / 2, y: fromVC.view.bounds.size.height / 2)
-        
         fromVC.view.layer.mask = shapeLayer
-        
         let animation = BasicAnimation()
         animation.keyPath = "path"
         animation.fillMode = .forwards
@@ -846,9 +774,7 @@ public class CollidingDiamondsAnimator: Animator {
         case vertical
         case horizontal
     }
-    
     var orientation: CollidingDiamondsOrientation = .horizontal
-    
     internal func animatedDiamondPath(startCenter: CGPoint,
                                       endCenter: CGPoint,
                                       size: CGSize,
@@ -859,18 +785,18 @@ public class CollidingDiamondsAnimator: Animator {
         pathStart.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y - (size.height / 2)))
         pathStart.addLine(to: CGPoint(x: startCenter.x + (size.width / 2), y: startCenter.y))
         pathStart.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y + (size.height / 2)))
-        
+
         let pathEnd = UIBezierPath()
         pathEnd.move(to: CGPoint(x: endCenter.x - (size.width / 2), y: endCenter.y))
         pathEnd.addLine(to: CGPoint(x: endCenter.x, y: endCenter.y - (size.height / 2)))
         pathEnd.addLine(to: CGPoint(x: endCenter.x + (size.width / 2), y: endCenter.y))
         pathEnd.addLine(to: CGPoint(x: endCenter.x, y: endCenter.y + (size.height / 2)))
-        
+
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = pathStart.cgPath
         shapeLayer.bounds = CGRect(x: 0, y: 0, width: screenBounds.size.width, height: screenBounds.size.height)
         shapeLayer.position = CGPoint(x: screenBounds.size.width / 2, y: screenBounds.size.height / 2)
-        
+
         let animation = BasicAnimation()
         animation.keyPath = "path"
         animation.fillMode = .forwards
@@ -885,32 +811,28 @@ public class CollidingDiamondsAnimator: Animator {
             }
         }
         shapeLayer.add(animation, forKey: "path")
-        
         return shapeLayer
     }
-    
+    // swiftlint:disable function_body_length
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to)
         else {
             return
         }
-        
+
         let diamondSize = CGSize(width: fromVC.view.bounds.size.width * 2, height: fromVC.view.bounds.size.height * 2)
-        
         let containerView = transitionContext.containerView
         containerView.addSubview(fromVC.view)
         containerView.addSubview(toVC.view)
-        
         let containerLayer = CALayer()
         containerLayer.bounds = CGRect(x: 0, y: 0, width: fromVC.view.bounds.size.width, height: fromVC.view.bounds.size.height)
         containerLayer.position = CGPoint(x: fromVC.view.bounds.size.width / 2, y: fromVC.view.bounds.size.height / 2)
-        
         let completion = {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             toVC.view.layer.mask = nil
         }
-        
+
         if orientation == .vertical {
             var start = CGPoint(x: fromVC.view.bounds.width / 2,
                                 y: diamondSize.height / -2)
@@ -920,7 +842,6 @@ public class CollidingDiamondsAnimator: Animator {
                                             screenBounds: fromVC.view.bounds,
                                             completion: nil)
             containerLayer.addSublayer(layer)
-            
             start = CGPoint(x: fromVC.view.bounds.width / 2,
                             y: (diamondSize.height * 0.5) + fromVC.view.bounds.height)
             layer = animatedDiamondPath(startCenter: start,
@@ -947,12 +868,12 @@ public class CollidingDiamondsAnimator: Animator {
                                         completion: completion)
             containerLayer.addSublayer(layer)
         }
-        
         toVC.view.layer.mask = containerLayer
     }
 }
 
 public class ShrinkingGrowingDiamondsAnimator: Animator {
+    // swiftlint:disable function_body_length
     private func animatedDiamondPath(startCenter: CGPoint,
                                      startSize: CGSize,
                                      endSizeLarge: CGSize,
@@ -964,37 +885,36 @@ public class ShrinkingGrowingDiamondsAnimator: Animator {
         pathStart.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y - (startSize.height / 2)))
         pathStart.addLine(to: CGPoint(x: startCenter.x + (startSize.width / 2), y: startCenter.y))
         pathStart.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y + (startSize.height / 2)))
-        
+
         let pathStart2 = UIBezierPath()
         pathStart2.move(to: CGPoint(x: startCenter.x - (startSize.width / 2), y: startCenter.y))
         pathStart2.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y - (startSize.height / 2)))
         pathStart2.addLine(to: CGPoint(x: startCenter.x + (startSize.width / 2), y: startCenter.y))
         pathStart2.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y + (startSize.height / 2)))
         pathStart.append(pathStart2)
-        
+
         pathStart.usesEvenOddFillRule = true
-        
         let pathEnd = UIBezierPath()
         pathEnd.move(to: CGPoint(x: startCenter.x - (endSizeLarge.width / 2), y: startCenter.y))
         pathEnd.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y - (endSizeLarge.height / 2)))
         pathEnd.addLine(to: CGPoint(x: startCenter.x + (endSizeLarge.width / 2), y: startCenter.y))
         pathEnd.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y + (endSizeLarge.height / 2)))
-        
+
         let pathEnd2 = UIBezierPath()
         pathEnd2.move(to: CGPoint(x: startCenter.x - (endSizeSmall.width / 2), y: startCenter.y))
         pathEnd2.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y - (endSizeSmall.height / 2)))
         pathEnd2.addLine(to: CGPoint(x: startCenter.x + (endSizeSmall.width / 2), y: startCenter.y))
         pathEnd2.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y + (endSizeSmall.height / 2)))
         pathEnd.append(pathEnd2)
-        
+
         pathEnd.usesEvenOddFillRule = true
-        
+
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = pathStart.cgPath
         shapeLayer.fillRule = CAShapeLayerFillRule.evenOdd
         shapeLayer.bounds = CGRect(x: 0, y: 0, width: screenBounds.size.width, height: screenBounds.size.height)
         shapeLayer.position = CGPoint(x: screenBounds.size.width / 2, y: screenBounds.size.height / 2)
-        
+
         let animation = BasicAnimation()
         animation.keyPath = "path"
         animation.fillMode = .forwards
@@ -1009,34 +929,30 @@ public class ShrinkingGrowingDiamondsAnimator: Animator {
             }
         }
         shapeLayer.add(animation, forKey: "path")
-        
         return shapeLayer
     }
-    
+
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to)
         else {
             return
         }
-        
+
         let diamondSize = fromVC.view.bounds.size
-        
         let containerView = transitionContext.containerView
         containerView.addSubview(fromVC.view)
         containerView.addSubview(toVC.view)
-        
         let containerLayer = CALayer()
         containerLayer.bounds = CGRect(x: 0, y: 0, width: fromVC.view.bounds.size.width, height: fromVC.view.bounds.size.height)
         containerLayer.position = CGPoint(x: fromVC.view.bounds.size.width / 2, y: fromVC.view.bounds.size.height / 2)
-        
+
         let completion = {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             toVC.view.layer.mask = nil
         }
-        
+
         let start = CGPoint(x: fromVC.view.bounds.width / 2, y: diamondSize.height / 2)
-        
         let layer = animatedDiamondPath(startCenter: start,
                                         startSize: diamondSize,
                                         endSizeLarge: CGSize(width: diamondSize.width * 2, height: diamondSize.height * 2),
@@ -1059,18 +975,18 @@ public class SplitFromCenterAnimator: Animator {
         pathStart.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y - (size.height / 2)))
         pathStart.addLine(to: CGPoint(x: startCenter.x + (size.width / 2), y: startCenter.y))
         pathStart.addLine(to: CGPoint(x: startCenter.x, y: startCenter.y + (size.height / 2)))
-        
+
         let pathEnd = UIBezierPath()
         pathEnd.move(to: CGPoint(x: endCenter.x - (size.width / 2), y: endCenter.y))
         pathEnd.addLine(to: CGPoint(x: endCenter.x, y: endCenter.y - (size.height / 2)))
         pathEnd.addLine(to: CGPoint(x: endCenter.x + (size.width / 2), y: endCenter.y))
         pathEnd.addLine(to: CGPoint(x: endCenter.x, y: endCenter.y + (size.height / 2)))
-        
+
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = pathStart.cgPath
         shapeLayer.bounds = CGRect(x: 0, y: 0, width: screenBounds.size.width, height: screenBounds.size.height)
         shapeLayer.position = CGPoint(x: screenBounds.size.width / 2, y: screenBounds.size.height / 2)
-        
+
         let animation = BasicAnimation()
         animation.keyPath = "path"
         animation.fillMode = .forwards
@@ -1085,32 +1001,30 @@ public class SplitFromCenterAnimator: Animator {
             }
         }
         shapeLayer.add(animation, forKey: "path")
-        
         return shapeLayer
     }
-    
+
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to)
         else {
             return
         }
-        
+
         let diamondSize = CGSize(width: fromVC.view.bounds.size.width * 2, height: fromVC.view.bounds.size.height * 2)
-        
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         containerView.addSubview(fromVC.view)
-        
+
         let containerLayer = CALayer()
         containerLayer.bounds = CGRect(x: 0, y: 0, width: fromVC.view.bounds.size.width, height: fromVC.view.bounds.size.height)
         containerLayer.position = CGPoint(x: fromVC.view.bounds.size.width / 2, y: fromVC.view.bounds.size.height / 2)
-        
+
         let completion = {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             fromVC.view.layer.mask = nil
         }
-        
+
         var start = CGPoint(x: fromVC.view.bounds.width / 2,
                             y: (fromVC.view.bounds.height / 2) - (diamondSize.height / 2))
         var layer = animatedDiamondPath(startCenter: start,
@@ -1119,19 +1033,18 @@ public class SplitFromCenterAnimator: Animator {
                                         screenBounds: fromVC.view.bounds,
                                         completion: completion)
         containerLayer.addSublayer(layer)
-        
         start = CGPoint(x: fromVC.view.bounds.width / 2, y: (fromVC.view.bounds.height / 2) + (diamondSize.height / 2))
         layer = animatedDiamondPath(startCenter: start, endCenter: CGPoint(x: start.x, y: start.y + (diamondSize.height / 2)), size: diamondSize, screenBounds: fromVC.view.bounds, completion: nil)
         containerLayer.addSublayer(layer)
-        
+
         start = CGPoint(x: (fromVC.view.bounds.width / 2) + (diamondSize.width / 2), y: fromVC.view.bounds.height / 2)
         layer = animatedDiamondPath(startCenter: start, endCenter: CGPoint(x: start.x + (diamondSize.width / 2), y: start.y), size: diamondSize, screenBounds: fromVC.view.bounds, completion: nil)
         containerLayer.addSublayer(layer)
-        
+
         start = CGPoint(x: (fromVC.view.bounds.width / 2) - (diamondSize.width / 2), y: fromVC.view.bounds.height / 2)
         layer = animatedDiamondPath(startCenter: start, endCenter: CGPoint(x: start.x - (diamondSize.width / 2), y: start.y), size: diamondSize, screenBounds: fromVC.view.bounds, completion: nil)
         containerLayer.addSublayer(layer)
-        
+
         fromVC.view.layer.mask = containerLayer
     }
 }
@@ -1141,38 +1054,32 @@ public class SwingInAnimator: Animator {
         case left
         case right
     }
-    
+
     var initialDirection: InitialDirection = .left
-    
+
     override public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
               let toVC = transitionContext.viewController(forKey: .to)
         else {
             return
         }
-        
         let containerView = transitionContext.containerView
         containerView.addSubview(fromVC.view)
-        
         let toContainerView = UIView()
         toContainerView.backgroundColor = UIColor.clear
         toContainerView.frame = toVC.view.bounds
         toContainerView.frame.origin = CGPoint(x: initialDirection == .left ? -fromVC.view.bounds.width : fromVC.view.bounds.width * 2, y: 0)
-        
         toContainerView.addSubview(toVC.view)
         containerView.addSubview(toContainerView)
-        
         toVC.view.transform = CGAffineTransform.identity.scaledBy(x: 0.1, y: 0.1)
-        
         UIView.animate(withDuration: self.duration,
                        delay: 0.0,
                        options: [.curveEaseOut],
                        animations: {
             toVC.view.transform = CGAffineTransform.identity
-        }) { _ in
+        }, completion: { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-        }
-        
+        })
         UIView.animate(withDuration: self.duration,
                        delay: 0.0,
                        usingSpringWithDamping: 0.6,

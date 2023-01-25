@@ -17,26 +17,22 @@ class TimelinePageViewModel: BaseListViewModel {
     var networkService: NetworkService?
     var tmpBag: DisposeBag?
     let rxTille = BehaviorRelay<String?>(value: "")
-    
     lazy var getDataAction: Action<Void, Void> = {
-        return Action() { .just(self.getData()) }
+        return Action { .just(self.getData()) }
     }()
-    
     lazy var loadMoreAction: Action<Void, Void> = {
-        return Action() { .just(self.loadMore()) }
+        return Action { .just(self.loadMore()) }
     }()
-    
+
     override func react() {
         super.react()
-        
         guard let model = self.model as? TabbarModel else {
             return
         }
         rxTille.accept(model.title)
-        
         networkService = DependencyManager.shared.getService()
     }
-    
+
     private func getData() {
         self.networkService?.loadTimeline(withPage: self.page, withLimit: self.limit)
             .map(prepareSources)
@@ -47,11 +43,11 @@ class TimelinePageViewModel: BaseListViewModel {
             }, onFailure: { _ in
             }) => tmpBag
     }
-    
+
     private func loadMore() {
         print("DEBUG: Loading more")
     }
-    
+
     private func prepareSources(_ response: TimelineResponseModel?) -> [BaseCellViewModel]? {
         guard let response = response else {
             return []

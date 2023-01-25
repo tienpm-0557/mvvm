@@ -20,7 +20,7 @@ import SwiftyJSON
 class MoyaService {
     var tmpBag: DisposeBag?
     let curlString = BehaviorRelay<String?>(value: "")
-    
+
     private lazy var moyaProvider = MoyaProvider<MoyaAPIService>(plugins: [
         NetworkLoggerPlugin(configuration: .init(formatter: .init(),
                                                  output: { target, array in
@@ -31,7 +31,7 @@ class MoyaService {
                                                  },
                                                  logOptions: .formatRequestAscURL))
     ])
-    
+
     func search(keyword: String, page: Int) -> Single<FlickrSearchResponse> {
         return Single.create { single in
             self.moyaProvider.rx.request(.flickrSearch(keyword: keyword, page: page))
@@ -40,7 +40,7 @@ class MoyaService {
                     /// Implement logic maping if need. Maping API Response to FlickrSearchResponse object.
                     let jsonData = JSON(response.data)
                     if let dictionary = jsonData.dictionaryObject, let flickrSearchResponse = FlickrSearchResponse(JSON: dictionary) {
-                        flickrSearchResponse.response_description = jsonData
+                        flickrSearchResponse.responseDescription = jsonData
                         return flickrSearchResponse
                     }
                     return nil
@@ -52,9 +52,9 @@ class MoyaService {
                         let err = NSError(domain: "", code: 404, userInfo: ["message": "Data not fount"])
                         single(.failure(err))
                     }
-                }) { error in
+                }, onError: { error in
                     single(.failure(error))
-                } => self.tmpBag
+                }) => self.tmpBag
             return Disposables.create { self.tmpBag = DisposeBag() }
         }
     }

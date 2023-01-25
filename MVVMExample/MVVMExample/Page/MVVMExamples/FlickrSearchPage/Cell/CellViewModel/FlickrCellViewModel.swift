@@ -10,11 +10,10 @@ import UIKit
 import MVVM
 import RxSwift
 import RxCocoa
-
-class FlickrCellViewModel: BaseCellViewModel {    
+class FlickrCellViewModel: BaseCellViewModel {
     let rxImage = BehaviorRelay(value: NetworkImage())
     let rxTitle = BehaviorRelay<String?>(value: nil)
-    
+
     override func react() {
         guard let model = self.model as? FlickrPhotoModel else {
             return

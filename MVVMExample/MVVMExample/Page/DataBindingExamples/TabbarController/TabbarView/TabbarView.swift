@@ -17,7 +17,7 @@ class TabbarView: AbstractView {
     @IBOutlet private var topLineHeight: NSLayoutConstraint!
     private var prevButton: UIButton?
     let rxSelectedIndex = BehaviorRelay(value: 0)
-    
+
     private var darkmode: Bool = false {
         didSet {
             if darkmode {
@@ -33,22 +33,22 @@ class TabbarView: AbstractView {
             }
         }
     }
-    
+
     lazy var testAction: Action<AnyObject, Void> = {
         return Action<AnyObject, Void> { _ in
             return .just(())
         }
     }()
-    
+
     class func newTabbarView() -> TabbarView? {
-        guard let _tabBarView = TabbarView.loadFrom(nibNamed: TabbarView.nibName(),
-                                                    bundle: Bundle.main) as? TabbarView else {
+        guard let tabBarView = TabbarView.loadFrom(nibNamed: TabbarView.nibName(),
+                                                   bundle: Bundle.main) as? TabbarView else {
             return nil
         }
-        _tabBarView.setupView()
-        return _tabBarView
+        tabBarView.setupView()
+        return tabBarView
     }
-    
+
     override func setupView() {
         super.setupView()
         /// Setup tab items
@@ -61,10 +61,9 @@ class TabbarView: AbstractView {
             } else {
                 btn.backgroundColor = UIColor.tabbarBackgroundColor
             }
-            
             btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
-        
+
         self.prevButton = buttons.first
         /// Top line
         topLineHeight.constant = 1 / UIScreen.main.scale
@@ -74,17 +73,16 @@ class TabbarView: AbstractView {
         }
         self.setSelectedTab(selectBtn)
     }
-    
+
     @IBAction func didSelectedTab(_ sender: UIButton) {
         if let prevButton = self.prevButton {
             setNormalTab(prevButton)
         }
-        
         prevButton = sender
         setSelectedTab(sender)
         rxSelectedIndex.accept(sender.tag)
     }
-    
+
     fileprivate func setNormalTab(_ normalBtn: UIButton) {
         normalBtn.isSelected = false
 
@@ -94,7 +92,7 @@ class TabbarView: AbstractView {
             normalBtn.backgroundColor = UIColor.tabbarBackgroundColor
         }
     }
-    
+
     fileprivate func setSelectedTab(_ selectedBtn: UIButton) {
         selectedBtn.isSelected = true
         if self.darkmode {
@@ -103,7 +101,7 @@ class TabbarView: AbstractView {
             selectedBtn.backgroundColor = .tabbarBackgroundSelectedColor
         }
     }
-    
+
     func updateDarkmode(_ darkmode: Bool) {
         self.darkmode = darkmode
     }

@@ -14,16 +14,16 @@ import RxCocoa
 class SectionHeaderListView: BaseHeaderTableView {
     @IBOutlet private weak var titleLbl: UILabel!
     @IBOutlet private weak var addBtn: UIButton!
-    
-    override class func height(withItem _item: BaseViewModel) -> CGFloat {
+
+    override class func height(withItem item: BaseViewModel) -> CGFloat {
         return 30
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundView?.backgroundColor = .groupTableViewBackground
     }
-    
+
     override func bindViewAndViewModel() {
         guard let viewModel = viewModel as? SectionHeaderViewViewModel else {
             return

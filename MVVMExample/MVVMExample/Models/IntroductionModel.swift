@@ -14,11 +14,11 @@ class IntroductionModel: Model {
     var title = ""
     var desc = ""
     var url = ""
-    
+
     convenience init(withTitle title: String, desc: String, url: String) {
         self.init(JSON: ["title": title, "desc": desc, "url": url])!
     }
-    
+
     override func mapping(map: Map) {
         title <- map["title"]
         desc <- map["desc"]
@@ -31,7 +31,6 @@ extension NSURL {
         guard let pathExtension = self.pathExtension else {
             return false
         }
-        
         if pathExtension.contains("png") ||
             pathExtension.contains("jpeg") ||
             pathExtension.contains("jpg") {

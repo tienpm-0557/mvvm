@@ -7,7 +7,6 @@ import UIKit
 
 public class AnimatorDelegate: NSObject {
     let animator: Animator
-    
     public init(withAnimator animator: Animator) {
         self.animator = animator
         super.init()
@@ -19,12 +18,11 @@ extension AnimatorDelegate: UIViewControllerTransitioningDelegate {
         animator.isPresenting = true
         return animator
     }
-    
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animator.isPresenting = false
         return animator
     }
-    
+
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return PresentationController(presentedViewController: presented, presenting: presenting)
     }

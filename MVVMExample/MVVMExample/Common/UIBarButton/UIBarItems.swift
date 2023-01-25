@@ -63,7 +63,7 @@ struct UIBarButtonOption {
     var bagde: Observable<Int?>?
     var cornerRadius: CGFloat
     var roundCorners: UIRectCorner
-    
+
     init(frame: CGRect = CGRect(x: 0, y: 0, width: 40, height: 40),
          title: String? = nil,
          selectedTitle: String? = nil,
@@ -97,21 +97,21 @@ class UIBarButton: UIView {
     @IBOutlet private weak var barButton: UIButton!
     @IBOutlet private weak var bagdeLabel: UILabel!
     @IBOutlet private weak var bagdeView: UIView!
-    
+
     private var disposeBag = DisposeBag()
-    
+
     class func instanceFromNib(withOption option: UIBarButtonOption,
                                action: Action<AnyObject, Void>) -> UIBarButton {
         var view: UIBarButton?
         let nib = UINib(nibName: kUIBarItemsNibName, bundle: Bundle.main)
-        nib.instantiate(withOwner: nil, options: nil).forEach { v in
-            if v is UIBarButton { view = v as? UIBarButton }
+        nib.instantiate(withOwner: nil, options: nil).forEach { sView in
+            if sView is UIBarButton { view = sView as? UIBarButton }
         }
-        
+
         guard let barBtn = view else {
             return UIBarButton()
         }
-        
+
         barBtn.barButton.setTitle(option.title, for: .normal)
         barBtn.barButton.setTitle(option.selectedTitle, for: .selected)
         barBtn.barButton.setTitleColor(option.titleColor, for: .normal)
@@ -122,13 +122,13 @@ class UIBarButton: UIView {
         barBtn.barButton.setImage(UIImage(named: option.selectedImage ?? ""),
                                   for: .selected)
         barBtn.barButton.rx.bind(to: action, input: (barBtn.barButton))
-        
+
         if option.hasBagde {
             barBtn.bagdeView.isHidden = false
         } else {
             barBtn.bagdeView.isHidden = true
         }
-        
+
         option.bagde?.subscribe(onNext: { bagde in
             if let bd = bagde, bd > 0 {
                 barBtn.bagdeView.isHidden = false
@@ -144,8 +144,7 @@ class UIBarButton: UIView {
 }
 
 extension UIBarButtonItem {
-    convenience init(withOption option: UIBarButtonOption,
-                             withAction action: Action<AnyObject, Void>) {
+    convenience init(withOption option: UIBarButtonOption, withAction action: Action<AnyObject, Void>) {
         self.init()
         customView = UIBarButton.instanceFromNib(withOption: option, action: action)
     }
@@ -166,14 +165,14 @@ extension UIBarButtonItem {
                                        contentInset: contentInsets)
         return UIBarButtonItem(withOption: option, withAction: action)
     }
-    
+
     static func titleButton(withFrame frame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 40),
                             withTitle title: String,
                             withAction action: Action<AnyObject, Void>) -> UIBarButtonItem {
         let option = UIBarButtonOption(frame: frame, title: title, selectedTitle: title)
         return UIBarButtonItem(withOption: option, withAction: action)
     }
-    
+
     static func imageButton(withFrame frame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 40),
                             withImage image: String,
                             withSelectedImage selectedImage: String? = nil,
@@ -181,7 +180,7 @@ extension UIBarButtonItem {
         let option = UIBarButtonOption(frame: frame, image: image, selectedImage: selectedImage ?? image)
         return UIBarButtonItem(withOption: option, withAction: action)
     }
-    
+
     static func bagdeButton(withFrame frame: CGRect = CGRect(x: 0, y: 0, width: 40, height: 40),
                            withImage image: String,
                            withSelectedImage selectedImage: String? = nil,
@@ -207,9 +206,9 @@ class UIBarTitle: UIView {
     @IBOutlet private weak var titleLb: UILabel!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var dropdownBtn: UIButton!
-    
+
     private var disposeBag = DisposeBag()
-    
+
     class func instanceFromNib(title: String,
                                frame: CGRect,
                                image: String? = nil,
@@ -217,32 +216,32 @@ class UIBarTitle: UIView {
                                type: UIBarTitleType = .normal) -> UIBarTitle {
         var view: UIBarTitle?
         let nib = UINib(nibName: kUIBarItemsNibName, bundle: Bundle.main)
-        nib.instantiate(withOwner: nil, options: nil).forEach { v in
-            if v is UIBarTitle { view = v as? UIBarTitle }
+        nib.instantiate(withOwner: nil, options: nil).forEach { subView in
+            if subView is UIBarTitle { view = subView as? UIBarTitle }
         }
-        
+
         guard let titleView = view else {
             return UIBarTitle()
         }
-        
+
         titleView.frame = frame
         titleView.setupView(withImage: image,
                             withTitle: title)
         switch type {
         case .dropdown:
             titleView.setupDropView(image: icon)
-            
+
         default:
             ()
         }
         return titleView
     }
-    
+
     private func setupDropView(image: String?) {
         dropdownBtn.isHidden = false
         dropdownBtn.setImage(UIImage(named: image ?? ""), for: .normal)
     }
-    
+
     private func setupView(withImage image: String?,
                            withTitle title: String) {
         dropdownBtn.isHidden = true
@@ -250,7 +249,7 @@ class UIBarTitle: UIView {
         imageView.image = UIImage(named: image ?? "")
         titleLb.text = title
     }
-    
+
     class func imageTitleView(withTitle title: String,
                               withFrame frame: CGRect = CGRect(x: 0, y: 0, width: 80, height: 40),
                               withImage image: String? = nil) -> UIBarTitle {
@@ -260,7 +259,7 @@ class UIBarTitle: UIView {
                                                    type: .image)
         return titleView
     }
-    
+
     class func dropdownTitleView(withTitle title: String,
                                  withDropdownIcon icon: String?,
                                  withFrame frame: CGRect = CGRect(x: 0, y: 0, width: 80, height: 40)) -> UIBarTitle {
@@ -270,7 +269,7 @@ class UIBarTitle: UIView {
                                                    type: .dropdown)
         return titleView
     }
-    
+
     class func imageWithDropdownTitleView(withTitle title: String,
                                           withFrame frame: CGRect = CGRect(x: 0, y: 0, width: 80, height: 40),
                                           withImage image: String? = nil) -> UIBarTitle {

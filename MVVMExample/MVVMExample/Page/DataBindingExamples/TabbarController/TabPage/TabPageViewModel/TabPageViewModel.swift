@@ -16,17 +16,15 @@ class TabPageViewModel: BaseViewModel {
     let rxTitle = BehaviorRelay<String?>(value: "")
     let rxName = BehaviorRelay<String?>(value: nil)
     let rxBackgroundHex = BehaviorRelay<String?>(value: "89DDF7")
-    
     override func react() {
         super.react()
         guard let model = self.model as? TabbarModel else {
             return
         }
-        
         rxTitle.accept(model.title)
         rxName.accept(model.title)
         if  !model.hex.isEmpty {
             rxBackgroundHex.accept(model.hex)
-        }        
+        }
     }
 }

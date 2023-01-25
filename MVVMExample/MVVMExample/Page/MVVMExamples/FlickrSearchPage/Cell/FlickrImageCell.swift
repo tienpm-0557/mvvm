@@ -19,18 +19,17 @@ class FlickrImageCell: BaseCollectionCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override class func getSize(withItem data: Any?) -> CGSize? {
         let screenSize = UIScreen.main.bounds
         return CGSize(width: (screenSize.width - 30) / 2, height: (screenSize.width - 30) * 3 / 5)
     }
-    
+
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
         guard let viewModel = self.viewModel as? FlickrCellViewModel else {
             return
         }
-        
         viewModel.rxImage ~> contentImage.rx.networkImage => disposeBag
         viewModel.rxTitle ~> titleLb.rx.text => disposeBag
     }

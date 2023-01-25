@@ -14,25 +14,22 @@ import RxCocoa
 
 class CollectionPageViewModel: BaseListViewModel {
     let rxPageTitle = BehaviorRelay<String?>(value: "")
-    
+
     lazy var addAction: Action<Void, Void> = {
-        return Action() { .just(self.add()) }
+        return Action { .just(self.add()) }
     }()
-    
+
     override func react() {
         super.react()
-        
         let title = (self.model as? MenuModel)?.title ?? "Simple UICollectionView"
         rxPageTitle.accept(title)
-        
         let headerVM = HeaderFooterModel(withTitle: "Section title #\(itemsSource.count + 1)",
                                          desc: "List page examples",
                                          footer: "Footer #\(itemsSource.count + 1)")
-        
         let vm = SectionHeaderViewViewModel(model: headerVM)
         itemsSource.appendSectionViewModel(vm, animated: false)
     }
-    
+
     /// Add collection Cell
     func add() {
         /// Dummy cell model
@@ -46,7 +43,7 @@ class CollectionPageViewModel: BaseListViewModel {
         let cvm = SimpleCollectionViewDellModel(model: model)
         itemsSource.append(cvm)
     }
-    
+
     override func selectedItemDidChange(_ cellViewModel: BaseCellViewModel, _ indexPath: IndexPath) {
         guard let cellViewModel = cellViewModel as? SimpleCollectionViewDellModel else {
             return

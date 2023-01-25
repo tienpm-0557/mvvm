@@ -15,11 +15,10 @@ class AuthenticationWebViewModel: IntroductionPageViewModel {
         super.react()
         let title = (self.model as? IntroductionModel)?.title ?? "Authentication"
         let url = URL(string: "https://jigsaw.w3.org/HTTP/Basic/")!
-        
         rxPageTitle.accept(title)
         rxURL.accept(url)
     }
-    
+
     override func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         /*
          The correct credentials are:

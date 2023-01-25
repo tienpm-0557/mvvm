@@ -22,11 +22,12 @@ protocol IMutableDependencyResolver {
     func removeService(_ type: Any)
 }
 
+// swiftlint:disable force_cast
 extension IMutableDependencyResolver {
     func getService<T>() -> T {
         return getService(T.self) as! T
     }
-    
+
     func registerService<T>(_ factory: Factory<T>) {
         return registerService(Factory {
             factory.create()
@@ -34,24 +35,23 @@ extension IMutableDependencyResolver {
     }
 }
 
+// swiftlint:disable identifier_name
 class DefaultDependencyResolver: IMutableDependencyResolver {
     private var registry = [String: Factory<Any>]()
-    
+
     func getService(_ type: Any) -> Any? {
         let k: String = .describing(for: type)
-        for key in registry.keys {
-            if k == key {
-                return registry[key]?.create()
-            }
+        for key in registry.keys where k == key {
+            return registry[key]?.create()
         }
         return nil
     }
-    
+
     func registerService(_ factory: Factory<Any>, type: Any) {
         let k: String = .describing(for: type)
         registry[k] = factory
     }
-    
+
     func removeService(_ type: Any) {
         let k = String(describing: type)
         registry.removeValue(forKey: k)
@@ -60,9 +60,8 @@ class DefaultDependencyResolver: IMutableDependencyResolver {
 
 public class DependencyManager {
     public static let shared = DependencyManager()
-    
     private let resolver: IMutableDependencyResolver = DefaultDependencyResolver()
-    
+
     public func registerDefaults() {
         registerService(Factory<NavigationService> { NavigationService() })
         registerService(Factory<IStorageService> { StorageService() })
@@ -71,15 +70,15 @@ public class DependencyManager {
         registerService(Factory<ShareService> { ShareService() })
         registerService(Factory<MailService> { MailService() })
     }
-    
+
     public func getService<T>() -> T {
         return resolver.getService()
     }
-    
+
     public func registerService<T>(_ factory: Factory<T>) {
         resolver.registerService(factory)
     }
-    
+
     public func removeService<T>(_ type: T.Type) {
         resolver.removeService(type)
     }

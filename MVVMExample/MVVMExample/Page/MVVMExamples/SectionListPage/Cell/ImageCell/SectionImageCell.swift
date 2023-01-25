@@ -11,7 +11,7 @@ import MVVM
 
 class SectionImageCell: BaseTableCell {
     @IBOutlet private weak var netImageView: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,7 +24,7 @@ class SectionImageCell: BaseTableCell {
                                withMultiplier: 9 / 16.0)
         netImageView.autoPinEdgesToSuperviewEdges(with: .symmetric(horizontal: 15, vertical: 10))
     }
- 
+
     override func bindViewAndViewModel() {
         guard let viewModel = viewModel as? SectionImageCellViewModel else {
             return

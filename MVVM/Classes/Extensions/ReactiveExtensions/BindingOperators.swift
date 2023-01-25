@@ -99,7 +99,7 @@ precedencegroup DisposablePrecedence {
 infix operator =>: DisposablePrecedence
 
 public func =>(disposable: Disposable?, bag: DisposeBag?) {
-    if let d = disposable, let b = bag {
-        d.disposed(by: b)
+    if let dispose = disposable, let disposeBag = bag {
+        dispose.disposed(by: disposeBag)
     }
 }

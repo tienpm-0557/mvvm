@@ -25,7 +25,6 @@ class TableOfContentsPage: BaseListPage {
         tableView.separatorStyle = .singleLine
         tableView.register(cellType: MenuTableViewCell.self)
     }
-    
     // Register event: Connect view to ViewModel.
     override func bindViewAndViewModel() {
         super.bindViewAndViewModel()
@@ -34,23 +33,23 @@ class TableOfContentsPage: BaseListPage {
         }
         viewModel.inputs.rxPageTitle ~> rx.title => disposeBag
     }
-    
+
     override func destroy() {
         super.destroy()
         viewModel?.destroy()
     }
-    
+
     override func cellIdentifier(_ cellViewModel: Any, _ returnClassName: Bool = false) -> String {
         return MenuTableViewCell.identifier(returnClassName)
     }
-    
+
     override func getItemSource() -> RxCollection? {
         guard let viewModel = viewModel as? TableOfContentViewModelType else {
             return nil
         }
         return viewModel.outputs.itemsSource
     }
-    
-    // Not recommended for use. override selectedItemDidChange on ViewModel.
+
+    /// Not recommended for use. override selectedItemDidChange on ViewModel.
     override func selectedItemDidChange(_ cellViewModel: Any, _ indexPath: IndexPath) {}
 }

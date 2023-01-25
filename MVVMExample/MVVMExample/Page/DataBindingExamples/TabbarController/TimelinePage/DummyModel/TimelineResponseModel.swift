@@ -16,7 +16,7 @@ class TimelineResponseModel: Model {
     var timelines: [BaseCellViewModel] = []
     var message = ""
     var response: JSON?
-    
+
     override func mapping(map: Map) {
         stat <- (map["code"], HttpStatusCodeTransform())
         message <- map["message"]
@@ -27,14 +27,14 @@ class TimelineResponseModel: Model {
 class HttpStatusCodeTransform: TransformType {
     typealias Object = HttpStatusCode
     typealias JSONString = String
-    
+
     func transformFromJSON(_ value: Any?) -> Object? {
         if let type = value as? String, let code = Int(type) {
             return HttpStatusCode(rawValue: code)
         }
         return nil
     }
-    
+
     func transformToJSON(_ value: Object?) -> JSONString? {
         return "\(value?.rawValue ?? 0)"
     }
@@ -43,7 +43,7 @@ class HttpStatusCodeTransform: TransformType {
 class DataTransform: TransformType {
     typealias Object = [BaseCellViewModel]
     typealias JSON = String
-    
+
     func transformFromJSON(_ value: Any?) -> Object? {
         if let items = value as? [[String: Any]] {
             var result: [AnyObject] = []
@@ -64,7 +64,7 @@ class DataTransform: TransformType {
         }
         return nil
     }
-    
+
     func transformToJSON(_ value: Object?) -> JSON? {
         return nil
     }

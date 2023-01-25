@@ -19,11 +19,11 @@ class TimelineModel: Model {
     var user: UserInfoModel?
     var type: TimelineModelType = .normal
     var json: JSON = []
-    
+
     convenience init(withAnyObject json: [String: Any]) {
         self.init(JSON: json)!
     }
-    
+
     override func mapping(map: Map) {
         title <- map["title"]
         desc <- map["description"]
@@ -38,14 +38,14 @@ class TimelineModel: Model {
 class UserInfoTransform: TransformType {
     typealias Object = UserInfoModel
     typealias JSON = String
-    
+
     func transformFromJSON(_ value: Any?) -> Object? {
         if let userInfo = value as? [String: Any] {
             return UserInfoModel(JSON: userInfo)
         }
         return nil
     }
-    
+
     func transformToJSON(_ value: Object?) -> JSON? {
         return nil
     }
@@ -54,14 +54,14 @@ class UserInfoTransform: TransformType {
 class TimelineModelTypeTransform: TransformType {
     typealias Object = TimelineModelType
     typealias JSON = String
-    
+
     func transformFromJSON(_ value: Any?) -> Object? {
         if let type = value as? String, let code = Int(type) {
             return TimelineModelType(rawValue: code)
         }
         return nil
     }
-    
+
     func transformToJSON(_ value: Object?) -> JSON? {
         return "\(value?.rawValue ?? 0)"
     }
@@ -70,14 +70,14 @@ class TimelineModelTypeTransform: TransformType {
 public enum TimelineModelType: Int {
     case normal = 0
     case activity = 1
-    
+
     init?(statusCode: Int?) {
-        guard let _statusCode = statusCode else {
+        guard let stCode = statusCode else {
             return nil
         }
-        self.init(rawValue: _statusCode)
+        self.init(rawValue: stCode)
     }
-    
+
     var message: String {
         switch self {
         case .normal:

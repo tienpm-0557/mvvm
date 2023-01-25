@@ -5,6 +5,7 @@
 
 import UIKit
 
+// swiftlint:disable identifier_name
 public extension UIColor {
     convenience init(hex: Int) {
         self.init(hex: hex, a: 1.0)

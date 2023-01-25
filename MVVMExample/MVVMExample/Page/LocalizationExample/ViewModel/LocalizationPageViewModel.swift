@@ -13,27 +13,27 @@ import RxCocoa
 
 class LocalizationPageViewModel: BaseViewModel {
     private var localizationService: LocalizeService?
-    
+
     var rxPageTitle = BehaviorRelay<String?>(value: "")
-    
+
     lazy var rxJPAction: Action<Void, Void> = {
-        return Action() { .just(self.selectJPLocale()) }
+        return Action { .just(self.selectJPLocale()) }
     }()
-    
+
     lazy var rxEnglishAction: Action<Void, Void> = {
-        return Action() { .just(self.selectedEngLocale()) }
+        return Action { .just(self.selectedEngLocale()) }
     }()
-    
+
     override func react() {
         super.react()
         localizationService = DependencyManager.shared.getService()
         rxPageTitle.accept(LocalizedStringConfigs.strLocalizePageTitle.localized)
     }
-    
+
     private func selectJPLocale() {
         localizationService?.setCurrentLocale("ja")
     }
-    
+
     private func selectedEngLocale() {
         localizationService?.setCurrentLocale("en")
     }
